@@ -14,4 +14,4 @@ Validated locally on Windows with Node 24.19.0 and pnpm 11.25.0, 2026-10-19.
 - Production dependency audit: no known vulnerabilities reported. See README for the shadcn authoring-tool advisory, which is outside the shipped runtime.
 - Both original Oathkeeper and lawlib repositories were left unchanged.
 
-No hosted GitHub Actions run is claimed. Deployment validation is recorded separately once Vercel has a selected team and a completed deployment.
+No hosted GitHub Actions run is claimed. Production deployment validation is recorded in [DEPLOYMENT.md](DEPLOYMENT.md).

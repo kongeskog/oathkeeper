@@ -1,5 +1,7 @@
 # Oathkeeper web
 
+Live: [oathkeeper-sable.vercel.app](https://oathkeeper-sable.vercel.app)
+
 The Oathkeeper landing page, getting-started guide, language documentation, and lawlib explorer. Built with Next.js App Router, TypeScript, Tailwind, and the unmodified neutral theme from shadcn's default `base-nova` preset. Light and dark modes use the supplied theme tokens.
 
 ## Develop
@@ -67,10 +69,10 @@ GitHub Actions is configured for these checks; hosted runs require connecting a 
 
 ## Vercel
 
-`vercel.json` selects Next.js and frozen-lockfile installs. No application secrets, database, or external storage are required. Use the authorized account/team explicitly on first link:
+`vercel.json` selects Next.js and frozen-lockfile installs. No application secrets, database, or external storage are required. This app takes over the existing `rlindskog-projects/oathkeeper` project:
 
 ```sh
-pnpm --config.node-linker=hoisted dlx vercel@64.5.0 link --yes --project oathkeeper-web --scope YOUR_TEAM
+pnpm --config.node-linker=hoisted dlx vercel@64.5.0 link --yes --project oathkeeper --scope rlindskog-projects
 pnpm --config.node-linker=hoisted dlx vercel@64.5.0 deploy --prod
 ```
 
