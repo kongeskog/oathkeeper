@@ -42,3 +42,17 @@ rule example.library.resident-access(person: Person) @ "1" {
   requires library.resident($person);
   ensures library.may_enter($person);
 }
+
+assessment example.library.resident-access.assessment {
+  authority "example.city.library-ordinance";
+  rule "example.library.resident-access";
+  rule_version "1";
+  forum "example.city";
+  as_of "2026-01-01T00:00:00Z";
+  recorded_at "2026-01-01T00:00:00Z";
+  force binding;
+  treatment operative;
+  review_status machine_assisted_unreviewed;
+  source example_policy;
+  rationale "This fictional ordinance is treated as operative in the fictional forum for this synthetic example.";
+}

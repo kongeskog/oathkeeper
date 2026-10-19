@@ -1,6 +1,6 @@
 oathkeeper "0.5";
 case library-access @ "0.1.0";
-import "library-access.oath" sha256 "f4f80db1a0c2613ea9382cd6b0f6514a81296f5a35e197c3774f63c3cdf44941";
+import "library-access.oath" sha256 "64b65629527a179ec9df4d0872e587775c7b78b99d38374c44cb5656911844cf";
 
 constant example.alex: Person;
 
@@ -14,9 +14,13 @@ fact resident: library.resident(example.alex) {
 
 query {
   jurisdiction "example.city";
+  forum "example.city";
+  event_at "2026-01-01";
   as_of "2026-01-01T00:00:00Z";
+  authority_at "2026-01-01T00:00:00Z";
   known_at "2026-01-01T00:00:00Z";
   purpose synthetic_test;
+  temporal_rationale "The fictional event, rule, and authority all use the same example date.";
   goal library.may_enter(example.alex);
   root "allowed";
 }
