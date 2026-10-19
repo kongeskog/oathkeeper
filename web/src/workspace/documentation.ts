@@ -88,8 +88,11 @@ export function codeSymbols(code:string) {
     return match ? [{kind:match[1],name:match[2],line:index+1}] : []
   })
 }
-export function docLink(href:string) {
+export function docLink(href:string,docId='') {
   if(href.startsWith('http'))return href
+  if(href.endsWith('sources.lock.json')&&!href.includes('metadata/'))return docId==='tax'?'#/tax/backdoor-roth?view=sources':'#/sources'
+  if(href.endsWith('SEATTLE-PILOT.md'))return 'https://github.com/kongeskog/oathkeeper-lawlib/blob/main/docs/SEATTLE-PILOT.md'
+  if(href.includes('community/'))return '#/review'
   if(href.includes('metadata/us/tax/'))return href.endsWith('sources.lock.json')?'#/tax/backdoor-roth?view=sources':'#/tax/backdoor-roth?view=review'
   if(href.includes('metadata/us/wa/seattle/'))return href.endsWith('sources.lock.json')?'#/sources':href.endsWith('coverage.json')?'#/lawlib':'#/review'
   if(href.includes('tests/scenarios/us/tax/'))return '#/tax/backdoor-roth'

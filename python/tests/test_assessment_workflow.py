@@ -40,7 +40,7 @@ class AssessmentWorkflowTests(unittest.TestCase):
 
     def test_review_records_require_snapshot_and_independent_identified_reviewer(self):
         current = packet(BASE)
-        review = json.loads(module_paths(ROOT / '.deps/lawlib', 'seattle')['review'].read_text())
+        review = {'format': 'oathkeeper-review/2', 'authors': ['test-author'], 'records': [{'id': 'synthetic-review', 'role': 'legal', 'status': 'pending', 'module_snapshot_sha256': current['module_snapshot_sha256']}]}
         self.assertEqual(validate_reviews(review, current)["legal"], "pending")
         entry = review["records"][0]
         entry.update(status="approved", reviewer="synthetic-test-reviewer", independence_declared=True, rationale="Synthetic metadata test; not a real corpus approval.", recorded_at="2026-10-18T23:00:00Z")

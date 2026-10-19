@@ -16,7 +16,7 @@ The Long event date is 2016-10-12. Governing-law selection and the 2021-08-13 au
 
 Before wider use, obtain independent community legal-fidelity and formalization reviews tied to the exact snapshot; reconcile the source edition; audit each premise against its pinpoint; identify omitted exceptions and alternative readings; and compare the workbench with a source-based checklist on multiple held-out matters.
 
-`pilot.json` records reviewer time, agreement, critical omissions, and checklist comparison as null until measured. `review.json` keeps both reviews pending. `review-packet.json` supplies 14 source mappings, assumptions, omissions, and review questions. Generating the packet is not a completed review.
+The lawlib pilot document records the unmeasured study outcomes. The signed community journal contains actual reviews; an empty journal supplies no approval. `review-packet.json` supplies 14 source mappings, assumptions, omissions, and review questions. Generating the packet is not a completed review.
 
 ## What remains unmodeled
 

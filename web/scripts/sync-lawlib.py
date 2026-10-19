@@ -35,12 +35,12 @@ module = compilation["module"]
 save(GENERATED / "data/module.json", module)
 save(ASSETS / "parking.module.json", module)
 seattle_exports = {
-    **{name: SEATTLE_INPUTS[field] for name, field in {
-        'coverage.json': 'coverage', 'sources.lock.json': 'sources',
-        'review.json': 'review', 'interpretations.json': 'interpretations',
-        'pilot.json': 'pilot', 'migration-0.4.json': 'migration',
-    }.items()},
-    **{name: BUILD / 'us/wa/seattle' / name for name in ['oath.lock.json', 'review-packet.json', 'baseline.json']},
+    name: BUILD / 'us/wa/seattle' / origin for name, origin in {
+        'coverage.json': 'coverage.json', 'sources.lock.json': 'sources.lock.json',
+        'interpretations.json': 'parking.interpretations.json',
+        'oath.lock.json': 'oath.lock.json', 'review-packet.json': 'review-packet.json',
+        'baseline.json': 'baseline.json',
+    }.items()
 }
 for name, origin in seattle_exports.items():
     shutil.copyfile(origin, ASSETS / name)
@@ -63,12 +63,19 @@ for record in records:
     case_sources[slug] = path.read_text()
 save(GENERATED / "data/cases.json", records)
 save(GENERATED / "data/case-sources.json", case_sources)
+def documented_lines(path, span):
+    lines = path.read_text().splitlines()
+    start = span['line'] - 1
+    while start > 0 and lines[start - 1].lstrip().startswith('///'):
+        start -= 1
+    return lines[start:span['end_line']]
+
 rule_sources = {}
 for span in compilation["source_map"]:
     if span["kind"] != "rule":
         continue
     path = Path(span["file"])
-    rule_sources[span["id"]] = {"file": 'oathkeeper-lawlib/' + path.relative_to(CORPUS).as_posix(), "line": span["line"], "code": "\n".join(path.read_text().splitlines()[span["line"]-1:span["end_line"]])}
+    rule_sources[span["id"]] = {"file": 'oathkeeper-lawlib/' + path.relative_to(CORPUS).as_posix(), "line": span["line"], "code": "\n".join(documented_lines(path, span))}
 save(GENERATED / "data/rule-sources.json", rule_sources)
 for name, path in {
     **{name+".rs":"crates/oathkeeper-core/src/"+name+".rs" for name in ["contracts","evaluation","receipts","policy"]},
@@ -109,7 +116,7 @@ for path in sorted((BASE / "cases").glob("*.case.oath")):
     save(ASSETS / f"{slug}.context.json", bundle)
     shutil.copyfile(path, ASSETS / path.name)
 save(GENERATED / "data/workbench-cases.json", workbench)
-for source in json.loads(SEATTLE_INPUTS['sources'].read_text())["sources"]:
+for source in json.loads((BUILD / 'us/wa/seattle/sources.lock.json').read_text())["sources"]:
     shutil.copyfile(require(source), ASSETS / Path(source["file"]).name)
 # The federal pilot is a separate versioned module, never merged into Seattle's scope.
 TAX = TAX_INPUTS['entrypoint'].parent
@@ -122,15 +129,15 @@ for path in TAX.rglob("*"):
         shutil.copyfile(path, target)
 # Public download URLs remain stable; authored metadata and fixtures are now
 # resolved through the package manifest, separately from legal source.
-for name, field in {'sources.lock.json': 'sources', 'interpretations.json': 'interpretations'}.items():
-    shutil.copyfile(TAX_INPUTS[field], tax_assets / name)
+for name, origin in {'sources.lock.json': 'sources.lock.json', 'interpretations.json': 'backdoor-roth-2025.interpretations.json'}.items():
+    shutil.copyfile(BUILD / 'us/tax' / origin, tax_assets / name)
 shutil.copytree(TAX_INPUTS['scenarios'], tax_assets / 'scenarios')
 for path in (BUILD / "us/tax").rglob("*"):
     if path.is_file():
         target = tax_assets / path.relative_to(BUILD / "us/tax")
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(path, target)
-for source in json.loads(TAX_INPUTS['sources'].read_text())["sources"]:
+for source in json.loads((BUILD / 'us/tax/sources.lock.json').read_text())["sources"]:
     target = tax_assets / source["file"]
     target.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(require(source), target)
@@ -139,7 +146,7 @@ tax_rules = {}
 for span in tax_compilation["source_map"]:
     if span["kind"] == "rule":
         path = Path(span["file"])
-        tax_rules[span["id"]] = "\n".join(path.read_text().splitlines()[span["line"]-1:span["end_line"]])
+        tax_rules[span["id"]] = "\n".join(documented_lines(path, span))
 tax_cases = []
 for name in ["shank-2018", "shank-unavailable-returns"]:
     c = json.loads(oathkeeper.compile_file(str(TAX / (name + ".case.oath"))))
@@ -151,7 +158,7 @@ for name in ["shank-2018", "shank-unavailable-returns"]:
     tax_cases.append({"name": name, "bundle": b, "report": report})
 save(GENERATED / "data/tax.json", {
     "module": tax_compilation["module"], "rule_sources": tax_rules,
-    "sources": json.loads(TAX_INPUTS['sources'].read_text())["sources"],
+    "sources": json.loads((BUILD / 'us/tax/sources.lock.json').read_text())["sources"],
     "review": json.loads((BUILD / "us/tax/review-packet.json").read_text()),
     "cases": tax_cases,
     "fixtures": [{"name": n, "input": json.loads((TAX_INPUTS['scenarios'] / (n + ".json")).read_text()), "baseline": json.loads(oathkeeper.assess_backdoor_roth((TAX_INPUTS['scenarios'] / (n + ".json")).read_text()))} for n in ["synthetic-clean", "synthetic-pro-rata"]],

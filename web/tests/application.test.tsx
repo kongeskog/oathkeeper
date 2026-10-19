@@ -136,9 +136,10 @@ describe('documentation and code reference',()=>{
     expect(window.location.hash).toBe('#/docs/language?section=kernel-enforced-types')
     expect(document.getElementById('doc-kernel-enforced-types')).toBeTruthy()
   })
-  test('relocated tax metadata links remain usable in the application',async()=>{
+  test('consolidated evidence and inline source links remain usable',async()=>{
     const user=userEvent.setup();open('/docs/tax')
-    expect(screen.getByRole('link',{name:'metadata/us/tax/'})).toHaveAttribute('href','#/tax/backdoor-roth?view=review')
+    expect(screen.getByRole('link',{name:'shared source catalog'})).toHaveAttribute('href','#/tax/backdoor-roth?view=sources')
+    expect(screen.getByRole('link',{name:'backdoor-roth-2025.oath'})).toHaveAttribute('href','#/reference/source-tax')
     expect(screen.getByRole('link',{name:'tests/scenarios/us/tax/'})).toHaveAttribute('href','#/tax/backdoor-roth')
     await user.click(screen.getByRole('link',{name:'source lock'}))
     expect(await screen.findByRole('tab',{name:'Sources (5)',selected:true})).toBeVisible()

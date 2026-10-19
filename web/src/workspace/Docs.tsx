@@ -23,7 +23,7 @@ export function Documentation({id,section}:{id:string;section:string|null}){
     h1:()=>null,
     h2:({children})=><h2 id={`doc-${headingId(textContent(children))}`}>{children}</h2>,
     h3:({children})=><h3 id={`doc-${headingId(textContent(children))}`}>{children}</h3>,
-    a:({href='',children})=>href.startsWith('#')?<a href={`#/docs/${id}?section=${headingId(href.slice(1))}`}>{children}</a>:<a href={docLink(href)} {...(href.startsWith('http')?{target:'_blank',rel:'noreferrer'}:{})}>{children}</a>,
+    a:({href='',children})=>href.startsWith('#')?<a href={`#/docs/${id}?section=${headingId(href.slice(1))}`}>{children}</a>:<a href={docLink(href,id)} {...(href.startsWith('http')?{target:'_blank',rel:'noreferrer'}:{})}>{children}</a>,
     pre:({children})=><>{children}</>,
     code:({children,className})=>className||String(children).endsWith('\n')?<CodeBlock language={className?.replace('language-','')||'text'}>{String(children).replace(/\n$/,'')}</CodeBlock>:<code className="inline-code">{children}</code>,
     table:({children})=><div className="document-table"><table>{children}</table></div>,
