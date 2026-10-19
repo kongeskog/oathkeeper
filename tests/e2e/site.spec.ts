@@ -38,6 +38,8 @@ test("all reference pages and guide links render", async ({ page }) => {
     "verification",
     "encoding",
     "coverage",
+    "deadlines",
+    "deadline-review",
   ]) {
     const response = await page.goto(`/docs/${slug}`);
     expect(response?.status()).toBe(200);
@@ -133,6 +135,7 @@ test("desktop accessibility and screenshots", async ({ page }, testInfo) => {
     ["landing", "/"],
     ["guide", "/docs/getting-started"],
     ["explorer", "/explorer"],
+    ["inventory", "/explorer/inventory"],
     ["package", "/explorer/us/federal/constitution"],
     [
       "scenarios",
@@ -163,6 +166,7 @@ test("mobile navigation and layouts remain within viewport", async ({
     ["landing", "/"],
     ["docs", "/docs/language"],
     ["explorer", "/explorer"],
+    ["inventory", "/explorer/inventory"],
     ["source", "/explorer/private/household/demo?tab=source"],
     ["scenarios", "/explorer/us/federal/tax/ira/2025?tab=scenarios"],
   ]) {
@@ -201,6 +205,9 @@ test("source downloads and missing routes have correct responses", async ({
     expect(r.ok()).toBe(true);
     expect((await r.body()).subarray(0, 2).toString()).toBe("PK");
   }
+  expect((await request.get("/downloads/lawlib-v0.1.0-dev.2.zip")).ok()).toBe(
+    true,
+  );
   const source = await request.get(
     "/lawlib/private/household/demo/src/quiet_hours.oath",
   );

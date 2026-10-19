@@ -1,9 +1,9 @@
 ## Get the source
 
-This is the **v0.1.0-dev.1 developer release**. Download the two source snapshots and extract them into the same directory. Oathkeeper and lawlib remain separate repositories; lawlib's local dependency paths expect sibling checkouts.
+These snapshots pair **Oathkeeper v0.1.0-dev.1** with **lawlib v0.1.0-dev.2**. Download both and extract them into the same directory. Oathkeeper and lawlib remain separate repositories; lawlib's local dependency paths expect sibling checkouts.
 
 - [Download Oathkeeper source](/downloads/oathkeeper-v0.1.0-dev.1.zip)
-- [Download lawlib source](/downloads/lawlib-v0.1.0-dev.1.zip)
+- [Download lawlib source](/downloads/lawlib-v0.1.0-dev.2.zip)
 
 ```text
 workspace/

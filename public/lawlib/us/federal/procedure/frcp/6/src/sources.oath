@@ -1,0 +1,36 @@
+module us.frcp.r6.sources;
+use std.provenance.{SourceRef, SourceAnchor, EncodingRecord, CoverageRecord, ReviewStatus};
+
+const civil_rules_2025 = SourceRef {
+    stable_id: "us.uscourts.frcp.2025",
+    citation: "Federal Rules of Civil Procedure, Rule 6(a), printed pages 12-13",
+    edition_or_version: "December 1, 2025 compilation; CPRT-119HPRT61922, printed 2026",
+    locations: ["https://www.uscourts.gov/sites/default/files/document/federal-rules-of-civil-procedure.pdf"],
+    expected_sha256: "bd8705fc038d87e4fe222a7ea2e4324222c9430e2373fce56826bd2dfa2f8baf",
+    publication_metadata: "House Judiciary Committee print, hosted by the Administrative Office of the U.S. Courts",
+    retrieval_metadata: "Retrieved 2026-10-19; original PDF bytes retained in optional external SHA-256 cache"
+};
+const deadline_note = EncodingRecord {
+    id: "frcp.6a.forward_days.v1",
+    citations: [SourceAnchor { source_id: "us.uscourts.frcp.2025", locator: "Rule 6(a)(1), (3)(A), (5), (6); printed pages 12-13; PDF pages 31-32 (one-based)" }],
+    rationale: "Exclude the trigger day; count all intermediate days; advance the final day over weekends and supplied legal holidays. For filing, also advance over supplied inaccessible days. This is a date computation conditional on the selected text and accepted premises.",
+    assumptions: [
+        "Rule 6(a) and the pinned text apply to this proceeding; applicability is an explicit supplied finding",
+        "Period is stated in positive whole days, measured after an event; 1-366 days supported",
+        "Calendar identifies the court and state and supplies consecutive days beginning at trigger plus period; at most 31 days",
+        "Holiday findings include statutory observance days, presidential or congressional declarations, and applicable state declarations",
+        "Clerk accessibility is a supplied finding appropriate to the filing method; court orders modifying its effect are excluded",
+        "No additional service days, special counting method, extension, tolling, or other adjustment affects this calculation",
+        "A date does not decide filing time, successful service, timeliness, jurisdiction, waiver, or remedies"
+    ],
+    review: ReviewStatus.Unreviewed
+};
+const coverage = CoverageRecord {
+    id: "us.frcp.6a.forward_days.v1",
+    questions: ["Conditional Rule 6(a) date for a positive whole-day period measured after an event"],
+    investigated_sources: ["us.uscourts.frcp.2025"],
+    exclusions: ["Periods before an event", "Hour/month/year units", "Time of day, time zones and actual filing timeliness", "Rule 6(b), (c), (d) and other adjustments", "Periods above 366 days or adjustment windows above 31 days", "Automatic holiday discovery or accessibility classification"],
+    not_investigated: ["Court-specific local rules and orders", "Precedent on trigger events, accessibility and competing calculation methods", "Historical applicability and future amendments", "Completeness of an actual court holiday calendar"],
+    unresolved_interpretations: ["Applicable text, period, court/state, holiday classification and clerk accessibility require supplied findings"],
+    review: ReviewStatus.Unreviewed
+};

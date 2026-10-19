@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { ExplorerIndex } from "@/components/explorer-index";
 import { counts, release } from "@/lib/content";
 import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 export const metadata = {
   title: "Lawlib explorer",
   description:
@@ -42,6 +43,19 @@ export default function Explorer() {
       >
         <ExplorerIndex />
       </Suspense>
+      <div className="mt-8 rounded-xl border p-5">
+        <h2 className="text-sm font-medium">Building the source inventory</h2>
+        <p className="mt-2 text-sm leading-6 text-muted-foreground">
+          The pinned U.S. Code release contains 58 XML documents. Source
+          indexing and executable legal coverage are tracked separately.
+        </p>
+        <Link
+          href="/explorer/inventory"
+          className="mt-3 inline-block text-sm underline underline-offset-4"
+        >
+          Browse the U.S. Code inventory
+        </Link>
+      </div>
       <p className="mt-7 text-xs leading-6 text-muted-foreground">
         This collection establishes an initial foundation. It does not encode
         all US law. Legal review is Unreviewed; source-byte audit results are

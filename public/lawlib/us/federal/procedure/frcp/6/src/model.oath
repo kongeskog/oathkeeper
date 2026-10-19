@@ -1,0 +1,79 @@
+module us.frcp.r6.model;
+use std.date.{Date, add_days};
+use std.types.Option;
+
+// Classification and completeness are supplied findings, not discovered facts.
+type DayFinding = {
+    on: Date,
+    statutory_observance: Bool,
+    presidential_or_congressional_holiday: Bool,
+    state_declared_holiday: Bool,
+    clerk_accessible: Bool
+};
+type Calendar = {
+    court_id: Text,
+    state_id: Text,
+    holiday_findings_complete: Bool,
+    days: List<DayFinding>
+};
+type DeadlineFacts = {
+    court_id: Text,
+    state_id: Text,
+    trigger: Date,
+    period_days: Int,
+    measured_after_event: Bool,
+    rule6_applies: Bool,
+    selected_text_applies: Bool,
+    requires_filing: Bool,
+    no_other_adjustments: Bool,
+    calendar: Calendar
+};
+
+fn weekend(on: Date) -> Bool {
+    // 1970-01-01 was Thursday. Monday = 0, also for negative day indices.
+    let weekday = on.day + 3 - floor_div(on.day + 3, 7) * 7;
+    weekday >= 5
+}
+fn holiday(day: DayFinding) -> Bool {
+    day.statutory_observance or day.presidential_or_congressional_holiday
+    or day.state_declared_holiday
+}
+type CalendarCheck = { expected: Date, valid: Bool };
+fn check_day(state: CalendarCheck, day: DayFinding) -> CalendarCheck {
+    CalendarCheck { expected: add_days(state.expected, 1), valid: state.valid and day.on == state.expected }
+}
+fn supported(facts: DeadlineFacts) -> Bool {
+    facts.measured_after_event and facts.period_days >= 1 and facts.period_days <= 366
+    and facts.selected_text_applies and facts.no_other_adjustments
+    and text_len(facts.court_id) > 0 and text_len(facts.state_id) > 0
+    and facts.calendar.court_id == facts.court_id and facts.calendar.state_id == facts.state_id
+    and facts.calendar.holiday_findings_complete
+    and len(facts.calendar.days) >= 1 and len(facts.calendar.days) <= 31
+    and fold(facts.calendar.days, CalendarCheck {
+        expected: add_days(facts.trigger, facts.period_days), valid: true
+    }, check_day).valid
+}
+type Search = { requires_filing: Bool, found: Option<Date> };
+fn visit_day(state: Search, day: DayFinding) -> Search {
+    match state.found {
+        Option.Some(on) => state,
+        Option.None => Search {
+            requires_filing: state.requires_filing,
+            found: if not weekend(day.on) and not holiday(day)
+                and (not state.requires_filing or day.clerk_accessible) {
+                Option.Some(day.on)
+            } else { Option.None }
+        }
+    }
+}
+fn first_eligible(facts: DeadlineFacts) -> Option<Date> {
+    fold(facts.calendar.days, Search {
+        requires_filing: facts.requires_filing, found: Option.None
+    }, visit_day).found
+}
+fn has_date(value: Option<Date>) -> Bool {
+    match value { Option.None => false, Option.Some(on) => true }
+}
+fn require_date(value: Option<Date>) -> Date {
+    match value { Option.None => fail("No eligible date in supplied calendar window"), Option.Some(on) => on }
+}

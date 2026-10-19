@@ -1,4 +1,21 @@
-# Initial web validation
+# Web validation
+
+## Inventory and deadline update — 2026-10-19
+
+- Source snapshot: lawlib `9f6687c`, six packages, 23 modules, 28 queries,
+  105 fixtures and 14 source-audit bindings. The Rust core is unchanged.
+- Pinned U.S. Code inventory: 58 documents; per-document source integrity,
+  executable coverage, semantic test and legal-review fields remain separate.
+- Five content tests, nine Playwright tests, TypeScript, ESLint and production
+  build pass. Ten documentation pages, six package pages and the new inventory
+  page prerender successfully.
+- New browser checks cover inventory search/empty states, document pins,
+  downloaded manifest, deadline-package navigation and pending-review docs.
+  Light/dark axe checks and mobile page-overflow checks pass.
+- No legal-review status was upgraded. New packages and source indexing remain
+  explicitly distinguished from whole-system formalization.
+
+## Initial website
 
 Validated locally on Windows with Node 24.19.0 and pnpm 11.25.0, 2026-10-19.
 

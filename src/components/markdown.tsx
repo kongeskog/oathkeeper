@@ -15,19 +15,21 @@ function textOf(node: ReactNode): string {
     .join("");
 }
 const rewrite = (href: string) =>
-  href.includes("schemas/v0.1")
-    ? "/downloads/oathkeeper-v0.1.0-dev.1.zip"
-    : href.endsWith("LANGUAGE.md")
-      ? "/docs/language"
-      : href.endsWith("FORMATS.md")
-        ? "/docs/formats"
-        : href.endsWith("TRUST.md")
-          ? "/docs/verification"
-          : href.endsWith("COVERAGE.md")
-            ? "/docs/coverage"
-            : href.endsWith("ENCODING.md")
-              ? "/docs/encoding"
-              : href;
+  href === "REVIEW.md"
+    ? "/docs/deadline-review"
+    : href.includes("schemas/v0.1")
+      ? "/downloads/oathkeeper-v0.1.0-dev.1.zip"
+      : href.endsWith("LANGUAGE.md")
+        ? "/docs/language"
+        : href.endsWith("FORMATS.md")
+          ? "/docs/formats"
+          : href.endsWith("TRUST.md")
+            ? "/docs/verification"
+            : href.endsWith("COVERAGE.md")
+              ? "/docs/coverage"
+              : href.endsWith("ENCODING.md")
+                ? "/docs/encoding"
+                : href;
 export function Markdown({ content }: { content: string }) {
   return (
     <div className="prose-doc">

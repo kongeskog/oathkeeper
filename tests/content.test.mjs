@@ -8,15 +8,53 @@ const snapshot = JSON.parse(
     "utf8",
   ),
 );
+test("inventory download matches the pinned manifest and preserves distinct coverage states", async () => {
+  const content = await readFile(
+    new URL("../src/content/inventory.json", import.meta.url),
+    "utf8",
+  );
+  assert.equal(
+    await readFile(
+      new URL("../public/inventory/usc-119-121.json", import.meta.url),
+      "utf8",
+    ),
+    content,
+  );
+  const inventory = JSON.parse(content);
+  assert.equal(inventory.source.release, "119-121");
+  assert.equal(inventory.documents.length, 58);
+  assert.equal(inventory.counts.by_kind.section, 65725);
+  assert.equal(
+    inventory.documents.reduce((n, d) => n + (d.counts.section ?? 0), 0),
+    65725,
+  );
+  for (const d of inventory.documents) {
+    assert.match(d.sha256, /^[a-f0-9]{64}$/);
+    assert.match(d.index.sha256, /^[a-f0-9]{64}$/);
+    assert.equal(d.status.source_audit, "Matched");
+    assert.equal(d.status.executable_coverage, "NotAssessed");
+    assert.equal(d.status.semantic_tests, "NotAssessed");
+    assert.equal(d.status.legal_review, "Unreviewed");
+  }
+  const deadlines = snapshot.packages.find(
+    (p) => p.path === "us/federal/procedure/frcp/6",
+  );
+  assert.equal(deadlines.fixtures.length, 40);
+  assert.equal(
+    deadlines.fixtures.find((f) => f.name === "closure_and_holiday").expected
+      .value.fields.day.value.value,
+    "20522",
+  );
+});
 test("snapshot preserves the complete package and fixture inventory", () => {
-  assert.equal(snapshot.packages.length, 5);
+  assert.equal(snapshot.packages.length, 6);
   assert.equal(
     snapshot.packages.reduce((n, p) => n + p.fixtures.length, 0),
-    65,
+    105,
   );
   assert.equal(
     snapshot.packages.reduce((n, p) => n + p.modules.length, 0),
-    20,
+    23,
   );
   assert.equal(
     snapshot.packages.find((p) => p.path === "us/federal/constitution").mappings
@@ -43,7 +81,7 @@ test("all indexed source files match downloadable bytes and declaration location
 });
 test("source integrity is matched by source identity AND exact digest", () => {
   const sources = snapshot.packages.flatMap((p) => p.sources);
-  assert.equal(new Set(sources.map((s) => s.id)).size, 13);
+  assert.equal(new Set(sources.map((s) => s.id)).size, 14);
   for (const s of sources) {
     assert.ok(
       snapshot.audit.sources.some(

@@ -146,6 +146,20 @@ export const docPages = [
     description:
       "A transparent inventory of the initial examples and uninvestigated areas.",
   },
+  {
+    slug: "deadlines",
+    title: "Federal civil deadlines",
+    group: "Lawlib",
+    description:
+      "Bounded Rule 6(a) date computation and supplied legal findings.",
+  },
+  {
+    slug: "deadline-review",
+    title: "Deadline review packet",
+    group: "Lawlib",
+    description:
+      "The pending legal assessment, source mapping, and review questions.",
+  },
 ];
 function section(text: string, title: string) {
   return text.split(`## ${title}\n`)[1]?.split("\n## ")[0] ?? "";

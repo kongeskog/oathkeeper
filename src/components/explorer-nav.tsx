@@ -19,8 +19,19 @@ export function ExplorerNav() {
           <Library className="size-4" />
           All packages
           <span className="ml-auto font-mono text-xs text-muted-foreground">
-            5
+            {packages.length}
           </span>
+        </Link>
+        <Link
+          href="/explorer/inventory"
+          aria-current={pathname === "/explorer/inventory" ? "page" : undefined}
+          className={cn(
+            "mt-2 flex items-center gap-2 rounded-md px-3 py-2 text-sm",
+            pathname === "/explorer/inventory" && "bg-muted",
+          )}
+        >
+          <Library className="size-4" />
+          Source inventory
         </Link>
         <details open className="mt-5 hidden lg:block">
           <summary className="flex cursor-pointer list-none items-center gap-2 px-3 text-xs text-muted-foreground">
