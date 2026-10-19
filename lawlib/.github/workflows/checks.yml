@@ -1,0 +1,20 @@
+name: corpus checks
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: corpus
+      - uses: actions/checkout@v4
+        with:
+          repository: kongeskog/oathkeeper
+          ref: v0.5.0
+          path: engine
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: dtolnay/rust-toolchain@stable
+      - run: python -m pip install ./engine
+      - run: python corpus/tools/check.py

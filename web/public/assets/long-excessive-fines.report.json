@@ -1,9 +1,9 @@
 {
-  "language": "oathkeeper/0.4",
-  "kernel_version": "0.4.1",
+  "language": "oathkeeper/0.5",
+  "kernel_version": "0.5.0",
   "package": "lawlib.us.wa.seattle.parking.long",
-  "package_version": "0.4.0",
-  "bundle_sha256": "2a0533c5386537ac7d8cb5661b78fd43bceead11b55c9ad75b88a59175d3beb4",
+  "package_version": "0.5.0",
+  "bundle_sha256": "39905225129b5df8acc0d8b71d0127a66ac62e557b8ead155f9ec5bdb27afaec",
   "status": "derivation_verified",
   "goal": {
     "atom": "constitutional.excessive_fines_violation",

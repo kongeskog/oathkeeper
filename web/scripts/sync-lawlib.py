@@ -2,6 +2,7 @@
 import json
 from pathlib import Path
 import shutil
+import subprocess
 import sys
 import zipfile
 
@@ -48,6 +49,7 @@ for span in compilation["source_map"]:
     rule_sources[span["id"]] = {"file": str(path.relative_to(CORE)), "line": span["line"], "code": "\n".join(path.read_text().splitlines()[span["line"]-1:span["end_line"]])}
 save(ROOT / "src/data/rule-sources.json", rule_sources)
 for name, path in {
+    **{name+".rs":"crates/oathkeeper-core/src/"+name+".rs" for name in ["contracts","evaluation","receipts","policy"]},
     "analysis.rs":"crates/oathkeeper-core/src/analysis.rs", "oracles.rs":"crates/oathkeeper-core/src/oracles.rs",
     "wasm.rs":"crates/oathkeeper-wasm/src/lib.rs", "parking-assessment.oath":"lawlib/us/wa/seattle/cases/long-parking-evidence-review.case.oath",
     "core.rs":"crates/oathkeeper-core/src/lib.rs", "model.rs":"crates/oathkeeper-core/src/model.rs",
@@ -61,7 +63,7 @@ for name, path in {
     shutil.copyfile(CORE / path, ROOT / "src/reference" / name)
     shutil.copyfile(CORE / path, ASSETS / name)
 for name, path in {
-    "SPEC-0.4.md":"docs/SPEC-0.4.md", "RESEARCH.md":"docs/RESEARCH.md", "SOUNDNESS.md":"docs/SOUNDNESS.md",
+    "SPEC-0.5.md":"docs/SPEC-0.5.md", "SPEC-0.4.md":"docs/SPEC-0.4.md", "RESEARCH.md":"docs/RESEARCH.md", "SOUNDNESS.md":"docs/SOUNDNESS.md",
     "GETTING_STARTED.md":"README.md", "SPEC-0.3.md":"docs/SPEC-0.3.md", "SPEC-0.2.md":"docs/SPEC-0.2.md",
     "ARCHITECTURE.md":"docs/ARCHITECTURE.md", "TRAINING.md":"docs/TRAINING.md", "SEATTLE.md":"lawlib/us/wa/seattle/README.md",
     "SEATTLE_PLAN.md":"docs/SEATTLE_PLAN.md", "ROADMAP.md":"docs/ROADMAP.md",
@@ -120,9 +122,18 @@ for name,path in {"tax.rs":"crates/oathkeeper-core/src/tax.rs", "arithmetic.rs":
     shutil.copyfile(CORE/path, ASSETS/name)
 shutil.copyfile(TAX/"README.md", ROOT/"src/docs/TAX.md")
 shutil.copyfile(TAX/"README.md", ASSETS/"TAX.md")
-with zipfile.ZipFile(ASSETS / "oathkeeper-0.4-source.zip", "w", zipfile.ZIP_DEFLATED) as archive:
-    for path in sorted(CORE.rglob("*")):
-        relative = path.relative_to(CORE)
-        if path.is_file() and not any(part in {".git", ".venv", "target", "__pycache__", "web"} for part in relative.parts):
+package_lock = json.loads((CORE / "lawlib.lock.json").read_text())
+save(ROOT / "src/data/lawlib-package.json", {k: package_lock[k] for k in ["repository", "revision", "package_version"]})
+shutil.copyfile(CORE / "lawlib.lock.json", ASSETS / "lawlib.lock.json")
+shutil.copyfile(CORE / "lawlib/community/current.json", ROOT / "src/data/community.json")
+shutil.copyfile(CORE / "lawlib/community/current.json", ASSETS / "community.json")
+with zipfile.ZipFile(ASSETS / "oathkeeper-0.5-source.zip", "w", zipfile.ZIP_DEFLATED) as archive:
+    source_files = subprocess.check_output(
+        ["git", "-C", str(CORE), "ls-files", "-z", "--cached", "--others", "--exclude-standard"]
+    ).decode().split("\0")
+    for name in sorted(set(source_files) - {""}):
+        relative = Path(name)
+        path = CORE / relative
+        if path.is_file() and not path.is_symlink() and not path.name.startswith(".env") and not path.name.endswith(".key.pem") and not any(part in {".git", ".venv", "target", "__pycache__", "web", "corpus", "artifacts", "proptest-regressions"} for part in relative.parts):
             archive.write(path, Path("oathkeeper") / relative)
 print(f"Synced {len(module['rules'])} actual compiled rules and {len(records)} native-verified historical proofs.")

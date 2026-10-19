@@ -1,9 +1,9 @@
 {
-  "language": "oathkeeper/0.4",
-  "kernel_version": "0.4.1",
+  "language": "oathkeeper/0.5",
+  "kernel_version": "0.5.0",
   "package": "lawlib.us.wa.seattle.parking.long",
-  "package_version": "0.4.0",
-  "bundle_sha256": "d546a2e582c85b879b6a5c60049414665039de4d0a0c291844904a0100361a80",
+  "package_version": "0.5.0",
+  "bundle_sha256": "af7defee2a87fc7f2bed23a051a48bae77f7854c556f2172f16caa3aa05608bb",
   "status": "derivation_verified",
   "goal": {
     "atom": "homestead.automatically_prevents_parking_impoundment",

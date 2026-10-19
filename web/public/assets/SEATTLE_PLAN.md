@@ -14,7 +14,7 @@ The Long event date is 2016-10-12. Governing-law selection and the 2021-08-13 au
 
 ## Acceptance criteria
 
-Before wider use, obtain independent legal and formalization reviews tied to the exact snapshot; reconcile the source edition; audit each premise against its pinpoint; identify omitted exceptions and alternative readings; and compare the workbench with a lawyer-written checklist on multiple held-out matters.
+Before wider use, obtain independent community legal-fidelity and formalization reviews tied to the exact snapshot; reconcile the source edition; audit each premise against its pinpoint; identify omitted exceptions and alternative readings; and compare the workbench with a source-based checklist on multiple held-out matters.
 
 `pilot.json` records reviewer time, agreement, critical omissions, and checklist comparison as null until measured. `review.json` keeps both reviews pending. `review-packet.json` supplies 14 source mappings, assumptions, omissions, and review questions. Generating the packet is not a completed review.
 
@@ -26,4 +26,4 @@ Quantity units are exact tags; there are no implicit conversions or calendar rul
 
 ## Expansion
 
-Expand only after the pilot's omissions and review costs are measured. Add new issue modules with distinct sources and expert-reviewed authority policies. Municipal nesting must not silently encode legal priority. Other countries require their own legal-system conventions; US case-law assumptions are not universal.
+Community contributors may propose additional bounded draft modules. Measure omissions and review costs before claiming broader reliability. Add distinct sources and explicitly attributed, community-reviewed authority policies. Professional credentials are not a contribution requirement. Municipal nesting must not silently encode legal priority. Other countries require their own legal-system conventions; US case-law assumptions are not universal.

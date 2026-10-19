@@ -35,3 +35,9 @@ pub fn kernel_version() -> String {
 pub fn assess_backdoor_roth_json(text: &str) -> Result<String, JsValue> {
     oathkeeper_core::tax::assess_json(text).map_err(|e| JsValue::from_str(&e.to_string()))
 }
+
+#[wasm_bindgen]
+pub fn assess_policy_json(request_json: &str) -> Result<String, JsValue> {
+    oathkeeper_core::policy::policy_json(request_json)
+        .map_err(|e| JsValue::from_str(&e.to_string()))
+}

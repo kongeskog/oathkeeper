@@ -1,7 +1,7 @@
 {
   "format": "oathkeeper.tax-review/1",
-  "snapshot_sha256": "43c70a8f07532d563074d986d1a9b9b834f654450aa0d0ad414eff0b0df7e2d5",
-  "precedent_snapshot_sha256": "79b738d875ef8f3dbfe64637340a424e5a1a5e9fc4192e641016909023d7c438",
+  "snapshot_sha256": "b9faf0192a203d6a501ae5a555a2802e358e4a55c95322995186e371905a1f56",
+  "precedent_snapshot_sha256": "d624a45cda977b70f1084b44e9a8f9bba63cbd0ea7621cd435af0a445e3167d2",
   "legal_review": {
     "status": "pending",
     "reviewer": null
@@ -12,9 +12,9 @@
   },
   "source_authenticity": "official URLs retrieved and bytes pinned; no digital-signature verification",
   "criteria": [
-    "Independent tax professional checks 2025 limits, contribution timing, scope exclusions, IRA aggregation and basis treatment against pinned IRS guidance and controlling law.",
+    "Community reviewer checks 2025 limits, contribution timing, scope exclusions, IRA aggregation and basis treatment against pinned IRS guidance and controlling law.",
     "Review exact-rational allocation and final-cent rounding against Form 8606 filing conventions; outputs remain estimates.",
-    "Independent formalization reviewer checks scope premises, arithmetic relations, witness construction, units and temporal applicability.",
+    "Separate community formalization review checks scope premises, arithmetic relations, witness construction, units and temporal applicability.",
     "Check Shank pinpoints and actual findings; no claim that the decision approved a Roth conversion or that unsupported basis must be accepted."
   ],
   "limitations": [

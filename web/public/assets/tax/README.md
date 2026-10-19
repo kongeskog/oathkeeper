@@ -1,6 +1,6 @@
 # U.S. federal IRA pilot · 2025 · module 0.1.0
 
-The canonical authoring language is `.oath`. JSON files are generated interchange and proof artifacts. Kernel 0.4.1 adds the checked quantity arithmetic used here; the module retains language 0.4. Older kernels reject the new operators.
+The canonical authoring language is `.oath`. JSON files are generated interchange and proof artifacts. The module uses language and kernel 0.5, including explicit coverage contracts and checked quantity arithmetic. Older engines reject these new declarations.
 
 `backdoor-roth-2025.oath` models the bounded federal income allocation for an ordinary traditional-IRA-to-Roth conversion completed in calendar 2025, using final 2025 IRS guidance. It checks regular contribution dollar and own-compensation limits, aggregates the owner's traditional/SEP/SIMPLE balances, subtracts following-year contributions from available conversion-year basis, allocates basis pro rata, and carries forward unused basis. It has no MAGI input: a direct Roth contribution income limit is not a conversion income limit. This does not establish the eligibility of any separately supplied direct Roth contribution.
 
@@ -33,7 +33,7 @@ The nontaxable estimate is `conversion × min(available_basis, aggregate_pool) /
 
 The dedicated Rust builder constructs arithmetic witnesses and rule applications, then the general kernel independently replays the certificate. It does not claim exhaustive search, optimal tax planning, or absence of opposing legal arguments. The browser calls the same Rust implementation through WASM. There are no classifier calls in ordinary arithmetic. A zero oracle count does not authenticate supplied basis, completeness of account aggregation, or the law translation. Missing/disputed basis should remain unresolved until evidence is established; no artificial confidence score converts uncertainty into fact.
 
-IRS forms and publications are `administrative_guidance`, not statutes. Their model authority assessments are explicitly persuasive and machine-assisted/unreviewed. The module uses their specific 2025 instructions, cites the statutory context in those sources (§§ 219, 408, 408A), and does not pretend to encode those sections in full. Tax-professional and formalization reviews remain pending and pinned to module hashes in `review-packet.json`.
+IRS forms and publications are `administrative_guidance`, not statutes. Their model authority assessments are explicitly persuasive and machine-assisted/unreviewed. The module uses their specific 2025 instructions, cites the statutory context in those sources (§§ 219, 408, 408A), and does not pretend to encode those sections in full. Community legal-fidelity and formalization reviews remain pending and pinned to module hashes in `review-packet.json`.
 
 ## Real precedent: Shank
 

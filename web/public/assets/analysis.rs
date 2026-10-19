@@ -92,6 +92,10 @@ pub struct Analysis {
     pub sensitivity: Vec<Sensitivity>,
     pub sensitivity_complete: bool,
     pub legal_conclusion: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub coverage: Option<crate::contracts::CoverageAssessment>,
+    pub exception_checks: Vec<crate::contracts::ScopeCondition>,
+    pub exception_checks_complete: bool,
 }
 
 #[derive(Clone)]
@@ -305,7 +309,12 @@ fn terms(bundle: &Bundle) -> BTreeSet<Term> {
     for c in bundle
         .rules
         .iter()
-        .flat_map(|r| r.premises.iter().chain(std::iter::once(&r.conclusion)))
+        .flat_map(|r| {
+            r.premises
+                .iter()
+                .chain(&r.exceptions)
+                .chain(std::iter::once(&r.conclusion))
+        })
         .chain(bundle.facts.iter().map(|f| &f.claim))
         .chain(bundle.attestations.iter().map(|a| &a.claim))
         .chain(std::iter::once(&bundle.query.goal))
@@ -337,9 +346,12 @@ fn has_sort(term: &Term, sort: &Sort, bundle: &Bundle) -> bool {
     }
 }
 
-fn run(bundle: &Bundle, options: &AnalysisOptions) -> Result<Analysis> {
+pub(crate) fn run(bundle: &Bundle, options: &AnalysisOptions) -> Result<Analysis> {
     validate_context(bundle)?;
-    if bundle.language != "oathkeeper/0.4" {
+    if !matches!(
+        bundle.language.as_str(),
+        "oathkeeper/0.4" | "oathkeeper/0.5"
+    ) {
         return Err(Error("argument analysis requires oathkeeper/0.4".into()));
     }
     if options.max_groundings == 0
@@ -404,7 +416,7 @@ fn run(bundle: &Bundle, options: &AnalysisOptions) -> Result<Analysis> {
             search.rules.push(GroundRule {
                 rule: rule.clone(),
                 premises: rule
-                    .premises
+                    .required_claims()
                     .iter()
                     .map(|p| instantiate(p, &substitution))
                     .collect::<Result<_>>()?,
@@ -481,7 +493,7 @@ fn run(bundle: &Bundle, options: &AnalysisOptions) -> Result<Analysis> {
     context["query"].as_object_mut().unwrap().remove("root");
     Ok(Analysis {
         format:"oathkeeper-analysis/1".into(), kernel_version:env!("CARGO_PKG_VERSION").into(), context_sha256:hash(&context), status,
-        goal:bundle.query.goal.clone(), supporting, opposing, open_requirements, excluded_rules, oracle_requests,
+        goal:bundle.query.goal.clone(), supporting, opposing, open_requirements, excluded_rules, oracle_requests, coverage: None, exception_checks: Vec::new(), exception_checks_complete: true,
         search:SearchSummary { complete_for_ground_domain:search.limits.is_empty(), ground_terms:domain.into_iter().collect(), ground_rules:search.rules.len(), nodes_visited:search.nodes, limits_reached:search.limits.into_iter().collect(), meaning:"Search is relative to this finite supplied vocabulary and rule set. Failure to find a proof never establishes its negation or corpus completeness.".into() },
         sensitivity:Vec::new(), sensitivity_complete:!options.sensitivity,
         legal_conclusion:"not_determined; arguments are conditional on supplied formalization and evidence".into(),
@@ -490,6 +502,51 @@ fn run(bundle: &Bundle, options: &AnalysisOptions) -> Result<Analysis> {
 
 pub fn analyze(bundle: &Bundle, options: &AnalysisOptions) -> Result<Analysis> {
     let mut result = run(bundle, options)?;
+    result.coverage = Some(crate::contracts::assess_coverage(bundle, options)?);
+    // Explicit negative guards are conditional premises. Also expose positive
+    // exception arguments, which need not imply a literal opposite of the goal.
+    let mut exceptions = BTreeSet::new();
+    for argument in &result.supporting {
+        for step in &argument.proof {
+            if let Reason::Apply {
+                rule,
+                version,
+                substitution,
+                ..
+            } = &step.reason
+            {
+                if let Some(declaration) = bundle
+                    .rules
+                    .iter()
+                    .find(|r| &r.id == rule && &r.version == version)
+                {
+                    for claim in &declaration.exceptions {
+                        exceptions.insert(instantiate(claim, substitution)?);
+                    }
+                }
+            }
+        }
+    }
+    result.exception_checks_complete = exceptions.len() <= 24;
+    for (index, goal) in exceptions.into_iter().take(24).enumerate() {
+        let mut context = bundle.clone();
+        context.proof.clear();
+        context.query.coverage = None;
+        context.query.goal = goal.clone();
+        let checked = run(&context, options)?;
+        result.exception_checks_complete &= checked.search.complete_for_ground_domain;
+        result
+            .exception_checks
+            .push(crate::contracts::ScopeCondition {
+                id: format!("exception.{index}"),
+                goal,
+                status: checked.status,
+                search_complete: checked.search.complete_for_ground_domain,
+                supporting: checked.supporting,
+                opposing: checked.opposing,
+            });
+    }
+
     if !options.sensitivity {
         return Ok(result);
     }

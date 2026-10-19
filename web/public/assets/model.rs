@@ -90,6 +90,24 @@ pub struct Rule {
     pub authority: Option<AuthorityUse>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub time_basis: Option<TimeBasis>,
+    /// Every exception needs its explicit opposite as an additional premise.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub exceptions: Vec<Claim>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub interpretation: Option<String>,
+}
+
+impl Rule {
+    pub fn required_claims(&self) -> Vec<Claim> {
+        self.premises
+            .iter()
+            .cloned()
+            .chain(self.exceptions.iter().cloned().map(|mut c| {
+                c.negative = !c.negative;
+                c
+            }))
+            .collect()
+    }
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -386,6 +404,11 @@ pub struct Query {
     pub purpose: Option<CasePurpose>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub temporal_rationale: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub coverage: Option<String>,
+    /// One explicit interpretation per named issue; no automatic priority.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub interpretations: Vec<String>,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
@@ -421,6 +444,10 @@ pub struct Bundle {
     pub predicates: Vec<Predicate>,
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub constants: Vec<Constant>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub coverage: Vec<crate::contracts::CoverageContract>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub interpretations: Vec<crate::contracts::Interpretation>,
 }
 
 /// Reusable source-backed rules, independent of any particular case facts.
@@ -440,6 +467,10 @@ pub struct LawModule {
     pub predicates: Vec<Predicate>,
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub constants: Vec<Constant>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub coverage: Vec<crate::contracts::CoverageContract>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub interpretations: Vec<crate::contracts::Interpretation>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -477,6 +508,8 @@ impl LawModule {
             types: self.types,
             predicates: self.predicates,
             constants,
+            coverage: self.coverage,
+            interpretations: self.interpretations,
         }
     }
 }

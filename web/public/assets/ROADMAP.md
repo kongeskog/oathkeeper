@@ -1,13 +1,12 @@
 # Roadmap
 
-The current milestone is Oathkeeper 0.4: conditional derivations, bounded opposing-argument search, explicit oracle protocols, four time selections, exact quantities, source-pinned review packets, and a live Rust/WebAssembly application.
+Oathkeeper 0.5 adds machine-readable coverage contracts, checked exception prerequisites, explicit alternative interpretations, signed community review/evidence journals, a host-pinned Rust evaluation API, property tests and an independent lawlib package.
 
-Next milestones require evidence rather than more syntax:
+Next milestones depend on observable evidence:
 
-1. Independent legal and formalization review of the bounded Seattle pilot, including final Long edition reconciliation.
-2. Measured reviewer effort, missed conditions, and comparison with a lawyer-written checklist on distinct held-out matters.
-3. Richer authority, procedure, burden, remedy, and temporal policies developed with legal specialists.
-4. Authenticated review and oracle event histories, reproducible corpus governance, and structured amendment migration.
-5. A diverse reviewed lawlib and evaluation corpus before RL training or courtroom claims.
-
-See [the pilot](SEATTLE_PLAN.md), [research](RESEARCH.md), and [training design](TRAINING.md). No courtroom acceptance, corpus completeness, or legal accuracy is currently established.
+1. Community reviews of exact source and interpretation snapshots, plus resolution of the Long final-edition reconciliation. Professional credentials are welcome but not required for participation.
+2. Additional independent authentic matters and measured review effort, missed conditions and comparison with a source-based checklist. No held-out legal generalization has been measured.
+3. Explicit, source-supported policies for procedure, legal burdens, remedies and contested authority. Current interpretation selections remain declared assumptions.
+4. Broader fuzzing, independent checker review and eventually a mechanized reference calculus. The Rust implementation has not been formally proved sound.
+5. Reproducible corpus releases and amendment impact reports, with signed community statements and explicit trust bindings.
+6. Fixed-environment proof-construction experiments before claims about RL benefits or court acceptance.

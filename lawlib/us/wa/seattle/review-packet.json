@@ -1,6 +1,6 @@
 {
   "format": "oathkeeper-review-packet/1",
-  "module_snapshot_sha256": "8c90a7835fa219970d24da773fadb277dc37577fd8d8d78757bfea2b7bca2008",
+  "module_snapshot_sha256": "07fe03b192b39b71ac474e46599edc3179ea7b2c0c93e307c57c7c6ea66005c7",
   "rules": [
     {
       "rule": "us.timbs.incorporation",
@@ -1635,6 +1635,6 @@
     "legal": "pending",
     "formalization": "pending",
     "identity_authentication": "not_performed; external reviewer identity and qualifications require human verification",
-    "current_snapshot_sha256": "8c90a7835fa219970d24da773fadb277dc37577fd8d8d78757bfea2b7bca2008"
+    "current_snapshot_sha256": "07fe03b192b39b71ac474e46599edc3179ea7b2c0c93e307c57c7c6ea66005c7"
   }
 }

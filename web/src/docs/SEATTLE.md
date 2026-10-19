@@ -1,6 +1,6 @@
 # Seattle: parking and Long
 
-The 0.4 module has 14 formalized rules, five historical proof reconstructions from one real matter, and two unresolved assessment contexts. It imports Washington and federal rules through content-pinned `.oath` sources.
+The 0.5 module has 14 formalized rules, five historical proof reconstructions from one real matter, and two unresolved assessment contexts. It imports Washington and federal rules through content-pinned `.oath` sources.
 
 ## Real sources
 

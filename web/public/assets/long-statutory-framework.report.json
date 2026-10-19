@@ -1,9 +1,9 @@
 {
-  "language": "oathkeeper/0.4",
-  "kernel_version": "0.4.1",
+  "language": "oathkeeper/0.5",
+  "kernel_version": "0.5.0",
   "package": "lawlib.us.wa.seattle.parking.long",
-  "package_version": "0.4.0",
-  "bundle_sha256": "9c64833494b61ba5a6088dfb8998e595ddf9a83e342708ebf33e14ab5e166ce6",
+  "package_version": "0.5.0",
+  "bundle_sha256": "9153aada8372cb15e9a61af0aae021ccc5786da5ca2bce78085a365483393339",
   "status": "derivation_verified",
   "goal": {
     "atom": "parking.subject_to_ch11_30_impoundment",

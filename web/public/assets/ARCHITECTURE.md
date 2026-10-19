@@ -1,6 +1,6 @@
 # Architecture and trust boundaries
 
-Oathkeeper 0.4 checks conditional legal arguments. It does not certify legal truth.
+Oathkeeper 0.5 checks conditional legal arguments. It does not certify legal truth.
 
 ## Components
 
@@ -28,6 +28,12 @@ Separate event, law, authority, and recording times preserve historical replay. 
 
 Support and opposition can coexist as independently consistent arguments. The application exposes both without choosing a winner. Withholding an input reruns the search for alternative proofs; this is a sensitivity experiment, not a new factual finding.
 
-Oracles supply frozen external responses under named procedures. Unanimity requires all agreed providers and matching polarity. Abstention or disagreement leaves the request unusable. Provider IDs and evidence hashes are checked for consistency; signatures and identity are not authenticated.
+Oracles supply frozen external responses under named procedures. Unanimity requires all agreed providers and matching polarity. Abstention or disagreement leaves the request unusable. Provider IDs and evidence hashes are checked for consistency; optional Ed25519 receipt journals authenticate exact responses and procedures against caller-supplied keys. Real-world identity, evidence truth, expertise and trusted timestamps remain outside that guarantee.
 
-See [SPEC-0.4](SPEC-0.4.md) and [SOUNDNESS](SOUNDNESS.md) for the precise experimental contract.
+See [SPEC-0.5](SPEC-0.5.md) and [SOUNDNESS](SOUNDNESS.md) for the precise experimental contract.
+
+## Independent lawlib releases
+
+Canonical legal sources and community review events live in `kongeskog/oathkeeper-lawlib`. The software vendors a complete offline snapshot under `lawlib/`, pinned by `lawlib.lock.json` to an immutable Git commit and SHA-256 inventory. Updating that lock is explicit; runtime compilation never downloads moving source.
+
+Coverage and review policies are separate from conditional derivation. `verify_scoped` checks the main certificate and all scope obligations. `evaluation::evaluate_task` accepts only proof material under a host-pinned task identity. The common policy dispatcher exposes the same functionality through CLI, Python and WASM.

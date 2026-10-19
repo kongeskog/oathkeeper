@@ -344,6 +344,8 @@ fn parking(hours: i64, excluded: bool) -> Bundle {
         attestations: vec![],
         oracle_policy: vec![],
         query: Query {
+            coverage: None,
+            interpretations: Vec::new(),
             event_at: None,
             authority_at: None,
             purpose: None,

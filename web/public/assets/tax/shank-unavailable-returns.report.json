@@ -1,9 +1,9 @@
 {
-  "language": "oathkeeper/0.4",
-  "kernel_version": "0.4.1",
+  "language": "oathkeeper/0.5",
+  "kernel_version": "0.5.0",
   "package": "lawlib.us.tax.shank-basis",
-  "package_version": "0.1.0",
-  "bundle_sha256": "ea72f0f27e33879b45d4cef24299a6f026092be537cbba6ba0ea5ceabf2c1bc0",
+  "package_version": "0.2.0",
+  "bundle_sha256": "db66b3b8ffff25b24c327e4a6a2702db504924cab200441033692c12968e637a",
   "status": "derivation_verified",
   "goal": {
     "atom": "shank.nonzero_basis_despite_unavailable_returns",

@@ -167,6 +167,7 @@ impl<'a> Schema<'a> {
         for claim in rule
             .premises
             .iter()
+            .chain(&rule.exceptions)
             .chain(std::iter::once(&rule.conclusion))
         {
             self.claim(claim, &parameters)?;
@@ -196,9 +197,19 @@ pub fn validate_module_schema(module: &LawModule) -> Result<()> {
     require(
         matches!(
             module.language.as_str(),
-            "oathkeeper/0.3" | "oathkeeper/0.4"
+            "oathkeeper/0.3" | "oathkeeper/0.4" | "oathkeeper/0.5"
         ),
         "signature validation requires oathkeeper/0.3",
+    )?;
+    require(
+        module.language == "oathkeeper/0.5"
+            || (module.coverage.is_empty()
+                && module.interpretations.is_empty()
+                && module
+                    .rules
+                    .iter()
+                    .all(|r| r.exceptions.is_empty() && r.interpretation.is_none())),
+        "[E_VERSION] new policy declarations require oathkeeper/0.5",
     )?;
     let schema = Schema::new(&module.types, &module.predicates, &module.constants)?;
     for rule in &module.rules {

@@ -57,6 +57,7 @@ pub struct TaxAssessment {
     pub allocation: Option<Allocation>,
     pub certificate: Option<Bundle>,
     pub verification: Option<Report>,
+    pub coverage: Option<contracts::CoverageAssessment>,
 }
 fn issue(field: &str, message: &str) -> TaxIssue {
     TaxIssue {
@@ -157,6 +158,7 @@ pub fn assess(input: &BackdoorRothInput) -> Result<TaxAssessment> {
     }
     let compiled = compile_text(MODULE_SOURCE)?;
     let mut output = TaxAssessment {
+        coverage: None,
         status: "needs_information".into(),
         module_snapshot_sha256: compiled.snapshot_sha256,
         module_version: compiled.module.version.clone(),
@@ -301,7 +303,7 @@ pub fn assess(input: &BackdoorRothInput) -> Result<TaxAssessment> {
     let case = CaseFile {
         constants: vec![Constant { id: "taxpayer.scenario".into(), sort: Sort::Domain("Taxpayer".into()) }], facts, proof,
         attestations: vec![], oracle_policy: vec![], retractions: vec![],
-        query: Query { jurisdiction: "us".into(), as_of: "2025-12-31T00:00:00Z".into(), known_at: input.recorded_at.clone(),
+        query: Query { coverage: Some("coverage.tax.2025".into()), interpretations: Vec::new(), jurisdiction: "us".into(), as_of: "2025-12-31T00:00:00Z".into(), known_at: input.recorded_at.clone(),
             goal: claim("allocation_estimate", vec![quantity(nontaxable), quantity(taxable), quantity(remaining)]), root: "allocation-summary".into(),
             forum: Some("us.federal.tax".into()), event_at: Some("2025-12-31".into()), authority_at: Some("2025-12-31T00:00:00Z".into()),
             purpose: Some(input.purpose.clone().unwrap_or(CasePurpose::NewMatterAssessment)), temporal_rationale: Some("Calendar-year 2025 aggregate calculation under pinned final 2025 IRS guidance, reconstructed at the supplied knowledge cutoff. December 31 is the aggregation date, not an asserted transaction date. Contribution designation and conversion calendar year are separate inputs.".into()),
@@ -393,6 +395,13 @@ pub fn assess(input: &BackdoorRothInput) -> Result<TaxAssessment> {
             ("remaining", quantity(remaining)),
         ],
     )?;
+    output.coverage = Some(contracts::assess_coverage(
+        &bundle,
+        &AnalysisOptions {
+            sensitivity: false,
+            ..Default::default()
+        },
+    )?);
     output.verification = Some(verify(&bundle)?);
     output.certificate = Some(bundle);
     output.allocation = Some(Allocation {

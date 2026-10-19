@@ -165,7 +165,8 @@
     "event_at": "2016-10-12",
     "authority_at": "2021-08-13T00:00:00Z",
     "purpose": "new_matter_assessment",
-    "temporal_rationale": "Analyze the 2016 parking episode using an explicitly assumed historical statutory snapshot and the 2021 record. This is an evidentiary reassessment, not a new court decision or a present-day parking recommendation."
+    "temporal_rationale": "Analyze the 2016 parking episode using an explicitly assumed historical statutory snapshot and the 2021 record. This is an evidentiary reassessment, not a new court decision or a present-day parking recommendation.",
+    "coverage": "coverage.seattle.5"
   },
   "proof": []
 }

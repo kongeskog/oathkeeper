@@ -1,6 +1,6 @@
-oathkeeper "0.4";
-module lawlib.us.wa.long @ "0.4.0";
-import "../timbs.oath" sha256 "aaee14a2ae6616351a8dce7ed45a26d745a54384c58a6de1e802ea97378a49dc";
+oathkeeper "0.5";
+module lawlib.us.wa.long @ "0.5.0";
+import "../timbs.oath" sha256 "909c5ae31f0029536f0e444fd781068f98453871ba2db2da10cd0a1238db90fd";
 
 jurisdiction us.wa {
   name "Washington";

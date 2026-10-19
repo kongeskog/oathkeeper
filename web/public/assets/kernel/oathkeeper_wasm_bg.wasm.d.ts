@@ -3,6 +3,7 @@
 export const memory: WebAssembly.Memory;
 export const analyze_json: (a: number, b: number, c: number) => [number, number, number, number];
 export const assess_backdoor_roth_json: (a: number, b: number) => [number, number, number, number];
+export const assess_policy_json: (a: number, b: number) => [number, number, number, number];
 export const kernel_version: () => [number, number];
 export const verify_json: (a: number, b: number) => [number, number, number, number];
 export const __wbindgen_externrefs: WebAssembly.Table;

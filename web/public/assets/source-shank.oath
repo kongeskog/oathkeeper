@@ -1,5 +1,5 @@
-oathkeeper "0.4";
-module lawlib.us.tax.shank-basis @ "0.1.0";
+oathkeeper "0.5";
+module lawlib.us.tax.shank-basis @ "0.2.0";
 jurisdiction us { name "United States"; parents []; }
 predicate shank.actual_record();
 predicate shank.credible_initial_nondeductible_contributions(quantity(usd_cent));

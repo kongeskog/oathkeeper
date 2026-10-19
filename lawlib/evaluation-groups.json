@@ -1,0 +1,11 @@
+{
+  "format": "oathkeeper.evaluation-groups/1",
+  "meaning": "Grouping for leakage prevention, not a trained model or a measured legal accuracy benchmark. New independent matters are needed for held-out evaluation.",
+  "train": [],
+  "development": [
+    {"matter": "long-98824-2", "source_family": "long-timbs-seattle-parking", "amendment_lineage": "smc-11.72.440-ordinance120573"},
+    {"matter": "shank-1752-17", "source_family": "shank-ira-basis", "amendment_lineage": "irc-ira-basis-shank2014"},
+    {"matter": "synthetic-ira-allocation-2025", "source_family": "irs-2025-ira-guidance", "amendment_lineage": "irs-form8606-2025"}
+  ],
+  "held_out": []
+}

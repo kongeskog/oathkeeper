@@ -319,6 +319,7 @@ impl Parser {
         self.expect("{")?;
         let mut map = Map::new();
         let mut premises = Vec::new();
+        let mut exceptions = Vec::new();
         while !self.eat("}") {
             let start = self.peek().clone();
             let key = self.name()?;
@@ -330,6 +331,9 @@ impl Parser {
                     &format!("{id}@{version}/{}", premises.len() - 1),
                     &start,
                 ));
+            } else if key == "unless" {
+                exceptions.push(self.claim()?);
+                self.expect(";")?;
             } else {
                 let value = if key == "ensures" {
                     self.claim()?
@@ -342,7 +346,10 @@ impl Parser {
                 } else {
                     key
                 };
-                if matches!(field.as_str(), "parameters" | "id" | "version" | "premises") {
+                if matches!(
+                    field.as_str(),
+                    "parameters" | "id" | "version" | "premises" | "exceptions"
+                ) {
                     return Err(self.error("reserved rule field"));
                 }
                 if map.insert(field.clone(), value).is_some() {
@@ -354,6 +361,9 @@ impl Parser {
         map.insert("version".into(), json!(version));
         map.insert("parameters".into(), parameters);
         map.insert("premises".into(), json!(premises));
+        if !exceptions.is_empty() {
+            map.insert("exceptions".into(), json!(exceptions));
+        }
         Ok(Value::Object(map))
     }
     fn proof(&mut self) -> Result<Value> {
@@ -406,8 +416,8 @@ impl Parser {
     fn parse(mut self) -> Result<Unit> {
         self.expect("oathkeeper")?;
         let language = self.string()?;
-        if !matches!(language.as_str(), "0.3" | "0.4") {
-            return Err(self.error("expected oathkeeper \"0.3\" or \"0.4\""));
+        if !matches!(language.as_str(), "0.3" | "0.4" | "0.5") {
+            return Err(self.error("expected oathkeeper \"0.3\", \"0.4\" or \"0.5\""));
         }
         self.expect(";")?;
         let kind = self.name()?;
@@ -488,7 +498,8 @@ impl Parser {
                     json!({"id":id,"sort":sort})
                 }
                 "rule" => self.rule(&id)?,
-                "source" | "jurisdiction" | "authority" | "assessment" | "retraction" => {
+                "source" | "jurisdiction" | "authority" | "assessment" | "retraction"
+                | "coverage" | "interpretation" => {
                     let mut value = self.block()?;
                     if declaration != "source"
                         && value

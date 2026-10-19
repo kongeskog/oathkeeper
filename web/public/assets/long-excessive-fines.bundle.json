@@ -1,7 +1,7 @@
 {
-  "language": "oathkeeper/0.4",
+  "language": "oathkeeper/0.5",
   "package": "lawlib.us.wa.seattle.parking.long",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "jurisdictions": [
     {
       "id": "us",
@@ -1711,6 +1711,482 @@
       ]
     }
   ],
+  "coverage": [
+    {
+      "id": "coverage.seattle.1",
+      "question": "What follows for analysis.consider_ability_to_pay under this bounded, community-reviewable formalization?",
+      "conclusion_kind": "factual",
+      "parameters": [
+        {
+          "name": "matter",
+          "sort": {
+            "domain": "Matter"
+          }
+        }
+      ],
+      "goal": {
+        "atom": "analysis.consider_ability_to_pay",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "variable",
+            "name": "matter"
+          }
+        ]
+      },
+      "jurisdictions": [
+        "us.wa.seattle"
+      ],
+      "forums": [
+        "us.wa.courts.state"
+      ],
+      "law_from": "2016-01-01T00:00:00Z",
+      "law_until": "2017-01-01T00:00:00Z",
+      "requirements": [
+        {
+          "id": "declared-scope",
+          "goal": {
+            "atom": "scope.long.federal-excessive-fines",
+            "negative": false,
+            "arguments": [
+              {
+                "kind": "variable",
+                "name": "matter"
+              }
+            ]
+          },
+          "explanation": "An explicit interpretation/scope premise; it remains an assumption unless independently established."
+        }
+      ],
+      "source_inventory": [
+        {
+          "source": {
+            "citation": "Timbs v. Indiana, 586 U.S. 146 (2019), No. 17-1091, opinion of the Court",
+            "uri": "https://www.supremecourt.gov/opinions/18pdf/17-1091_5536.pdf",
+            "sha256": "1107455132302c406b51094bc1372acb78eba78f137e63cc676f87530f2acc0b"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        },
+        {
+          "source": {
+            "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+            "uri": "https://www.courts.wa.gov/opinions/pdf/988242.pdf",
+            "sha256": "421932863eff58799db3a23427d8641503c62841da191059f2f744f0248f27fa"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        },
+        {
+          "source": {
+            "citation": "Seattle Ordinance 120573, section 1 (2001), amending SMC 11.72.440(A)-(E)",
+            "uri": "https://clerk.seattle.gov/~archives/Ordinances/Ord_120573.pdf",
+            "sha256": "1beaef9118938d34565be69fd57123cb293fcdd650cb9198af39933905ddab0d"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        }
+      ],
+      "exclusions": [
+        "Other parking episodes, current Seattle law, procedural remedies, and any uncited authorities."
+      ],
+      "known_omissions": [
+        "Independent community review is pending. No corpus completeness or current citator assurance."
+      ]
+    },
+    {
+      "id": "coverage.seattle.2",
+      "question": "What follows for constitutional.excessive_fines_violation under this bounded, community-reviewable formalization?",
+      "conclusion_kind": "factual",
+      "parameters": [
+        {
+          "name": "matter",
+          "sort": {
+            "domain": "Matter"
+          }
+        }
+      ],
+      "goal": {
+        "atom": "constitutional.excessive_fines_violation",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "variable",
+            "name": "matter"
+          }
+        ]
+      },
+      "jurisdictions": [
+        "us.wa.seattle"
+      ],
+      "forums": [
+        "us.wa.courts.state"
+      ],
+      "law_from": "2016-01-01T00:00:00Z",
+      "law_until": "2017-01-01T00:00:00Z",
+      "requirements": [
+        {
+          "id": "declared-scope",
+          "goal": {
+            "atom": "scope.long.federal-excessive-fines",
+            "negative": false,
+            "arguments": [
+              {
+                "kind": "variable",
+                "name": "matter"
+              }
+            ]
+          },
+          "explanation": "An explicit interpretation/scope premise; it remains an assumption unless independently established."
+        }
+      ],
+      "source_inventory": [
+        {
+          "source": {
+            "citation": "Timbs v. Indiana, 586 U.S. 146 (2019), No. 17-1091, opinion of the Court",
+            "uri": "https://www.supremecourt.gov/opinions/18pdf/17-1091_5536.pdf",
+            "sha256": "1107455132302c406b51094bc1372acb78eba78f137e63cc676f87530f2acc0b"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        },
+        {
+          "source": {
+            "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+            "uri": "https://www.courts.wa.gov/opinions/pdf/988242.pdf",
+            "sha256": "421932863eff58799db3a23427d8641503c62841da191059f2f744f0248f27fa"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        },
+        {
+          "source": {
+            "citation": "Seattle Ordinance 120573, section 1 (2001), amending SMC 11.72.440(A)-(E)",
+            "uri": "https://clerk.seattle.gov/~archives/Ordinances/Ord_120573.pdf",
+            "sha256": "1beaef9118938d34565be69fd57123cb293fcdd650cb9198af39933905ddab0d"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        }
+      ],
+      "exclusions": [
+        "Other parking episodes, current Seattle law, procedural remedies, and any uncited authorities."
+      ],
+      "known_omissions": [
+        "Independent community review is pending. No corpus completeness or current citator assurance."
+      ]
+    },
+    {
+      "id": "coverage.seattle.3",
+      "question": "What follows for homestead.additional_declaration_required under this bounded, community-reviewable formalization?",
+      "conclusion_kind": "factual",
+      "parameters": [
+        {
+          "name": "matter",
+          "sort": {
+            "domain": "Matter"
+          }
+        }
+      ],
+      "goal": {
+        "atom": "homestead.additional_declaration_required",
+        "negative": true,
+        "arguments": [
+          {
+            "kind": "variable",
+            "name": "matter"
+          }
+        ]
+      },
+      "jurisdictions": [
+        "us.wa.seattle"
+      ],
+      "forums": [
+        "us.wa.courts.state"
+      ],
+      "law_from": "2016-01-01T00:00:00Z",
+      "law_until": "2017-01-01T00:00:00Z",
+      "requirements": [
+        {
+          "id": "declared-scope",
+          "goal": {
+            "atom": "scope.long.rcw6_13_040-occupied-property",
+            "negative": false,
+            "arguments": [
+              {
+                "kind": "variable",
+                "name": "matter"
+              }
+            ]
+          },
+          "explanation": "An explicit interpretation/scope premise; it remains an assumption unless independently established."
+        }
+      ],
+      "source_inventory": [
+        {
+          "source": {
+            "citation": "Timbs v. Indiana, 586 U.S. 146 (2019), No. 17-1091, opinion of the Court",
+            "uri": "https://www.supremecourt.gov/opinions/18pdf/17-1091_5536.pdf",
+            "sha256": "1107455132302c406b51094bc1372acb78eba78f137e63cc676f87530f2acc0b"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        },
+        {
+          "source": {
+            "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+            "uri": "https://www.courts.wa.gov/opinions/pdf/988242.pdf",
+            "sha256": "421932863eff58799db3a23427d8641503c62841da191059f2f744f0248f27fa"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        },
+        {
+          "source": {
+            "citation": "Seattle Ordinance 120573, section 1 (2001), amending SMC 11.72.440(A)-(E)",
+            "uri": "https://clerk.seattle.gov/~archives/Ordinances/Ord_120573.pdf",
+            "sha256": "1beaef9118938d34565be69fd57123cb293fcdd650cb9198af39933905ddab0d"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        }
+      ],
+      "exclusions": [
+        "Other parking episodes, current Seattle law, procedural remedies, and any uncited authorities."
+      ],
+      "known_omissions": [
+        "Independent community review is pending. No corpus completeness or current citator assurance."
+      ]
+    },
+    {
+      "id": "coverage.seattle.4",
+      "question": "What follows for homestead.automatically_prevents_parking_impoundment under this bounded, community-reviewable formalization?",
+      "conclusion_kind": "factual",
+      "parameters": [
+        {
+          "name": "matter",
+          "sort": {
+            "domain": "Matter"
+          }
+        }
+      ],
+      "goal": {
+        "atom": "homestead.automatically_prevents_parking_impoundment",
+        "negative": true,
+        "arguments": [
+          {
+            "kind": "variable",
+            "name": "matter"
+          }
+        ]
+      },
+      "jurisdictions": [
+        "us.wa.seattle"
+      ],
+      "forums": [
+        "us.wa.courts.state"
+      ],
+      "law_from": "2016-01-01T00:00:00Z",
+      "law_until": "2017-01-01T00:00:00Z",
+      "requirements": [
+        {
+          "id": "declared-scope",
+          "goal": {
+            "atom": "scope.long.independent-parking-impoundment",
+            "negative": false,
+            "arguments": [
+              {
+                "kind": "variable",
+                "name": "matter"
+              }
+            ]
+          },
+          "explanation": "An explicit interpretation/scope premise; it remains an assumption unless independently established."
+        }
+      ],
+      "source_inventory": [
+        {
+          "source": {
+            "citation": "Timbs v. Indiana, 586 U.S. 146 (2019), No. 17-1091, opinion of the Court",
+            "uri": "https://www.supremecourt.gov/opinions/18pdf/17-1091_5536.pdf",
+            "sha256": "1107455132302c406b51094bc1372acb78eba78f137e63cc676f87530f2acc0b"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        },
+        {
+          "source": {
+            "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+            "uri": "https://www.courts.wa.gov/opinions/pdf/988242.pdf",
+            "sha256": "421932863eff58799db3a23427d8641503c62841da191059f2f744f0248f27fa"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        },
+        {
+          "source": {
+            "citation": "Seattle Ordinance 120573, section 1 (2001), amending SMC 11.72.440(A)-(E)",
+            "uri": "https://clerk.seattle.gov/~archives/Ordinances/Ord_120573.pdf",
+            "sha256": "1beaef9118938d34565be69fd57123cb293fcdd650cb9198af39933905ddab0d"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        }
+      ],
+      "exclusions": [
+        "Other parking episodes, current Seattle law, procedural remedies, and any uncited authorities."
+      ],
+      "known_omissions": [
+        "Independent community review is pending. No corpus completeness or current citator assurance."
+      ]
+    },
+    {
+      "id": "coverage.seattle.5",
+      "question": "What follows for parking.violates_smc72 under this bounded, community-reviewable formalization?",
+      "conclusion_kind": "prohibition",
+      "parameters": [
+        {
+          "name": "matter",
+          "sort": {
+            "domain": "Matter"
+          }
+        }
+      ],
+      "goal": {
+        "atom": "parking.violates_smc72",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "variable",
+            "name": "matter"
+          }
+        ]
+      },
+      "jurisdictions": [
+        "us.wa.seattle"
+      ],
+      "forums": [
+        "us.wa.courts.state"
+      ],
+      "law_from": "2016-01-01T00:00:00Z",
+      "law_until": "2017-01-01T00:00:00Z",
+      "requirements": [
+        {
+          "id": "declared-scope",
+          "goal": {
+            "atom": "scope.smc72.historical-text",
+            "negative": false,
+            "arguments": [
+              {
+                "kind": "variable",
+                "name": "matter"
+              }
+            ]
+          },
+          "explanation": "An explicit interpretation/scope premise; it remains an assumption unless independently established."
+        }
+      ],
+      "source_inventory": [
+        {
+          "source": {
+            "citation": "Timbs v. Indiana, 586 U.S. 146 (2019), No. 17-1091, opinion of the Court",
+            "uri": "https://www.supremecourt.gov/opinions/18pdf/17-1091_5536.pdf",
+            "sha256": "1107455132302c406b51094bc1372acb78eba78f137e63cc676f87530f2acc0b"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        },
+        {
+          "source": {
+            "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+            "uri": "https://www.courts.wa.gov/opinions/pdf/988242.pdf",
+            "sha256": "421932863eff58799db3a23427d8641503c62841da191059f2f744f0248f27fa"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        },
+        {
+          "source": {
+            "citation": "Seattle Ordinance 120573, section 1 (2001), amending SMC 11.72.440(A)-(E)",
+            "uri": "https://clerk.seattle.gov/~archives/Ordinances/Ord_120573.pdf",
+            "sha256": "1beaef9118938d34565be69fd57123cb293fcdd650cb9198af39933905ddab0d"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        }
+      ],
+      "exclusions": [
+        "Other parking episodes, current Seattle law, procedural remedies, and any uncited authorities."
+      ],
+      "known_omissions": [
+        "Independent community review is pending. No corpus completeness or current citator assurance."
+      ]
+    },
+    {
+      "id": "coverage.seattle.6",
+      "question": "What follows for parking.subject_to_ch11_30_impoundment under this bounded, community-reviewable formalization?",
+      "conclusion_kind": "factual",
+      "parameters": [
+        {
+          "name": "matter",
+          "sort": {
+            "domain": "Matter"
+          }
+        }
+      ],
+      "goal": {
+        "atom": "parking.subject_to_ch11_30_impoundment",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "variable",
+            "name": "matter"
+          }
+        ]
+      },
+      "jurisdictions": [
+        "us.wa.seattle"
+      ],
+      "forums": [
+        "us.wa.courts.state"
+      ],
+      "law_from": "2016-01-01T00:00:00Z",
+      "law_until": "2017-01-01T00:00:00Z",
+      "requirements": [
+        {
+          "id": "declared-scope",
+          "goal": {
+            "atom": "scope.smc72.historical-text",
+            "negative": false,
+            "arguments": [
+              {
+                "kind": "variable",
+                "name": "matter"
+              }
+            ]
+          },
+          "explanation": "An explicit interpretation/scope premise; it remains an assumption unless independently established."
+        }
+      ],
+      "source_inventory": [
+        {
+          "source": {
+            "citation": "Timbs v. Indiana, 586 U.S. 146 (2019), No. 17-1091, opinion of the Court",
+            "uri": "https://www.supremecourt.gov/opinions/18pdf/17-1091_5536.pdf",
+            "sha256": "1107455132302c406b51094bc1372acb78eba78f137e63cc676f87530f2acc0b"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        },
+        {
+          "source": {
+            "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+            "uri": "https://www.courts.wa.gov/opinions/pdf/988242.pdf",
+            "sha256": "421932863eff58799db3a23427d8641503c62841da191059f2f744f0248f27fa"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        },
+        {
+          "source": {
+            "citation": "Seattle Ordinance 120573, section 1 (2001), amending SMC 11.72.440(A)-(E)",
+            "uri": "https://clerk.seattle.gov/~archives/Ordinances/Ord_120573.pdf",
+            "sha256": "1beaef9118938d34565be69fd57123cb293fcdd650cb9198af39933905ddab0d"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        }
+      ],
+      "exclusions": [
+        "Other parking episodes, current Seattle law, procedural remedies, and any uncited authorities."
+      ],
+      "known_omissions": [
+        "Independent community review is pending. No corpus completeness or current citator assurance."
+      ]
+    }
+  ],
   "constants": [
     {
       "id": "long.98824-2",
@@ -1967,7 +2443,8 @@
     "event_at": "2016-10-12",
     "authority_at": "2021-08-13T00:00:00Z",
     "purpose": "historical_reconstruction",
-    "temporal_rationale": "Reconstruct the August 2021 opinion about the October 2016 impoundment. The event is recorded with date-only precision; the selected statutory snapshot is a supplied historical applicability assessment, not an automatic retroactivity rule."
+    "temporal_rationale": "Reconstruct the August 2021 opinion about the October 2016 impoundment. The event is recorded with date-only precision; the selected statutory snapshot is a supplied historical applicability assessment, not an automatic retroactivity rule.",
+    "coverage": "coverage.seattle.2"
   },
   "proof": [
     {

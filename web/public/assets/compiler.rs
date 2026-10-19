@@ -222,6 +222,8 @@ fn link(units: Vec<Unit>, mut lock: Vec<LockedSource>) -> Result<Compilation> {
         types: Vec::new(),
         predicates: Vec::new(),
         constants: Vec::new(),
+        coverage: Vec::new(),
+        interpretations: Vec::new(),
     };
     crate::kernel::identifier(&module.package)?;
     crate::kernel::identifier(&module.version)?;
@@ -278,6 +280,8 @@ fn link(units: Vec<Unit>, mut lock: Vec<LockedSource>) -> Result<Compilation> {
                 "authority" => module.authorities.push(decode(value, d)?),
                 "assessment" => module.authority_assessments.push(decode(value, d)?),
                 "rule" => module.rules.push(decode(value, d)?),
+                "coverage" => module.coverage.push(decode(value, d)?),
+                "interpretation" => module.interpretations.push(decode(value, d)?),
                 "fact" => {
                     let map = value.as_object_mut().unwrap();
                     let mut basis = serde_json::Map::new();
@@ -350,7 +354,10 @@ fn link(units: Vec<Unit>, mut lock: Vec<LockedSource>) -> Result<Compilation> {
         snapshot_sha256: String::new(),
     };
     validate_module_schema(&compilation.module).map_err(|e| compilation.locate(e))?;
-    if compilation.module.language == "oathkeeper/0.4" {
+    if matches!(
+        compilation.module.language.as_str(),
+        "oathkeeper/0.4" | "oathkeeper/0.5"
+    ) {
         validate_module_metadata(&compilation.module)?;
     }
     if compilation.case.is_some() {
@@ -380,7 +387,10 @@ fn link(units: Vec<Unit>, mut lock: Vec<LockedSource>) -> Result<Compilation> {
                 .claim(&step.claim, &empty)
                 .map_err(|e| compilation.locate(Error(format!("step {}: {e}", step.id))))?;
         }
-        if bundle.language == "oathkeeper/0.4" {
+        if matches!(
+            bundle.language.as_str(),
+            "oathkeeper/0.4" | "oathkeeper/0.5"
+        ) {
             validate_context(&bundle)?;
         }
     }
@@ -399,7 +409,9 @@ fn link(units: Vec<Unit>, mut lock: Vec<LockedSource>) -> Result<Compilation> {
 fn validate_module_metadata(module: &LawModule) -> Result<()> {
     if module.jurisdictions.is_empty() {
         return crate::kernel::require(
-            module.rules.is_empty()
+            module.coverage.is_empty()
+                && module.interpretations.is_empty()
+                && module.rules.is_empty()
                 && module.authorities.is_empty()
                 && module.authority_assessments.is_empty(),
             "legal declarations require a jurisdiction",
@@ -414,6 +426,8 @@ fn validate_module_metadata(module: &LawModule) -> Result<()> {
         proof: Vec::new(),
         retractions: Vec::new(),
         query: Query {
+            coverage: None,
+            interpretations: Vec::new(),
             jurisdiction: module.jurisdictions[0].id.clone(),
             as_of: at.clone(),
             known_at: at.clone(),

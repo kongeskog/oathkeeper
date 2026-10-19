@@ -4,6 +4,7 @@ export function verify_json(text: string): string;
 export function analyze_json(text: string, sensitivity: boolean): string;
 export function kernel_version(): string;
 export function assess_backdoor_roth_json(text: string): string;
+export function assess_policy_json(request_json: string): string;
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
 
@@ -11,6 +12,7 @@ export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly analyze_json: (a: number, b: number, c: number) => [number, number, number, number];
   readonly assess_backdoor_roth_json: (a: number, b: number) => [number, number, number, number];
+  readonly assess_policy_json: (a: number, b: number) => [number, number, number, number];
   readonly kernel_version: () => [number, number];
   readonly verify_json: (a: number, b: number) => [number, number, number, number];
   readonly __wbindgen_externrefs: WebAssembly.Table;

@@ -13,9 +13,10 @@ step is accepted only by one of these rules:
 1. Evidence: its exact signed claim equals a visible, unwithdrawn input premise.
 2. Oracle: its exact claim equals the assertion accepted by the declared protocol.
 3. Comparison: exact same-kind, same-unit numeric comparison computes that polarity.
-4. Application: all declared variables receive correctly typed ground terms;
-   each instantiated premise equals an earlier checked step; the conclusion is
-   exactly the instantiated rule conclusion; authority eligibility checks pass.
+4. Arithmetic: checked same-unit integer addition/subtraction or bounded exact-rational allocation computes the claimed result, with explicit final-unit rounding and overflow rejection.
+5. Application: all declared variables receive correctly typed ground terms;
+   each instantiated premise and explicit negative exception equals an earlier checked step; the conclusion is
+   exactly the instantiated rule conclusion; authority eligibility and explicit interpretation selection checks pass.
 
 By induction on the ordered proof steps, each accepted step is derivable under
 that context and these inference rules. The designated root must match the query.
@@ -46,3 +47,9 @@ Source authenticity, faithful translation, completeness, factual reliability,
 reviewer identity, oracle calibration, jurisdictional priority, legal burdens,
 procedural admissibility, and court acceptance are not logical consequences of
 kernel acceptance. Each needs a separately specified process and evidence.
+
+## Version 0.5 engineering evidence
+
+Property tests compare finite propositional Horn search with a separate forward-closure model and check arithmetic forgery rejection. Adversarial tests exercise scope, task freezing, Ed25519 journals, stale/withdrawn reviews and trust-key revocation. `fuzz/` contains a libFuzzer harness for parser, verifier and policy inputs. These tests cover selected fragments and failure modes, not a machine-checked soundness theorem.
+
+Coverage verification checks separately supplied scope-condition certificates in the same context. It cannot certify that a declared source inventory covers all relevant law. Signed receipts attest exact bytes under host-trusted keys; they do not extend the logical soundness claim to evidence truth or legal fidelity.

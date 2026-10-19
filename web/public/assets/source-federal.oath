@@ -1,6 +1,6 @@
-oathkeeper "0.4";
-module lawlib.us.timbs @ "0.4.0";
-import "../vocabulary.oath" sha256 "3973f7f4a9cf2f1eedde0c48d55922ed3e8cfd20813e2dc2dd05b5d518cdd7a3";
+oathkeeper "0.5";
+module lawlib.us.timbs @ "0.5.0";
+import "../vocabulary.oath" sha256 "23582d8cc2f149a12b1180d01ed4560f0bf63ae39f9e032bc57195a58eac4de8";
 
 jurisdiction us {
   name "United States";

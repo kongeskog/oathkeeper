@@ -230,7 +230,8 @@
     "event_at": "2016-10-12",
     "authority_at": "2021-08-13T00:00:00Z",
     "purpose": "historical_reconstruction",
-    "temporal_rationale": "Reconstruct the August 2021 opinion about the October 2016 impoundment. The event is recorded with date-only precision; the selected statutory snapshot is a supplied historical applicability assessment, not an automatic retroactivity rule."
+    "temporal_rationale": "Reconstruct the August 2021 opinion about the October 2016 impoundment. The event is recorded with date-only precision; the selected statutory snapshot is a supplied historical applicability assessment, not an automatic retroactivity rule.",
+    "coverage": "coverage.seattle.1"
   },
   "proof": [
     {

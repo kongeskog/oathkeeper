@@ -17,7 +17,7 @@ import python from '@/docs/PYTHON.md?raw'
 import cli from '@/docs/CLI.md?raw'
 
 import gettingStarted from '@/docs/GETTING_STARTED.md?raw'
-import language from '@/docs/SPEC-0.4.md?raw'
+import language from '@/docs/SPEC-0.5.md?raw'
 import v03 from '@/docs/SPEC-0.3.md?raw'
 import research from '@/docs/RESEARCH.md?raw'
 import soundness from '@/docs/SOUNDNESS.md?raw'
@@ -41,7 +41,7 @@ export const docs=[
   {id:'tax',title:'Federal tax · backdoor Roth',category:'Start here',summary:'2025 IRA allocation, scope, rounding, real precedent and executable APIs.',content:taxGuide},
   {id:'getting-started',title:'Getting started',category:'Start here',summary:'Install, verify a real case, and understand the report.',content:gettingStarted},
   {id:'seattle',title:'The Seattle module',category:'Start here',summary:'Real authorities, historical case proofs, scope, and known limitations.',content:seattle},
-  {id:'language',title:'Language specification 0.4',category:'Language',summary:'Readable declarations, kernel-enforced signatures, pinned imports, and explicit proofs.',content:language},
+  {id:'language',title:'Language specification 0.5',category:'Language',summary:'Readable declarations, kernel-enforced signatures, pinned imports, and explicit proofs.',content:language},
   {id:'spec-0-3',title:'Archived specification 0.3',category:'Language',summary:'Previous authoring syntax and retired report contract.',content:v03},
   {id:'research',title:'Research & design decisions',category:'Project',summary:'Primary sources, related systems, and unresolved design questions.',content:research},
   {id:'soundness',title:'Soundness and limits',category:'Architecture',summary:'Conditional proof calculus, trust assumptions, and search limits.',content:soundness},
@@ -102,7 +102,7 @@ export function docLink(href:string) {
   if(href.includes('kernel.rs'))return '#/reference/kernel'
   if(href.includes('lib.rs'))return '#/reference/core'
   const file=href.split('/').at(-1)?.split('#')[0]
-  const mapping:Record<string,string>={'SPEC-0.4.md':'language','SPEC-0.3.md':'spec-0-3','RESEARCH.md':'research','SOUNDNESS.md':'soundness','SPEC-0.2.md':'spec-0-2','SPEC.md':'spec-0-1','SEATTLE_PLAN.md':'roadmap','ARCHITECTURE.md':'architecture','TRAINING.md':'training'}
+  const mapping:Record<string,string>={'SPEC-0.5.md':'language','SPEC-0.4.md':'language','SPEC-0.3.md':'spec-0-3','RESEARCH.md':'research','SOUNDNESS.md':'soundness','SPEC-0.2.md':'spec-0-2','SPEC.md':'spec-0-1','SEATTLE_PLAN.md':'roadmap','ARCHITECTURE.md':'architecture','TRAINING.md':'training'}
   if(file&&mapping[file])return `#/docs/${mapping[file]}`
   const oathFiles:Record<string,string>={'long-parking-evidence-review.case.oath':'parking-assessment','parking.oath':'source-seattle','long.oath':'source-washington','timbs.oath':'source-federal','vocabulary.oath':'vocabulary','long-oracle-reassessment.case.oath':'pending-oracle'}
   if(file&&oathFiles[file])return `#/reference/${oathFiles[file]}`

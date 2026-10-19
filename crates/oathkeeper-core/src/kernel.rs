@@ -189,7 +189,11 @@ fn check(bundle: &Bundle, context_only: bool) -> Result<Option<Report>> {
     require(
         matches!(
             bundle.language.as_str(),
-            "oathkeeper/0.1" | "oathkeeper/0.2" | "oathkeeper/0.3" | "oathkeeper/0.4"
+            "oathkeeper/0.1"
+                | "oathkeeper/0.2"
+                | "oathkeeper/0.3"
+                | "oathkeeper/0.4"
+                | "oathkeeper/0.5"
         ),
         "unsupported language version",
     )?;
@@ -198,10 +202,13 @@ fn check(bundle: &Bundle, context_only: bool) -> Result<Option<Report>> {
     let legal_time = timestamp(&bundle.query.as_of)?;
     let cutoff = timestamp(&bundle.query.known_at)?;
     let extended = bundle.language != "oathkeeper/0.1";
-    let modern = bundle.language == "oathkeeper/0.4";
+    let modern = matches!(
+        bundle.language.as_str(),
+        "oathkeeper/0.4" | "oathkeeper/0.5"
+    );
     let typed = matches!(
         bundle.language.as_str(),
-        "oathkeeper/0.3" | "oathkeeper/0.4"
+        "oathkeeper/0.3" | "oathkeeper/0.4" | "oathkeeper/0.5"
     );
     require(
         bundle.rules.len() <= 2000
@@ -679,6 +686,7 @@ fn check(bundle: &Bundle, context_only: bool) -> Result<Option<Report>> {
         )?;
     }
     crate::oracles::validate_evidence_protocols(bundle)?;
+    crate::contracts::validate(bundle)?;
     if context_only {
         return Ok(None);
     }
@@ -805,6 +813,7 @@ fn check(bundle: &Bundle, context_only: bool) -> Result<Option<Report>> {
                         active.contains(&key),
                         "rule is outside jurisdiction, legal time, or knowledge cutoff",
                     )?;
+                    crate::contracts::interpretation_eligible(bundle, rule)?;
                     substitution(rule, values)?;
                     if let Some(schema) = &schema {
                         schema.substitution(rule, values)?;
@@ -843,10 +852,10 @@ fn check(bundle: &Bundle, context_only: bool) -> Result<Option<Report>> {
                         dependencies.authorities.insert(authority.id.clone());
                     }
                     require(
-                        premises.len() == rule.premises.len(),
+                        premises.len() == rule.required_claims().len(),
                         "rule premise count mismatch",
                     )?;
-                    for (reference, expected) in premises.iter().zip(&rule.premises) {
+                    for (reference, expected) in premises.iter().zip(&rule.required_claims()) {
                         let (actual, prior) = checked.get(reference.as_str()).ok_or_else(|| {
                             Error(format!(
                                 "premise must reference an earlier step: {reference}"
@@ -1036,7 +1045,11 @@ pub(crate) fn compare(claim: &Claim, operator: &Comparison) -> Result<()> {
 
 /// Shared eligibility gate used by search. Verification still checks every application.
 pub(crate) fn rule_eligibility(bundle: &Bundle, rule: &Rule) -> Result<()> {
-    let modern = bundle.language == "oathkeeper/0.4";
+    crate::contracts::interpretation_eligible(bundle, rule)?;
+    let modern = matches!(
+        bundle.language.as_str(),
+        "oathkeeper/0.4" | "oathkeeper/0.5"
+    );
     let cutoff = timestamp(&bundle.query.known_at)?;
     let authority_time = timestamp(
         bundle

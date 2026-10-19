@@ -1,9 +1,9 @@
-import init, { analyze_json, kernel_version } from './kernel/oathkeeper_wasm.js';
-const ready = init();
+import init, { analyze_json, kernel_version } from './kernel/oathkeeper_wasm.js?v=0.5.0';
+const ready = init({module_or_path:new URL('./kernel/oathkeeper_wasm_bg.wasm?v=0.5.0',import.meta.url)});
 self.onmessage = async ({ data }) => {
   try {
     await ready;
-    if (kernel_version() !== '0.4.1') throw new Error('Kernel version mismatch. Reload the application.');
+    if (kernel_version() !== '0.5.0') throw new Error('Kernel version mismatch. Reload the application.');
     const result = JSON.parse(analyze_json(data.context, data.sensitivity));
     self.postMessage({ result });
   } catch (error) {

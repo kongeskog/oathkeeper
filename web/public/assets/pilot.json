@@ -3,7 +3,7 @@
   "title": "Historical Seattle parking: what does this record establish?",
   "question": "Under the supplied historical SMC 11.72.440 formalization, which arguments support or oppose a violation for one parking episode?",
   "status": "awaiting_independent_review",
-  "module_snapshot_sha256": "8c90a7835fa219970d24da773fadb277dc37577fd8d8d78757bfea2b7bca2008",
+  "module_snapshot_sha256": "07fe03b192b39b71ac474e46599edc3179ea7b2c0c93e307c57c7c6ea66005c7",
   "recorded_at": "2026-10-18T22:35:39Z",
   "authentic_matters": 1,
   "authentic_case": "City of Seattle v. Long, No. 98824-2",
@@ -19,11 +19,11 @@
   "legal_review": "pending",
   "formalization_review": "pending",
   "acceptance_criteria": [
-    "An identified Washington practitioner reviews sources, scope, exceptions, and competing interpretations.",
-    "A separate formalization reviewer checks types, premise mapping, and proof semantics.",
-    "Additional authentic matters are collected without inventing outcomes or exposing private records.",
-    "Practitioners compare review time, missed conditions, and update effort against a checklist.",
-    "A held-out evaluation separates related matters and provisions; this single-matter collection cannot establish generalization."
+    "Community contributors review source editions, scope, exceptions and competing interpretations; professional credentials are not required.",
+    "Separate, attributed reviews of legal fidelity and formalization are bound to exact artifact digests.",
+    "Collect additional authentic matters without inventing outcomes or publishing private records.",
+    "Measure reviewer effort and missed conditions against a source-based checklist.",
+    "Hold out distinct litigation matters and source families; the current single-matter fixtures do not measure generalization."
   ],
   "human_evaluation": {
     "review_minutes": null,

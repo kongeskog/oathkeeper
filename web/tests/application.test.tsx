@@ -132,7 +132,7 @@ describe('documentation and code reference',()=>{
   test('the table of contents preserves the document route',async()=>{
     const user=userEvent.setup();open('/docs/language')
     await user.click(screen.getByRole('link',{name:'Kernel-enforced types'}))
-    expect(await screen.findByRole('heading',{name:'Language specification 0.4',level:1})).toBeVisible()
+    expect(await screen.findByRole('heading',{name:'Language specification 0.5',level:1})).toBeVisible()
     expect(window.location.hash).toBe('#/docs/language?section=kernel-enforced-types')
     expect(document.getElementById('doc-kernel-enforced-types')).toBeTruthy()
   })
@@ -176,7 +176,7 @@ describe('source integrity and verified fixtures',()=>{
   })
   test('all fixture roots retain their Rust-generated baseline and expose assumptions',()=>{
     expect(records).toHaveLength(5)
-    for(const record of records){expect(record.report.kernel_version).toBe('0.4.1');expect(traceDependencies(record.bundle.proof).get(record.bundle.query.root)).toBe(true);expect(applicationSteps(record).length).toBeGreaterThan(0);expect(record.report.unreviewed_authority_assessment_count).toBeGreaterThan(0)}
+    for(const record of records){expect(record.report.kernel_version).toBe('0.5.0');expect(traceDependencies(record.bundle.proof).get(record.bundle.query.root)).toBe(true);expect(applicationSteps(record).length).toBeGreaterThan(0);expect(record.report.unreviewed_authority_assessment_count).toBeGreaterThan(0)}
     const trace=traceDependencies(records[0].bundle.proof,'disproportionality-finding');expect(trace.get('fine')).toBe(true);expect(trace.get('violation')).toBe(false)
   })
   test('structured filtering and source display remain safe',()=>{

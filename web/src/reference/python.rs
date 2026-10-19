@@ -56,6 +56,7 @@ fn oathkeeper(module: &Bound<'_, PyModule>) -> PyResult<()> {
     module.add_function(wrap_pyfunction!(analyze_file, module)?)?;
     module.add_function(wrap_pyfunction!(check_context, module)?)?;
     module.add_function(wrap_pyfunction!(assess_backdoor_roth, module)?)?;
+    module.add_function(wrap_pyfunction!(assess_policy, module)?)?;
     module.add("__version__", env!("CARGO_PKG_VERSION"))?;
     Ok(())
 }
@@ -94,4 +95,10 @@ fn analyze_file(path: &str) -> PyResult<String> {
 #[pyfunction]
 fn assess_backdoor_roth(input_json: &str) -> PyResult<String> {
     oathkeeper_core::tax::assess_json(input_json).map_err(|e| PyValueError::new_err(e.to_string()))
+}
+
+#[pyfunction]
+fn assess_policy(request_json: &str) -> PyResult<String> {
+    oathkeeper_core::policy::policy_json(request_json)
+        .map_err(|e| PyValueError::new_err(e.to_string()))
 }

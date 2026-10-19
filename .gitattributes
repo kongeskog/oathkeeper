@@ -5,3 +5,6 @@
 *.oath -text whitespace=-blank-at-eof
 lawlib/**/sources/* -text
 crates/oathkeeper-core/tests/fixtures/** -text
+
+# The vendored corpus lock binds every file byte, including JSON and Markdown.
+lawlib/** -text

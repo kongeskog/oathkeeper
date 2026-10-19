@@ -1,7 +1,7 @@
 {
-  "language": "oathkeeper/0.4",
+  "language": "oathkeeper/0.5",
   "package": "lawlib.us.tax.backdoor-roth-2025",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "jurisdictions": [
     {
       "id": "us",
@@ -2008,6 +2008,132 @@
             "unit": "usd_cent"
           }
         }
+      ]
+    }
+  ],
+  "coverage": [
+    {
+      "id": "coverage.tax.2025",
+      "question": "What follows for tax.allocation_estimate under this bounded, community-reviewable formalization?",
+      "conclusion_kind": "calculation",
+      "parameters": [
+        {
+          "name": "person",
+          "sort": {
+            "domain": "Taxpayer"
+          }
+        },
+        {
+          "name": "nontaxable",
+          "sort": {
+            "quantity": {
+              "unit": "usd_cent"
+            }
+          }
+        },
+        {
+          "name": "taxable",
+          "sort": {
+            "quantity": {
+              "unit": "usd_cent"
+            }
+          }
+        },
+        {
+          "name": "remaining",
+          "sort": {
+            "quantity": {
+              "unit": "usd_cent"
+            }
+          }
+        }
+      ],
+      "goal": {
+        "atom": "tax.allocation_estimate",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "variable",
+            "name": "person"
+          },
+          {
+            "kind": "variable",
+            "name": "nontaxable"
+          },
+          {
+            "kind": "variable",
+            "name": "taxable"
+          },
+          {
+            "kind": "variable",
+            "name": "remaining"
+          }
+        ]
+      },
+      "jurisdictions": [
+        "us"
+      ],
+      "forums": [
+        "us.federal.tax"
+      ],
+      "law_from": "2025-01-01T00:00:00Z",
+      "law_until": "2026-01-01T00:00:00Z",
+      "requirements": [
+        {
+          "id": "declared-scope",
+          "goal": {
+            "atom": "tax.scope2025",
+            "negative": false,
+            "arguments": [
+              {
+                "kind": "variable",
+                "name": "person"
+              }
+            ]
+          },
+          "explanation": "An explicit interpretation/scope premise; it remains an assumption unless independently established."
+        }
+      ],
+      "source_inventory": [
+        {
+          "source": {
+            "citation": "IRS Form 8606 (2025)",
+            "uri": "https://www.irs.gov/pub/irs-prior/f8606--2025.pdf",
+            "sha256": "748a2bf2ef45918eac8d48fab8b1958c8c0c24102b7d2103c78f6f92a69486ae"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        },
+        {
+          "source": {
+            "citation": "IRS Instructions for Form 8606 (2025)",
+            "uri": "https://www.irs.gov/pub/irs-prior/i8606--2025.pdf",
+            "sha256": "735fb7aebc36f6c933d0623a5ba680e7133b9fe62549ddd9652319fc8cac7e8f"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        },
+        {
+          "source": {
+            "citation": "IRS Publication 590-A (2025)",
+            "uri": "https://www.irs.gov/pub/irs-prior/p590a--2025.pdf",
+            "sha256": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        },
+        {
+          "source": {
+            "citation": "IRS Notice 2024-80, 2025 retirement contribution limits",
+            "uri": "https://www.irs.gov/pub/irs-drop/n-24-80.pdf",
+            "sha256": "cbf7843c9c25317455e0373ad70381a13b80ab3dd2ff777f05d1d84ed22e59ad"
+          },
+          "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+        }
+      ],
+      "exclusions": [
+        "Other tax or conversion years; state tax; contribution eligibility outside the declared scope; tax liability and completed tax-return filing.",
+        "Other distributions, withholding, RMDs, rollovers, inherited/SIMPLE conversions, correction transactions, treaties, and other excluded facts listed in README.md."
+      ],
+      "known_omissions": [
+        "Independent community review is pending. No corpus completeness or current citator assurance."
       ]
     }
   ]

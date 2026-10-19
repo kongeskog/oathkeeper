@@ -1,0 +1,16 @@
+name: fuzz smoke
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 8 * * 1'
+jobs:
+  fuzz:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@nightly
+      - run: cargo install cargo-fuzz --locked
+      - run: mkdir -p fuzz/corpus/parse_verify
+      - run: cargo run --locked -- normalize examples/hoa.oath > fuzz/corpus/parse_verify/valid-legacy.json
+      - run: cargo +nightly fuzz run parse_verify -- -max_total_time=60 -max_len=16384

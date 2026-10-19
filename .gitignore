@@ -4,3 +4,8 @@ __pycache__/
 *.so
 *.egg-info/
 .pytest_cache/
+
+*.key.pem
+.env
+.env.*
+!.env.example

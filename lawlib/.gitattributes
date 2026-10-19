@@ -1,0 +1,3 @@
+*.pdf binary
+*.oath -text whitespace=-blank-at-eof
+us/**/sources/* -text

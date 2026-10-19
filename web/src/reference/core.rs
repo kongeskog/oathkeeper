@@ -5,9 +5,13 @@ mod analysis;
 mod arguments;
 mod arithmetic;
 pub mod compiler;
+pub mod contracts;
+pub mod evaluation;
 mod kernel;
 mod model;
 mod oracles;
+pub mod policy;
+pub mod receipts;
 mod schema;
 pub mod tax;
 

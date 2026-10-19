@@ -1,6 +1,6 @@
-oathkeeper "0.4";
-case long-parking-evidence-review @ "0.4.0";
-import "../parking.oath" sha256 "4a3e94a08adc4b49420a558c4505c4fe92991b495973e1642065fb2d460d2b48";
+oathkeeper "0.5";
+case long-parking-evidence-review @ "0.5.0";
+import "../parking.oath" sha256 "8362375214409d65467b545ed0255082b512a5d7a8ab3176ab2a6dfc5e3c0533";
 
 constant long.98824-2: Matter;
 constant long.truck: Vehicle;
@@ -44,6 +44,7 @@ fact observed-duration: parking.over_72_hours(long.98824-2) {
 }
 
 query {
+  coverage "coverage.seattle.5";
   jurisdiction "us.wa.seattle";
   forum "us.wa.courts.state";
   event_at "2016-10-12";

@@ -31,7 +31,10 @@ pub(crate) fn retracted(bundle: &Bundle, kind: &EvidenceKind, id: &str) -> Resul
 }
 
 pub(crate) fn validate_evidence_protocols(bundle: &Bundle) -> Result<()> {
-    if bundle.language != "oathkeeper/0.4" {
+    if !matches!(
+        bundle.language.as_str(),
+        "oathkeeper/0.4" | "oathkeeper/0.5"
+    ) {
         return Ok(());
     }
     unique(&bundle.retractions, |r| &r.id)?;
@@ -131,7 +134,10 @@ pub(crate) fn validate_evidence_protocols(bundle: &Bundle) -> Result<()> {
 
 pub fn assess_oracles(bundle: &Bundle) -> Result<Vec<OracleAssessment>> {
     require(
-        bundle.language == "oathkeeper/0.4",
+        matches!(
+            bundle.language.as_str(),
+            "oathkeeper/0.4" | "oathkeeper/0.5"
+        ),
         "oracle protocol assessment requires oathkeeper/0.4",
     )?;
     validate_context(bundle)?;

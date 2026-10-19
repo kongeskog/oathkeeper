@@ -1,9 +1,9 @@
 {
-  "language": "oathkeeper/0.4",
-  "kernel_version": "0.4.1",
+  "language": "oathkeeper/0.5",
+  "kernel_version": "0.5.0",
   "package": "lawlib.us.tax.shank-basis",
-  "package_version": "0.1.0",
-  "bundle_sha256": "fa0ddb38cd20cca05335c4c8dc86e32537ee8d4a1dcc5218699720fe47907093",
+  "package_version": "0.2.0",
+  "bundle_sha256": "79c0689dcad2718ae3365d5aa7ea7156c2c660fe276c22ebfcfdfb8322a82edd",
   "status": "derivation_verified",
   "goal": {
     "atom": "shank.taxable_distribution",

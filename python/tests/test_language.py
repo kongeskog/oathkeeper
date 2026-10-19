@@ -12,7 +12,7 @@ class LanguageTests(unittest.TestCase):
         path = str(BASE / "cases/long-excessive-fines.case.oath")
         artifact = json.loads(oathkeeper.compile_file(path))
         report = json.loads(oathkeeper.verify_file(path))
-        self.assertEqual(artifact["module"]["language"], "oathkeeper/0.4")
+        self.assertEqual(artifact["module"]["language"], "oathkeeper/0.5")
         self.assertEqual(len(artifact["lock"]), 5)
         self.assertEqual(len(artifact["module"]["rules"]), 14)
         self.assertGreater(report["judicial_finding_count"], 0)

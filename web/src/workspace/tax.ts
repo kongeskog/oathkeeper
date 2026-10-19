@@ -1,3 +1,4 @@
+import type { CoverageResult } from './Coverage'
 import { useEffect, useState } from 'react'
 import data from '@/data/tax.json'
 import type { CaseRecord, LawModule, ProofStep } from '@/types'
@@ -9,6 +10,7 @@ export interface TaxInput {
   dec31_ira_value_cents:number|null; roth_conversion_cents:number|null
 }
 export interface TaxResult {
+  coverage?:CoverageResult|null
   status:'calculated'|'needs_information'|'outside_scope'; module_snapshot_sha256:string; module_version:string; scope:string; rounding:string; review_status:string
   issues:{field:string;message:string}[]
   allocation:null|{annual_limit_cents:number;total_basis_cents:number;available_basis_cents:number;aggregate_pool_cents:number;fraction_numerator_cents:number;fraction_denominator_cents:number;nontaxable_conversion_cents:number;taxable_conversion_cents:number;remaining_basis_cents:number}
@@ -40,7 +42,7 @@ export function useTaxAssessment(request:string|null) {
     const timeout=setTimeout(()=>{worker?.terminate();if(active)setState({key:request,error:'Calculation exceeded 20 seconds. Retry or use the CLI.'})},20000)
     setState({key:request})
     try {
-      worker=new Worker('/assets/tax-worker.js?v=0.4.1',{type:'module'})
+      worker=new Worker('/assets/tax-worker.js?v=0.5.0',{type:'module'})
       worker.onmessage=(event:MessageEvent<{result?:TaxResult;error?:string}>)=>{if(active){clearTimeout(timeout);setState({key:request,...event.data});worker?.terminate()}}
       worker.onerror=()=>{if(active){clearTimeout(timeout);setState({key:request,error:'The Rust WebAssembly worker could not start. Retry or run the downloadable scenario with the CLI.'});worker?.terminate()}}
       worker.postMessage({input:request})

@@ -11,7 +11,7 @@ The kernel can verify derivations under a frozen task. This is useful infrastruc
 
 ## Freeze the task
 
-The host fixes rules, sources, facts, times, scope, oracle agreements and responses, and the goal. The model submits only proof steps. `examples/evaluate_proof.py` rejects replacement contexts and checks the host context before evaluating a candidate. A reference proof is optional. If supplied, it must itself verify.
+The host fixes rules, sources, facts, times, scope, oracle agreements and responses, and the goal. The model submits only proof steps and, when required by the host, scope-condition proofs. `examples/evaluate_proof.py` calls the shared Rust frozen-task API. It rejects replacement contexts, pins the entire task and policy, and checks host input before evaluating a candidate. The expected task digest must be stored by the evaluator, separately from model submissions. A reference proof is optional. If supplied, it must itself verify.
 
 The reward is binary: 1 for a checked derivation, 0 for a rejected candidate. There is no oracle-count penalty. Penalizing honest subjective dependencies would encourage relabeling them as facts. Hosts may explicitly exclude oracle-dependent tasks as a task-selection policy, not as a correctness score.
 
@@ -23,4 +23,10 @@ No RL model has been trained. Timings are measurements of this run, not general 
 
 ## Evaluation design
 
-Split future datasets by litigation matter, source family, and amendment lineage, rather than random proof files. Freeze editions and clocks. Keep held-out cases distinct from cited findings and oracle training material. Compare deterministic proof search and a lawyer-written checklist before claiming an LLM benefit. Evaluate unsupported conclusions, missed counterarguments, evidence leakage, and search truncation separately.
+Split future datasets by litigation matter, source family, and amendment lineage, rather than random proof files. Freeze editions and clocks. Keep held-out cases distinct from cited findings and oracle training material. Compare deterministic proof search and an independently reviewed source-based checklist before claiming an LLM benefit. Evaluate unsupported conclusions, missed counterarguments, evidence leakage, and search truncation separately.
+
+## Coverage and trust policy
+
+Use `--require-coverage` for tasks intended to prove the declared scope as well as the main claim. A plain derivation task does not check scope. Host-owned rules, evidence, interpretation selection, oracle procedures/responses and policy must be inaccessible to candidate mutation. Do not derive the expected digest from a candidate-supplied task.
+
+Evidence receipts can be authenticated before freezing a task, with a host trust store and externally pinned journal head. Authentication and factual truth remain distinct. The dataset grouping manifest in lawlib prevents overlapping matters, source families and amendment lineages across splits. The current held-out split is empty; legal generalization remains unmeasured.

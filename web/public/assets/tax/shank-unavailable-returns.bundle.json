@@ -1,7 +1,7 @@
 {
-  "language": "oathkeeper/0.4",
+  "language": "oathkeeper/0.5",
   "package": "lawlib.us.tax.shank-basis",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "jurisdictions": [
     {
       "id": "us",

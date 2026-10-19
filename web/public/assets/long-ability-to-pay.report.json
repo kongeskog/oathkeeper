@@ -1,9 +1,9 @@
 {
-  "language": "oathkeeper/0.4",
-  "kernel_version": "0.4.1",
+  "language": "oathkeeper/0.5",
+  "kernel_version": "0.5.0",
   "package": "lawlib.us.wa.seattle.parking.long",
-  "package_version": "0.4.0",
-  "bundle_sha256": "1323820fae33eac66fff40c771c4e5c08f0d56cc1d78e3f2adf5562bff524ff9",
+  "package_version": "0.5.0",
+  "bundle_sha256": "69cf4d0da153102f5164af9800a46936e47112cc82eebd2a5bb695cae1186218",
   "status": "derivation_verified",
   "goal": {
     "atom": "analysis.consider_ability_to_pay",

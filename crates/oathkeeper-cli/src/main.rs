@@ -25,6 +25,13 @@ fn is_source(input: &str) -> bool {
 }
 fn run() -> Result<(), Box<dyn std::error::Error>> {
     let args: Vec<String> = env::args().skip(1).collect();
+    if args.len() == 2 && args[0] == "policy" {
+        println!(
+            "{}",
+            oathkeeper_core::policy::policy_json(&fs::read_to_string(&args[1])?)?
+        );
+        return Ok(());
+    }
     if args.len() == 2 && args[0] == "tax-backdoor-roth" {
         println!(
             "{}",
@@ -72,7 +79,7 @@ fn run() -> Result<(), Box<dyn std::error::Error>> {
         );
         return Ok(());
     } else {
-        return Err("usage: oathkeeper tax-backdoor-roth <scenario.json>\n       oathkeeper compile <module.oath|case.oath>\n       oathkeeper <analyze|verify|normalize> <case.oath|bundle.json|legacy.toml>\n       oathkeeper <verify-case|normalize-case> <module.json> <case.json>\n       oathkeeper compare-arguments <argument.oath|json> <counterargument.oath|json>".into());
+        return Err("usage: oathkeeper policy <request.json>\n       oathkeeper tax-backdoor-roth <scenario.json>\n       oathkeeper compile <module.oath|case.oath>\n       oathkeeper <analyze|verify|normalize> <case.oath|bundle.json|legacy.toml>\n       oathkeeper <verify-case|normalize-case> <module.json> <case.json>\n       oathkeeper compare-arguments <argument.oath|json> <counterargument.oath|json>".into());
     };
     let report = verify(&bundle)?;
     let output = if args[0].starts_with("verify") {

@@ -1,8 +1,8 @@
 {
   "module": {
-    "language": "oathkeeper/0.4",
+    "language": "oathkeeper/0.5",
     "package": "lawlib.us.tax.backdoor-roth-2025",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "jurisdictions": [
       {
         "id": "us",
@@ -2011,6 +2011,132 @@
           }
         ]
       }
+    ],
+    "coverage": [
+      {
+        "id": "coverage.tax.2025",
+        "question": "What follows for tax.allocation_estimate under this bounded, community-reviewable formalization?",
+        "conclusion_kind": "calculation",
+        "parameters": [
+          {
+            "name": "person",
+            "sort": {
+              "domain": "Taxpayer"
+            }
+          },
+          {
+            "name": "nontaxable",
+            "sort": {
+              "quantity": {
+                "unit": "usd_cent"
+              }
+            }
+          },
+          {
+            "name": "taxable",
+            "sort": {
+              "quantity": {
+                "unit": "usd_cent"
+              }
+            }
+          },
+          {
+            "name": "remaining",
+            "sort": {
+              "quantity": {
+                "unit": "usd_cent"
+              }
+            }
+          }
+        ],
+        "goal": {
+          "atom": "tax.allocation_estimate",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "person"
+            },
+            {
+              "kind": "variable",
+              "name": "nontaxable"
+            },
+            {
+              "kind": "variable",
+              "name": "taxable"
+            },
+            {
+              "kind": "variable",
+              "name": "remaining"
+            }
+          ]
+        },
+        "jurisdictions": [
+          "us"
+        ],
+        "forums": [
+          "us.federal.tax"
+        ],
+        "law_from": "2025-01-01T00:00:00Z",
+        "law_until": "2026-01-01T00:00:00Z",
+        "requirements": [
+          {
+            "id": "declared-scope",
+            "goal": {
+              "atom": "tax.scope2025",
+              "negative": false,
+              "arguments": [
+                {
+                  "kind": "variable",
+                  "name": "person"
+                }
+              ]
+            },
+            "explanation": "An explicit interpretation/scope premise; it remains an assumption unless independently established."
+          }
+        ],
+        "source_inventory": [
+          {
+            "source": {
+              "citation": "IRS Form 8606 (2025)",
+              "uri": "https://www.irs.gov/pub/irs-prior/f8606--2025.pdf",
+              "sha256": "748a2bf2ef45918eac8d48fab8b1958c8c0c24102b7d2103c78f6f92a69486ae"
+            },
+            "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+          },
+          {
+            "source": {
+              "citation": "IRS Instructions for Form 8606 (2025)",
+              "uri": "https://www.irs.gov/pub/irs-prior/i8606--2025.pdf",
+              "sha256": "735fb7aebc36f6c933d0623a5ba680e7133b9fe62549ddd9652319fc8cac7e8f"
+            },
+            "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+          },
+          {
+            "source": {
+              "citation": "IRS Publication 590-A (2025)",
+              "uri": "https://www.irs.gov/pub/irs-prior/p590a--2025.pdf",
+              "sha256": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7"
+            },
+            "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+          },
+          {
+            "source": {
+              "citation": "IRS Notice 2024-80, 2025 retirement contribution limits",
+              "uri": "https://www.irs.gov/pub/irs-drop/n-24-80.pdf",
+              "sha256": "cbf7843c9c25317455e0373ad70381a13b80ab3dd2ff777f05d1d84ed22e59ad"
+            },
+            "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+          }
+        ],
+        "exclusions": [
+          "Other tax or conversion years; state tax; contribution eligibility outside the declared scope; tax liability and completed tax-return filing.",
+          "Other distributions, withholding, RMDs, rollovers, inherited/SIMPLE conversions, correction transactions, treaties, and other excluded facts listed in README.md."
+        ],
+        "known_omissions": [
+          "Independent community review is pending. No corpus completeness or current citator assurance."
+        ]
+      }
     ]
   },
   "rule_sources": {
@@ -2079,8 +2205,8 @@
   ],
   "review": {
     "format": "oathkeeper.tax-review/1",
-    "snapshot_sha256": "43c70a8f07532d563074d986d1a9b9b834f654450aa0d0ad414eff0b0df7e2d5",
-    "precedent_snapshot_sha256": "79b738d875ef8f3dbfe64637340a424e5a1a5e9fc4192e641016909023d7c438",
+    "snapshot_sha256": "b9faf0192a203d6a501ae5a555a2802e358e4a55c95322995186e371905a1f56",
+    "precedent_snapshot_sha256": "d624a45cda977b70f1084b44e9a8f9bba63cbd0ea7621cd435af0a445e3167d2",
     "legal_review": {
       "status": "pending",
       "reviewer": null
@@ -2091,9 +2217,9 @@
     },
     "source_authenticity": "official URLs retrieved and bytes pinned; no digital-signature verification",
     "criteria": [
-      "Independent tax professional checks 2025 limits, contribution timing, scope exclusions, IRA aggregation and basis treatment against pinned IRS guidance and controlling law.",
+      "Community reviewer checks 2025 limits, contribution timing, scope exclusions, IRA aggregation and basis treatment against pinned IRS guidance and controlling law.",
       "Review exact-rational allocation and final-cent rounding against Form 8606 filing conventions; outputs remain estimates.",
-      "Independent formalization reviewer checks scope premises, arithmetic relations, witness construction, units and temporal applicability.",
+      "Separate community formalization review checks scope premises, arithmetic relations, witness construction, units and temporal applicability.",
       "Check Shank pinpoints and actual findings; no claim that the decision approved a Roth conversion or that unsupported basis must be accepted."
     ],
     "limitations": [
@@ -2114,9 +2240,9 @@
     {
       "name": "shank-2018",
       "bundle": {
-        "language": "oathkeeper/0.4",
+        "language": "oathkeeper/0.5",
         "package": "lawlib.us.tax.shank-basis",
-        "version": "0.1.0",
+        "version": "0.2.0",
         "jurisdictions": [
           {
             "id": "us",
@@ -2792,11 +2918,11 @@
         "constants": []
       },
       "report": {
-        "language": "oathkeeper/0.4",
-        "kernel_version": "0.4.1",
+        "language": "oathkeeper/0.5",
+        "kernel_version": "0.5.0",
         "package": "lawlib.us.tax.shank-basis",
-        "package_version": "0.1.0",
-        "bundle_sha256": "fa0ddb38cd20cca05335c4c8dc86e32537ee8d4a1dcc5218699720fe47907093",
+        "package_version": "0.2.0",
+        "bundle_sha256": "79c0689dcad2718ae3365d5aa7ea7156c2c660fe276c22ebfcfdfb8322a82edd",
         "status": "derivation_verified",
         "goal": {
           "atom": "shank.taxable_distribution",
@@ -3009,9 +3135,9 @@
     {
       "name": "shank-unavailable-returns",
       "bundle": {
-        "language": "oathkeeper/0.4",
+        "language": "oathkeeper/0.5",
         "package": "lawlib.us.tax.shank-basis",
-        "version": "0.1.0",
+        "version": "0.2.0",
         "jurisdictions": [
           {
             "id": "us",
@@ -3651,11 +3777,11 @@
         "constants": []
       },
       "report": {
-        "language": "oathkeeper/0.4",
-        "kernel_version": "0.4.1",
+        "language": "oathkeeper/0.5",
+        "kernel_version": "0.5.0",
         "package": "lawlib.us.tax.shank-basis",
-        "package_version": "0.1.0",
-        "bundle_sha256": "ea72f0f27e33879b45d4cef24299a6f026092be537cbba6ba0ea5ceabf2c1bc0",
+        "package_version": "0.2.0",
+        "bundle_sha256": "db66b3b8ffff25b24c327e4a6a2702db504924cab200441033692c12968e637a",
         "status": "derivation_verified",
         "goal": {
           "atom": "shank.nonzero_basis_despite_unavailable_returns",
@@ -3872,8 +3998,8 @@
       },
       "baseline": {
         "status": "calculated",
-        "module_snapshot_sha256": "43c70a8f07532d563074d986d1a9b9b834f654450aa0d0ad414eff0b0df7e2d5",
-        "module_version": "0.1.0",
+        "module_snapshot_sha256": "b9faf0192a203d6a501ae5a555a2802e358e4a55c95322995186e371905a1f56",
+        "module_version": "0.2.0",
         "scope": "2025 U.S. federal calendar-year, own ordinary traditional IRA conversion; timely, valid, nondeductible regular contribution. Own taxable compensation only. Other regular IRA contributions are Roth contributions already independently determined eligible, not deductible traditional contributions. All own traditional, traditional SEP and traditional SIMPLE IRA year-end balances across custodians are aggregated; spouse IRAs and employer plans are excluded. No other IRA distributions, tax withholding from the conversion, RMD obligation, outstanding rollovers, rollovers into or out of traditional IRAs, special repayments, qualified charitable/HSA distributions, recharacterizations, excess corrections, inherited IRAs, SIMPLE conversions, annuity valuation adjustments, disaster relief, nonresident/treaty or community-property issues. Following-year contributions were designated for 2025 and made by April 15, 2026. Basis and account values are supplied assumptions, not authenticated records.",
         "rounding": "Exact capped pro-rata fraction; round the allocated amount once to cents, ties up. This is an allocation estimate, not a completed Form 8606. IRS decimal-ratio and filing rounding may differ.",
         "review_status": "independent_legal_and_formalization_review_pending",
@@ -3890,9 +4016,9 @@
           "remaining_basis_cents": 0
         },
         "certificate": {
-          "language": "oathkeeper/0.4",
+          "language": "oathkeeper/0.5",
           "package": "lawlib.us.tax.backdoor-roth-2025",
-          "version": "0.1.0",
+          "version": "0.2.0",
           "jurisdictions": [
             {
               "id": "us",
@@ -5733,7 +5859,8 @@
             "event_at": "2025-12-31",
             "authority_at": "2025-12-31T00:00:00Z",
             "purpose": "synthetic_test",
-            "temporal_rationale": "Calendar-year 2025 aggregate calculation under pinned final 2025 IRS guidance, reconstructed at the supplied knowledge cutoff. December 31 is the aggregation date, not an asserted transaction date. Contribution designation and conversion calendar year are separate inputs."
+            "temporal_rationale": "Calendar-year 2025 aggregate calculation under pinned final 2025 IRS guidance, reconstructed at the supplied knowledge cutoff. December 31 is the aggregation date, not an asserted transaction date. Contribution designation and conversion calendar year are separate inputs.",
+            "coverage": "coverage.tax.2025"
           },
           "proof": [
             {
@@ -7235,14 +7362,140 @@
                 "domain": "Taxpayer"
               }
             }
+          ],
+          "coverage": [
+            {
+              "id": "coverage.tax.2025",
+              "question": "What follows for tax.allocation_estimate under this bounded, community-reviewable formalization?",
+              "conclusion_kind": "calculation",
+              "parameters": [
+                {
+                  "name": "person",
+                  "sort": {
+                    "domain": "Taxpayer"
+                  }
+                },
+                {
+                  "name": "nontaxable",
+                  "sort": {
+                    "quantity": {
+                      "unit": "usd_cent"
+                    }
+                  }
+                },
+                {
+                  "name": "taxable",
+                  "sort": {
+                    "quantity": {
+                      "unit": "usd_cent"
+                    }
+                  }
+                },
+                {
+                  "name": "remaining",
+                  "sort": {
+                    "quantity": {
+                      "unit": "usd_cent"
+                    }
+                  }
+                }
+              ],
+              "goal": {
+                "atom": "tax.allocation_estimate",
+                "negative": false,
+                "arguments": [
+                  {
+                    "kind": "variable",
+                    "name": "person"
+                  },
+                  {
+                    "kind": "variable",
+                    "name": "nontaxable"
+                  },
+                  {
+                    "kind": "variable",
+                    "name": "taxable"
+                  },
+                  {
+                    "kind": "variable",
+                    "name": "remaining"
+                  }
+                ]
+              },
+              "jurisdictions": [
+                "us"
+              ],
+              "forums": [
+                "us.federal.tax"
+              ],
+              "law_from": "2025-01-01T00:00:00Z",
+              "law_until": "2026-01-01T00:00:00Z",
+              "requirements": [
+                {
+                  "id": "declared-scope",
+                  "goal": {
+                    "atom": "tax.scope2025",
+                    "negative": false,
+                    "arguments": [
+                      {
+                        "kind": "variable",
+                        "name": "person"
+                      }
+                    ]
+                  },
+                  "explanation": "An explicit interpretation/scope premise; it remains an assumption unless independently established."
+                }
+              ],
+              "source_inventory": [
+                {
+                  "source": {
+                    "citation": "IRS Form 8606 (2025)",
+                    "uri": "https://www.irs.gov/pub/irs-prior/f8606--2025.pdf",
+                    "sha256": "748a2bf2ef45918eac8d48fab8b1958c8c0c24102b7d2103c78f6f92a69486ae"
+                  },
+                  "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+                },
+                {
+                  "source": {
+                    "citation": "IRS Instructions for Form 8606 (2025)",
+                    "uri": "https://www.irs.gov/pub/irs-prior/i8606--2025.pdf",
+                    "sha256": "735fb7aebc36f6c933d0623a5ba680e7133b9fe62549ddd9652319fc8cac7e8f"
+                  },
+                  "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+                },
+                {
+                  "source": {
+                    "citation": "IRS Publication 590-A (2025)",
+                    "uri": "https://www.irs.gov/pub/irs-prior/p590a--2025.pdf",
+                    "sha256": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7"
+                  },
+                  "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+                },
+                {
+                  "source": {
+                    "citation": "IRS Notice 2024-80, 2025 retirement contribution limits",
+                    "uri": "https://www.irs.gov/pub/irs-drop/n-24-80.pdf",
+                    "sha256": "cbf7843c9c25317455e0373ad70381a13b80ab3dd2ff777f05d1d84ed22e59ad"
+                  },
+                  "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+                }
+              ],
+              "exclusions": [
+                "Other tax or conversion years; state tax; contribution eligibility outside the declared scope; tax liability and completed tax-return filing.",
+                "Other distributions, withholding, RMDs, rollovers, inherited/SIMPLE conversions, correction transactions, treaties, and other excluded facts listed in README.md."
+              ],
+              "known_omissions": [
+                "Independent community review is pending. No corpus completeness or current citator assurance."
+              ]
+            }
           ]
         },
         "verification": {
-          "language": "oathkeeper/0.4",
-          "kernel_version": "0.4.1",
+          "language": "oathkeeper/0.5",
+          "kernel_version": "0.5.0",
           "package": "lawlib.us.tax.backdoor-roth-2025",
-          "package_version": "0.1.0",
-          "bundle_sha256": "6de32701af3a8fa7188d6cb92749a9ed045023738c2a7905672309f82bdad79b",
+          "package_version": "0.2.0",
+          "bundle_sha256": "c8636b2d5f408102a69bb136c01f434c016da7f160756c3fb4b53cb49ccf1c95",
           "status": "derivation_verified",
           "goal": {
             "atom": "tax.allocation_estimate",
@@ -7810,6 +8063,262 @@
           "event_at": "2025-12-31",
           "authority_at": "2025-12-31T00:00:00Z",
           "purpose": "synthetic_test"
+        },
+        "coverage": {
+          "status": "conditions_supported",
+          "context_sha256": "6a90dc9ea48010e289004c90a85f391b3ce10b96028708954e6ba33fbeb36c0c",
+          "contract": {
+            "id": "coverage.tax.2025",
+            "question": "What follows for tax.allocation_estimate under this bounded, community-reviewable formalization?",
+            "conclusion_kind": "calculation",
+            "parameters": [
+              {
+                "name": "person",
+                "sort": {
+                  "domain": "Taxpayer"
+                }
+              },
+              {
+                "name": "nontaxable",
+                "sort": {
+                  "quantity": {
+                    "unit": "usd_cent"
+                  }
+                }
+              },
+              {
+                "name": "taxable",
+                "sort": {
+                  "quantity": {
+                    "unit": "usd_cent"
+                  }
+                }
+              },
+              {
+                "name": "remaining",
+                "sort": {
+                  "quantity": {
+                    "unit": "usd_cent"
+                  }
+                }
+              }
+            ],
+            "goal": {
+              "atom": "tax.allocation_estimate",
+              "negative": false,
+              "arguments": [
+                {
+                  "kind": "variable",
+                  "name": "person"
+                },
+                {
+                  "kind": "variable",
+                  "name": "nontaxable"
+                },
+                {
+                  "kind": "variable",
+                  "name": "taxable"
+                },
+                {
+                  "kind": "variable",
+                  "name": "remaining"
+                }
+              ]
+            },
+            "jurisdictions": [
+              "us"
+            ],
+            "forums": [
+              "us.federal.tax"
+            ],
+            "law_from": "2025-01-01T00:00:00Z",
+            "law_until": "2026-01-01T00:00:00Z",
+            "requirements": [
+              {
+                "id": "declared-scope",
+                "goal": {
+                  "atom": "tax.scope2025",
+                  "negative": false,
+                  "arguments": [
+                    {
+                      "kind": "variable",
+                      "name": "person"
+                    }
+                  ]
+                },
+                "explanation": "An explicit interpretation/scope premise; it remains an assumption unless independently established."
+              }
+            ],
+            "source_inventory": [
+              {
+                "source": {
+                  "citation": "IRS Form 8606 (2025)",
+                  "uri": "https://www.irs.gov/pub/irs-prior/f8606--2025.pdf",
+                  "sha256": "748a2bf2ef45918eac8d48fab8b1958c8c0c24102b7d2103c78f6f92a69486ae"
+                },
+                "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+              },
+              {
+                "source": {
+                  "citation": "IRS Instructions for Form 8606 (2025)",
+                  "uri": "https://www.irs.gov/pub/irs-prior/i8606--2025.pdf",
+                  "sha256": "735fb7aebc36f6c933d0623a5ba680e7133b9fe62549ddd9652319fc8cac7e8f"
+                },
+                "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+              },
+              {
+                "source": {
+                  "citation": "IRS Publication 590-A (2025)",
+                  "uri": "https://www.irs.gov/pub/irs-prior/p590a--2025.pdf",
+                  "sha256": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7"
+                },
+                "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+              },
+              {
+                "source": {
+                  "citation": "IRS Notice 2024-80, 2025 retirement contribution limits",
+                  "uri": "https://www.irs.gov/pub/irs-drop/n-24-80.pdf",
+                  "sha256": "cbf7843c9c25317455e0373ad70381a13b80ab3dd2ff777f05d1d84ed22e59ad"
+                },
+                "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+              }
+            ],
+            "exclusions": [
+              "Other tax or conversion years; state tax; contribution eligibility outside the declared scope; tax liability and completed tax-return filing.",
+              "Other distributions, withholding, RMDs, rollovers, inherited/SIMPLE conversions, correction transactions, treaties, and other excluded facts listed in README.md."
+            ],
+            "known_omissions": [
+              "Independent community review is pending. No corpus completeness or current citator assurance."
+            ]
+          },
+          "conditions": [
+            {
+              "id": "declared-scope",
+              "goal": {
+                "atom": "tax.scope2025",
+                "negative": false,
+                "arguments": [
+                  {
+                    "kind": "symbol",
+                    "value": "taxpayer.scenario"
+                  }
+                ]
+              },
+              "status": "supported",
+              "search_complete": true,
+              "supporting": [
+                {
+                  "proof": [
+                    {
+                      "id": "allocation-summary",
+                      "claim": {
+                        "atom": "tax.scope2025",
+                        "negative": false,
+                        "arguments": [
+                          {
+                            "kind": "symbol",
+                            "value": "taxpayer.scenario"
+                          }
+                        ]
+                      },
+                      "reason": {
+                        "kind": "fact",
+                        "fact": "input.scope2025"
+                      }
+                    }
+                  ],
+                  "report": {
+                    "language": "oathkeeper/0.5",
+                    "kernel_version": "0.5.0",
+                    "package": "lawlib.us.tax.backdoor-roth-2025",
+                    "package_version": "0.2.0",
+                    "bundle_sha256": "6ab0d455d3d2a0eb9b07dce8a842fad229e95784c890529c9d502a2a65ee9b67",
+                    "status": "derivation_verified",
+                    "goal": {
+                      "atom": "tax.scope2025",
+                      "negative": false,
+                      "arguments": [
+                        {
+                          "kind": "symbol",
+                          "value": "taxpayer.scenario"
+                        }
+                      ]
+                    },
+                    "jurisdiction": "us",
+                    "as_of": "2025-12-31T00:00:00Z",
+                    "known_at": "2026-10-18T23:21:21Z",
+                    "applicable_jurisdictions": [
+                      "us"
+                    ],
+                    "rules_used": [],
+                    "facts_used": [
+                      "input.scope2025"
+                    ],
+                    "oracle_assumptions": [],
+                    "oracle_count": 0,
+                    "assurance": {
+                      "derivation": "checked_under_supplied_assumptions",
+                      "legal_fidelity": "not_established_by_kernel",
+                      "corpus_completeness": "not_established",
+                      "evidence_authenticity": "not_authenticated",
+                      "oracle_authentication": "not_authenticated",
+                      "counterargument_search": "not_performed_by_verify",
+                      "judicial_acceptance": "not_determined",
+                      "authority_reviews_reported": 0,
+                      "interpretation_assumptions": 0,
+                      "party_allegations": 0,
+                      "stipulated_facts": 0,
+                      "limitations": [
+                        "All derivations are conditional on the supplied formalization and evidence.",
+                        "Review labels and provider identities are supplied assertions, not authenticated credentials.",
+                        "A successful derivation does not exclude a counterargument or establish a remedy."
+                      ]
+                    },
+                    "authorities_used": [],
+                    "authority_assessments_used": [],
+                    "fact_assumptions": [
+                      {
+                        "id": "input.scope2025",
+                        "claim": {
+                          "atom": "tax.scope2025",
+                          "negative": false,
+                          "arguments": [
+                            {
+                              "kind": "symbol",
+                              "value": "taxpayer.scenario"
+                            }
+                          ]
+                        },
+                        "evidence_sha256": "49f8f4a14af7355ec751a45727add99ff7e53b3f8b3258373d31d727bc8aea70",
+                        "recorded_at": "2026-10-18T23:21:21Z",
+                        "basis": {
+                          "kind": "scope_assumption",
+                          "source": {
+                            "citation": "Caller-supplied scenario; not authenticated tax records",
+                            "uri": "urn:oathkeeper:tax-input:49f8f4a14af7355ec751a45727add99ff7e53b3f8b3258373d31d727bc8aea70",
+                            "sha256": "49f8f4a14af7355ec751a45727add99ff7e53b3f8b3258373d31d727bc8aea70"
+                          },
+                          "pinpoint": "Input field scope2025",
+                          "explanation": "2025 U.S. federal calendar-year, own ordinary traditional IRA conversion; timely, valid, nondeductible regular contribution. Own taxable compensation only. Other regular IRA contributions are Roth contributions already independently determined eligible, not deductible traditional contributions. All own traditional, traditional SEP and traditional SIMPLE IRA year-end balances across custodians are aggregated; spouse IRAs and employer plans are excluded. No other IRA distributions, tax withholding from the conversion, RMD obligation, outstanding rollovers, rollovers into or out of traditional IRAs, special repayments, qualified charitable/HSA distributions, recharacterizations, excess corrections, inherited IRAs, SIMPLE conversions, annuity valuation adjustments, disaster relief, nonresident/treaty or community-property issues. Following-year contributions were designated for 2025 and made by April 15, 2026. Basis and account values are supplied assumptions, not authenticated records."
+                        }
+                      }
+                    ],
+                    "unreviewed_authority_assessment_count": 0,
+                    "scope_assumption_count": 1,
+                    "record_fact_count": 0,
+                    "judicial_finding_count": 0,
+                    "oracle_requests_used": [],
+                    "event_at": "2025-12-31",
+                    "authority_at": "2025-12-31T00:00:00Z",
+                    "purpose": "synthetic_test"
+                  }
+                }
+              ],
+              "opposing": []
+            }
+          ],
+          "reasons": [],
+          "completeness": "Declared bounded coverage; legal fidelity and completeness are not established."
         }
       }
     },
@@ -7832,8 +8341,8 @@
       },
       "baseline": {
         "status": "calculated",
-        "module_snapshot_sha256": "43c70a8f07532d563074d986d1a9b9b834f654450aa0d0ad414eff0b0df7e2d5",
-        "module_version": "0.1.0",
+        "module_snapshot_sha256": "b9faf0192a203d6a501ae5a555a2802e358e4a55c95322995186e371905a1f56",
+        "module_version": "0.2.0",
         "scope": "2025 U.S. federal calendar-year, own ordinary traditional IRA conversion; timely, valid, nondeductible regular contribution. Own taxable compensation only. Other regular IRA contributions are Roth contributions already independently determined eligible, not deductible traditional contributions. All own traditional, traditional SEP and traditional SIMPLE IRA year-end balances across custodians are aggregated; spouse IRAs and employer plans are excluded. No other IRA distributions, tax withholding from the conversion, RMD obligation, outstanding rollovers, rollovers into or out of traditional IRAs, special repayments, qualified charitable/HSA distributions, recharacterizations, excess corrections, inherited IRAs, SIMPLE conversions, annuity valuation adjustments, disaster relief, nonresident/treaty or community-property issues. Following-year contributions were designated for 2025 and made by April 15, 2026. Basis and account values are supplied assumptions, not authenticated records.",
         "rounding": "Exact capped pro-rata fraction; round the allocated amount once to cents, ties up. This is an allocation estimate, not a completed Form 8606. IRS decimal-ratio and filing rounding may differ.",
         "review_status": "independent_legal_and_formalization_review_pending",
@@ -7850,9 +8359,9 @@
           "remaining_basis_cents": 630000
         },
         "certificate": {
-          "language": "oathkeeper/0.4",
+          "language": "oathkeeper/0.5",
           "package": "lawlib.us.tax.backdoor-roth-2025",
-          "version": "0.1.0",
+          "version": "0.2.0",
           "jurisdictions": [
             {
               "id": "us",
@@ -9693,7 +10202,8 @@
             "event_at": "2025-12-31",
             "authority_at": "2025-12-31T00:00:00Z",
             "purpose": "synthetic_test",
-            "temporal_rationale": "Calendar-year 2025 aggregate calculation under pinned final 2025 IRS guidance, reconstructed at the supplied knowledge cutoff. December 31 is the aggregation date, not an asserted transaction date. Contribution designation and conversion calendar year are separate inputs."
+            "temporal_rationale": "Calendar-year 2025 aggregate calculation under pinned final 2025 IRS guidance, reconstructed at the supplied knowledge cutoff. December 31 is the aggregation date, not an asserted transaction date. Contribution designation and conversion calendar year are separate inputs.",
+            "coverage": "coverage.tax.2025"
           },
           "proof": [
             {
@@ -11218,14 +11728,140 @@
                 "domain": "Taxpayer"
               }
             }
+          ],
+          "coverage": [
+            {
+              "id": "coverage.tax.2025",
+              "question": "What follows for tax.allocation_estimate under this bounded, community-reviewable formalization?",
+              "conclusion_kind": "calculation",
+              "parameters": [
+                {
+                  "name": "person",
+                  "sort": {
+                    "domain": "Taxpayer"
+                  }
+                },
+                {
+                  "name": "nontaxable",
+                  "sort": {
+                    "quantity": {
+                      "unit": "usd_cent"
+                    }
+                  }
+                },
+                {
+                  "name": "taxable",
+                  "sort": {
+                    "quantity": {
+                      "unit": "usd_cent"
+                    }
+                  }
+                },
+                {
+                  "name": "remaining",
+                  "sort": {
+                    "quantity": {
+                      "unit": "usd_cent"
+                    }
+                  }
+                }
+              ],
+              "goal": {
+                "atom": "tax.allocation_estimate",
+                "negative": false,
+                "arguments": [
+                  {
+                    "kind": "variable",
+                    "name": "person"
+                  },
+                  {
+                    "kind": "variable",
+                    "name": "nontaxable"
+                  },
+                  {
+                    "kind": "variable",
+                    "name": "taxable"
+                  },
+                  {
+                    "kind": "variable",
+                    "name": "remaining"
+                  }
+                ]
+              },
+              "jurisdictions": [
+                "us"
+              ],
+              "forums": [
+                "us.federal.tax"
+              ],
+              "law_from": "2025-01-01T00:00:00Z",
+              "law_until": "2026-01-01T00:00:00Z",
+              "requirements": [
+                {
+                  "id": "declared-scope",
+                  "goal": {
+                    "atom": "tax.scope2025",
+                    "negative": false,
+                    "arguments": [
+                      {
+                        "kind": "variable",
+                        "name": "person"
+                      }
+                    ]
+                  },
+                  "explanation": "An explicit interpretation/scope premise; it remains an assumption unless independently established."
+                }
+              ],
+              "source_inventory": [
+                {
+                  "source": {
+                    "citation": "IRS Form 8606 (2025)",
+                    "uri": "https://www.irs.gov/pub/irs-prior/f8606--2025.pdf",
+                    "sha256": "748a2bf2ef45918eac8d48fab8b1958c8c0c24102b7d2103c78f6f92a69486ae"
+                  },
+                  "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+                },
+                {
+                  "source": {
+                    "citation": "IRS Instructions for Form 8606 (2025)",
+                    "uri": "https://www.irs.gov/pub/irs-prior/i8606--2025.pdf",
+                    "sha256": "735fb7aebc36f6c933d0623a5ba680e7133b9fe62549ddd9652319fc8cac7e8f"
+                  },
+                  "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+                },
+                {
+                  "source": {
+                    "citation": "IRS Publication 590-A (2025)",
+                    "uri": "https://www.irs.gov/pub/irs-prior/p590a--2025.pdf",
+                    "sha256": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7"
+                  },
+                  "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+                },
+                {
+                  "source": {
+                    "citation": "IRS Notice 2024-80, 2025 retirement contribution limits",
+                    "uri": "https://www.irs.gov/pub/irs-drop/n-24-80.pdf",
+                    "sha256": "cbf7843c9c25317455e0373ad70381a13b80ab3dd2ff777f05d1d84ed22e59ad"
+                  },
+                  "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+                }
+              ],
+              "exclusions": [
+                "Other tax or conversion years; state tax; contribution eligibility outside the declared scope; tax liability and completed tax-return filing.",
+                "Other distributions, withholding, RMDs, rollovers, inherited/SIMPLE conversions, correction transactions, treaties, and other excluded facts listed in README.md."
+              ],
+              "known_omissions": [
+                "Independent community review is pending. No corpus completeness or current citator assurance."
+              ]
+            }
           ]
         },
         "verification": {
-          "language": "oathkeeper/0.4",
-          "kernel_version": "0.4.1",
+          "language": "oathkeeper/0.5",
+          "kernel_version": "0.5.0",
           "package": "lawlib.us.tax.backdoor-roth-2025",
-          "package_version": "0.1.0",
-          "bundle_sha256": "e4466d0c8f61366a5c6571e56e96a503241666cb36ac264137b7a3358bcdd94f",
+          "package_version": "0.2.0",
+          "bundle_sha256": "05584a6e37b158b37e11a1e969110144d20e1e6d597ec663a068df0371253803",
           "status": "derivation_verified",
           "goal": {
             "atom": "tax.allocation_estimate",
@@ -11793,6 +12429,262 @@
           "event_at": "2025-12-31",
           "authority_at": "2025-12-31T00:00:00Z",
           "purpose": "synthetic_test"
+        },
+        "coverage": {
+          "status": "conditions_supported",
+          "context_sha256": "6924e6bb2ee5dd7199224fb18ddd8f748a949719dd25221911215421ef14d91f",
+          "contract": {
+            "id": "coverage.tax.2025",
+            "question": "What follows for tax.allocation_estimate under this bounded, community-reviewable formalization?",
+            "conclusion_kind": "calculation",
+            "parameters": [
+              {
+                "name": "person",
+                "sort": {
+                  "domain": "Taxpayer"
+                }
+              },
+              {
+                "name": "nontaxable",
+                "sort": {
+                  "quantity": {
+                    "unit": "usd_cent"
+                  }
+                }
+              },
+              {
+                "name": "taxable",
+                "sort": {
+                  "quantity": {
+                    "unit": "usd_cent"
+                  }
+                }
+              },
+              {
+                "name": "remaining",
+                "sort": {
+                  "quantity": {
+                    "unit": "usd_cent"
+                  }
+                }
+              }
+            ],
+            "goal": {
+              "atom": "tax.allocation_estimate",
+              "negative": false,
+              "arguments": [
+                {
+                  "kind": "variable",
+                  "name": "person"
+                },
+                {
+                  "kind": "variable",
+                  "name": "nontaxable"
+                },
+                {
+                  "kind": "variable",
+                  "name": "taxable"
+                },
+                {
+                  "kind": "variable",
+                  "name": "remaining"
+                }
+              ]
+            },
+            "jurisdictions": [
+              "us"
+            ],
+            "forums": [
+              "us.federal.tax"
+            ],
+            "law_from": "2025-01-01T00:00:00Z",
+            "law_until": "2026-01-01T00:00:00Z",
+            "requirements": [
+              {
+                "id": "declared-scope",
+                "goal": {
+                  "atom": "tax.scope2025",
+                  "negative": false,
+                  "arguments": [
+                    {
+                      "kind": "variable",
+                      "name": "person"
+                    }
+                  ]
+                },
+                "explanation": "An explicit interpretation/scope premise; it remains an assumption unless independently established."
+              }
+            ],
+            "source_inventory": [
+              {
+                "source": {
+                  "citation": "IRS Form 8606 (2025)",
+                  "uri": "https://www.irs.gov/pub/irs-prior/f8606--2025.pdf",
+                  "sha256": "748a2bf2ef45918eac8d48fab8b1958c8c0c24102b7d2103c78f6f92a69486ae"
+                },
+                "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+              },
+              {
+                "source": {
+                  "citation": "IRS Instructions for Form 8606 (2025)",
+                  "uri": "https://www.irs.gov/pub/irs-prior/i8606--2025.pdf",
+                  "sha256": "735fb7aebc36f6c933d0623a5ba680e7133b9fe62549ddd9652319fc8cac7e8f"
+                },
+                "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+              },
+              {
+                "source": {
+                  "citation": "IRS Publication 590-A (2025)",
+                  "uri": "https://www.irs.gov/pub/irs-prior/p590a--2025.pdf",
+                  "sha256": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7"
+                },
+                "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+              },
+              {
+                "source": {
+                  "citation": "IRS Notice 2024-80, 2025 retirement contribution limits",
+                  "uri": "https://www.irs.gov/pub/irs-drop/n-24-80.pdf",
+                  "sha256": "cbf7843c9c25317455e0373ad70381a13b80ab3dd2ff777f05d1d84ed22e59ad"
+                },
+                "treatment": "Selected provisions or holdings only. See the source lock and interpretation notes."
+              }
+            ],
+            "exclusions": [
+              "Other tax or conversion years; state tax; contribution eligibility outside the declared scope; tax liability and completed tax-return filing.",
+              "Other distributions, withholding, RMDs, rollovers, inherited/SIMPLE conversions, correction transactions, treaties, and other excluded facts listed in README.md."
+            ],
+            "known_omissions": [
+              "Independent community review is pending. No corpus completeness or current citator assurance."
+            ]
+          },
+          "conditions": [
+            {
+              "id": "declared-scope",
+              "goal": {
+                "atom": "tax.scope2025",
+                "negative": false,
+                "arguments": [
+                  {
+                    "kind": "symbol",
+                    "value": "taxpayer.scenario"
+                  }
+                ]
+              },
+              "status": "supported",
+              "search_complete": true,
+              "supporting": [
+                {
+                  "proof": [
+                    {
+                      "id": "allocation-summary",
+                      "claim": {
+                        "atom": "tax.scope2025",
+                        "negative": false,
+                        "arguments": [
+                          {
+                            "kind": "symbol",
+                            "value": "taxpayer.scenario"
+                          }
+                        ]
+                      },
+                      "reason": {
+                        "kind": "fact",
+                        "fact": "input.scope2025"
+                      }
+                    }
+                  ],
+                  "report": {
+                    "language": "oathkeeper/0.5",
+                    "kernel_version": "0.5.0",
+                    "package": "lawlib.us.tax.backdoor-roth-2025",
+                    "package_version": "0.2.0",
+                    "bundle_sha256": "bdbf2b93b2927162d7cf9ef9ecf98a4128abf3a72a6acf150976b13f5a23b9f5",
+                    "status": "derivation_verified",
+                    "goal": {
+                      "atom": "tax.scope2025",
+                      "negative": false,
+                      "arguments": [
+                        {
+                          "kind": "symbol",
+                          "value": "taxpayer.scenario"
+                        }
+                      ]
+                    },
+                    "jurisdiction": "us",
+                    "as_of": "2025-12-31T00:00:00Z",
+                    "known_at": "2026-10-18T23:21:21Z",
+                    "applicable_jurisdictions": [
+                      "us"
+                    ],
+                    "rules_used": [],
+                    "facts_used": [
+                      "input.scope2025"
+                    ],
+                    "oracle_assumptions": [],
+                    "oracle_count": 0,
+                    "assurance": {
+                      "derivation": "checked_under_supplied_assumptions",
+                      "legal_fidelity": "not_established_by_kernel",
+                      "corpus_completeness": "not_established",
+                      "evidence_authenticity": "not_authenticated",
+                      "oracle_authentication": "not_authenticated",
+                      "counterargument_search": "not_performed_by_verify",
+                      "judicial_acceptance": "not_determined",
+                      "authority_reviews_reported": 0,
+                      "interpretation_assumptions": 0,
+                      "party_allegations": 0,
+                      "stipulated_facts": 0,
+                      "limitations": [
+                        "All derivations are conditional on the supplied formalization and evidence.",
+                        "Review labels and provider identities are supplied assertions, not authenticated credentials.",
+                        "A successful derivation does not exclude a counterargument or establish a remedy."
+                      ]
+                    },
+                    "authorities_used": [],
+                    "authority_assessments_used": [],
+                    "fact_assumptions": [
+                      {
+                        "id": "input.scope2025",
+                        "claim": {
+                          "atom": "tax.scope2025",
+                          "negative": false,
+                          "arguments": [
+                            {
+                              "kind": "symbol",
+                              "value": "taxpayer.scenario"
+                            }
+                          ]
+                        },
+                        "evidence_sha256": "e48b36a5f81139ee2589cceee046790e4b8a90c0b7159cfc26d95f5c00cfe988",
+                        "recorded_at": "2026-10-18T23:21:21Z",
+                        "basis": {
+                          "kind": "scope_assumption",
+                          "source": {
+                            "citation": "Caller-supplied scenario; not authenticated tax records",
+                            "uri": "urn:oathkeeper:tax-input:e48b36a5f81139ee2589cceee046790e4b8a90c0b7159cfc26d95f5c00cfe988",
+                            "sha256": "e48b36a5f81139ee2589cceee046790e4b8a90c0b7159cfc26d95f5c00cfe988"
+                          },
+                          "pinpoint": "Input field scope2025",
+                          "explanation": "2025 U.S. federal calendar-year, own ordinary traditional IRA conversion; timely, valid, nondeductible regular contribution. Own taxable compensation only. Other regular IRA contributions are Roth contributions already independently determined eligible, not deductible traditional contributions. All own traditional, traditional SEP and traditional SIMPLE IRA year-end balances across custodians are aggregated; spouse IRAs and employer plans are excluded. No other IRA distributions, tax withholding from the conversion, RMD obligation, outstanding rollovers, rollovers into or out of traditional IRAs, special repayments, qualified charitable/HSA distributions, recharacterizations, excess corrections, inherited IRAs, SIMPLE conversions, annuity valuation adjustments, disaster relief, nonresident/treaty or community-property issues. Following-year contributions were designated for 2025 and made by April 15, 2026. Basis and account values are supplied assumptions, not authenticated records."
+                        }
+                      }
+                    ],
+                    "unreviewed_authority_assessment_count": 0,
+                    "scope_assumption_count": 1,
+                    "record_fact_count": 0,
+                    "judicial_finding_count": 0,
+                    "oracle_requests_used": [],
+                    "event_at": "2025-12-31",
+                    "authority_at": "2025-12-31T00:00:00Z",
+                    "purpose": "synthetic_test"
+                  }
+                }
+              ],
+              "opposing": []
+            }
+          ],
+          "reasons": [],
+          "completeness": "Declared bounded coverage; legal fidelity and completeness are not established."
         }
       }
     }

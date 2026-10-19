@@ -1,30 +1,30 @@
 {
   "format": "oathkeeper-import-lock/1",
-  "snapshot_sha256": "8c90a7835fa219970d24da773fadb277dc37577fd8d8d78757bfea2b7bca2008",
+  "snapshot_sha256": "07fe03b192b39b71ac474e46599edc3179ea7b2c0c93e307c57c7c6ea66005c7",
   "sources": [
     {
       "kind": "module",
       "package": "lawlib.us.timbs",
-      "version": "0.4.0",
-      "sha256": "aaee14a2ae6616351a8dce7ed45a26d745a54384c58a6de1e802ea97378a49dc"
+      "version": "0.5.0",
+      "sha256": "909c5ae31f0029536f0e444fd781068f98453871ba2db2da10cd0a1238db90fd"
     },
     {
       "kind": "module",
       "package": "lawlib.us.wa.long",
-      "version": "0.4.0",
-      "sha256": "2e7805330106defe792419131dea37b07f19ac4ebadbde45848f28d2b8dc1401"
+      "version": "0.5.0",
+      "sha256": "322c4077305290abe30528a099699c81bb8dd83340dc093665117ad2720cd1b3"
     },
     {
       "kind": "module",
       "package": "lawlib.us.wa.seattle.parking.long",
-      "version": "0.4.0",
-      "sha256": "4a3e94a08adc4b49420a558c4505c4fe92991b495973e1642065fb2d460d2b48"
+      "version": "0.5.0",
+      "sha256": "8362375214409d65467b545ed0255082b512a5d7a8ab3176ab2a6dfc5e3c0533"
     },
     {
       "kind": "module",
       "package": "lawlib.vocabulary",
-      "version": "0.4.0",
-      "sha256": "3973f7f4a9cf2f1eedde0c48d55922ed3e8cfd20813e2dc2dd05b5d518cdd7a3"
+      "version": "0.5.0",
+      "sha256": "23582d8cc2f149a12b1180d01ed4560f0bf63ae39f9e032bc57195a58eac4de8"
     }
   ]
 }
