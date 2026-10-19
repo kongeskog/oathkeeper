@@ -1,0 +1,31 @@
+oathkeeper "0.4";
+case long-no-automatic-impoundment-bar @ "0.4.0";
+import "../parking.oath" sha256 "4a3e94a08adc4b49420a558c4505c4fe92991b495973e1642065fb2d460d2b48";
+
+constant long.98824-2: Matter;
+
+fact independent-impoundment-scope: scope.long.independent-parking-impoundment(long.98824-2) {
+  recorded_at "2026-10-18T22:35:39Z";
+  kind "judicial_finding";
+  source long2021;
+  pinpoint "Majority slip p. 20";
+  explanation "The exact issue is the majority distinction between independent parking impoundment authority and homestead protection on debt enforcement. This does not adopt the concurrence contrary view.";
+}
+
+query {
+  event_at "2016-10-12";
+  authority_at "2021-08-13T00:00:00Z";
+  purpose historical_reconstruction;
+  temporal_rationale "Reconstruct the August 2021 opinion about the October 2016 impoundment. The event is recorded with date-only precision; the selected statutory snapshot is a supplied historical applicability assessment, not an automatic retroactivity rule.";
+  jurisdiction "us.wa.seattle";
+  as_of "2016-10-12T00:00:00-07:00";
+  known_at "2026-10-18T22:35:39Z";
+  forum "us.wa.courts.state";
+  goal not homestead.automatically_prevents_parking_impoundment(long.98824-2);
+  root "no-automatic-bar";
+}
+
+proof {
+  step independent-impoundment-scope: scope.long.independent-parking-impoundment(long.98824-2) by fact independent-impoundment-scope;
+  step no-automatic-bar: not homestead.automatically_prevents_parking_impoundment(long.98824-2) by apply wa.long.no-automatic-impoundment-bar @ "1"(matter = long.98824-2) using [independent-impoundment-scope];
+}

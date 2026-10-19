@@ -1,0 +1,326 @@
+{
+  "format": "oathkeeper-change-impact/1",
+  "declarations": [
+    {
+      "collection": "rules",
+      "id": "seattle.parking.72hours.ordinary-branch",
+      "change": "changed",
+      "source_artifact_changed": false
+    },
+    {
+      "collection": "rules",
+      "id": "seattle.parking.abandoned-junk-exclusion",
+      "change": "added",
+      "source_artifact_changed": false
+    },
+    {
+      "collection": "rules",
+      "id": "seattle.parking.authorized-vehicle-exclusion",
+      "change": "changed",
+      "source_artifact_changed": false
+    },
+    {
+      "collection": "rules",
+      "id": "seattle.parking.duration-threshold",
+      "change": "added",
+      "source_artifact_changed": false
+    },
+    {
+      "collection": "rules",
+      "id": "seattle.parking.excluded-no-section-violation",
+      "change": "changed",
+      "source_artifact_changed": false
+    },
+    {
+      "collection": "rules",
+      "id": "seattle.parking.impoundment-framework",
+      "change": "changed",
+      "source_artifact_changed": false
+    },
+    {
+      "collection": "rules",
+      "id": "seattle.parking.junk-vehicle-exclusion",
+      "change": "added",
+      "source_artifact_changed": false
+    },
+    {
+      "collection": "rules",
+      "id": "us.timbs.incorporation",
+      "change": "changed",
+      "source_artifact_changed": false
+    },
+    {
+      "collection": "rules",
+      "id": "wa.long.ability-to-pay",
+      "change": "changed",
+      "source_artifact_changed": true
+    },
+    {
+      "collection": "rules",
+      "id": "wa.long.gross-disproportionality",
+      "change": "changed",
+      "source_artifact_changed": true
+    },
+    {
+      "collection": "rules",
+      "id": "wa.long.homestead-no-declaration",
+      "change": "changed",
+      "source_artifact_changed": true
+    },
+    {
+      "collection": "rules",
+      "id": "wa.long.no-automatic-impoundment-bar",
+      "change": "changed",
+      "source_artifact_changed": true
+    },
+    {
+      "collection": "rules",
+      "id": "wa.long.partially-punitive",
+      "change": "changed",
+      "source_artifact_changed": true
+    },
+    {
+      "collection": "rules",
+      "id": "wa.long.qualifying-fine",
+      "change": "changed",
+      "source_artifact_changed": true
+    },
+    {
+      "collection": "authorities",
+      "id": "us.wa.sc.long.2021",
+      "change": "changed",
+      "source_artifact_changed": true
+    },
+    {
+      "collection": "authority_assessments",
+      "id": "seattle.parking.72hours.ordinary-branch.v2.assessment.2021-08-13",
+      "change": "removed",
+      "source_artifact_changed": false
+    },
+    {
+      "collection": "authority_assessments",
+      "id": "seattle.parking.72hours.ordinary-branch.v3.assessment.2021-08-13",
+      "change": "added",
+      "source_artifact_changed": false
+    },
+    {
+      "collection": "authority_assessments",
+      "id": "seattle.parking.abandoned-junk-exclusion.assessment.2021-08-13",
+      "change": "added",
+      "source_artifact_changed": false
+    },
+    {
+      "collection": "authority_assessments",
+      "id": "seattle.parking.authorized-vehicle-exclusion.assessment.2021-08-13",
+      "change": "changed",
+      "source_artifact_changed": false
+    },
+    {
+      "collection": "authority_assessments",
+      "id": "seattle.parking.duration-threshold.assessment.2021-08-13",
+      "change": "added",
+      "source_artifact_changed": false
+    },
+    {
+      "collection": "authority_assessments",
+      "id": "seattle.parking.excluded-no-section-violation.assessment.2021-08-13",
+      "change": "changed",
+      "source_artifact_changed": false
+    },
+    {
+      "collection": "authority_assessments",
+      "id": "seattle.parking.impoundment-framework.assessment.2021-08-13",
+      "change": "changed",
+      "source_artifact_changed": true
+    },
+    {
+      "collection": "authority_assessments",
+      "id": "seattle.parking.junk-vehicle-exclusion.assessment.2021-08-13",
+      "change": "added",
+      "source_artifact_changed": false
+    },
+    {
+      "collection": "authority_assessments",
+      "id": "us.timbs.incorporation.assessment.2021-08-13",
+      "change": "changed",
+      "source_artifact_changed": false
+    },
+    {
+      "collection": "authority_assessments",
+      "id": "wa.long.ability-to-pay.assessment.2021-08-13",
+      "change": "changed",
+      "source_artifact_changed": true
+    },
+    {
+      "collection": "authority_assessments",
+      "id": "wa.long.gross-disproportionality.assessment.2021-08-13",
+      "change": "changed",
+      "source_artifact_changed": true
+    },
+    {
+      "collection": "authority_assessments",
+      "id": "wa.long.homestead-no-declaration.assessment.2021-08-13",
+      "change": "changed",
+      "source_artifact_changed": true
+    },
+    {
+      "collection": "authority_assessments",
+      "id": "wa.long.no-automatic-impoundment-bar.assessment.2021-08-13",
+      "change": "changed",
+      "source_artifact_changed": true
+    },
+    {
+      "collection": "authority_assessments",
+      "id": "wa.long.partially-punitive.assessment.2021-08-13",
+      "change": "changed",
+      "source_artifact_changed": true
+    },
+    {
+      "collection": "authority_assessments",
+      "id": "wa.long.qualifying-fine.assessment.2021-08-13",
+      "change": "changed",
+      "source_artifact_changed": true
+    }
+  ],
+  "global_changes": [
+    "language",
+    "predicates"
+  ],
+  "proofs": [
+    {
+      "bundle_sha256": "b758bf7799b20cb8090ef67fb0500a0a57a71967be8638eced35b70d5c653656",
+      "goal": {
+        "atom": "analysis.consider_ability_to_pay",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "symbol",
+            "value": "long.98824-2"
+          }
+        ]
+      },
+      "requires_reverification": true,
+      "requires_reanalysis": true,
+      "reasons": [
+        "language",
+        "predicates",
+        "rule:seattle.parking.impoundment-framework",
+        "rule:us.timbs.incorporation",
+        "rule:wa.long.ability-to-pay",
+        "rule:wa.long.partially-punitive",
+        "rule:wa.long.qualifying-fine",
+        "authority:us.wa.sc.long.2021",
+        "assessment:seattle.parking.impoundment-framework.assessment.2021-08-13",
+        "assessment:us.timbs.incorporation.assessment.2021-08-13",
+        "assessment:wa.long.ability-to-pay.assessment.2021-08-13",
+        "assessment:wa.long.partially-punitive.assessment.2021-08-13",
+        "assessment:wa.long.qualifying-fine.assessment.2021-08-13"
+      ]
+    },
+    {
+      "bundle_sha256": "26976447e645d66dffab250f60ee56f0b0999880fef6f13069d31cbf6023cae3",
+      "goal": {
+        "atom": "constitutional.excessive_fines_violation",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "symbol",
+            "value": "long.98824-2"
+          }
+        ]
+      },
+      "requires_reverification": true,
+      "requires_reanalysis": true,
+      "reasons": [
+        "language",
+        "predicates",
+        "rule:seattle.parking.impoundment-framework",
+        "rule:us.timbs.incorporation",
+        "rule:wa.long.gross-disproportionality",
+        "rule:wa.long.partially-punitive",
+        "rule:wa.long.qualifying-fine",
+        "authority:us.wa.sc.long.2021",
+        "assessment:seattle.parking.impoundment-framework.assessment.2021-08-13",
+        "assessment:us.timbs.incorporation.assessment.2021-08-13",
+        "assessment:wa.long.gross-disproportionality.assessment.2021-08-13",
+        "assessment:wa.long.partially-punitive.assessment.2021-08-13",
+        "assessment:wa.long.qualifying-fine.assessment.2021-08-13"
+      ]
+    },
+    {
+      "bundle_sha256": "8c5a69cab81c0ac7606fbf7acc8d97b462a0ecb5d47372d9733449177d298728",
+      "goal": {
+        "atom": "homestead.additional_declaration_required",
+        "negative": true,
+        "arguments": [
+          {
+            "kind": "symbol",
+            "value": "long.98824-2"
+          }
+        ]
+      },
+      "requires_reverification": true,
+      "requires_reanalysis": true,
+      "reasons": [
+        "language",
+        "predicates",
+        "rule:wa.long.homestead-no-declaration",
+        "authority:us.wa.sc.long.2021",
+        "assessment:wa.long.homestead-no-declaration.assessment.2021-08-13"
+      ]
+    },
+    {
+      "bundle_sha256": "b1f13f36fb6964c355bed5e1a6182c2fe80f5369a53f5b82d75edd69736e8faf",
+      "goal": {
+        "atom": "homestead.automatically_prevents_parking_impoundment",
+        "negative": true,
+        "arguments": [
+          {
+            "kind": "symbol",
+            "value": "long.98824-2"
+          }
+        ]
+      },
+      "requires_reverification": true,
+      "requires_reanalysis": true,
+      "reasons": [
+        "language",
+        "predicates",
+        "rule:wa.long.no-automatic-impoundment-bar",
+        "authority:us.wa.sc.long.2021",
+        "assessment:wa.long.no-automatic-impoundment-bar.assessment.2021-08-13"
+      ]
+    },
+    {
+      "bundle_sha256": "b5b1149b6f7a4690ac5d4604ce2cf7cc2f4bc87c634c3d69b7cb3f6ef78ae66f",
+      "goal": {
+        "atom": "parking.subject_to_ch11_30_impoundment",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "symbol",
+            "value": "long.98824-2"
+          }
+        ]
+      },
+      "requires_reverification": true,
+      "requires_reanalysis": true,
+      "reasons": [
+        "language",
+        "predicates",
+        "rule:seattle.parking.impoundment-framework",
+        "assessment:seattle.parking.impoundment-framework.assessment.2021-08-13"
+      ]
+    }
+  ],
+  "meaning": "Dependency impact only. This does not determine whether a change reflects enacted law, corrected encoding, or a new interpretation; review must classify that cause. A new counterargument may also require reassessment of previously supported goals.",
+  "old_snapshot_sha256": "19507f22d1ad16cb4d0a5007504525a25ff219f18929239e3a87abcfa0b08b0a",
+  "new_snapshot_sha256": "8c90a7835fa219970d24da773fadb277dc37577fd8d8d78757bfea2b7bca2008",
+  "classification": "Prototype language and interpretation migration; not an enacted amendment",
+  "summary": [
+    "Separate governing-law and authority clocks with actual ingestion timestamps.",
+    "Replace the ordinary duration input with an explicit over-72-hour premise and exact millisecond derivation.",
+    "Add explicit junk-vehicle exclusions; retain uncertainty about missing exceptions.",
+    "Pin the official original Long slip PDF; final reporter reconciliation remains pending."
+  ]
+}

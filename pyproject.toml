@@ -1,0 +1,15 @@
+[build-system]
+requires = ["maturin>=1.7,<2"]
+build-backend = "maturin"
+
+[project]
+name = "oathkeeper-law"
+version = "0.4.1"
+description = "Checkable legal arguments with explicit evidence and judgment"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+
+[tool.maturin]
+manifest-path = "crates/oathkeeper-python/Cargo.toml"
+module-name = "oathkeeper"
+include = [{ path = "lawlib/us/tax/*.oath", format = "sdist" }]

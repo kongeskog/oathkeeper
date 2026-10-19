@@ -1,0 +1,127 @@
+# Fictional US-shaped hierarchy. These rules are NOT actual law.
+language = "oathkeeper/0.1"
+package = "lawlib.us.demo.hoa"
+version = "0.1.0"
+
+[[jurisdictions]]
+id = "us"
+name = "United States (demo)"
+parents = []
+
+[[jurisdictions]]
+id = "us.demo-state"
+name = "Fictional State"
+parents = ["us"]
+
+[[jurisdictions]]
+id = "us.demo-state.demo-city"
+name = "Fictional City"
+parents = ["us.demo-state"]
+
+[[jurisdictions]]
+id = "us.demo-state.demo-city.demo-hoa"
+name = "Fictional HOA (private covenant applicability)"
+parents = ["us.demo-state.demo-city"]
+
+[[rules]]
+id = "us.demo.notice"
+version = "1"
+jurisdiction = "us"
+effective_from = "2025-01-01T00:00:00Z"
+recorded_at = "2025-01-01T00:00:00Z"
+source = { citation = "Fictional federal notice rule, section 1", uri = "examples/fictional-law.txt", sha256 = "45ff21cf2101707075d45934b4a4b1151aed64036bd239200369c912ee22c2da" }
+premises = [{ atom = "case.notice_delivered" }]
+conclusion = { atom = "case.notice_satisfied" }
+
+[[rules]]
+id = "us.demo-state.review"
+version = "1"
+jurisdiction = "us.demo-state"
+effective_from = "2025-01-01T00:00:00Z"
+recorded_at = "2025-01-01T00:00:00Z"
+source = { citation = "Fictional state review rule, section 2", uri = "examples/fictional-law.txt", sha256 = "45ff21cf2101707075d45934b4a4b1151aed64036bd239200369c912ee22c2da" }
+premises = [{ atom = "case.notice_satisfied" }]
+conclusion = { atom = "case.review_available" }
+
+[[rules]]
+id = "us.demo-state.demo-city.roof"
+version = "1"
+jurisdiction = "us.demo-state.demo-city"
+effective_from = "2025-01-01T00:00:00Z"
+recorded_at = "2025-01-01T00:00:00Z"
+source = { citation = "Fictional city roof rule, section 3", uri = "examples/fictional-law.txt", sha256 = "45ff21cf2101707075d45934b4a4b1151aed64036bd239200369c912ee22c2da" }
+premises = [{ atom = "case.review_available" }, { atom = "case.color_harmonious" }]
+conclusion = { atom = "case.city_requirements_satisfied" }
+
+[[rules]]
+id = "us.demo-state.demo-city.demo-hoa.approval"
+version = "1"
+jurisdiction = "us.demo-state.demo-city.demo-hoa"
+effective_from = "2025-01-01T00:00:00Z"
+recorded_at = "2025-01-01T00:00:00Z"
+source = { citation = "Fictional private covenant, section 4", uri = "examples/fictional-law.txt", sha256 = "45ff21cf2101707075d45934b4a4b1151aed64036bd239200369c912ee22c2da" }
+premises = [{ atom = "case.city_requirements_satisfied" }]
+conclusion = { atom = "case.approval_required" }
+
+[[facts]]
+id = "notice"
+claim = { atom = "case.notice_delivered" }
+evidence_sha256 = "3a88bb6029b52cf52db84d0cf19a49158915b99ff03ad048b8a7de730a7c3f01"
+recorded_at = "2025-04-01T10:00:00Z"
+
+# A frozen probabilistic function result: harmonious?(case evidence) = true.
+[[attestations]]
+id = "color-assessment-1"
+oracle = "roof-harmony"
+provider = "agreed-human-panel"
+provider_version = "panel-2025-01"
+question = "Is the proposed roof color harmonious under the fictional standard?"
+claim = { atom = "case.color_harmonious" }
+confidence = 0.92
+evidence_sha256 = "3a88bb6029b52cf52db84d0cf19a49158915b99ff03ad048b8a7de730a7c3f01"
+recorded_at = "2025-04-01T11:00:00Z"
+
+[[oracle_policy]]
+oracle = "roof-harmony"
+atom = "case.color_harmonious"
+question = "Is the proposed roof color harmonious under the fictional standard?"
+evidence_sha256 = "3a88bb6029b52cf52db84d0cf19a49158915b99ff03ad048b8a7de730a7c3f01"
+providers = [{ id = "agreed-human-panel", version = "panel-2025-01" }]
+min_confidence = 0.9
+
+[query]
+jurisdiction = "us.demo-state.demo-city.demo-hoa"
+as_of = "2025-04-01T12:00:00Z"
+known_at = "2025-04-02T00:00:00Z"
+goal = { atom = "case.approval_required" }
+root = "approval"
+
+[[proof]]
+id = "notice"
+claim = { atom = "case.notice_delivered" }
+reason = { kind = "fact", fact = "notice" }
+
+[[proof]]
+id = "federal"
+claim = { atom = "case.notice_satisfied" }
+reason = { kind = "apply", rule = "us.demo.notice", version = "1", premises = ["notice"] }
+
+[[proof]]
+id = "state"
+claim = { atom = "case.review_available" }
+reason = { kind = "apply", rule = "us.demo-state.review", version = "1", premises = ["federal"] }
+
+[[proof]]
+id = "color"
+claim = { atom = "case.color_harmonious" }
+reason = { kind = "oracle", attestation = "color-assessment-1" }
+
+[[proof]]
+id = "city"
+claim = { atom = "case.city_requirements_satisfied" }
+reason = { kind = "apply", rule = "us.demo-state.demo-city.roof", version = "1", premises = ["state", "color"] }
+
+[[proof]]
+id = "approval"
+claim = { atom = "case.approval_required" }
+reason = { kind = "apply", rule = "us.demo-state.demo-city.demo-hoa.approval", version = "1", premises = ["city"] }

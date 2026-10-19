@@ -1,0 +1,34 @@
+{
+  "format": "oathkeeper-review/2",
+  "slice": "Historical SMC 11.72.440(B)-(D) and selected Long/Timbs holdings",
+  "module_snapshot_sha256": "8c90a7835fa219970d24da773fadb277dc37577fd8d8d78757bfea2b7bca2008",
+  "authors": [
+    "oathkeeper.machine-assisted-author"
+  ],
+  "records": [
+    {
+      "id": "legal-review-required",
+      "role": "legal",
+      "status": "pending",
+      "reviewer": null,
+      "independence_declared": false,
+      "module_snapshot_sha256": "8c90a7835fa219970d24da773fadb277dc37577fd8d8d78757bfea2b7bca2008"
+    },
+    {
+      "id": "formalization-review-required",
+      "role": "formalization",
+      "status": "pending",
+      "reviewer": null,
+      "independence_declared": false,
+      "module_snapshot_sha256": "8c90a7835fa219970d24da773fadb277dc37577fd8d8d78757bfea2b7bca2008"
+    }
+  ],
+  "source_check": "Machine-assisted inspection of primary ordinance scan and directly retrieved original court slip PDF. No independent legal review.",
+  "unresolved": [
+    "Final official-reporter Long text has not been reconciled.",
+    "No independent practitioner has approved any rule.",
+    "No independent formal-methods reviewer has approved the translation.",
+    "Authority assessments are supplied historical interpretations, not a current citator.",
+    "Matter identifies one selected legal issue/parking episode; cross-episode generalization is outside this pilot."
+  ]
+}

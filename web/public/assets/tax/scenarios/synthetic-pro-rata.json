@@ -1,0 +1,15 @@
+{
+  "tax_year": 2025,
+  "conversion_year": 2025,
+  "recorded_at": "2026-10-18T23:21:21Z",
+  "scope_confirmed": true,
+  "age_at_year_end": 40,
+  "taxable_compensation_cents": 20000000,
+  "nondeductible_contribution_cents": 700000,
+  "contribution_made_in_2026_cents": 0,
+  "other_regular_ira_contributions_cents": 0,
+  "prior_basis_cents": 0,
+  "dec31_ira_value_cents": 6300000,
+  "roth_conversion_cents": 700000,
+  "purpose": "synthetic_test"
+}

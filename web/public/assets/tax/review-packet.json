@@ -1,0 +1,33 @@
+{
+  "format": "oathkeeper.tax-review/1",
+  "snapshot_sha256": "43c70a8f07532d563074d986d1a9b9b834f654450aa0d0ad414eff0b0df7e2d5",
+  "precedent_snapshot_sha256": "79b738d875ef8f3dbfe64637340a424e5a1a5e9fc4192e641016909023d7c438",
+  "legal_review": {
+    "status": "pending",
+    "reviewer": null
+  },
+  "formalization_review": {
+    "status": "pending",
+    "reviewer": null
+  },
+  "source_authenticity": "official URLs retrieved and bytes pinned; no digital-signature verification",
+  "criteria": [
+    "Independent tax professional checks 2025 limits, contribution timing, scope exclusions, IRA aggregation and basis treatment against pinned IRS guidance and controlling law.",
+    "Review exact-rational allocation and final-cent rounding against Form 8606 filing conventions; outputs remain estimates.",
+    "Independent formalization reviewer checks scope premises, arithmetic relations, witness construction, units and temporal applicability.",
+    "Check Shank pinpoints and actual findings; no claim that the decision approved a Roth conversion or that unsupported basis must be accepted."
+  ],
+  "limitations": [
+    "2025 federal calendar-year model only; not a tax return, tax-liability calculation, or optimization engine.",
+    "No automatic opposing-argument search or claim of corpus completeness.",
+    "Inputs and scope confirmation are unauthenticated user assertions. Zero oracles does not mean zero assumptions.",
+    "Shank is one real case with two historical proof paths, separate from the conversion module. No current citator certification."
+  ],
+  "sources": [
+    "sources/f8606-2025.pdf",
+    "sources/i8606-2025.pdf",
+    "sources/p590a-2025.pdf",
+    "sources/notice2024-80.pdf",
+    "sources/shank-2018-official.pdf"
+  ]
+}

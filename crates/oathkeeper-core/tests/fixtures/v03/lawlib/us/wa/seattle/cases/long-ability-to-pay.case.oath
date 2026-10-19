@@ -1,0 +1,94 @@
+oathkeeper "0.3";
+case long-ability-to-pay @ "0.3.0";
+import "../parking.oath" sha256 "787ca45efcad4377727c4c79fd8a5b40afa2758dd2b9b91231a49a69bf263a23";
+
+constant long.98824-2: Matter;
+
+fact historical-smc-scope: scope.smc72.historical-text(long.98824-2) {
+  recorded_at "2026-10-18T19:47:18Z";
+  kind "judicial_finding";
+  source long2021;
+  pinpoint "Majority slip pp. 1-3, 26-27";
+  explanation "The opinion applies SMC 11.72.440 to Long historical 2016 parking and quotes subsection E. This scope is specific to that record, not a present-day code certification.";
+}
+
+fact parking-violation: parking.violates_smc72(long.98824-2) {
+  recorded_at "2026-10-18T19:47:18Z";
+  kind "judicial_finding";
+  source long2021;
+  pinpoint "Majority slip pp. 1-3";
+  explanation "The majority reports Long violation and that he did not contest illegal parking. This is a recorded legal finding, not an independent reconstruction of every parking exception.";
+}
+
+fact incorporation-scope: scope.federal.excessive-fines-incorporation(long.98824-2) {
+  recorded_at "2026-10-18T19:47:18Z";
+  kind "judicial_finding";
+  source long2021;
+  pinpoint "Majority slip pp. 20-21, 25";
+  explanation "Long analyzes Seattle governmental action under the incorporated federal clause, expressly citing Timbs.";
+}
+
+fact municipal-action: government.state_or_local_action(long.98824-2) {
+  recorded_at "2026-10-18T19:47:18Z";
+  kind "record_fact";
+  source long2021;
+  pinpoint "Majority slip pp. 1-3";
+  explanation "Seattle imposed the municipal parking sanction using a city-contracted towing company.";
+}
+
+fact sanction-scope: scope.long.smc72-sanction(long.98824-2) {
+  recorded_at "2026-10-18T19:47:18Z";
+  kind "record_fact";
+  source long2021;
+  pinpoint "Majority slip pp. 1-3, 26-30";
+  explanation "The subject is the actual impoundment and associated costs in Long, No. 98824-2; not an analogy to another case.";
+}
+
+fact impound-and-costs: sanction.impoundment_and_associated_costs(long.98824-2) {
+  recorded_at "2026-10-18T19:47:18Z";
+  kind "record_fact";
+  source long2021;
+  pinpoint "Majority slip pp. 2-3, 26-27";
+  explanation "Long truck was impounded and he was assessed associated costs. The disputed payment plan was $547.12; a separate $10 administrative fee is reported in the background.";
+}
+
+fact federal-scope: scope.long.federal-excessive-fines(long.98824-2) {
+  recorded_at "2026-10-18T19:47:18Z";
+  kind "judicial_finding";
+  source long2021;
+  pinpoint "Majority slip pp. 20-21, 25, 37-40";
+  explanation "The precise subject is the federal excessive-fines analysis of the actual Long sanction, under the majority reasoning.";
+}
+
+fact government-extraction: sanction.government_extraction_for_offense(long.98824-2) {
+  recorded_at "2026-10-18T19:47:18Z";
+  kind "judicial_finding";
+  source long2021;
+  pinpoint "Majority slip pp. 26-30";
+  explanation "The majority characterizes the impoundment and associated charges as governmental punishment for the parking offense, notwithstanding a reimbursement purpose.";
+}
+
+query {
+  jurisdiction "us.wa.seattle";
+  as_of "2021-08-13T00:00:00Z";
+  known_at "2026-10-18T19:47:18Z";
+  forum "us.wa.courts.state";
+  goal analysis.consider_ability_to_pay(long.98824-2);
+  root "ability-to-pay";
+}
+
+proof {
+  step historical-smc-scope: scope.smc72.historical-text(long.98824-2) by fact historical-smc-scope;
+  step parking-violation: parking.violates_smc72(long.98824-2) by fact parking-violation;
+  step statutory-framework: parking.subject_to_ch11_30_impoundment(long.98824-2) by apply seattle.parking.impoundment-framework @ "1"(matter = long.98824-2) using [historical-smc-scope, parking-violation];
+  step incorporation-scope: scope.federal.excessive-fines-incorporation(long.98824-2) by fact incorporation-scope;
+  step municipal-action: government.state_or_local_action(long.98824-2) by fact municipal-action;
+  step incorporated: constitutional.excessive_fines_clause_applies(long.98824-2) by apply us.timbs.incorporation @ "1"(matter = long.98824-2) using [incorporation-scope, municipal-action];
+  step sanction-scope: scope.long.smc72-sanction(long.98824-2) by fact sanction-scope;
+  step impound-and-costs: sanction.impoundment_and_associated_costs(long.98824-2) by fact impound-and-costs;
+  step punitive: sanction.partially_punitive(long.98824-2) by apply wa.long.partially-punitive @ "1"(matter = long.98824-2) using [sanction-scope, statutory-framework, impound-and-costs];
+  step federal-scope: scope.long.federal-excessive-fines(long.98824-2) by fact federal-scope;
+  step government-extraction: sanction.government_extraction_for_offense(long.98824-2) by fact government-extraction;
+  step fine: sanction.qualifying_fine(long.98824-2) by apply wa.long.qualifying-fine @ "1"(matter = long.98824-2) using [federal-scope, incorporated, punitive, government-extraction];
+  step ability-to-pay: analysis.consider_ability_to_pay(long.98824-2) by apply wa.long.ability-to-pay @ "1"(matter = long.98824-2) using [federal-scope, fine];
+}

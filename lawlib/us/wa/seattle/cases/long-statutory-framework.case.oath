@@ -1,0 +1,40 @@
+oathkeeper "0.4";
+case long-statutory-framework @ "0.4.0";
+import "../parking.oath" sha256 "4a3e94a08adc4b49420a558c4505c4fe92991b495973e1642065fb2d460d2b48";
+
+constant long.98824-2: Matter;
+
+fact historical-smc-scope: scope.smc72.historical-text(long.98824-2) {
+  recorded_at "2026-10-18T22:35:39Z";
+  kind "judicial_finding";
+  source long2021;
+  pinpoint "Majority slip pp. 1-3, 26-27";
+  explanation "The opinion applies SMC 11.72.440 to Long historical 2016 parking and quotes subsection E. This scope is specific to that record, not a present-day code certification.";
+}
+
+fact parking-violation: parking.violates_smc72(long.98824-2) {
+  recorded_at "2026-10-18T22:35:39Z";
+  kind "judicial_finding";
+  source long2021;
+  pinpoint "Majority slip pp. 1-3";
+  explanation "The majority reports Long violation and that he did not contest illegal parking. This is a recorded legal finding, not an independent reconstruction of every parking exception.";
+}
+
+query {
+  event_at "2016-10-12";
+  authority_at "2021-08-13T00:00:00Z";
+  purpose historical_reconstruction;
+  temporal_rationale "Reconstruct the August 2021 opinion about the October 2016 impoundment. The event is recorded with date-only precision; the selected statutory snapshot is a supplied historical applicability assessment, not an automatic retroactivity rule.";
+  jurisdiction "us.wa.seattle";
+  as_of "2016-10-12T00:00:00-07:00";
+  known_at "2026-10-18T22:35:39Z";
+  forum "us.wa.courts.state";
+  goal parking.subject_to_ch11_30_impoundment(long.98824-2);
+  root "statutory-framework";
+}
+
+proof {
+  step historical-smc-scope: scope.smc72.historical-text(long.98824-2) by fact historical-smc-scope;
+  step parking-violation: parking.violates_smc72(long.98824-2) by fact parking-violation;
+  step statutory-framework: parking.subject_to_ch11_30_impoundment(long.98824-2) by apply seattle.parking.impoundment-framework @ "1"(matter = long.98824-2) using [historical-smc-scope, parking-violation];
+}

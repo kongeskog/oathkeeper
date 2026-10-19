@@ -1,0 +1,242 @@
+oathkeeper "0.4";
+module lawlib.us.wa.seattle.parking.long @ "0.4.0";
+import "../long.oath" sha256 "2e7805330106defe792419131dea37b07f19ac4ebadbde45848f28d2b8dc1401";
+
+jurisdiction us.wa.seattle {
+  name "Seattle";
+  parents ["us.wa"];
+}
+
+source ordinance120573 {
+  citation "Seattle Ordinance 120573, section 1 (2001), amending SMC 11.72.440(A)-(E)";
+  uri "https://clerk.seattle.gov/~archives/Ordinances/Ord_120573.pdf";
+  sha256 "1beaef9118938d34565be69fd57123cb293fcdd650cb9198af39933905ddab0d";
+}
+
+authority us.wa.seattle.ord120573 {
+  kind "ordinance";
+  jurisdiction "us.wa.seattle";
+  issuing_body "us.wa.seattle.council";
+  publication "enacted";
+  source ordinance120573;
+  decided_at null;
+}
+
+rule seattle.parking.72hours.ordinary-branch(matter: Matter) @ "3" {
+  time_basis law_time;
+  jurisdiction "us.wa.seattle";
+  effective_from "2001-11-28T08:00:00Z";
+  effective_until null;
+  recorded_at "2026-10-18T22:35:39Z";
+  source ordinance120573;
+  authority {
+    authority "us.wa.seattle.ord120573";
+    role "text";
+    pinpoint "Section 1, SMC 11.72.440(B)-(D); scan PDF pp. 3-4";
+    scope scope.smc72.historical-text($matter);
+  };
+  requires scope.smc72.historical-text($matter);
+  requires parking.on_street_or_municipal_property($matter);
+  requires not parking.shorter_posted_limit($matter);
+  requires not parking.otherwise_provided_by_law($matter);
+  requires not parking.smc72_c_excluded($matter);
+  requires not parking.junk_motor_vehicle($matter);
+  requires not parking.abandoned_junk_motor_vehicle($matter);
+  requires parking.over_72_hours($matter);
+  ensures parking.violates_smc72($matter);
+}
+
+rule seattle.parking.impoundment-framework(matter: Matter) @ "1" {
+  time_basis law_time;
+  jurisdiction "us.wa.seattle";
+  effective_from "2001-11-28T08:00:00Z";
+  effective_until null;
+  recorded_at "2026-10-18T22:35:39Z";
+  source ordinance120573;
+  authority {
+    authority "us.wa.seattle.ord120573";
+    role "text";
+    pinpoint "Section 1, SMC 11.72.440(E); scan PDF p. 4";
+    scope scope.smc72.historical-text($matter);
+  };
+  requires scope.smc72.historical-text($matter);
+  requires parking.violates_smc72($matter);
+  ensures parking.subject_to_ch11_30_impoundment($matter);
+}
+
+rule seattle.parking.authorized-vehicle-exclusion(matter: Matter, vehicle: Vehicle) @ "1" {
+  time_basis law_time;
+  jurisdiction "us.wa.seattle";
+  effective_from "2001-11-28T08:00:00Z";
+  effective_until null;
+  recorded_at "2026-10-18T22:35:39Z";
+  source ordinance120573;
+  authority {
+    authority "us.wa.seattle.ord120573";
+    role "text";
+    pinpoint "Ordinance 120573 section 1, SMC 11.72.440(C), scan PDF p. 3, lines 37-38";
+    scope scope.smc72.historical-text($matter);
+  };
+  requires scope.smc72.historical-text($matter);
+  requires parking.vehicle($matter, $vehicle);
+  requires parking.on_municipal_property($matter);
+  requires parking.vehicle_authorized_on_municipal_property($matter, $vehicle);
+  ensures parking.smc72_c_excluded($matter);
+}
+
+rule seattle.parking.excluded-no-section-violation(matter: Matter) @ "1" {
+  time_basis law_time;
+  jurisdiction "us.wa.seattle";
+  effective_from "2001-11-28T08:00:00Z";
+  effective_until null;
+  recorded_at "2026-10-18T22:35:39Z";
+  source ordinance120573;
+  authority {
+    authority "us.wa.seattle.ord120573";
+    role "text";
+    pinpoint "Ordinance 120573 section 1, SMC 11.72.440(C), scan PDF p. 3, lines 37-38";
+    scope scope.smc72.historical-text($matter);
+  };
+  requires scope.smc72.historical-text($matter);
+  requires parking.smc72_c_excluded($matter);
+  ensures not parking.violates_smc72($matter);
+}
+
+assessment seattle.parking.72hours.ordinary-branch.v3.assessment.2021-08-13 {
+  authority "us.wa.seattle.ord120573";
+  rule "seattle.parking.72hours.ordinary-branch";
+  rule_version "3";
+  forum "us.wa.courts.state";
+  as_of "2021-08-13T00:00:00Z";
+  recorded_at "2026-10-18T22:35:39Z";
+  force "binding";
+  treatment "operative";
+  review_status "machine_assisted_unreviewed";
+  source ordinance120573;
+  rationale "Historical SMC 11.72.440(B)-(D), one identified parking episode. Every qualification requires explicit evidence; this sufficient argument does not allocate legal burdens. Duration may be a sourced observation or a checked quantity comparison. Other-law applicability remains an explicit interpretation assumption. Independent legal and formalization review pending.";
+}
+
+assessment seattle.parking.impoundment-framework.assessment.2021-08-13 {
+  authority "us.wa.seattle.ord120573";
+  rule "seattle.parking.impoundment-framework";
+  rule_version "1";
+  forum "us.wa.courts.state";
+  as_of "2021-08-13T00:00:00Z";
+  recorded_at "2026-10-18T22:35:39Z";
+  force "binding";
+  treatment "operative";
+  review_status "machine_assisted_unreviewed";
+  source long2021;
+  rationale "The text supplies an impoundment framework subject to Chapter 11.30 and constitutional limits. This is not a conclusion that a particular tow or charge is lawful. This is a machine-assisted historical assessment at the Long decision snapshot, not an independently reviewed citator result or a statement of current validity.";
+}
+
+assessment seattle.parking.authorized-vehicle-exclusion.assessment.2021-08-13 {
+  authority "us.wa.seattle.ord120573";
+  rule "seattle.parking.authorized-vehicle-exclusion";
+  rule_version "1";
+  forum "us.wa.courts.state";
+  as_of "2021-08-13T00:00:00Z";
+  recorded_at "2026-10-18T22:35:39Z";
+  force "binding";
+  treatment "operative";
+  review_status "machine_assisted_unreviewed";
+  source ordinance120573;
+  rationale "Subsection C excludes authorized vehicles on municipal property from this section. Authorization and location are explicit supplied premises. The negative conclusion concerns only SMC 11.72.440, not other parking laws or general permission to park. This is a machine-assisted interpretation of the pinned historical text; separate legal and formalization reviews remain pending.";
+}
+
+assessment seattle.parking.excluded-no-section-violation.assessment.2021-08-13 {
+  authority "us.wa.seattle.ord120573";
+  rule "seattle.parking.excluded-no-section-violation";
+  rule_version "1";
+  forum "us.wa.courts.state";
+  as_of "2021-08-13T00:00:00Z";
+  recorded_at "2026-10-18T22:35:39Z";
+  force "binding";
+  treatment "operative";
+  review_status "machine_assisted_unreviewed";
+  source ordinance120573;
+  rationale "Subsection C excludes authorized vehicles on municipal property from this section. Authorization and location are explicit supplied premises. The negative conclusion concerns only SMC 11.72.440, not other parking laws or general permission to park. This is a machine-assisted interpretation of the pinned historical text; separate legal and formalization reviews remain pending.";
+}
+
+
+rule seattle.parking.duration-threshold(matter: Matter, duration: quantity(ms)) @ "1" {
+  time_basis law_time;
+  jurisdiction "us.wa.seattle";
+  effective_from "2001-11-28T08:00:00Z";
+  effective_until null;
+  recorded_at "2026-10-18T22:35:39Z";
+  source ordinance120573;
+  authority { authority "us.wa.seattle.ord120573"; role text; pinpoint "Section 1, SMC 11.72.440(B); scan PDF p. 3, lines 32-35"; scope scope.smc72.historical-text($matter); };
+  requires scope.smc72.historical-text($matter);
+  requires parking.duration($matter, $duration);
+  requires oathkeeper.quantity.gt($duration, 259200000[ms]);
+  ensures parking.over_72_hours($matter);
+}
+
+assessment seattle.parking.duration-threshold.assessment.2021-08-13 {
+  authority "us.wa.seattle.ord120573";
+  rule "seattle.parking.duration-threshold";
+  rule_version "1";
+  forum "us.wa.courts.state";
+  as_of "2021-08-13T00:00:00Z";
+  recorded_at "2026-10-18T22:35:39Z";
+  force binding;
+  treatment operative;
+  review_status machine_assisted_unreviewed;
+  source ordinance120573;
+  rationale "Seventy-two elapsed hours equals 259200000 milliseconds. Exact integer units, strict greater-than, no rounding or implicit unit conversion. This arithmetic implementation does not independently establish elapsed parking time. Independent legal and formalization review pending.";
+}
+
+rule seattle.parking.junk-vehicle-exclusion(matter: Matter) @ "1" {
+  time_basis law_time;
+  jurisdiction "us.wa.seattle";
+  effective_from "2001-11-28T08:00:00Z";
+  effective_until null;
+  recorded_at "2026-10-18T22:35:39Z";
+  source ordinance120573;
+  authority { authority "us.wa.seattle.ord120573"; role text; pinpoint "Section 1, SMC 11.72.440(D); scan PDF p. 3, lines 41-42"; scope scope.smc72.historical-text($matter); };
+  requires scope.smc72.historical-text($matter);
+  requires parking.junk_motor_vehicle($matter);
+  ensures not parking.violates_smc72($matter);
+}
+
+assessment seattle.parking.junk-vehicle-exclusion.assessment.2021-08-13 {
+  authority "us.wa.seattle.ord120573";
+  rule "seattle.parking.junk-vehicle-exclusion";
+  rule_version "1";
+  forum "us.wa.courts.state";
+  as_of "2021-08-13T00:00:00Z";
+  recorded_at "2026-10-18T22:35:39Z";
+  force binding;
+  treatment operative;
+  review_status machine_assisted_unreviewed;
+  source ordinance120573;
+  rationale "Subsection D excludes junk motor vehicles from this section. The chapter definition and classification are supplied premises, not independently formalized here. Independent legal and formalization review pending.";
+}
+
+rule seattle.parking.abandoned-junk-exclusion(matter: Matter) @ "1" {
+  time_basis law_time;
+  jurisdiction "us.wa.seattle";
+  effective_from "2001-11-28T08:00:00Z";
+  effective_until null;
+  recorded_at "2026-10-18T22:35:39Z";
+  source ordinance120573;
+  authority { authority "us.wa.seattle.ord120573"; role text; pinpoint "Section 1, SMC 11.72.440(D); scan PDF p. 3, lines 41-42"; scope scope.smc72.historical-text($matter); };
+  requires scope.smc72.historical-text($matter);
+  requires parking.abandoned_junk_motor_vehicle($matter);
+  ensures not parking.violates_smc72($matter);
+}
+
+assessment seattle.parking.abandoned-junk-exclusion.assessment.2021-08-13 {
+  authority "us.wa.seattle.ord120573";
+  rule "seattle.parking.abandoned-junk-exclusion";
+  rule_version "1";
+  forum "us.wa.courts.state";
+  as_of "2021-08-13T00:00:00Z";
+  recorded_at "2026-10-18T22:35:39Z";
+  force binding;
+  treatment operative;
+  review_status machine_assisted_unreviewed;
+  source ordinance120573;
+  rationale "Subsection D excludes abandoned junk motor vehicles from this section. This conclusion concerns this section only; it does not grant general permission or prevent towing under other authority. Independent legal and formalization review pending.";
+}

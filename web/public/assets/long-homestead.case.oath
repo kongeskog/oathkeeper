@@ -1,0 +1,40 @@
+oathkeeper "0.4";
+case long-homestead @ "0.4.0";
+import "../parking.oath" sha256 "4a3e94a08adc4b49420a558c4505c4fe92991b495973e1642065fb2d460d2b48";
+
+constant long.98824-2: Matter;
+
+fact homestead-scope: scope.long.rcw6_13_040-occupied-property(long.98824-2) {
+  recorded_at "2026-10-18T22:35:39Z";
+  kind "judicial_finding";
+  source long2021;
+  pinpoint "Majority slip pp. 7-12, part I.A";
+  explanation "This is the occupied-personal-property issue decided for Long under RCW 6.13.040(1), not a claim about every homestead situation.";
+}
+
+fact principal-residence: homestead.owner_occupies_personal_property_as_principal_residence(long.98824-2) {
+  recorded_at "2026-10-18T22:35:39Z";
+  kind "judicial_finding";
+  source long2021;
+  pinpoint "Majority slip pp. 2, 7, 12";
+  explanation "The majority finds Long occupied his truck as a principal residence and treats it as his homestead.";
+}
+
+query {
+  event_at "2016-10-12";
+  authority_at "2021-08-13T00:00:00Z";
+  purpose historical_reconstruction;
+  temporal_rationale "Reconstruct the August 2021 opinion about the October 2016 impoundment. The event is recorded with date-only precision; the selected statutory snapshot is a supplied historical applicability assessment, not an automatic retroactivity rule.";
+  jurisdiction "us.wa.seattle";
+  as_of "2016-10-12T00:00:00-07:00";
+  known_at "2026-10-18T22:35:39Z";
+  forum "us.wa.courts.state";
+  goal not homestead.additional_declaration_required(long.98824-2);
+  root "no-declaration";
+}
+
+proof {
+  step homestead-scope: scope.long.rcw6_13_040-occupied-property(long.98824-2) by fact homestead-scope;
+  step principal-residence: homestead.owner_occupies_personal_property_as_principal_residence(long.98824-2) by fact principal-residence;
+  step no-declaration: not homestead.additional_declaration_required(long.98824-2) by apply wa.long.homestead-no-declaration @ "1"(matter = long.98824-2) using [homestead-scope, principal-residence];
+}

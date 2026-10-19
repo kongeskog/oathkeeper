@@ -1,0 +1,66 @@
+oathkeeper "0.4";
+module lawlib.us.tax.shank-basis @ "0.1.0";
+jurisdiction us { name "United States"; parents []; }
+predicate shank.actual_record();
+predicate shank.credible_initial_nondeductible_contributions(quantity(usd_cent));
+predicate shank.no_later_contributions();
+predicate shank.historical_returns_unavailable();
+predicate shank.distribution(quantity(usd_cent));
+predicate shank.established_basis(quantity(usd_cent));
+predicate shank.taxable_distribution(quantity(usd_cent));
+predicate shank.nonzero_basis_despite_unavailable_returns();
+source shank2018 { citation "Shank v. Commissioner, T.C. Memo. 2018-33 (Mar. 20, 2018), No. 1752-17"; uri "https://dawson.ustaxcourt.gov/case-detail/1752-17"; sha256 "94612d7eb8696cb883d356b49caf2129b517b088f68b4dd4d705e75724afec0e"; }
+authority us.tax.shank2018 {
+  kind case; jurisdiction "us"; issuing_body "us.tax-court"; publication published;
+  decided_at "2018-03-20T00:00:00Z"; source shank2018;
+}
+
+rule us.tax.shank.basis(basis: quantity(usd_cent)) @ "1" {
+  time_basis authority_time; jurisdiction "us"; effective_from "2018-03-20T00:00:00Z"; effective_until null;
+  recorded_at "2026-10-18T23:21:21Z"; source shank2018;
+  authority { authority "us.tax.shank2018"; role holding; pinpoint "Slip pp. 5-7"; scope shank.actual_record(); };
+  requires shank.actual_record();
+  requires shank.credible_initial_nondeductible_contributions($basis);
+  requires shank.no_later_contributions();
+  ensures shank.established_basis($basis);
+}
+assessment us.tax.shank.basis.assessment {
+  authority "us.tax.shank2018"; rule "us.tax.shank.basis"; rule_version "1"; forum "us.tax-court";
+  as_of "2018-03-20T00:00:00Z"; recorded_at "2026-10-18T23:21:21Z";
+  force persuasive; treatment operative; review_status machine_assisted_unreviewed;
+  source shank2018; rationale "Court found testimony credible and used the brokerage records to establish 4760 dollars of initial nondeductible contributions with no later contributions. This is a reconstruction of this actual adjudicated record, not a universal evidence-sufficiency test. Independent legal and formalization review pending; no current citator claim.";
+}
+
+rule us.tax.shank.taxable(distribution: quantity(usd_cent), basis: quantity(usd_cent), taxable: quantity(usd_cent)) @ "1" {
+  time_basis authority_time; jurisdiction "us"; effective_from "2018-03-20T00:00:00Z"; effective_until null;
+  recorded_at "2026-10-18T23:21:21Z"; source shank2018;
+  authority { authority "us.tax.shank2018"; role holding; pinpoint "Slip p. 7"; scope shank.actual_record(); };
+  requires shank.actual_record();
+  requires shank.distribution($distribution);
+  requires shank.established_basis($basis);
+  requires oathkeeper.quantity.subtract($distribution, $basis, $taxable);
+  ensures shank.taxable_distribution($taxable);
+}
+assessment us.tax.shank.taxable.assessment {
+  authority "us.tax.shank2018"; rule "us.tax.shank.taxable"; rule_version "1"; forum "us.tax-court";
+  as_of "2018-03-20T00:00:00Z"; recorded_at "2026-10-18T23:21:21Z";
+  force persuasive; treatment operative; review_status machine_assisted_unreviewed;
+  source shank2018; rationale "Court concluded the 22985-dollar balance was taxable. This actual 2014 IRA liquidation is not a Roth conversion or a decision approving backdoor Roth transactions. Independent legal and formalization review pending; no current citator claim.";
+}
+
+rule us.tax.shank.unavailable-returns(basis: quantity(usd_cent)) @ "1" {
+  time_basis authority_time; jurisdiction "us"; effective_from "2018-03-20T00:00:00Z"; effective_until null;
+  recorded_at "2026-10-18T23:21:21Z"; source shank2018;
+  authority { authority "us.tax.shank2018"; role holding; pinpoint "Slip pp. 5-7"; scope shank.actual_record(); };
+  requires shank.actual_record();
+  requires shank.historical_returns_unavailable();
+  requires shank.established_basis($basis);
+  requires oathkeeper.quantity.gt($basis, 0[usd_cent]);
+  ensures shank.nonzero_basis_despite_unavailable_returns();
+}
+assessment us.tax.shank.unavailable-returns.assessment {
+  authority "us.tax.shank2018"; rule "us.tax.shank.unavailable-returns"; rule_version "1"; forum "us.tax-court";
+  as_of "2018-03-20T00:00:00Z"; recorded_at "2026-10-18T23:21:21Z";
+  force persuasive; treatment operative; review_status machine_assisted_unreviewed;
+  source shank2018; rationale "Missing historical returns did not prevent this taxpayer from establishing some basis. No inference that he never filed Form 8606, no automatic acceptance of unsupported basis, and no prospective rule that any testimony suffices. Independent legal and formalization review pending; no current citator claim.";
+}

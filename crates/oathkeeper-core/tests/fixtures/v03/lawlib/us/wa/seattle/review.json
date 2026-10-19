@@ -1,0 +1,22 @@
+{
+  "format": "oathkeeper-review/1",
+  "slice": "Historical SMC 11.72.440(B)-(D) from Ordinance 120573; legal snapshot 2021-08-13",
+  "source_sha256": "1beaef9118938d34565be69fd57123cb293fcdd650cb9198af39933905ddab0d",
+  "source_pinpoint": "Scan PDF p. 3, lines 32-42",
+  "source_check": "Machine-assisted visual inspection of pinned ordinance scan; subsection C text transcribed against image.",
+  "legal_review": {
+    "status": "pending",
+    "reviewer": null
+  },
+  "formalization_review": {
+    "status": "pending",
+    "reviewer": null
+  },
+  "limitations": [
+    "No independent reviewer has approved the encoding.",
+    "Missing negative premises remain unknown; no allocation of evidentiary burden is implied.",
+    "Authorization is an input; this slice does not decide who may authorize or what counts as authorization.",
+    "Junk-vehicle definitions and shorter-sign branches remain unformalized.",
+    "Historical snapshot only; subsequent amendments and treatment require separate assessment."
+  ]
+}

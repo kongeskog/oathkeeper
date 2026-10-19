@@ -1,0 +1,36 @@
+oathkeeper "0.3";
+case long-homestead @ "0.3.0";
+import "../parking.oath" sha256 "787ca45efcad4377727c4c79fd8a5b40afa2758dd2b9b91231a49a69bf263a23";
+
+constant long.98824-2: Matter;
+
+fact homestead-scope: scope.long.rcw6_13_040-occupied-property(long.98824-2) {
+  recorded_at "2026-10-18T19:47:18Z";
+  kind "judicial_finding";
+  source long2021;
+  pinpoint "Majority slip pp. 7-12, part I.A";
+  explanation "This is the occupied-personal-property issue decided for Long under RCW 6.13.040(1), not a claim about every homestead situation.";
+}
+
+fact principal-residence: homestead.owner_occupies_personal_property_as_principal_residence(long.98824-2) {
+  recorded_at "2026-10-18T19:47:18Z";
+  kind "judicial_finding";
+  source long2021;
+  pinpoint "Majority slip pp. 2, 7, 12";
+  explanation "The majority finds Long occupied his truck as a principal residence and treats it as his homestead.";
+}
+
+query {
+  jurisdiction "us.wa.seattle";
+  as_of "2021-08-13T00:00:00Z";
+  known_at "2026-10-18T19:47:18Z";
+  forum "us.wa.courts.state";
+  goal not homestead.additional_declaration_required(long.98824-2);
+  root "no-declaration";
+}
+
+proof {
+  step homestead-scope: scope.long.rcw6_13_040-occupied-property(long.98824-2) by fact homestead-scope;
+  step principal-residence: homestead.owner_occupies_personal_property_as_principal_residence(long.98824-2) by fact principal-residence;
+  step no-declaration: not homestead.additional_declaration_required(long.98824-2) by apply wa.long.homestead-no-declaration @ "1"(matter = long.98824-2) using [homestead-scope, principal-residence];
+}

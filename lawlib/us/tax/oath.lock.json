@@ -1,0 +1,61 @@
+{
+  "format": "oathkeeper.tax-lock/1",
+  "snapshots": {
+    "backdoor-roth-2025": {
+      "snapshot_sha256": "43c70a8f07532d563074d986d1a9b9b834f654450aa0d0ad414eff0b0df7e2d5",
+      "lock": [
+        {
+          "kind": "module",
+          "package": "lawlib.us.tax.backdoor-roth-2025",
+          "version": "0.1.0",
+          "sha256": "50433f71b735467d6a654cf98d6e55101fc8224ef27a189cd9665bab468b8ff6"
+        }
+      ]
+    },
+    "shank-basis": {
+      "snapshot_sha256": "79b738d875ef8f3dbfe64637340a424e5a1a5e9fc4192e641016909023d7c438",
+      "lock": [
+        {
+          "kind": "module",
+          "package": "lawlib.us.tax.shank-basis",
+          "version": "0.1.0",
+          "sha256": "bc5dd7d9277ca72811754e57a55be6e53a83984c09e477506c13cdd62d9ffdb6"
+        }
+      ]
+    },
+    "shank-2018": {
+      "snapshot_sha256": "2a46285d3672014cca6503bc5a22d9d940a32e599ec904c1d3246f114b653e8b",
+      "lock": [
+        {
+          "kind": "module",
+          "package": "lawlib.us.tax.shank-basis",
+          "version": "0.1.0",
+          "sha256": "bc5dd7d9277ca72811754e57a55be6e53a83984c09e477506c13cdd62d9ffdb6"
+        },
+        {
+          "kind": "case",
+          "package": "shank-2018-basis",
+          "version": "0.1.0",
+          "sha256": "c0c6190cd4fa48ba000581e59c77c9aba05207a49268229fc8547fcca8c7bdcf"
+        }
+      ]
+    },
+    "shank-unavailable-returns": {
+      "snapshot_sha256": "17edcd14e5b1dcdbc865e078367765e8fbbb4ef1d076607363dde69b9e5a938c",
+      "lock": [
+        {
+          "kind": "module",
+          "package": "lawlib.us.tax.shank-basis",
+          "version": "0.1.0",
+          "sha256": "bc5dd7d9277ca72811754e57a55be6e53a83984c09e477506c13cdd62d9ffdb6"
+        },
+        {
+          "kind": "case",
+          "package": "shank-2018-unavailable-returns",
+          "version": "0.1.0",
+          "sha256": "92bc0ad5b17edd12f917fd0ff410ae20a397252eb1e78808ac2a129d0b1329fd"
+        }
+      ]
+    }
+  }
+}

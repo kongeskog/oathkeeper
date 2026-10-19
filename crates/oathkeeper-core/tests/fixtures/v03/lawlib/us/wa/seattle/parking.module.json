@@ -1,0 +1,889 @@
+{
+  "language": "oathkeeper/0.2",
+  "package": "lawlib.us.wa.seattle.parking.long",
+  "version": "0.2.0",
+  "jurisdictions": [
+    {
+      "id": "us",
+      "name": "United States",
+      "parents": []
+    },
+    {
+      "id": "us.wa",
+      "name": "Washington",
+      "parents": [
+        "us"
+      ]
+    },
+    {
+      "id": "us.wa.seattle",
+      "name": "Seattle",
+      "parents": [
+        "us.wa"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "seattle.parking.72hours.ordinary-branch",
+      "version": "1",
+      "jurisdiction": "us.wa.seattle",
+      "effective_from": "2001-11-28T08:00:00Z",
+      "effective_until": null,
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "source": {
+        "citation": "Seattle Ordinance 120573, section 1 (2001), amending SMC 11.72.440(A)-(E)",
+        "uri": "https://clerk.seattle.gov/~archives/Ordinances/Ord_120573.pdf",
+        "sha256": "1beaef9118938d34565be69fd57123cb293fcdd650cb9198af39933905ddab0d"
+      },
+      "parameters": [
+        {
+          "name": "matter",
+          "sort": "symbol"
+        },
+        {
+          "name": "hours",
+          "sort": "integer"
+        }
+      ],
+      "premises": [
+        {
+          "atom": "scope.smc72.ordinary-branch",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        },
+        {
+          "atom": "parking.on_street_or_municipal_property",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        },
+        {
+          "atom": "parking.duration_hours",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            },
+            {
+              "kind": "variable",
+              "name": "hours"
+            }
+          ]
+        },
+        {
+          "atom": "oathkeeper.integer.gt",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "hours"
+            },
+            {
+              "kind": "integer",
+              "value": 72
+            }
+          ]
+        }
+      ],
+      "conclusion": {
+        "atom": "parking.violates_smc72",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "variable",
+            "name": "matter"
+          }
+        ]
+      },
+      "authority": {
+        "authority": "us.wa.seattle.ord120573",
+        "role": "text",
+        "pinpoint": "Section 1, SMC 11.72.440(B)-(D); scan PDF pp. 3-4",
+        "scope": {
+          "atom": "scope.smc72.ordinary-branch",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "seattle.parking.impoundment-framework",
+      "version": "1",
+      "jurisdiction": "us.wa.seattle",
+      "effective_from": "2001-11-28T08:00:00Z",
+      "effective_until": null,
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "source": {
+        "citation": "Seattle Ordinance 120573, section 1 (2001), amending SMC 11.72.440(A)-(E)",
+        "uri": "https://clerk.seattle.gov/~archives/Ordinances/Ord_120573.pdf",
+        "sha256": "1beaef9118938d34565be69fd57123cb293fcdd650cb9198af39933905ddab0d"
+      },
+      "parameters": [
+        {
+          "name": "matter",
+          "sort": "symbol"
+        }
+      ],
+      "premises": [
+        {
+          "atom": "scope.smc72.historical-text",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        },
+        {
+          "atom": "parking.violates_smc72",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        }
+      ],
+      "conclusion": {
+        "atom": "parking.subject_to_ch11_30_impoundment",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "variable",
+            "name": "matter"
+          }
+        ]
+      },
+      "authority": {
+        "authority": "us.wa.seattle.ord120573",
+        "role": "text",
+        "pinpoint": "Section 1, SMC 11.72.440(E); scan PDF p. 4",
+        "scope": {
+          "atom": "scope.smc72.historical-text",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "us.timbs.incorporation",
+      "version": "1",
+      "jurisdiction": "us",
+      "effective_from": "2019-02-20T00:00:00Z",
+      "effective_until": null,
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "source": {
+        "citation": "Timbs v. Indiana, 586 U.S. 146 (2019), No. 17-1091, opinion of the Court",
+        "uri": "https://www.supremecourt.gov/opinions/18pdf/17-1091_5536.pdf",
+        "sha256": "1107455132302c406b51094bc1372acb78eba78f137e63cc676f87530f2acc0b"
+      },
+      "parameters": [
+        {
+          "name": "matter",
+          "sort": "symbol"
+        }
+      ],
+      "premises": [
+        {
+          "atom": "scope.federal.excessive-fines-incorporation",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        },
+        {
+          "atom": "government.state_or_local_action",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        }
+      ],
+      "conclusion": {
+        "atom": "constitutional.excessive_fines_clause_applies",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "variable",
+            "name": "matter"
+          }
+        ]
+      },
+      "authority": {
+        "authority": "us.scotus.timbs.2019",
+        "role": "holding",
+        "pinpoint": "Opinion of the Court, slip pp. 2-4 (PDF pp. 5-7)",
+        "scope": {
+          "atom": "scope.federal.excessive-fines-incorporation",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "wa.long.partially-punitive",
+      "version": "1",
+      "jurisdiction": "us.wa",
+      "effective_from": "2021-08-12T15:00:00Z",
+      "effective_until": null,
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "source": {
+        "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+        "uri": "https://law.justia.com/cases/washington/supreme-court/2021/98824-2.html#opinion",
+        "sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56"
+      },
+      "parameters": [
+        {
+          "name": "matter",
+          "sort": "symbol"
+        }
+      ],
+      "premises": [
+        {
+          "atom": "scope.long.smc72-sanction",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        },
+        {
+          "atom": "parking.subject_to_ch11_30_impoundment",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        },
+        {
+          "atom": "sanction.impoundment_and_associated_costs",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        }
+      ],
+      "conclusion": {
+        "atom": "sanction.partially_punitive",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "variable",
+            "name": "matter"
+          }
+        ]
+      },
+      "authority": {
+        "authority": "us.wa.sc.long.2021",
+        "role": "holding",
+        "pinpoint": "Majority slip pp. 26-30, part III.C.i",
+        "scope": {
+          "atom": "scope.long.smc72-sanction",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "wa.long.qualifying-fine",
+      "version": "1",
+      "jurisdiction": "us.wa",
+      "effective_from": "2021-08-12T15:00:00Z",
+      "effective_until": null,
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "source": {
+        "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+        "uri": "https://law.justia.com/cases/washington/supreme-court/2021/98824-2.html#opinion",
+        "sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56"
+      },
+      "parameters": [
+        {
+          "name": "matter",
+          "sort": "symbol"
+        }
+      ],
+      "premises": [
+        {
+          "atom": "scope.long.federal-excessive-fines",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        },
+        {
+          "atom": "constitutional.excessive_fines_clause_applies",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        },
+        {
+          "atom": "sanction.partially_punitive",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        },
+        {
+          "atom": "sanction.government_extraction_for_offense",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        }
+      ],
+      "conclusion": {
+        "atom": "sanction.qualifying_fine",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "variable",
+            "name": "matter"
+          }
+        ]
+      },
+      "authority": {
+        "authority": "us.wa.sc.long.2021",
+        "role": "holding",
+        "pinpoint": "Majority slip pp. 21, 25-30, part III.C",
+        "scope": {
+          "atom": "scope.long.federal-excessive-fines",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "wa.long.gross-disproportionality",
+      "version": "1",
+      "jurisdiction": "us.wa",
+      "effective_from": "2021-08-12T15:00:00Z",
+      "effective_until": null,
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "source": {
+        "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+        "uri": "https://law.justia.com/cases/washington/supreme-court/2021/98824-2.html#opinion",
+        "sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56"
+      },
+      "parameters": [
+        {
+          "name": "matter",
+          "sort": "symbol"
+        }
+      ],
+      "premises": [
+        {
+          "atom": "scope.long.federal-excessive-fines",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        },
+        {
+          "atom": "sanction.qualifying_fine",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        },
+        {
+          "atom": "sanction.grossly_disproportionate",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        }
+      ],
+      "conclusion": {
+        "atom": "constitutional.excessive_fines_violation",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "variable",
+            "name": "matter"
+          }
+        ]
+      },
+      "authority": {
+        "authority": "us.wa.sc.long.2021",
+        "role": "holding",
+        "pinpoint": "Majority slip pp. 30, 37-40, parts III.C.ii and III.D",
+        "scope": {
+          "atom": "scope.long.federal-excessive-fines",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "wa.long.ability-to-pay",
+      "version": "1",
+      "jurisdiction": "us.wa",
+      "effective_from": "2021-08-12T15:00:00Z",
+      "effective_until": null,
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "source": {
+        "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+        "uri": "https://law.justia.com/cases/washington/supreme-court/2021/98824-2.html#opinion",
+        "sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56"
+      },
+      "parameters": [
+        {
+          "name": "matter",
+          "sort": "symbol"
+        }
+      ],
+      "premises": [
+        {
+          "atom": "scope.long.federal-excessive-fines",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        },
+        {
+          "atom": "sanction.qualifying_fine",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        }
+      ],
+      "conclusion": {
+        "atom": "analysis.consider_ability_to_pay",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "variable",
+            "name": "matter"
+          }
+        ]
+      },
+      "authority": {
+        "authority": "us.wa.sc.long.2021",
+        "role": "holding",
+        "pinpoint": "Majority slip pp. 37-38, parts III.C.ii and III.D",
+        "scope": {
+          "atom": "scope.long.federal-excessive-fines",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "wa.long.homestead-no-declaration",
+      "version": "1",
+      "jurisdiction": "us.wa",
+      "effective_from": "2021-08-12T15:00:00Z",
+      "effective_until": null,
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "source": {
+        "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+        "uri": "https://law.justia.com/cases/washington/supreme-court/2021/98824-2.html#opinion",
+        "sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56"
+      },
+      "parameters": [
+        {
+          "name": "matter",
+          "sort": "symbol"
+        }
+      ],
+      "premises": [
+        {
+          "atom": "scope.long.rcw6_13_040-occupied-property",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        },
+        {
+          "atom": "homestead.owner_occupies_personal_property_as_principal_residence",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        }
+      ],
+      "conclusion": {
+        "atom": "homestead.additional_declaration_required",
+        "negative": true,
+        "arguments": [
+          {
+            "kind": "variable",
+            "name": "matter"
+          }
+        ]
+      },
+      "authority": {
+        "authority": "us.wa.sc.long.2021",
+        "role": "holding",
+        "pinpoint": "Majority slip pp. 7-12, part I.A",
+        "scope": {
+          "atom": "scope.long.rcw6_13_040-occupied-property",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "wa.long.no-automatic-impoundment-bar",
+      "version": "1",
+      "jurisdiction": "us.wa",
+      "effective_from": "2021-08-12T15:00:00Z",
+      "effective_until": null,
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "source": {
+        "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+        "uri": "https://law.justia.com/cases/washington/supreme-court/2021/98824-2.html#opinion",
+        "sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56"
+      },
+      "parameters": [
+        {
+          "name": "matter",
+          "sort": "symbol"
+        }
+      ],
+      "premises": [
+        {
+          "atom": "scope.long.independent-parking-impoundment",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        }
+      ],
+      "conclusion": {
+        "atom": "homestead.automatically_prevents_parking_impoundment",
+        "negative": true,
+        "arguments": [
+          {
+            "kind": "variable",
+            "name": "matter"
+          }
+        ]
+      },
+      "authority": {
+        "authority": "us.wa.sc.long.2021",
+        "role": "holding",
+        "pinpoint": "Majority slip p. 20, end of part II",
+        "scope": {
+          "atom": "scope.long.independent-parking-impoundment",
+          "negative": false,
+          "arguments": [
+            {
+              "kind": "variable",
+              "name": "matter"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "authorities": [
+    {
+      "id": "us.scotus.timbs.2019",
+      "kind": "case",
+      "jurisdiction": "us",
+      "issuing_body": "us.scotus",
+      "publication": "published",
+      "source": {
+        "citation": "Timbs v. Indiana, 586 U.S. 146 (2019), No. 17-1091, opinion of the Court",
+        "uri": "https://www.supremecourt.gov/opinions/18pdf/17-1091_5536.pdf",
+        "sha256": "1107455132302c406b51094bc1372acb78eba78f137e63cc676f87530f2acc0b"
+      },
+      "decided_at": "2019-02-20T00:00:00Z"
+    },
+    {
+      "id": "us.wa.sc.long.2021",
+      "kind": "case",
+      "jurisdiction": "us.wa",
+      "issuing_body": "us.wa.supreme-court",
+      "publication": "published",
+      "source": {
+        "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+        "uri": "https://law.justia.com/cases/washington/supreme-court/2021/98824-2.html#opinion",
+        "sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56"
+      },
+      "decided_at": "2021-08-12T15:00:00Z"
+    },
+    {
+      "id": "us.wa.seattle.ord120573",
+      "kind": "ordinance",
+      "jurisdiction": "us.wa.seattle",
+      "issuing_body": "us.wa.seattle.council",
+      "publication": "enacted",
+      "source": {
+        "citation": "Seattle Ordinance 120573, section 1 (2001), amending SMC 11.72.440(A)-(E)",
+        "uri": "https://clerk.seattle.gov/~archives/Ordinances/Ord_120573.pdf",
+        "sha256": "1beaef9118938d34565be69fd57123cb293fcdd650cb9198af39933905ddab0d"
+      },
+      "decided_at": null
+    }
+  ],
+  "authority_assessments": [
+    {
+      "id": "seattle.parking.72hours.ordinary-branch.assessment.2021-08-13",
+      "authority": "us.wa.seattle.ord120573",
+      "rule": "seattle.parking.72hours.ordinary-branch",
+      "rule_version": "1",
+      "forum": "us.wa.courts.state",
+      "as_of": "2021-08-13T00:00:00Z",
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "force": "binding",
+      "treatment": "operative",
+      "review_status": "machine_assisted_unreviewed",
+      "source": {
+        "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+        "uri": "https://law.justia.com/cases/washington/supreme-court/2021/98824-2.html#opinion",
+        "sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56"
+      },
+      "rationale": "Only the ordinary 72-hour branch is encoded. Scope requires no shorter posted limit, no other legal authorization, no authorized-municipal-vehicle exclusion, and no junk-vehicle exclusion. The module does not infer that scope from silence. This is a machine-assisted historical assessment at the Long decision snapshot, not an independently reviewed citator result or a statement of current validity."
+    },
+    {
+      "id": "seattle.parking.impoundment-framework.assessment.2021-08-13",
+      "authority": "us.wa.seattle.ord120573",
+      "rule": "seattle.parking.impoundment-framework",
+      "rule_version": "1",
+      "forum": "us.wa.courts.state",
+      "as_of": "2021-08-13T00:00:00Z",
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "force": "binding",
+      "treatment": "operative",
+      "review_status": "machine_assisted_unreviewed",
+      "source": {
+        "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+        "uri": "https://law.justia.com/cases/washington/supreme-court/2021/98824-2.html#opinion",
+        "sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56"
+      },
+      "rationale": "The text supplies an impoundment framework subject to Chapter 11.30 and constitutional limits. This is not a conclusion that a particular tow or charge is lawful. This is a machine-assisted historical assessment at the Long decision snapshot, not an independently reviewed citator result or a statement of current validity."
+    },
+    {
+      "id": "us.timbs.incorporation.assessment.2021-08-13",
+      "authority": "us.scotus.timbs.2019",
+      "rule": "us.timbs.incorporation",
+      "rule_version": "1",
+      "forum": "us.wa.courts.state",
+      "as_of": "2021-08-13T00:00:00Z",
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "force": "binding",
+      "treatment": "operative",
+      "review_status": "machine_assisted_unreviewed",
+      "source": {
+        "citation": "Timbs v. Indiana, 586 U.S. 146 (2019), No. 17-1091, opinion of the Court",
+        "uri": "https://www.supremecourt.gov/opinions/18pdf/17-1091_5536.pdf",
+        "sha256": "1107455132302c406b51094bc1372acb78eba78f137e63cc676f87530f2acc0b"
+      },
+      "rationale": "Timbs holds incorporation of the Excessive Fines Clause, not that every fine or every forfeiture is excessive. This is a machine-assisted historical assessment at the Long decision snapshot, not an independently reviewed citator result or a statement of current validity."
+    },
+    {
+      "id": "wa.long.partially-punitive.assessment.2021-08-13",
+      "authority": "us.wa.sc.long.2021",
+      "rule": "wa.long.partially-punitive",
+      "rule_version": "1",
+      "forum": "us.wa.courts.state",
+      "as_of": "2021-08-13T00:00:00Z",
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "force": "binding",
+      "treatment": "operative",
+      "review_status": "machine_assisted_unreviewed",
+      "source": {
+        "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+        "uri": "https://law.justia.com/cases/washington/supreme-court/2021/98824-2.html#opinion",
+        "sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56"
+      },
+      "rationale": "Long characterizes the particular statutory impoundment and associated costs as partially punitive; the rule is limited by the declared Long/SMC72 sanction scope. This is a machine-assisted historical assessment at the Long decision snapshot, not an independently reviewed citator result or a statement of current validity."
+    },
+    {
+      "id": "wa.long.qualifying-fine.assessment.2021-08-13",
+      "authority": "us.wa.sc.long.2021",
+      "rule": "wa.long.qualifying-fine",
+      "rule_version": "1",
+      "forum": "us.wa.courts.state",
+      "as_of": "2021-08-13T00:00:00Z",
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "force": "binding",
+      "treatment": "operative",
+      "review_status": "machine_assisted_unreviewed",
+      "source": {
+        "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+        "uri": "https://law.justia.com/cases/washington/supreme-court/2021/98824-2.html#opinion",
+        "sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56"
+      },
+      "rationale": "A governmental extraction as punishment at least in part qualifies for excessive-fines scrutiny; qualifying as a fine does not establish excessiveness. This is a machine-assisted historical assessment at the Long decision snapshot, not an independently reviewed citator result or a statement of current validity."
+    },
+    {
+      "id": "wa.long.gross-disproportionality.assessment.2021-08-13",
+      "authority": "us.wa.sc.long.2021",
+      "rule": "wa.long.gross-disproportionality",
+      "rule_version": "1",
+      "forum": "us.wa.courts.state",
+      "as_of": "2021-08-13T00:00:00Z",
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "force": "binding",
+      "treatment": "operative",
+      "review_status": "machine_assisted_unreviewed",
+      "source": {
+        "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+        "uri": "https://law.justia.com/cases/washington/supreme-court/2021/98824-2.html#opinion",
+        "sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56"
+      },
+      "rationale": "The violation rule requires a separately established gross-disproportionality judgment. That judgment cannot be obtained from poverty or a numerical fine threshold alone. This is a machine-assisted historical assessment at the Long decision snapshot, not an independently reviewed citator result or a statement of current validity."
+    },
+    {
+      "id": "wa.long.ability-to-pay.assessment.2021-08-13",
+      "authority": "us.wa.sc.long.2021",
+      "rule": "wa.long.ability-to-pay",
+      "rule_version": "1",
+      "forum": "us.wa.courts.state",
+      "as_of": "2021-08-13T00:00:00Z",
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "force": "binding",
+      "treatment": "operative",
+      "review_status": "machine_assisted_unreviewed",
+      "source": {
+        "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+        "uri": "https://law.justia.com/cases/washington/supreme-court/2021/98824-2.html#opinion",
+        "sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56"
+      },
+      "rationale": "Long requires consideration of ability to pay as part of its disproportionality analysis. This is a Washington Supreme Court holding; it is not attributed to Timbs as a nationwide Supreme Court holding. This is a machine-assisted historical assessment at the Long decision snapshot, not an independently reviewed citator result or a statement of current validity."
+    },
+    {
+      "id": "wa.long.homestead-no-declaration.assessment.2021-08-13",
+      "authority": "us.wa.sc.long.2021",
+      "rule": "wa.long.homestead-no-declaration",
+      "rule_version": "1",
+      "forum": "us.wa.courts.state",
+      "as_of": "2021-08-13T00:00:00Z",
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "force": "binding",
+      "treatment": "operative",
+      "review_status": "machine_assisted_unreviewed",
+      "source": {
+        "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+        "uri": "https://law.justia.com/cases/washington/supreme-court/2021/98824-2.html#opinion",
+        "sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56"
+      },
+      "rationale": "Long interprets RCW 6.13.040(1) to recognize automatic protection for occupied personal property used as the owner principal residence. This rule does not decide exemption amounts or all statutory exceptions. This is a machine-assisted historical assessment at the Long decision snapshot, not an independently reviewed citator result or a statement of current validity."
+    },
+    {
+      "id": "wa.long.no-automatic-impoundment-bar.assessment.2021-08-13",
+      "authority": "us.wa.sc.long.2021",
+      "rule": "wa.long.no-automatic-impoundment-bar",
+      "rule_version": "1",
+      "forum": "us.wa.courts.state",
+      "as_of": "2021-08-13T00:00:00Z",
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "force": "binding",
+      "treatment": "operative",
+      "review_status": "machine_assisted_unreviewed",
+      "source": {
+        "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+        "uri": "https://law.justia.com/cases/washington/supreme-court/2021/98824-2.html#opinion",
+        "sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56"
+      },
+      "rationale": "The majority distinguishes homestead protections at debt enforcement from independent parking impoundment authority. This does not endorse the broader concurring view as a majority holding and does not authorize unconstitutional impoundments. This is a machine-assisted historical assessment at the Long decision snapshot, not an independently reviewed citator result or a statement of current validity."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+oathkeeper "0.4";
+case shank-2018-unavailable-returns @ "0.1.0";
+import "shank-basis.oath" sha256 "bc5dd7d9277ca72811754e57a55be6e53a83984c09e477506c13cdd62d9ffdb6";
+fact scope: shank.actual_record() { recorded_at "2026-10-18T23:21:21Z"; kind judicial_finding; source shank2018; pinpoint "Slip pp. 1-3"; explanation "Actual No. 1752-17 concerning the 2014 distribution; no hypothetical transaction."; }
+fact initial: shank.credible_initial_nondeductible_contributions(476000[usd_cent]) { recorded_at "2026-10-18T23:21:21Z"; kind judicial_finding; source shank2018; pinpoint "Slip pp. 5-7"; explanation "Court credibility and initial-investment findings are explicit trusted premises, not a classifier output."; }
+fact no-later: shank.no_later_contributions() { recorded_at "2026-10-18T23:21:21Z"; kind judicial_finding; source shank2018; pinpoint "Slip pp. 6-7"; explanation "The opinion finds no further contributions after the initial investment."; }
+fact unavailable: shank.historical_returns_unavailable() { recorded_at "2026-10-18T23:21:21Z"; kind record_fact; source shank2018; pinpoint "Slip p. 5"; explanation "Neither petitioner nor respondent counsel could obtain the old returns. This does not establish that Form 8606 was never filed."; }
+fact distribution: shank.distribution(2774500[usd_cent]) { recorded_at "2026-10-18T23:21:21Z"; kind record_fact; source shank2018; pinpoint "Slip pp. 1 and 3"; explanation "Actual 2014 distribution as reported in the opinion, whose amounts are rounded to whole dollars."; }
+query {
+  jurisdiction "us"; as_of "2014-12-31T00:00:00Z"; event_at "2014-12-31";
+  authority_at "2018-03-20T00:00:00Z"; known_at "2026-10-18T23:21:21Z"; forum "us.tax-court";
+  purpose historical_reconstruction;
+  temporal_rationale "2018 opinion about tax year 2014. December 31 anchors the tax year, not an asserted date of withdrawal. Findings and rounding are taken from the official court PDF.";
+  goal shank.nonzero_basis_despite_unavailable_returns(); root "unavailable-returns";
+}
+proof {
+  step scope: shank.actual_record() by fact scope;
+  step initial: shank.credible_initial_nondeductible_contributions(476000[usd_cent]) by fact initial;
+  step no-later: shank.no_later_contributions() by fact no-later;
+  step unavailable: shank.historical_returns_unavailable() by fact unavailable;
+  step basis: shank.established_basis(476000[usd_cent]) by apply us.tax.shank.basis @ "1"(basis = 476000[usd_cent]) using [scope, initial, no-later];
+  step positive: oathkeeper.quantity.gt(476000[usd_cent], 0[usd_cent]) by compare quantity_greater_than;
+  step unavailable-returns: shank.nonzero_basis_despite_unavailable_returns() by apply us.tax.shank.unavailable-returns @ "1"(basis = 476000[usd_cent]) using [scope, unavailable, basis, positive];
+}

@@ -1,0 +1,94 @@
+{
+  "facts": [
+    {
+      "id": "independent-impoundment-scope",
+      "claim": {
+        "atom": "scope.long.independent-parking-impoundment",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "symbol",
+            "value": "long.98824-2"
+          }
+        ]
+      },
+      "evidence_sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56",
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "basis": {
+        "kind": "judicial_finding",
+        "source": {
+          "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+          "uri": "https://law.justia.com/cases/washington/supreme-court/2021/98824-2.html#opinion",
+          "sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56"
+        },
+        "pinpoint": "Majority slip p. 20",
+        "explanation": "The exact issue is the majority distinction between independent parking impoundment authority and homestead protection on debt enforcement. This does not adopt the concurrence contrary view."
+      }
+    }
+  ],
+  "attestations": [],
+  "oracle_policy": [],
+  "query": {
+    "jurisdiction": "us.wa.seattle",
+    "as_of": "2021-08-13T00:00:00Z",
+    "known_at": "2026-10-18T19:47:18Z",
+    "forum": "us.wa.courts.state",
+    "goal": {
+      "atom": "homestead.automatically_prevents_parking_impoundment",
+      "negative": true,
+      "arguments": [
+        {
+          "kind": "symbol",
+          "value": "long.98824-2"
+        }
+      ]
+    },
+    "root": "no-automatic-bar"
+  },
+  "proof": [
+    {
+      "id": "independent-impoundment-scope",
+      "claim": {
+        "atom": "scope.long.independent-parking-impoundment",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "symbol",
+            "value": "long.98824-2"
+          }
+        ]
+      },
+      "reason": {
+        "kind": "fact",
+        "fact": "independent-impoundment-scope"
+      }
+    },
+    {
+      "id": "no-automatic-bar",
+      "claim": {
+        "atom": "homestead.automatically_prevents_parking_impoundment",
+        "negative": true,
+        "arguments": [
+          {
+            "kind": "symbol",
+            "value": "long.98824-2"
+          }
+        ]
+      },
+      "reason": {
+        "kind": "apply",
+        "rule": "wa.long.no-automatic-impoundment-bar",
+        "version": "1",
+        "premises": [
+          "independent-impoundment-scope"
+        ],
+        "substitution": {
+          "matter": {
+            "kind": "symbol",
+            "value": "long.98824-2"
+          }
+        }
+      }
+    }
+  ]
+}

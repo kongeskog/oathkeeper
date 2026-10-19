@@ -1,0 +1,30 @@
+{
+  "format": "oathkeeper-import-lock/1",
+  "snapshot_sha256": "19507f22d1ad16cb4d0a5007504525a25ff219f18929239e3a87abcfa0b08b0a",
+  "sources": [
+    {
+      "kind": "module",
+      "package": "lawlib.us.timbs",
+      "version": "0.3.0",
+      "sha256": "26ac00f03c584df6ac227293d7080fbffc42e97a60e32061583246d9d8e31896"
+    },
+    {
+      "kind": "module",
+      "package": "lawlib.us.wa.long",
+      "version": "0.3.0",
+      "sha256": "4b37e17663e647901704a912130a639031b92690ef26a5e48bcba1ab24f65dfa"
+    },
+    {
+      "kind": "module",
+      "package": "lawlib.us.wa.seattle.parking.long",
+      "version": "0.3.0",
+      "sha256": "787ca45efcad4377727c4c79fd8a5b40afa2758dd2b9b91231a49a69bf263a23"
+    },
+    {
+      "kind": "module",
+      "package": "lawlib.vocabulary",
+      "version": "0.3.0",
+      "sha256": "e3aa323c2352147c2788fa151e24f1a4c6a88f3d0e2c613fdb624996eae0eeec"
+    }
+  ]
+}

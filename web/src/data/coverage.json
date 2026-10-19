@@ -1,0 +1,89 @@
+{
+  "format": "oathkeeper-coverage/3",
+  "jurisdiction": "us.wa.seattle",
+  "coverage_complete": false,
+  "inventory_complete": false,
+  "review_status": "machine_assisted_unreviewed",
+  "module": "parking.oath",
+  "rule_ids": [
+    "us.timbs.incorporation",
+    "wa.long.partially-punitive",
+    "wa.long.qualifying-fine",
+    "wa.long.gross-disproportionality",
+    "wa.long.ability-to-pay",
+    "wa.long.homestead-no-declaration",
+    "wa.long.no-automatic-impoundment-bar",
+    "seattle.parking.72hours.ordinary-branch",
+    "seattle.parking.impoundment-framework",
+    "seattle.parking.authorized-vehicle-exclusion",
+    "seattle.parking.excluded-no-section-violation",
+    "seattle.parking.duration-threshold",
+    "seattle.parking.junk-vehicle-exclusion",
+    "seattle.parking.abandoned-junk-exclusion"
+  ],
+  "cases": [
+    "cases/long-ability-to-pay.case.oath",
+    "cases/long-excessive-fines.case.oath",
+    "cases/long-homestead.case.oath",
+    "cases/long-no-automatic-impoundment-bar.case.oath",
+    "cases/long-statutory-framework.case.oath"
+  ],
+  "legal_snapshot": "2021-08-13T00:00:00Z",
+  "formalized_authorities": [
+    "SMC 11.72.440, selected conditional branches from Ordinance 120573",
+    "City of Seattle v. Long, selected majority holdings",
+    "Timbs v. Indiana, incorporation holding"
+  ],
+  "not_formalized": [
+    "Full Chapter 11.30 impoundment procedure and prerequisites",
+    "All other parking and traffic provisions",
+    "Full homestead statutory scheme and exceptions",
+    "All other Seattle Municipal Code titles and amendments",
+    "City Charter",
+    "Uncodified ordinances and emergency measures",
+    "Agency rules and director rules",
+    "Other applicable Washington, federal, tribal, and county authorities",
+    "Full relevant precedent and subsequent treatment through the present"
+  ],
+  "completeness_denominator": null,
+  "limitations": [
+    "Historical decision reconstruction, not a present-day validity certification",
+    "Original-court findings are trusted evidence inputs, not independently recomputed opinions",
+    "No independent legal reviewer has approved this encoding",
+    "Scope predicates require proof; exemptions are not inferred from missing facts",
+    "Five reconstructions are issues from one litigation matter, not five independent cases."
+  ],
+  "legacy_module": "parking.module.json",
+  "import_lock": "oath.lock.json",
+  "review_record": "review.json",
+  "pending_cases": [
+    "cases/long-oracle-reassessment.case.oath"
+  ],
+  "assessment_cases": [
+    "cases/long-parking-evidence-review.case.oath"
+  ],
+  "independent_litigation_matters": 1,
+  "reconstruction_count": 5,
+  "coverage_dimensions": {
+    "source_artifacts_pinned": 4,
+    "formalized_authorities": 3,
+    "formalized_rules": 14,
+    "independently_reviewed_rules": 0,
+    "reviewed_questions": 0,
+    "supported_scope": "Historical SMC 11.72.440(B)-(D), explicit sufficient arguments and exclusions; selected Long/Timbs holdings",
+    "exceptions_accounted_for": [
+      "shorter posted period (required negative premise)",
+      "otherwise provided by law (required negative premise)",
+      "authorized vehicles on municipal property (explicit exclusion)",
+      "junk motor vehicles (explicit exclusion)",
+      "abandoned junk motor vehicles (explicit exclusion)"
+    ],
+    "exceptions_and_definitions_unresolved": [
+      "What counts as authorization",
+      "Chapter definitions of both junk-vehicle categories",
+      "Other-law applicability and full authority inventory",
+      "Posted-sign enforcement under subsection A",
+      "Impoundment procedure under Chapter 11.30"
+    ]
+  }
+}

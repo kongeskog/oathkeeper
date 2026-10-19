@@ -1,0 +1,137 @@
+{
+  "facts": [
+    {
+      "id": "homestead-scope",
+      "claim": {
+        "atom": "scope.long.rcw6_13_040-occupied-property",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "symbol",
+            "value": "long.98824-2"
+          }
+        ]
+      },
+      "evidence_sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56",
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "basis": {
+        "kind": "judicial_finding",
+        "source": {
+          "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+          "uri": "https://law.justia.com/cases/washington/supreme-court/2021/98824-2.html#opinion",
+          "sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56"
+        },
+        "pinpoint": "Majority slip pp. 7-12, part I.A",
+        "explanation": "This is the occupied-personal-property issue decided for Long under RCW 6.13.040(1), not a claim about every homestead situation."
+      }
+    },
+    {
+      "id": "principal-residence",
+      "claim": {
+        "atom": "homestead.owner_occupies_personal_property_as_principal_residence",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "symbol",
+            "value": "long.98824-2"
+          }
+        ]
+      },
+      "evidence_sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56",
+      "recorded_at": "2026-10-18T19:47:18Z",
+      "basis": {
+        "kind": "judicial_finding",
+        "source": {
+          "citation": "City of Seattle v. Long, 198 Wn.2d 136, 493 P.3d 94 (2021), No. 98824-2, majority slip opinion",
+          "uri": "https://law.justia.com/cases/washington/supreme-court/2021/98824-2.html#opinion",
+          "sha256": "4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56"
+        },
+        "pinpoint": "Majority slip pp. 2, 7, 12",
+        "explanation": "The majority finds Long occupied his truck as a principal residence and treats it as his homestead."
+      }
+    }
+  ],
+  "attestations": [],
+  "oracle_policy": [],
+  "query": {
+    "jurisdiction": "us.wa.seattle",
+    "as_of": "2021-08-13T00:00:00Z",
+    "known_at": "2026-10-18T19:47:18Z",
+    "forum": "us.wa.courts.state",
+    "goal": {
+      "atom": "homestead.additional_declaration_required",
+      "negative": true,
+      "arguments": [
+        {
+          "kind": "symbol",
+          "value": "long.98824-2"
+        }
+      ]
+    },
+    "root": "no-declaration"
+  },
+  "proof": [
+    {
+      "id": "homestead-scope",
+      "claim": {
+        "atom": "scope.long.rcw6_13_040-occupied-property",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "symbol",
+            "value": "long.98824-2"
+          }
+        ]
+      },
+      "reason": {
+        "kind": "fact",
+        "fact": "homestead-scope"
+      }
+    },
+    {
+      "id": "principal-residence",
+      "claim": {
+        "atom": "homestead.owner_occupies_personal_property_as_principal_residence",
+        "negative": false,
+        "arguments": [
+          {
+            "kind": "symbol",
+            "value": "long.98824-2"
+          }
+        ]
+      },
+      "reason": {
+        "kind": "fact",
+        "fact": "principal-residence"
+      }
+    },
+    {
+      "id": "no-declaration",
+      "claim": {
+        "atom": "homestead.additional_declaration_required",
+        "negative": true,
+        "arguments": [
+          {
+            "kind": "symbol",
+            "value": "long.98824-2"
+          }
+        ]
+      },
+      "reason": {
+        "kind": "apply",
+        "rule": "wa.long.homestead-no-declaration",
+        "version": "1",
+        "premises": [
+          "homestead-scope",
+          "principal-residence"
+        ],
+        "substitution": {
+          "matter": {
+            "kind": "symbol",
+            "value": "long.98824-2"
+          }
+        }
+      }
+    }
+  ]
+}
