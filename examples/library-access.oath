@@ -1,0 +1,44 @@
+oathkeeper "0.5";
+module examples.library-access @ "0.1.0";
+
+type Person;
+
+jurisdiction example.city {
+  name "Example City";
+  parents [];
+}
+
+predicate library.resident(Person);
+predicate library.may_enter(Person);
+
+source example_policy {
+  citation "Fictional Example City Library Ordinance, section 1";
+  uri "https://example.org/library-ordinance";
+  sha256 "b702798f5c3b4ff2fed8bda8b370f86bfbe89b14da82aea89a063d09af3b9b3d";
+}
+
+authority example.city.library-ordinance {
+  kind ordinance;
+  jurisdiction "example.city";
+  issuing_body "example.city.council";
+  publication enacted;
+  source example_policy;
+  decided_at null;
+}
+
+rule example.library.resident-access(person: Person) @ "1" {
+  time_basis law_time;
+  jurisdiction "example.city";
+  effective_from "2026-01-01T00:00:00Z";
+  effective_until null;
+  recorded_at "2026-01-01T00:00:00Z";
+  source example_policy;
+  authority {
+    authority "example.city.library-ordinance";
+    role text;
+    pinpoint "Section 1";
+    scope library.resident($person);
+  };
+  requires library.resident($person);
+  ensures library.may_enter($person);
+}

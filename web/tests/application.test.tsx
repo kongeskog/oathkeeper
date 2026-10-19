@@ -12,11 +12,13 @@ import { traceDependencies, applicationSteps, escapeHtml } from '../src/lib/proo
 function open(route:string){act(()=>navigate(route));return render(<App/>)}
 
 describe('law library application',()=>{
-  test('a focused overview links to separate application pages',async()=>{
+  test('the public landing page leads into the law library',async()=>{
     const user=userEvent.setup();open('/')
     expect(screen.getAllByRole('heading',{level:1})).toHaveLength(1)
+    expect(screen.getByRole('heading',{name:'Legal reasoning you can inspect.'})).toBeVisible()
+    expect(screen.getByText('The checker verifies the derivation, not the world.')).toBeVisible()
     expect(screen.queryByTestId('proof-detail')).not.toBeInTheDocument()
-    await user.click(screen.getByRole('link',{name:'Open law library'}))
+    await user.click(screen.getByRole('link',{name:'Explore lawlib'}))
     expect(await screen.findByRole('heading',{name:'Law library'})).toBeVisible()
     expect(window.location.hash).toBe('#/lawlib')
     expect(screen.getByText('Showing 14 of 14 rules')).toBeVisible()
@@ -73,7 +75,27 @@ describe('law library application',()=>{
   test('unknown and malformed routes show a usable missing page',()=>{
     open('/something/%E0%A4%A')
     expect(screen.getByRole('heading',{name:'Page not found'})).toBeVisible()
-    expect(screen.getByRole('link',{name:'Return to overview'})).toHaveAttribute('href','#/')
+    expect(screen.getByRole('link',{name:'Return home'})).toHaveAttribute('href','#/')
+  })
+})
+
+describe('public learning pages',()=>{
+  test('getting started teaches and runs a small example',()=>{
+    open('/getting-started')
+    expect(screen.getByRole('heading',{name:'Your first checked argument'})).toBeVisible()
+    expect(screen.getByText('derivation_verified')).toBeVisible()
+    expect(screen.getByText(/cargo run -- verify examples\/library-access\.case\.oath/)).toBeVisible()
+  })
+  test('resources organize learning, APIs, projects, and bounded examples',()=>{
+    open('/resources')
+    expect(screen.getByRole('heading',{name:'Learn, build, and contribute'})).toBeVisible()
+    expect(screen.getByRole('link',{name:/oathkeeper-lawlib/})).toHaveAttribute('href','https://github.com/kongeskog/oathkeeper-lawlib')
+    expect(screen.getByText('DEEPER EXAMPLES')).toBeVisible()
+  })
+  test('primary navigation contains the five general sections',()=>{
+    open('/')
+    for(const name of ['Home','Getting started','Oath language','Lawlib explorer','Resources'])expect(screen.getAllByRole('link',{name:new RegExp(`^${name}`)}).some(link=>link.hasAttribute('href'))).toBe(true)
+    expect(screen.queryByRole('link',{name:'Federal tax'})).not.toBeInTheDocument()
   })
 })
 
@@ -129,11 +151,11 @@ describe('documentation and code reference',()=>{
     expect(copy).toHaveBeenCalledWith(expect.stringContaining('oathkeeper.verify_file'))
     expect(screen.getByRole('link',{name:'binding implementation'})).toHaveAttribute('href','#/reference/python')
   })
-  test('the table of contents preserves the document route',async()=>{
-    const user=userEvent.setup();open('/docs/language')
+  test('the top-level language page preserves its document route',async()=>{
+    const user=userEvent.setup();open('/language')
     await user.click(screen.getByRole('link',{name:'Kernel-enforced types'}))
-    expect(await screen.findByRole('heading',{name:'Language specification 0.5',level:1})).toBeVisible()
-    expect(window.location.hash).toBe('#/docs/language?section=kernel-enforced-types')
+    expect(await screen.findByRole('heading',{name:'Oath language reference',level:1})).toBeVisible()
+    expect(window.location.hash).toBe('#/language?section=kernel-enforced-types')
     expect(document.getElementById('doc-kernel-enforced-types')).toBeTruthy()
   })
   test('consolidated evidence and inline source links remain usable',async()=>{

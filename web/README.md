@@ -51,9 +51,13 @@ kernel and the selected pinned evidence. `.vercel/` is ignored by Git. Browser
 calculations need no backend service or API keys. The app uses hash routes such
 as `/#/workbench`, which work on static hosting without rewrites.
 
-This workflow builds locally and uploads the complete output. A plain Vite build
-from Git is insufficient until the Python/Rust preparation step has generated the
-ignored inputs; automatic Git deployments are not configured by these commands.
+The Vercel project is also connected to `kongeskog/oathkeeper` through Vercel for
+GitHub. Every branch push receives a preview deployment, and pushes to `main`
+update production. Root [`vercel.json`](../vercel.json) runs
+[`scripts/build-vercel.sh`](../scripts/build-vercel.sh), which recreates the
+ignored lawlib data, pinned evidence, and Rust/WASM kernel in a clean Git build
+before running the web tests and production build. The local prebuilt workflow
+above remains useful for release checks and manual recovery.
 
 ## Managed Sites checkout
 

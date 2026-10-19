@@ -43,7 +43,7 @@ export const docs=[
   {id:'tax',title:'Federal tax · backdoor Roth',category:'Start here',summary:'2025 IRA allocation, scope, rounding, real precedent and executable APIs.',content:taxGuide},
   {id:'getting-started',title:'Getting started',category:'Start here',summary:'Install, verify a real case, and understand the report.',content:gettingStarted},
   {id:'seattle',title:'The Seattle module',category:'Start here',summary:'Real authorities, historical case proofs, scope, and known limitations.',content:seattle},
-  {id:'language',title:'Language specification 0.5',category:'Language',summary:'Readable declarations, kernel-enforced signatures, pinned imports, and explicit proofs.',content:language},
+  {id:'language',title:'Oath language reference',category:'Language',summary:'Write readable declarations, typed rules, pinned imports, facts, queries, and explicit proofs.',content:language},
   {id:'spec-0-3',title:'Archived specification 0.3',category:'Language',summary:'Previous authoring syntax and retired report contract.',content:v03},
   {id:'research',title:'Research & design decisions',category:'Project',summary:'Primary sources, related systems, and unresolved design questions.',content:research},
   {id:'soundness',title:'Soundness and limits',category:'Architecture',summary:'Conditional proof calculus, trust assumptions, and search limits.',content:soundness},

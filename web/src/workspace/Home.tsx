@@ -1,21 +1,58 @@
-import { ArrowRight, ArrowUpRight, BookOpen, Library, FileCode2, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, BookOpen, Braces, CheckCircle2, GitBranch, Library, Scale } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card'
+import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { AppLink, PageHeading, DataCard, ReviewBadge, CodeBlock } from './shared'
-import { taxData } from './tax-model'
-import { lawModule, records, snapshots, ruleTitle, rulePath, ruleAuthority, authorityName, casePath } from './catalog'
+import { AppLink } from './shared'
+
+const principles=[
+  {icon:BookOpen,title:'State the inputs',text:'Record the source, scope, date, evidence, and assumptions that an argument relies on.'},
+  {icon:GitBranch,title:'Show every step',text:'Connect facts to rules in a derivation that a person can read and another tool can replay.'},
+  {icon:CheckCircle2,title:'Check the result',text:'Use the deterministic Rust kernel to confirm that each step follows from the declared inputs.'},
+]
 
 export function Home(){
-  return <div className="page-container">
-    <PageHeading eyebrow="Workspace" title="Explore the law. Inspect the reasoning." description="Explore conditional legal arguments, missing evidence, and source-backed rules from bounded Seattle and U.S. federal tax modules." actions={<><Button asChild><AppLink to="/workbench">Open argument workbench<ArrowRight/></AppLink></Button><Button variant="outline" asChild><AppLink to="/lawlib"><Library/>Open law library</AppLink></Button><Button variant="outline" asChild><AppLink to="/docs/getting-started">Getting started<ArrowRight/></AppLink></Button></>}/>
-    <Card className="mb-5"><CardHeader><CardTitle>Federal tax · backdoor Roth IRA</CardTitle><CardDescription>Explore the pro-rata rule with a local Rust calculator, final 2025 IRS guidance, and real Tax Court precedent.</CardDescription></CardHeader><CardFooter><Button asChild><AppLink to="/tax/backdoor-roth">Open the tax workspace<ArrowRight/></AppLink></Button></CardFooter></Card><div className="data-grid"><DataCard label="Formalized rules" value={lawModule.rules.length+taxData.module.rules.length+taxData.cases[0].bundle.rules.length} detail="Seattle, federal tax and Shank rules"/><DataCard label="Case proof files" value={records.length+taxData.cases.length} detail="Seven paths · two real litigation matters"/><DataCard label="Pinned sources" value={snapshots.length+taxData.sources.length} detail="Legislation, IRS guidance and court opinions"/><DataCard label="Library status" value={<ReviewBadge/>} detail="Independent review outstanding"/></div>
-    <div className="home-work-grid">
-      <Card className="home-case-card"><CardHeader><div className="card-eyebrow"><Badge variant="secondary">Real case</Badge><span>Washington · 2021</span></div><CardTitle>City of Seattle v. Long</CardTitle><CardDescription>Follow the excessive-fines argument from municipal law through federal and Washington precedent. Inspect each premise and its source.</CardDescription></CardHeader><CardContent><div className="case-metrics"><span><CheckCircle2 size={14}/>Rust-verified fixture</span><span>5 rule applications</span><span>0 oracle attestations</span></div></CardContent><CardFooter><Button asChild><AppLink to={casePath('long-excessive-fines')}>Open the case proof<ArrowUpRight/></AppLink></Button><small>The court’s recorded findings remain explicit inputs.</small></CardFooter></Card>
-      <Card className="quickstart-card"><CardHeader><div className="card-eyebrow"><span><FileCode2 size={14}/>Run locally</span><AppLink to="/docs/cli">CLI reference<ArrowUpRight size={13}/></AppLink></div><CardTitle>Verify the same proof in Rust</CardTitle></CardHeader><CardContent><CodeBlock>{'python3 tools/lawlib_package.py sync\ncargo run -- verify \\\n  .deps/lawlib/us/wa/seattle/cases/long-excessive-fines.case.oath'}</CodeBlock><div className="quickstart-links"><AppLink to="/docs/python"><BookOpen size={15}/>Use the Python API<ArrowRight size={14}/></AppLink><AppLink to="/reference/core"><FileCode2 size={15}/>Read the core implementation<ArrowRight size={14}/></AppLink></div></CardContent></Card>
-    </div>
-    <Card className="home-library"><div className="panel-heading"><div><h2>Inside the Seattle library</h2><p>Selected rules from the current module.</p></div><Button variant="ghost" size="sm" asChild><AppLink to="/lawlib">View all rules<ArrowRight/></AppLink></Button></div><Table><TableHeader><TableRow><TableHead>Rule</TableHead><TableHead>Authority</TableHead><TableHead>Version</TableHead></TableRow></TableHeader><TableBody>{lawModule.rules.slice(0,5).map(rule=><TableRow key={rule.id}><TableCell><AppLink className="table-primary" to={rulePath(rule.id)}>{ruleTitle(rule)}</AppLink><code className="table-id">{rule.id}</code></TableCell><TableCell>{authorityName(ruleAuthority(rule))}</TableCell><TableCell><Badge variant="outline">v{rule.version}</Badge></TableCell></TableRow>)}</TableBody></Table></Card>
-    <div className="home-note"><div><strong>A historical module, with explicit limits.</strong><p>The pilot separates 2016 governing law from 2021 precedent. Seattle coverage is incomplete. Legal and formalization reviews remain pending.</p></div><AppLink to="/review">Review sources & omissions<ArrowUpRight size={13}/></AppLink></div>
+  return <div className="marketing-page">
+    <section className="marketing-hero">
+      <div className="marketing-hero-copy">
+        <Badge variant="outline">Open source · Oath language 0.5</Badge>
+        <h1>Legal reasoning you can inspect.</h1>
+        <p>Oathkeeper is an open language and proof checker for legal arguments. It turns rules, evidence, and assumptions into a derivation that people can read and software can verify.</p>
+        <div className="marketing-actions"><Button size="lg" asChild><AppLink to="/getting-started">Try a small example<ArrowRight/></AppLink></Button><Button size="lg" variant="outline" asChild><AppLink to="/lawlib"><Library/>Explore lawlib</AppLink></Button></div>
+        <div className="marketing-audience"><span>For legal researchers</span><span>For public-interest technologists</span><span>For developers</span></div>
+      </div>
+      <Card className="marketing-proof-card">
+        <div className="proof-card-top"><span>example/library-access.case.oath</span><Badge variant="secondary">Verified</Badge></div>
+        <div className="proof-card-logic"><div><small>FACT</small><code>resident(alex)</code></div><span>+</span><div><small>RULE</small><code>resident → may_enter</code></div></div>
+        <div className="proof-card-arrow">↓</div>
+        <div className="proof-card-result"><CheckCircle2/><div><small>DERIVATION VERIFIED</small><code>may_enter(alex)</code></div></div>
+        <p>The result is conditional on the rule and fact supplied to the checker.</p>
+      </Card>
+    </section>
+
+    <section className="marketing-section">
+      <div className="section-heading"><span>HOW IT WORKS</span><h2>From source material to a checkable argument</h2><p>Oathkeeper keeps the parts of legal reasoning visible instead of collapsing them into a single answer.</p></div>
+      <div className="principle-grid">{principles.map(({icon:Icon,title,text},index)=><Card key={title} className="principle-card"><span className="principle-number">0{index+1}</span><Icon/><h3>{title}</h3><p>{text}</p></Card>)}</div>
+    </section>
+
+    <section className="marketing-section marketing-split">
+      <div><span className="section-kicker">THE LANGUAGE</span><h2>Readable enough to review. Precise enough to run.</h2><p>Oath files declare typed predicates, source-backed rules, facts, a query, and explicit proof steps. Imports and evidence can be pinned by SHA-256 so the same argument can be replayed against the same inputs.</p><Button variant="outline" asChild><AppLink to="/language"><Braces/>Read the language docs<ArrowRight/></AppLink></Button></div>
+      <Card className="marketing-code-sample"><pre><code>{`rule example.access(person: Person) @ "1" {
+  requires library.resident($person);
+  ensures library.may_enter($person);
+}
+
+step allowed: library.may_enter(alex)
+  by apply example.access @ "1"
+  using [resident];`}</code></pre></Card>
+    </section>
+
+    <section className="marketing-section">
+      <div className="section-heading"><span>BUILT FOR REVIEW</span><h2>A shared object for research, tooling, and critique</h2></div>
+      <div className="use-grid"><div><Scale/><h3>Model bounded legal rules</h3><p>Capture a rule’s jurisdiction, time, authority, scope, and source without claiming broader coverage.</p></div><div><Library/><h3>Publish reusable modules</h3><p>Organize formalizations in lawlib so others can inspect, test, and improve them.</p></div><div><GitBranch/><h3>Compare arguments</h3><p>Make supporting, opposing, and missing premises explicit under the same frozen context.</p></div></div>
+    </section>
+
+    <section className="boundary-callout"><div><span>AN IMPORTANT BOUNDARY</span><h2>The checker verifies the derivation, not the world.</h2></div><p>A verified proof shows that a conclusion follows from declared inputs. It does not establish that a source is current law, that evidence is true, or that a court would accept the formalization.</p><AppLink to="/resources">Read about trust and limits<ArrowRight/></AppLink></section>
+
+    <section className="marketing-cta"><div><span>START SMALL</span><h2>See one fact become one checked conclusion.</h2><p>The getting-started guide explains the language through a compact fictional example.</p></div><Button size="lg" asChild><AppLink to="/getting-started">Open the guide<ArrowRight/></AppLink></Button></section>
   </div>
 }

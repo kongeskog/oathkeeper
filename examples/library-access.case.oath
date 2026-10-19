@@ -1,0 +1,27 @@
+oathkeeper "0.5";
+case library-access @ "0.1.0";
+import "library-access.oath" sha256 "f4f80db1a0c2613ea9382cd6b0f6514a81296f5a35e197c3774f63c3cdf44941";
+
+constant example.alex: Person;
+
+fact resident: library.resident(example.alex) {
+  recorded_at "2026-01-01T00:00:00Z";
+  kind stipulated_fact;
+  source example_policy;
+  pinpoint "Example record, item 1";
+  explanation "For this fictional example, the parties agree that Alex is a resident.";
+}
+
+query {
+  jurisdiction "example.city";
+  as_of "2026-01-01T00:00:00Z";
+  known_at "2026-01-01T00:00:00Z";
+  purpose synthetic_test;
+  goal library.may_enter(example.alex);
+  root "allowed";
+}
+
+proof {
+  step resident: library.resident(example.alex) by fact resident;
+  step allowed: library.may_enter(example.alex) by apply example.library.resident-access @ "1"(person = example.alex) using [resident];
+}

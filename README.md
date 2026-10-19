@@ -6,6 +6,10 @@ The 0.5 research prototype includes readable `.oath` code, typed JSON interchang
 
 **Live application:** <https://oathkeeper-sable.vercel.app/>
 
+Vercel for GitHub deploys every branch push as a preview and promotes pushes to
+`main` to the production URL. The clean-checkout build is defined in
+[`vercel.json`](vercel.json) and [`scripts/build-vercel.sh`](scripts/build-vercel.sh).
+
 The application source lives in [`web/`](web/README.md). With the native binding, Rust WASM target and wasm-bindgen CLI installed, run `python tools/build_web.py --fetch-sources`, then `npm ci --prefix web` and `npm run dev --prefix web` (Node.js 22+). See the web README for setup. Generated app data, source documents and WASM live in ignored `web/.generated/`. Core and application code are versioned together in this repository.
 
 ## Start with real law

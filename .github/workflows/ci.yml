@@ -14,6 +14,7 @@ jobs:
       - run: cargo clippy --workspace --all-targets --locked -- -D warnings
       - run: cargo test --workspace --locked
       - run: cargo run --locked -- verify examples/hoa.oath
+      - run: cargo run --locked -- verify examples/library-access.case.oath
       - run: python3 tools/lawlib_package.py verify
   python:
     runs-on: ubuntu-latest

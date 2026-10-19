@@ -86,7 +86,9 @@ def verify():
 def unpack(checkout, revision, destination):
     if not re.fullmatch('[a-f0-9]{40}', revision):
         raise ValueError('supply an exact 40-character commit SHA; branches and tags are not locks')
-    archive = subprocess.check_output(['git', '-C', str(checkout), 'archive', '--format=tar', revision])
+    # Archive repository bytes consistently even when the caller has Windows
+    # core.autocrlf enabled; the lock hashes Git blobs, not a checkout's EOLs.
+    archive = subprocess.check_output(['git', '-c', 'core.autocrlf=false', '-C', str(checkout), 'archive', '--format=tar', revision])
     if len(archive) > 64 * 1024 * 1024:
         raise ValueError('package archive exceeds 64 MiB')
     destination.mkdir()

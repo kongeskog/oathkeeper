@@ -5,6 +5,8 @@ import { Tax } from './workspace/Tax'
 import { Workbench } from './workspace/Workbench'
 import { Review } from './workspace/Review'
 import { Home } from './workspace/Home'
+import { GettingStarted } from './workspace/GettingStarted'
+import { Resources } from './workspace/Resources'
 import { Lawlib, RuleDetail, AuthorityDetail } from './workspace/Lawlib'
 import { Cases, CaseDetail } from './workspace/Cases'
 import { Sources } from './workspace/Sources'
@@ -15,12 +17,15 @@ import { useRoute } from './workspace/router'
 
 export default function App(){
   const {pathname,params}=useRoute()
-  useLayoutEffect(()=>{window.scrollTo({top:0,behavior:'instant'});document.title=`${pathname==='/'?'Workspace':pathname.startsWith('/tax')?'Federal tax':pathname==='/workbench'?'Argument workbench':pathname==='/review'?'Review & evaluation':pathname.startsWith('/lawlib')?'Law library':pathname.startsWith('/cases')?'Case proofs':pathname.startsWith('/docs')?'Documentation':pathname.startsWith('/reference')?'Code reference':'Oathkeeper'} · Oathkeeper`},[pathname])
+  useLayoutEffect(()=>{window.scrollTo({top:0,behavior:'instant'});document.title=`${pathname==='/'?'Legal reasoning you can inspect':pathname==='/getting-started'?'Getting started':pathname==='/language'?'Oath language':pathname==='/resources'?'Resources':pathname.startsWith('/tax')?'Federal tax example':pathname==='/workbench'?'Argument workbench':pathname==='/review'?'Review & evaluation':pathname.startsWith('/lawlib')?'Lawlib explorer':pathname.startsWith('/cases')?'Case proofs':pathname.startsWith('/docs')?'Documentation':pathname.startsWith('/reference')?'Code reference':'Oathkeeper'} · Oathkeeper`},[pathname])
   let page:React.ReactNode
   const segments=pathname.split('/').filter(Boolean)
   let identifier=''
   try{identifier=decodeURIComponent(segments.at(-1)||'')}catch{/* Invalid URL gets the standard missing page. */}
   if(pathname==='/')page=<Home/>
+  else if(pathname==='/getting-started')page=<GettingStarted/>
+  else if(pathname==='/language')page=<Documentation id="language" section={params.get('section')} basePath="/language" standalone/>
+  else if(pathname==='/resources')page=<Resources/>
   else if(pathname==='/tax/backdoor-roth')page=<Tax params={params}/>
   else if(pathname==='/workbench')page=<Workbench key={params.get('case')??'default'} slug={params.get('case')??undefined}/>
   else if(pathname==='/review')page=<Review/>
@@ -34,6 +39,6 @@ export default function App(){
   else if(segments[0]==='docs'&&segments.length===2)page=<Documentation id={identifier} section={params.get('section')}/>
   else if(pathname==='/reference')page=<ReferenceIndex/>
   else if(segments[0]==='reference'&&segments.length===2)page=<SourceReference id={identifier} line={params.get('line')}/>
-  else page=<EmptyState title="Page not found" description="Explore the law library or open the documentation to continue." action={<AppLink to="/">Return to overview</AppLink>}/>
+  else page=<EmptyState title="Page not found" description="Explore the law library or open the getting-started guide to continue." action={<AppLink to="/">Return home</AppLink>}/>
   return <TooltipProvider delayDuration={250}><Shell pathname={pathname}>{page}</Shell></TooltipProvider>
 }
