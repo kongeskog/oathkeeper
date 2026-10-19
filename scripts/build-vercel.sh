@@ -21,6 +21,7 @@ if ! command -v wasm-bindgen >/dev/null 2>&1 || [[ "$(wasm-bindgen --version)" !
   cargo install wasm-bindgen-cli --version 0.2.105 --locked --root "$WASM_BINDGEN_ROOT"
 fi
 
+python3 tools/lawlib_package.py sync
 cargo run --locked -- verify examples/library-access.case.oath
 python3 tools/build_web.py --fetch-sources
 npm test --prefix web

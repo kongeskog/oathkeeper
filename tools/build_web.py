@@ -1,6 +1,7 @@
 """Build app inputs from pinned corpus source, cached evidence and the Rust core."""
 import argparse
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -28,7 +29,9 @@ def main():
     build(CORPUS,ROOT/'.build/lawlib')
     subprocess.run([sys.executable,str(ROOT/'web/scripts/sync-lawlib.py'),str(ROOT),str(args.web)],check=True)
     subprocess.run(['cargo','build','-p','oathkeeper-wasm','--target','wasm32-unknown-unknown','--release','--locked'],cwd=ROOT,check=True)
-    subprocess.run(['wasm-bindgen',str(ROOT/'target/wasm32-unknown-unknown/release/oathkeeper_wasm.wasm'),
+    cargo_target=Path(os.environ.get('CARGO_TARGET_DIR',ROOT/'target'))
+    if not cargo_target.is_absolute():cargo_target=ROOT/cargo_target
+    subprocess.run(['wasm-bindgen',str(cargo_target/'wasm32-unknown-unknown/release/oathkeeper_wasm.wasm'),
                     '--target','web','--out-dir',str(args.web/'.generated/public/assets/kernel'),'--out-name','oathkeeper_wasm'],check=True)
     print('App inputs generated under '+str(args.web/'.generated')+'; run npm run build in the app checkout.')
 
