@@ -5,11 +5,12 @@ set -euo pipefail
 # lawlib data and Rust/WASM browser kernel before Vite builds the static site.
 if ! command -v rustup >/dev/null 2>&1; then
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal
-  export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
+export PATH="$HOME/.cargo/bin:$PATH"
 rustup toolchain install stable --profile minimal
-rustup target add wasm32-unknown-unknown --toolchain stable
+export RUSTUP_TOOLCHAIN=stable
+rustup target add wasm32-unknown-unknown
 
 export OATHKEEPER_CACHE_DIR="$PWD/.vercel/cache/oathkeeper"
 export CARGO_TARGET_DIR="$PWD/.vercel/cache/cargo-target"
