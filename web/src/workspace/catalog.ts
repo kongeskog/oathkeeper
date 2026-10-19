@@ -1,8 +1,8 @@
-import moduleJson from '@/data/module.json'
-import caseJson from '@/data/cases.json'
-import sourceJson from '@/data/sources.lock.json'
-import coverageJson from '@/data/coverage.json'
-import { ruleNotes } from '@/data/guide-content'
+import moduleJson from '@generated/data/module.json'
+import caseJson from '@generated/data/cases.json'
+import sourceJson from '@generated/data/sources.lock.json'
+import coverageJson from '@generated/data/coverage.json'
+import { ruleNotes } from '@/catalog/guide-content'
 import type { Authority, CaseRecord, Claim, LawModule, Rule, SourceSnapshot, Sort } from '@/types'
 
 export const lawModule=moduleJson as unknown as LawModule

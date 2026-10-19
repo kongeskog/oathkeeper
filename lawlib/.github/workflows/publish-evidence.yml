@@ -1,0 +1,37 @@
+name: publish evidence
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Evidence release tag (existing objects are never overwritten)
+        required: true
+        default: evidence-2026-10
+      source_revision:
+        description: Optional exact historical commit for the initial evidence migration
+        required: false
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Publish verified immutable objects
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVIDENCE_TAG: ${{ inputs.tag }}
+          SOURCE_REVISION: ${{ inputs.source_revision }}
+        run: |
+          python - <<'PY'
+          import os, subprocess
+          args=['python','tools/publish_evidence.py','--tag',os.environ['EVIDENCE_TAG']]
+          revision=os.environ.get('SOURCE_REVISION')
+          if revision:
+              args.extend(['--from-revision',revision])
+          else:
+              subprocess.run(['python','tools/sources.py','fetch'],check=True)
+          subprocess.run(args,check=True)
+          PY

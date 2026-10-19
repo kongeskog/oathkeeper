@@ -19,7 +19,7 @@ The reward is binary: 1 for a checked derivation, 0 for a rejected candidate. Th
 
 `tools/benchmark.py` removes reference proofs, runs deterministic search, and replays its certificates. The 11 tasks include five historical paths from one matter, two unresolved real-record contexts, and four explicitly synthetic duration boundaries. All contexts retain interpretation assumptions. Historical reconstructions contain judicial findings and are not held-out predictions.
 
-No RL model has been trained. Timings are measurements of this run, not general performance guarantees. Legal accuracy, expert agreement, critical omissions, and reviewer time remain unmeasured.
+No RL model has been trained. Reproducible build artifacts omit wall-clock timings. Use `python tools/benchmark.py --timings --output /tmp/baseline.json` for separate local measurements; these are not general performance guarantees. Legal accuracy, expert agreement, critical omissions, and reviewer time remain unmeasured.
 
 ## Evaluation design
 

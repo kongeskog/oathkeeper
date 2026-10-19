@@ -1,5 +1,5 @@
 import { RuleInterpretation } from './Review'
-import ruleSourceJson from '@/data/rule-sources.json'
+import ruleSourceJson from '@generated/data/rule-sources.json'
 import { Bookmark, ArrowRight, ArrowUpRight, Search, GitBranch, FileJson, Scale, Library } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'

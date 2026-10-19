@@ -1,6 +1,6 @@
 import type { CoverageResult } from './Coverage'
 import { useEffect, useState } from 'react'
-import data from '@/data/workbench-cases.json'
+import data from '@generated/data/workbench-cases.json'
 import type { Claim, Fact, ProofStep, Term } from '@/types'
 
 export type Support='supported'|'opposed'|'both'|'neither'

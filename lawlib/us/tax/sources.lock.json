@@ -1,5 +1,5 @@
 {
-  "format": "oathkeeper.sources/1",
+  "format": "oathkeeper.sources/2",
   "sources": [
     {
       "id": "form8606",
@@ -9,7 +9,14 @@
       "sha256": "748a2bf2ef45918eac8d48fab8b1958c8c0c24102b7d2103c78f6f92a69486ae",
       "retrieved_at": "2026-10-18T23:21:21Z",
       "provenance": "official",
-      "retrieval_uri": "https://www.irs.gov/pub/irs-prior/f8606--2025.pdf"
+      "retrieval_uri": "https://www.irs.gov/pub/irs-prior/f8606--2025.pdf",
+      "size_bytes": 96165,
+      "media_type": "application/pdf",
+      "mirrors": [
+        "https://github.com/kongeskog/oathkeeper-lawlib/releases/download/evidence-2026-10/748a2bf2ef45918eac8d48fab8b1958c8c0c24102b7d2103c78f6f92a69486ae.pdf",
+        "https://www.irs.gov/pub/irs-prior/f8606--2025.pdf"
+      ],
+      "rights": "United States government work; source material is not relicensed under the software license."
     },
     {
       "id": "instructions8606",
@@ -19,7 +26,14 @@
       "sha256": "735fb7aebc36f6c933d0623a5ba680e7133b9fe62549ddd9652319fc8cac7e8f",
       "retrieved_at": "2026-10-18T23:21:21Z",
       "provenance": "official",
-      "retrieval_uri": "https://www.irs.gov/pub/irs-prior/i8606--2025.pdf"
+      "retrieval_uri": "https://www.irs.gov/pub/irs-prior/i8606--2025.pdf",
+      "size_bytes": 315925,
+      "media_type": "application/pdf",
+      "mirrors": [
+        "https://github.com/kongeskog/oathkeeper-lawlib/releases/download/evidence-2026-10/735fb7aebc36f6c933d0623a5ba680e7133b9fe62549ddd9652319fc8cac7e8f.pdf",
+        "https://www.irs.gov/pub/irs-prior/i8606--2025.pdf"
+      ],
+      "rights": "United States government work; source material is not relicensed under the software license."
     },
     {
       "id": "publication590a",
@@ -29,7 +43,14 @@
       "sha256": "ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7",
       "retrieved_at": "2026-10-18T23:21:21Z",
       "provenance": "official",
-      "retrieval_uri": "https://www.irs.gov/pub/irs-prior/p590a--2025.pdf"
+      "retrieval_uri": "https://www.irs.gov/pub/irs-prior/p590a--2025.pdf",
+      "size_bytes": 1817459,
+      "media_type": "application/pdf",
+      "mirrors": [
+        "https://github.com/kongeskog/oathkeeper-lawlib/releases/download/evidence-2026-10/ca0e42873cfd66d2d9bfd082125d381f8a0c2f3b0a441d7d65ab5ccc06a0e1c7.pdf",
+        "https://www.irs.gov/pub/irs-prior/p590a--2025.pdf"
+      ],
+      "rights": "United States government work; source material is not relicensed under the software license."
     },
     {
       "id": "notice202480",
@@ -39,7 +60,14 @@
       "sha256": "cbf7843c9c25317455e0373ad70381a13b80ab3dd2ff777f05d1d84ed22e59ad",
       "retrieved_at": "2026-10-18T23:21:21Z",
       "provenance": "official",
-      "retrieval_uri": "https://www.irs.gov/pub/irs-drop/n-24-80.pdf"
+      "retrieval_uri": "https://www.irs.gov/pub/irs-drop/n-24-80.pdf",
+      "size_bytes": 123240,
+      "media_type": "application/pdf",
+      "mirrors": [
+        "https://github.com/kongeskog/oathkeeper-lawlib/releases/download/evidence-2026-10/cbf7843c9c25317455e0373ad70381a13b80ab3dd2ff777f05d1d84ed22e59ad.pdf",
+        "https://www.irs.gov/pub/irs-drop/n-24-80.pdf"
+      ],
+      "rights": "United States government work; source material is not relicensed under the software license."
     },
     {
       "id": "shank2018",
@@ -49,7 +77,13 @@
       "sha256": "94612d7eb8696cb883d356b49caf2129b517b088f68b4dd4d705e75724afec0e",
       "retrieved_at": "2026-10-18T23:21:21Z",
       "provenance": "official",
-      "retrieval_uri": "https://public-api.dawson.ustaxcourt.gov/public-api/1752-17/f3cc3c7f-9768-473c-bbfe-cf926172f656/public-document-download-url"
+      "retrieval_uri": "https://public-api.dawson.ustaxcourt.gov/public-api/1752-17/f3cc3c7f-9768-473c-bbfe-cf926172f656/public-document-download-url",
+      "size_bytes": 453076,
+      "media_type": "application/pdf",
+      "mirrors": [
+        "https://github.com/kongeskog/oathkeeper-lawlib/releases/download/evidence-2026-10/94612d7eb8696cb883d356b49caf2129b517b088f68b4dd4d705e75724afec0e.pdf"
+      ],
+      "rights": "United States government work; source material is not relicensed under the software license."
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "format": "oathkeeper-source-lock/1",
+  "format": "oathkeeper.sources/2",
   "recorded_at": "2026-10-18T19:47:18Z",
   "sources": [
     {
@@ -12,7 +12,12 @@
       "representation": "UTF-8 judicial opinion extracted only from the Justia HTML noframes element; HTML entities decoded and whitespace collapsed with single spaces; LF terminated",
       "source_status": "Archived mirrored original slip text used by 0.2/0.3 fixtures. Canonical 0.4 rules now cite the directly retrieved official slip PDF. Final reporter reconciliation remains pending.",
       "rights": "Judicial opinion text; government edict. Justia editorial summaries and website markup excluded.",
-      "extractor": "html_noframes_normalized"
+      "extractor": "html_noframes_normalized",
+      "size_bytes": 80571,
+      "media_type": "text/plain",
+      "mirrors": [
+        "https://github.com/kongeskog/oathkeeper-lawlib/releases/download/evidence-2026-10/4c971d2c45cf53528bb36af4c700d64e0fec75906bab31d173abae58dc03cc56.txt"
+      ]
     },
     {
       "id": "timbs-2019",
@@ -24,7 +29,13 @@
       "representation": "Original PDF bytes from Supreme Court website",
       "source_status": "Supreme Court slip opinion with syllabus and separately identified concurrences; rules cite the opinion of the Court, not the syllabus.",
       "rights": "United States government judicial opinion; public-domain government edict.",
-      "extractor": "identity"
+      "extractor": "identity",
+      "size_bytes": 158740,
+      "media_type": "application/pdf",
+      "mirrors": [
+        "https://github.com/kongeskog/oathkeeper-lawlib/releases/download/evidence-2026-10/1107455132302c406b51094bc1372acb78eba78f137e63cc676f87530f2acc0b.pdf",
+        "https://www.supremecourt.gov/opinions/18pdf/17-1091_5536.pdf"
+      ]
     },
     {
       "id": "ordinance-120573",
@@ -36,7 +47,13 @@
       "representation": "Original scan PDF bytes from Seattle City Clerk archive",
       "source_status": "Signed ordinance plus archival attachments. Signature page: passed October 22, approved October 29, filed October 30, 2001. Section 2 provides thirty days after mayoral approval; modeled effective date November 28, 2001, Seattle local time.",
       "rights": "Enacted ordinance is a government edict. Archival attachments retain any applicable rights; no Apache relicensing claim is made for source scans.",
-      "extractor": "identity"
+      "extractor": "identity",
+      "size_bytes": 2981177,
+      "media_type": "application/pdf",
+      "mirrors": [
+        "https://github.com/kongeskog/oathkeeper-lawlib/releases/download/evidence-2026-10/1beaef9118938d34565be69fd57123cb293fcdd650cb9198af39933905ddab0d.pdf",
+        "https://clerk.seattle.gov/~archives/Ordinances/Ord_120573.pdf"
+      ]
     },
     {
       "id": "long-2021-official-slip",
@@ -48,7 +65,13 @@
       "representation": "Original PDF bytes retrieved directly from Washington Courts",
       "source_status": "Canonical 0.4 Long source: original judicial slip opinion. Its notice states that a revised official-reporter opinion replaces it. Final-text reconciliation is pending; historical reconstruction only.",
       "rights": "Judicial opinion; government edict. No claim that third-party annotations are licensed.",
-      "extractor": "identity"
+      "extractor": "identity",
+      "size_bytes": 777487,
+      "media_type": "application/pdf",
+      "mirrors": [
+        "https://github.com/kongeskog/oathkeeper-lawlib/releases/download/evidence-2026-10/421932863eff58799db3a23427d8641503c62841da191059f2f744f0248f27fa.pdf",
+        "https://www.courts.wa.gov/opinions/pdf/988242.pdf"
+      ]
     }
   ]
 }

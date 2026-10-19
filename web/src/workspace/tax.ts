@@ -1,6 +1,6 @@
 import type { CoverageResult } from './Coverage'
 import { useEffect, useState } from 'react'
-import data from '@/data/tax.json'
+import data from '@generated/data/tax.json'
 import type { CaseRecord, LawModule, ProofStep } from '@/types'
 
 export interface TaxInput {

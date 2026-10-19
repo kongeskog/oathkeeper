@@ -8,7 +8,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { traceDependencies, applicationSteps } from '@/lib/proof-model'
-import { factLabels, issueControls, ruleNotes } from '@/data/guide-content'
+import { factLabels, issueControls, ruleNotes } from '@/catalog/guide-content'
 import type { ApplyStep, CaseRecord } from './types'
 
 export function ProofExplorer({ records, initialSlug, initialStepId, compact=false, onCaseChange }: {records: CaseRecord[];initialSlug?:string;initialStepId?:string;compact?:boolean;onCaseChange?:(slug:string)=>void}) {

@@ -53,8 +53,6 @@
     "Scope predicates require proof; exemptions are not inferred from missing facts",
     "Five reconstructions are issues from one litigation matter, not five independent cases."
   ],
-  "legacy_module": "parking.module.json",
-  "import_lock": "oath.lock.json",
   "review_record": "review.json",
   "pending_cases": [
     "cases/long-oracle-reassessment.case.oath"

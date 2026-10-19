@@ -163,14 +163,14 @@ describe('documentation and code reference',()=>{
 describe('source integrity and verified fixtures',()=>{
   test('browser SHA-256 checks match every real pinned artifact and reject changed bytes',async()=>{
     for(const snapshot of snapshots){
-      const bytes=await readFile(path.join(process.cwd(),'public',sourceAsset(snapshot)))
+      const bytes=await readFile(path.join(process.cwd(),'.generated/public',sourceAsset(snapshot)))
       const result=await verifySnapshot(Uint8Array.from(bytes).buffer,snapshot.sha256)
       expect(result.matches).toBe(true)
     }
     expect((await verifySnapshot(new TextEncoder().encode('modified').buffer,snapshots[0].sha256)).matches).toBe(false)
   })
   test('the source page reports an actual successful digest computation',async()=>{
-    const user=userEvent.setup();const bytes=await readFile(path.join(process.cwd(),'public',sourceAsset(snapshots[0])))
+    const user=userEvent.setup();const bytes=await readFile(path.join(process.cwd(),'.generated/public',sourceAsset(snapshots[0])))
     const fetchMock=vi.spyOn(globalThis,'fetch').mockResolvedValue({ok:true,arrayBuffer:async()=>Uint8Array.from(bytes).buffer} as Response)
     try{open('/sources');await user.click(screen.getAllByRole('button',{name:'Verify bytes'})[0]);expect(await screen.findByRole('status')).toHaveTextContent('SHA-256 matches the pinned snapshot.')}finally{fetchMock.mockRestore()}
   })
@@ -184,7 +184,7 @@ describe('source integrity and verified fixtures',()=>{
     expect(escapeHtml('<script>"x"</script>')).toBe('&lt;script&gt;&quot;x&quot;&lt;/script&gt;')
   })
   test('every linked local download is present',async()=>{
-    const files=['/assets/oathkeeper-0.4-source.zip','/assets/parking.module.json','/assets/sources.lock.json',...sourceFiles.map(file=>`/assets/${file.id}.${file.path.endsWith('.oath')?'oath':'rs'}`),...snapshots.map(sourceAsset),...records.flatMap(record=>[`/assets/${record.slug}.bundle.json`,`/assets/${record.slug}.report.json`])]
-    for(const file of files)await access(path.join(process.cwd(),'public',file))
+    const files=['/assets/oathkeeper-0.5-source.zip','/assets/parking.module.json','/assets/sources.lock.json',...sourceFiles.map(file=>`/assets/${file.id}.${file.path.endsWith('.oath')?'oath':'rs'}`),...snapshots.map(sourceAsset),...records.flatMap(record=>[`/assets/${record.slug}.bundle.json`,`/assets/${record.slug}.report.json`])]
+    for(const file of files)await access(path.join(process.cwd(),'.generated/public',file))
   })
 })

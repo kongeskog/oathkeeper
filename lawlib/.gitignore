@@ -4,3 +4,18 @@ __pycache__/
 .env
 .env.*
 *.key.pem
+
+# Reproducible compiler products and local evidence never belong in source.
+.build/
+.cache/
+*.module.json
+*.case.json
+*.report.json
+*.assessment.json
+oath.lock.json
+review-packet.json
+baseline.json
+community/current.json
+*.pdf
+us/**/sources/
+*.tar.gz

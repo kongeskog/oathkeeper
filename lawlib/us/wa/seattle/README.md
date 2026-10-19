@@ -19,6 +19,6 @@ The duration branch uses exact milliseconds. Exactly 72 hours fails the strict g
 
 ## Review and evaluation
 
-`review-packet.json` maps every rule to its source and lists scope, omissions, and review questions. `review.json` records independent legal and formalization review as pending. `interpretations.json`, `pilot.json`, `coverage.json`, and `baseline.json` expose current assumptions and measured engineering results. The baseline's synthetic boundary tasks are explicitly labeled and are not new real precedents.
+The generated `.build/us/wa/seattle/review-packet.json` maps every rule to its source and lists scope, omissions, and review questions. `review.json` records independent legal and formalization review as pending. Authored `interpretations.json`, `pilot.json` and `coverage.json` expose assumptions. Generated `.build/us/wa/seattle/baseline.json` records engineering outcomes; wall-clock timings are omitted for reproducibility. The baseline's synthetic boundary tasks are explicitly labeled and are not new real precedents.
 
-The module is a historical research formalization. Read the [pilot plan](../../../../docs/SEATTLE_PLAN.md) before extending it or treating a derivation as a legal conclusion.
+The module is a historical research formalization. Read the [pilot plan](https://github.com/kongeskog/oathkeeper/blob/main/docs/SEATTLE_PLAN.md) before extending it or treating a derivation as a legal conclusion.

@@ -1,4 +1,4 @@
-import caseSources from '@/data/case-sources.json'
+import caseSources from '@generated/data/case-sources.json'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'

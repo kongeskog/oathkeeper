@@ -3,6 +3,8 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+import os
+from unittest.mock import patch
 import sys
 
 import oathkeeper
@@ -20,10 +22,8 @@ REPLAY_SPEC.loader.exec_module(REPLAY)
 
 class SeattleTests(unittest.TestCase):
     def test_real_law_native_api(self):
-        report = json.loads(oathkeeper.verify_case(
-            (BASE / "parking.module.json").read_text(),
-            (BASE / "cases" / "long-excessive-fines.case.json").read_text(),
-        ))
+        compiled = json.loads(oathkeeper.compile_file(str(BASE / "cases/long-excessive-fines.case.oath")))
+        report = json.loads(oathkeeper.verify_case(json.dumps(compiled['module']), json.dumps(compiled['case'])))
         self.assertEqual(len(report["authorities_used"]), 3)
         self.assertEqual(report["unreviewed_authority_assessment_count"], 5)
         self.assertEqual(report["goal"]["arguments"][0]["value"], "long.98824-2")
@@ -38,11 +38,16 @@ class SeattleTests(unittest.TestCase):
         # Synthetic tiny lock; the actual corpus is never modified.
         with tempfile.TemporaryDirectory() as tmp:
             base = Path(tmp)
-            lock = {"format": "oathkeeper-source-lock/1", "sources": [{"id": "test", "file": "test.txt", "sha256": "0" * 64}]}
+            entry = {"id":"test", "file":"test.txt", "sha256":"0"*64, "size_bytes":13,
+                     "media_type":"text/plain", "mirrors":["https://example.invalid/test.txt"]}
+            lock = {"format":"oathkeeper.sources/2", "sources":[entry]}
             (base / "sources.lock.json").write_text(json.dumps(lock))
-            (base / "test.txt").write_text("changed bytes")
-            with self.assertRaisesRegex(ValueError, "source bytes changed"):
-                AUDIT.audit_sources(base)
+            with patch.dict(os.environ, {"OATHKEEPER_CACHE_DIR":str(base/'cache')}):
+                path=AUDIT.evidence_store.object_path(entry)
+                path.parent.mkdir(parents=True)
+                path.write_bytes(b"changed bytes")
+                with self.assertRaisesRegex(ValueError, "source bytes changed"):
+                    AUDIT.audit_sources(base)
 
     def test_extraction_excludes_editorial_markup(self):
         html = b"<h1>Editorial summary</h1><noframes>Judicial &amp; text\n only.</noframes><footer>Ads</footer>"

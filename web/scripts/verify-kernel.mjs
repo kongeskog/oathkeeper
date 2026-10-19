@@ -1,10 +1,10 @@
 // Execute the shipped WebAssembly module and compare every field to native Rust.
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
-import { initSync, analyze_json, verify_json, kernel_version, assess_backdoor_roth_json } from '../public/assets/kernel/oathkeeper_wasm.js';
-initSync({ module: await fs.readFile(new URL('../public/assets/kernel/oathkeeper_wasm_bg.wasm', import.meta.url)) });
+import { initSync, analyze_json, verify_json, kernel_version, assess_backdoor_roth_json } from '../.generated/public/assets/kernel/oathkeeper_wasm.js';
+initSync({ module: await fs.readFile(new URL('../.generated/public/assets/kernel/oathkeeper_wasm_bg.wasm', import.meta.url)) });
 assert.equal(kernel_version(), '0.5.0');
-const cases = JSON.parse(await fs.readFile(new URL('../src/data/workbench-cases.json', import.meta.url), 'utf8'));
+const cases = JSON.parse(await fs.readFile(new URL('../.generated/data/workbench-cases.json', import.meta.url), 'utf8'));
 for (const record of cases) {
   const result = JSON.parse(analyze_json(JSON.stringify(record.bundle), true));
   assert.deepEqual(result, record.baseline, `WASM/native analysis mismatch: ${record.slug}`);
@@ -17,7 +17,7 @@ for (const record of cases) {
 assert.throws(()=>analyze_json('{"invalid":true}', true));
 console.log(`WebAssembly/native parity and certificate replay passed for ${cases.length} real-record contexts.`);
 
-const tax = JSON.parse(await fs.readFile(new URL('../src/data/tax.json', import.meta.url), 'utf8'));
+const tax = JSON.parse(await fs.readFile(new URL('../.generated/data/tax.json', import.meta.url), 'utf8'));
 for (const fixture of tax.fixtures) {
   const result = JSON.parse(assess_backdoor_roth_json(JSON.stringify(fixture.input)));
   assert.deepEqual(result, fixture.baseline, `Tax WASM/native mismatch: ${fixture.name}`);
@@ -35,7 +35,7 @@ assert.throws(()=>assess_backdoor_roth_json(JSON.stringify({...tax.fixtures[0].i
 console.log('Tax WASM/native parity, both official-case certificates, unknown inputs and year boundary passed.');
 
 // Shared policy API: actual WASM scope certificates and host-pinned rewards.
-const { assess_policy_json } = await import('../public/assets/kernel/oathkeeper_wasm.js');
+const { assess_policy_json } = await import('../.generated/public/assets/kernel/oathkeeper_wasm.js');
 const policy = request => JSON.parse(assess_policy_json(JSON.stringify(request)));
 const historical = cases.find(c => c.slug === 'long-ability-to-pay');
 const analysis = JSON.parse(analyze_json(JSON.stringify(historical.bundle), false));

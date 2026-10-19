@@ -34,6 +34,6 @@ See [SPEC-0.5](SPEC-0.5.md) and [SOUNDNESS](SOUNDNESS.md) for the precise experi
 
 ## Independent lawlib releases
 
-Canonical legal sources and community review events live in `kongeskog/oathkeeper-lawlib`. The software vendors a complete offline snapshot under `lawlib/`, pinned by `lawlib.lock.json` to an immutable Git commit and SHA-256 inventory. Updating that lock is explicit; runtime compilation never downloads moving source.
+Canonical legal sources and community review events live in `kongeskog/oathkeeper-lawlib`. The software vendors an authored source snapshot under `lawlib/`, pinned by `lawlib.lock.json` to an immutable Git commit and SHA-256 inventory. Updating that lock is explicit; runtime compilation never downloads moving source. Compiled products are generated in `.build/lawlib/`. Original evidence bytes live in a shared content-addressed cache outside Git, backed by exact-byte HTTPS mirrors and pinned SHA-256/size manifests. Every read verifies integrity; absent evidence prevents a successful source audit. The app builds its selected data, cached documents and WASM under `web/.generated/`. See [storage](../lawlib/docs/STORAGE.md).
 
 Coverage and review policies are separate from conditional derivation. `verify_scoped` checks the main certificate and all scope obligations. `evaluation::evaluate_task` accepts only proof material under a host-pinned task identity. The common policy dispatcher exposes the same functionality through CLI, Python and WASM.

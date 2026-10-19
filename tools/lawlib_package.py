@@ -24,6 +24,8 @@ def digest(data):
 def inventory(directory):
     files = {}
     for path in sorted(directory.rglob('*')):
+        if any(part in {'.build', '.cache', '__pycache__'} for part in path.relative_to(directory).parts):
+            continue
         if path.is_symlink():
             raise ValueError('symlinks are forbidden in a lawlib snapshot')
         if path.is_file():
@@ -58,7 +60,7 @@ def vendor(checkout, revision):
                 raise ValueError('package file count exceeds limit')
             for member in members:
                 p = PurePosixPath(member.name)
-                if p.is_absolute() or '..' in p.parts or any(part in {'.git', '.venv', 'node_modules', '__pycache__'} for part in p.parts) or '\\' in member.name:
+                if p.is_absolute() or '..' in p.parts or any(part in {'.git', '.venv', '.build', '.cache', 'node_modules', '__pycache__'} for part in p.parts) or '\\' in member.name:
                     raise ValueError('unsafe package path')
                 if member.isdir():
                     continue

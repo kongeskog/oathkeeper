@@ -4,7 +4,7 @@ Oathkeeper is an open language and Rust engine for **conditional, inspectable le
 
 The 0.5 research prototype includes readable `.oath` code, typed JSON interchange, a deterministic proof checker, bounded argument search, Python bindings, CLI, and the same Rust engine compiled to WebAssembly. The application provides lawlib exploration, a live evidence workbench, source inspection, review packets, and code documentation.
 
-The application source lives in [`web/`](web/README.md). With Node.js 22 or newer, run `npm ci --prefix web` followed by `npm run dev --prefix web` to explore it locally. Core and application code are versioned together in this repository.
+The application source lives in [`web/`](web/README.md). With the native binding, Rust WASM target and wasm-bindgen CLI installed, run `python tools/build_web.py --fetch-sources`, then `npm ci --prefix web` and `npm run dev --prefix web` (Node.js 22+). See the web README for setup. Generated app data, source documents and WASM live in ignored `web/.generated/`. Core and application code are versioned together in this repository.
 
 ## Start with real law
 
@@ -66,6 +66,6 @@ The [2025 backdoor Roth module](lawlib/us/tax/README.md) contains canonical `.oa
 
 ## Community lawlib
 
-Canonical legal modules live in [kongeskog/oathkeeper-lawlib](https://github.com/kongeskog/oathkeeper-lawlib). This repository contains a revision-pinned offline snapshot under `lawlib/`. Run `python tools/lawlib_package.py verify` to check every file against the lock.
+Canonical legal modules live in [kongeskog/oathkeeper-lawlib](https://github.com/kongeskog/oathkeeper-lawlib). This repository contains a revision-pinned authored snapshot under `lawlib/`. Compiled JSON, proofs and review packets are generated under `.build/lawlib/`; evidence documents are fetched by SHA-256 into a shared cache outside Git. Compilation remains offline; an evidence audit requires the pinned bytes. Run `python tools/lawlib_package.py verify` to check every authored file against the lock, `python tools/build_lawlib.py` to generate artifacts, and `python lawlib/tools/sources.py fetch --module seattle` to retrieve only the selected evidence. See [source and storage design](lawlib/docs/STORAGE.md).
 
 Version 0.5 adds explicit coverage and scope proofs, exception prerequisites, alternative interpretations, Ed25519 review/evidence receipts and frozen evaluation tasks. See [the specification](docs/SPEC-0.5.md). Community contributions and reviews are open to everyone; both legal pilots remain unreviewed until actual statements are submitted.

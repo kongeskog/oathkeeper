@@ -48,6 +48,23 @@ def main() -> None:
     parser.add_argument("output", type=Path, help="new snapshot directory; existing files are never overwritten")
     args = parser.parse_args()
     lock = json.loads(args.lock.read_text())
+    if lock["format"] == "oathkeeper.sources/2":
+        from _corpus import ROOT
+        from lawlib_tools.sources import fetch, validate
+        output = args.output.resolve()
+        for source in lock['sources']:
+            validate(source)
+            target = (output / source['file']).resolve()
+            if not target.is_relative_to(output):
+                raise ValueError('snapshot path escapes output')
+            if target.exists():
+                raise FileExistsError('refusing to overwrite existing snapshot: ' + str(target))
+            verified = fetch(source)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            with target.open('xb') as stream:
+                stream.write(verified.read_bytes())
+            print(source['id'])
+        return
     if lock["format"] != "oathkeeper-source-lock/1":
         raise ValueError("unsupported source lock")
     output = args.output.resolve()

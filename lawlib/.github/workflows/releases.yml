@@ -1,0 +1,67 @@
+name: publish compiled lawlib
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing version tag to publish or resume
+        required: true
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: corpus
+          ref: ${{ inputs.tag || github.ref }}
+      - uses: actions/checkout@v4
+        with:
+          repository: kongeskog/oathkeeper
+          ref: v0.5.0
+          path: engine
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: dtolnay/rust-toolchain@stable
+      - run: python -m pip install ./engine
+      - run: python corpus/tools/check.py --fetch
+      - name: Build and publish reproducible artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.tag || github.ref_name }}
+        run: |
+          python - <<'PY'
+          import hashlib,json,os,subprocess,sys
+          from pathlib import Path
+          sys.dont_write_bytecode=True
+          sys.path.insert(0,str(Path('corpus/tools').resolve()))
+          from publish_evidence import github
+          from lawlib_tools.build import archive
+          package=json.loads(Path('corpus/oath-package.json').read_text())
+          tag=os.environ['RELEASE_TAG']
+          if tag!='v'+package['version']:
+              raise ValueError('release tag must match the source package version')
+          repo=package['repository'].removeprefix('https://github.com/')
+          path=Path(os.environ['RUNNER_TEMP'])/('oathkeeper-lawlib-'+package['version']+'.tar.gz')
+          archive(Path('corpus/.build'),path)
+          digest='sha256:'+hashlib.sha256(path.read_bytes()).hexdigest()
+          release=github(repo,tag)
+          if release is None:
+              target=subprocess.check_output(['git','-C','corpus','rev-parse','HEAD'],text=True).strip()
+              payload={'tag_name':tag,'target_commitish':target,'draft':True,'name':'Lawlib '+package['version'],
+                  'body':'Authored source is in Git. This archive contains reproducible compiler output, proof reports, review packets and a complete build manifest. Evidence documents are separate content-addressed assets. Passing checks does not establish legal correctness.'}
+              release=json.loads(subprocess.check_output(['gh','api','--method','POST',f'repos/{repo}/releases','--input','-'],input=json.dumps(payload),text=True))
+          existing=next((a for a in release['assets'] if a['name']==path.name),None)
+          if existing is None:
+              subprocess.run(['gh','release','upload',tag,str(path),'--repo',repo],check=True)
+              release=json.loads(subprocess.check_output(['gh','api',f'repos/{repo}/releases/{release["id"]}'],text=True))
+              existing=next(a for a in release['assets'] if a['name']==path.name)
+          if existing.get('digest')!=digest or existing['size']!=path.stat().st_size:
+              raise ValueError('release artifact differs; never overwrite an existing release')
+          if release['draft']:
+              subprocess.run(['gh','release','edit',tag,'--repo',repo,'--draft=false'],check=True)
+          print(release['html_url'])
+          PY

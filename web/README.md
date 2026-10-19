@@ -1,38 +1,41 @@
 # Oathkeeper web application
 
-React, Vite, TypeScript, and neutral shadcn/ui components. The application includes the law library, source inspection, historical case proofs, live argument workbench, and bounded 2025 federal IRA calculator. Calculations run locally through the Rust WebAssembly kernel.
+React, Vite, TypeScript and neutral shadcn/ui components. The app includes lawlib exploration, source inspection, historical case proofs, live argument analysis and the bounded 2025 federal IRA calculator. Calculations run through the Rust WebAssembly kernel.
 
-## Run locally
+## Source and generated files
 
-From this directory, with Node.js 22 or newer:
+`src/` contains authored application code and presentation labels. `public/` contains authored workers. Generated lawlib JSON, copied documentation/code, source-document bytes, source archives and WASM all live under ignored `.generated/`. Vite serves `.generated/public/` and writes the deployment to ignored `dist/`. No PDFs or generated legal models are committed in the app source.
 
-```sh
-npm ci
-npm run dev
-```
+## Build from a clean software checkout
 
-The checked-in application data and WASM assets support local use without installing Rust or Python. `npm run build` creates `dist/`; `npm test` runs the UI tests. `node scripts/verify-kernel.mjs` checks shipped WASM against the recorded native results and replays certificates.
-
-## Refresh from the Rust core
-
-Run these commands from the repository root after changing the engine or lawlib:
+Use Rust, Python 3.10+, and Node.js 22+. From the software repository root:
 
 ```sh
 python -m venv .venv
 . .venv/bin/activate
 pip install 'maturin>=1.7,<2'
 maturin develop --locked
-python tools/audit_tax.py
-python web/scripts/sync-lawlib.py
 rustup target add wasm32-unknown-unknown
 cargo install wasm-bindgen-cli --version 0.2.105 --locked
-cargo build -p oathkeeper-wasm --target wasm32-unknown-unknown --release --locked
-wasm-bindgen target/wasm32-unknown-unknown/release/oathkeeper_wasm.wasm --target web --out-dir web/public/assets/kernel --out-name oathkeeper_wasm
-node web/scripts/verify-kernel.mjs
+python tools/build_web.py --fetch-sources
+npm ci --prefix web
+npm run dev --prefix web
 ```
 
-The sync script defaults to the parent repository; an explicit core path may also be passed. It compiles canonical `.oath` sources, verifies historical certificates, refreshes documentation and source snapshots, and creates the downloadable **core** source archive. The `web/` directory is excluded from that archive to avoid recursive packaging. The complete core and application are available in this GitHub repository.
+The preparation command validates the immutable corpus lock, builds legal artifacts, fetches and checks the selected pilot evidence, refreshes documentation and compiles WASM. Subsequent preparation can omit `--fetch-sources` to require a fully offline evidence cache. Rust dependencies and compiler tools must also already be installed for a fully offline build.
 
-## Hosting provenance
+The current app deliberately packages the two selected pilots, not every future lawlib module. Original evidence is stored once per digest in the shared cache; the deployable app receives copies of only its selected sources so browser integrity checks remain usable. Source downloads preserve the same pinned bytes.
 
-This source was imported from the managed Sites repository at commit `87c15b7a7023f4ecda5ce464832e97cbc9458023`. The existing deployment is <https://oathkeeper-field-guide.rainy-puppy-3202.chatgpt.site/>. Hosting credentials and project bindings stay in the managed Sites checkout; `dist/`, dependency caches, and Git metadata are excluded from this source copy.
+After preparation, use `npm test --prefix web`, `npm run build --prefix web`, and `node web/scripts/verify-kernel.mjs`. Native/WASM parity checks replay the certificates. Re-run preparation after engine, lawlib or copied documentation changes. Normal React UI edits only need the Vite build.
+
+## Managed Sites checkout
+
+The existing app is <https://oathkeeper-field-guide.rainy-puppy-3202.chatgpt.site/>. Its managed source keeps `.openai/hosting.json` and a `.openai/build-inputs.json` recording the exact software commit. To reproduce it, check out that software revision, install the binding and tools above, then run:
+
+```sh
+python tools/build_web.py --web /path/to/managed-app --fetch-sources
+npm ci --prefix /path/to/managed-app
+npm run build --prefix /path/to/managed-app
+```
+
+The builder checks the managed checkout's recorded software revision. Generated inputs, `dist/`, dependency caches, Git metadata and hosting credentials stay out of Git source. The deployment archive contains `.openai/hosting.json` and `dist/` only.

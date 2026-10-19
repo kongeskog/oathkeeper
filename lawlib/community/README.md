@@ -2,7 +2,7 @@
 
 Anyone can review the corpus. Begin with a source correction or a written review in a pull request. You do not need to be a lawyer. Describe your basis and limits; an approval is a statement of your review, not a certification of legal truth.
 
-`current.json` lists the exact artifact digest for each module. That digest binds the compiled source graph (including coverage), interpretation notes and source inventory. `reviews.json` starts with no events, and `trusted-keys.json` starts with no keys. No real reviewer or approval has been invented.
+Run `python tools/build.py`; `.build/community/current.json` lists the exact artifact digest for each module. That digest binds the compiled source graph (including coverage), interpretation notes and source inventory. `reviews.json` starts with no events, and `trusted-keys.json` starts with no keys. No real reviewer or approval has been invented.
 
 For a signed statement, create an Ed25519 key **outside the repository**. Register only the public key through a pull request. The key entry contains `id`, `principal`, the 32-byte lowercase-hex `public_key`, RFC3339 `valid_from`, and optional `valid_until` / `revoked_at` (null when absent). Key-to-person/account binding remains an explicit maintainer assertion.
 
@@ -11,7 +11,7 @@ A receipt has `id`, zero-based `sequence`, `previous_sha256` (null for the first
 ```json
 {
   "kind": "review",
-  "artifact_sha256": "<exact digest from current.json>",
+  "artifact_sha256": "<exact digest from .build/community/current.json>",
   "aspect": "formalization",
   "decision": "changes_requested",
   "independence_declared": true,

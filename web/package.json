@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "tsc --noEmit && vite build",
-    "test": "vitest run"
+    "test": "vitest run",
+    "predev": "node scripts/check-inputs.mjs",
+    "pretest": "node scripts/check-inputs.mjs",
+    "prebuild": "node scripts/check-inputs.mjs"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
