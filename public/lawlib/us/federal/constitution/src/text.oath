@@ -1,0 +1,61 @@
+module us.constitution.text;
+use std.date.{Date, date};
+use legal.model.Power;
+use std.provenance.SourceAnchor;
+use us.constitution.sources.{qualifications_note, thresholds_note, commencement_note};
+
+type CandidateFacts = { age_at_assessed_service: Int, completed_citizenship_years: Int, inhabitant_when_elected: Bool };
+query house_textual_requirements(facts: CandidateFacts) -> Bool {
+    scope = facts.age_at_assessed_service >= 0 and facts.completed_citizenship_years >= 0;
+    applies = true; meta = qualifications_note;
+}
+rule house for house_textual_requirements(facts) {
+    when = true;
+    yield = facts.age_at_assessed_service >= 25 and facts.completed_citizenship_years >= 7 and facts.inhabitant_when_elected;
+    meta = qualifications_note;
+}
+query senate_textual_requirements(facts: CandidateFacts) -> Bool {
+    scope = facts.age_at_assessed_service >= 0 and facts.completed_citizenship_years >= 0;
+    applies = true; meta = qualifications_note;
+}
+rule senate for senate_textual_requirements(facts) {
+    when = true;
+    yield = facts.age_at_assessed_service >= 30 and facts.completed_citizenship_years >= 9 and facts.inhabitant_when_elected;
+    meta = qualifications_note;
+}
+type Vote = { affirmative: Int, denominator: Int, inventory_complete: Bool };
+query impeachment_numeric_threshold(vote: Vote) -> Bool {
+    scope = vote.inventory_complete and vote.denominator > 0 and vote.affirmative >= 0 and vote.affirmative <= vote.denominator;
+    applies = true; meta = thresholds_note;
+}
+rule members_present for impeachment_numeric_threshold(vote) { when = true; yield = vote.affirmative * 3 >= vote.denominator * 2; meta = thresholds_note; }
+query amendment_ratification_numeric_threshold(vote: Vote) -> Bool {
+    scope = vote.inventory_complete and vote.denominator > 0 and vote.affirmative >= 0 and vote.affirmative <= vote.denominator;
+    applies = true; meta = thresholds_note;
+}
+rule states for amendment_ratification_numeric_threshold(vote) { when = true; yield = vote.affirmative * 4 >= vote.denominator * 3; meta = thresholds_note; }
+
+const twentieth_ratification = date(1933, 1, 23);
+const twentieth_sections_one_two_commencement = date(1933, 10, 15);
+query twentieth_sections_one_two_in_force(on: Date) -> Bool { scope = true; applies = true; meta = commencement_note; }
+rule section_five for twentieth_sections_one_two_in_force(on) { when = true; yield = on >= twentieth_sections_one_two_commencement; meta = commencement_note; }
+// Section 5's delayed commencement is specific to sections 1 and 2.
+query twentieth_section_four_in_force(on: Date) -> Bool { scope = true; applies = true; meta = commencement_note; }
+rule ratification for twentieth_section_four_in_force(on) { when = true; yield = on >= twentieth_ratification; meta = commencement_note; }
+
+const succession_legislation_power = Power {
+    id: "us.const.amend20.s4.power", holder: "Congress",
+    act_description: "Provide by law for specified deaths during contingent presidential or vice-presidential choice",
+    prerequisites_query: "us.constitution.text.succession_legislation_context",
+    transition_function: "us.constitution.text.record_supplied_enactment",
+    anchors: [SourceAnchor { source_id: "us.archives.amendments11_27", locator: "Amendment XX, section 4" }]
+};
+query succession_legislation_context(on: Date, specified_contingent_choice: Bool) -> Bool {
+    scope = true; applies = twentieth_section_four_in_force(on); meta = commencement_note;
+}
+rule supplied_scope for succession_legislation_context(on, specified_contingent_choice) { when = true; yield = specified_contingent_choice; meta = commencement_note; }
+type InstitutionalState = { enacted_instruments: List<Text> };
+// The supplied event is an accepted premise, not a simulated vote or an enactment performed by this program.
+fn record_supplied_enactment(state: InstitutionalState, instrument_id: Text, accepted_enactment: Bool) -> InstitutionalState {
+    if accepted_enactment { InstitutionalState { enacted_instruments: append(state.enacted_instruments, instrument_id) } } else { state }
+}

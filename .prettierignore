@@ -1,0 +1,7 @@
+node_modules
+.next
+pnpm-lock.yaml
+public
+src/content/snapshot.json
+playwright-report
+test-results

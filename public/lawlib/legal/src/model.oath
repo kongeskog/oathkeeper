@@ -1,0 +1,45 @@
+module legal.model;
+use std.date.Date;
+use std.types.Option;
+use std.provenance.{SourceAnchor, ReviewStatus};
+
+enum InstrumentKind { Constitution, Statute, StatutoryNote, Regulation, ProceduralRule, ExecutiveInstrument, Treaty, Judgment, Order, AdministrativeDecision, PrivateInstrument, Guidance, EditorialMaterial }
+type Instrument = { id: Text, kind: InstrumentKind, issuer: Text, anchors: List<SourceAnchor> };
+type Scope = { parties: List<Text>, places: List<Text>, questions: List<Text>, description: Text };
+type Lifecycle = { adopted_on: Option<Date>, enacted_on: Option<Date>, commencement_on: Date, ends_on: Option<Date>, end_inclusive: Bool };
+enum RevisionKind { Renumbered, Amended, Replaced, Suspended, Repealed, Expired, EncodingCorrected }
+type RevisionLink = { from_id: Text, to_id: Text, kind: RevisionKind, anchors: List<SourceAnchor> };
+type ProvisionRevision = { provision_id: Text, revision_id: Text, instrument_id: Text, anchors: List<SourceAnchor>, lifecycle: Lifecycle, applicability_description: Text, transitions: List<Text>, links: List<RevisionLink> };
+type Inventory<T> = { entries: List<T>, complete: Bool, scope: Text, as_of: Date, evidence_ids: List<Text> };
+
+enum RelationshipKind { LocatedIn, MemberOf, JurisdictionOver, DelegatedBy, CompetentFor, Amends, Interprets, Preempts }
+type Institution = { id: Text, description: Text, jurisdiction: Text };
+type AuthorityLink = { from_id: Text, to_id: Text, kind: RelationshipKind, scope: Scope, anchors: List<SourceAnchor> };
+enum DecisionRole { FactFinder, Judge, Jury, Agency, PrivateDecisionMaker, ScenarioAssumption }
+type Finding<T> = { id: Text, issue_id: Text, value: T, decision_maker: Text, role: DecisionRole, evidence_ids: List<Text>, rationale: Text, scope: Scope, supersedes: List<Text> };
+type Issue<T> = { id: Text, question: Text, scope: Scope };
+type EvidenceRecord = { id: Text, description: Text, source_ids: List<Text>, supplied_by: Text, scope: Scope };
+type ProofStandard = { id: Text, description: Text, burden_holder: Text, adjudication_query: Text, anchors: List<SourceAnchor> };
+type Interpretation = { id: Text, question: Text, selected: Text, alternatives: List<Text>, rationale: Text, scope: Scope, anchors: List<SourceAnchor>, review: ReviewStatus };
+
+enum OpinionRole { Majority, Concurrence, Dissent, PerCuriam, Other }
+enum Publication { Published, Unpublished, Unknown }
+type Case = { id: Text, caption: Text, docket: Text, court: Text, history: List<Text> };
+type Opinion = { id: Text, case_id: Text, role: OpinionRole, publication: Publication, issued_on: Date, anchors: List<SourceAnchor> };
+type Judgment = { id: Text, case_id: Text, disposition: Text, parties: List<Text>, scope: Scope, issued_on: Date, anchors: List<SourceAnchor> };
+type LegalProposition = { id: Text, opinion_id: Text, issue: Text, proposition: Text, material_facts: List<Text>, procedural_posture: Text, holding_interpretation: Text, anchors: List<SourceAnchor> };
+enum TreatmentKind { Affirmed, Reversed, Vacated, Overruled, Distinguished, Superseded, Limited }
+enum TreatmentTarget { Proposition, Opinion, Judgment }
+type Treatment = { id: Text, treating_authority: Text, target_id: Text, target_kind: TreatmentTarget, kind: TreatmentKind, scope: Scope, temporal_reach: Text, anchors: List<SourceAnchor>, interpretation_id: Text };
+
+type Act = { actor: Text, description: Text, scope: Scope };
+type Right = { id: Text, holder: Text, counterparty: Text, protected_interest: Text, scope: Scope, anchors: List<SourceAnchor> };
+type Obligation = { id: Text, act: Act, trigger_rule: Text, deadline: Option<Date>, discharge_rule: Text, anchors: List<SourceAnchor> };
+type Power = { id: Text, holder: Text, act_description: Text, prerequisites_query: Text, transition_function: Text, anchors: List<SourceAnchor> };
+type Consequence = { id: Text, description: Text, prerequisite_query: Text, scope: Scope, anchors: List<SourceAnchor> };
+enum LegalEffect { ClaimRight(Right), Duty(Obligation), Permission(Act), Prohibition(Act), InstitutionalPower(Power), ResultingConsequence(Consequence) }
+enum ProceedingStage { Initiated, Hearing, Decided, Appealed, Final }
+type Proceeding = { id: Text, forum: Text, parties: List<Text>, stage: ProceedingStage, judgment: Option<Judgment> };
+type InstitutionalEvent = { id: Text, actor: Text, kind: Text, on: Date, findings: List<Text>, anchors: List<SourceAnchor> };
+
+fn finding_value<T>(finding: Finding<T>) -> T { finding.value }

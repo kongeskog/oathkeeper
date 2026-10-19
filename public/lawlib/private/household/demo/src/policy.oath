@@ -1,0 +1,33 @@
+module household.policy;
+use std.provenance.{SourceRef, SourceAnchor, EncodingRecord, CoverageRecord, ReviewStatus};
+use std.types.Option;
+use std.date.date;
+use legal.model.{Instrument, InstrumentKind, ProvisionRevision, Lifecycle, RevisionLink, RevisionKind};
+
+const source = SourceRef {
+    stable_id: "household.demo.policy.2026", citation: "Fictional household policy, sections 1-4",
+    edition_or_version: "2026-10-18", locations: ["fixture:fixtures/policy.txt"],
+    expected_sha256: "bf22347986ff2e722b76b02accc520a9911d7a4b29c2ed9ff88be86af00abeab", publication_metadata: "Synthetic policy adopted 2026-10-18",
+    retrieval_metadata: "Local fixture; no public legal authority asserted"
+};
+const instrument = Instrument { id: "household.demo", kind: InstrumentKind.PrivateInstrument, issuer: "Example household", anchors: [SourceAnchor { source_id: "household.demo.policy.2026", locator: "sections 1-4" }] };
+const policy_v1 = ProvisionRevision {
+    provision_id: "household.demo.quiet_hours", revision_id: "household.demo.quiet_hours.v1", instrument_id: "household.demo",
+    anchors: [SourceAnchor { source_id: "household.demo.policy.2026", locator: "sections 1-2" }],
+    lifecycle: Lifecycle { adopted_on: Option.Some(date(2026,10,18)), enacted_on: Option.None, commencement_on: date(2029,1,1), ends_on: Option.Some(date(2030,1,1)), end_inclusive: false },
+    applicability_description: "Members engaged in after-hours noise; supplied facts determine membership, time classification, and emergency.",
+    transitions: ["Conduct before 2030 remains assessed under v1, even if assessment occurs later."],
+    links: [RevisionLink { from_id: "household.demo.quiet_hours.v1", to_id: "household.demo.quiet_hours.v2", kind: RevisionKind.Amended, anchors: [SourceAnchor { source_id: "household.demo.policy.2026", locator: "section 3" }] }]
+};
+const policy_v2 = ProvisionRevision {
+    provision_id: "household.demo.quiet_hours", revision_id: "household.demo.quiet_hours.v2", instrument_id: "household.demo",
+    anchors: [SourceAnchor { source_id: "household.demo.policy.2026", locator: "section 3" }],
+    lifecycle: Lifecycle { adopted_on: Option.Some(date(2026,10,18)), enacted_on: Option.None, commencement_on: date(2030,1,1), ends_on: Option.None, end_inclusive: false },
+    applicability_description: "Adds an approved-event permission for conduct on or after 2030-01-01.", transitions: [], links: []
+};
+const policy_note = EncodingRecord { id: "household.demo.encoding.scope", citations: [SourceAnchor { source_id: "household.demo.policy.2026", locator: "sections 1-4" }], rationale: "A private-policy classification; public-law compliance is not encoded.", assumptions: ["Membership and after-hours classification are supplied facts."], review: ReviewStatus.Unreviewed };
+const ordinary_note = EncodingRecord { id: "household.demo.encoding.ordinary", citations: [SourceAnchor { source_id: "household.demo.policy.2026", locator: "section 2" }], rationale: "The ordinary prohibition is subject to expressly encoded permissions.", assumptions: [], review: ReviewStatus.Unreviewed };
+const emergency_note = EncodingRecord { id: "household.demo.encoding.emergency", citations: [SourceAnchor { source_id: "household.demo.policy.2026", locator: "section 2(b)" }], rationale: "An explicit permission takes priority over the ordinary prohibition. An absent emergency finding cannot be treated as false.", assumptions: ["An accepted emergency finding is a supplied premise; the engine does not decide reasonableness."], review: ReviewStatus.Unreviewed };
+const revision_note = EncodingRecord { id: "household.demo.encoding.revision", citations: [SourceAnchor { source_id: "household.demo.policy.2026", locator: "section 3" }], rationale: "The added permission begins in 2030 and does not change the treatment of earlier events.", assumptions: [], review: ReviewStatus.Unreviewed };
+const notice_note = EncodingRecord { id: "household.demo.encoding.notice", citations: [SourceAnchor { source_id: "household.demo.policy.2026", locator: "section 4" }], rationale: "Exclude the event day and include the seventh calendar day; notice is separate from any unencoded remedy.", assumptions: [], review: ReviewStatus.Unreviewed };
+const coverage = CoverageRecord { id: "household.demo.coverage", questions: ["noise status", "violation", "notice deadline", "absence of an encoded fine rule"], investigated_sources: ["household.demo.policy.2026"], exclusions: ["Public law", "Enforceability of a real household policy"], not_investigated: ["Any actual household or municipal law"], unresolved_interpretations: ["Emergency reasonableness requires a supplied finding."], review: ReviewStatus.Unreviewed };

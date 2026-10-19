@@ -1,0 +1,30 @@
+module us.constitution.precedent;
+use std.date.date;
+use std.provenance.SourceAnchor;
+use legal.model.{Case, Opinion, OpinionRole, Publication, Judgment, Scope, LegalProposition};
+use us.authority.{AuthorityContext, CourtProfile, binding};
+use us.constitution.sources.thornton_note;
+
+const litigation = Case { id: "us.scotus.thornton", caption: "U.S. Term Limits, Inc. v. Thornton", docket: "93-1456 and 93-1828", court: "us.scotus", history: ["Arkansas Supreme Court judgment affirmed, 1995-05-22"] };
+const majority = Opinion { id: "us.scotus.thornton.majority", case_id: "us.scotus.thornton", role: OpinionRole.Majority, publication: Publication.Published, issued_on: date(1995,5,22), anchors: [SourceAnchor { source_id: "us.scotus.thornton.text", locator: "514 U.S. 779, 827-838 (1995), opinion of Stevens; not editorial headnotes" }] };
+const concurrence = Opinion { id: "us.scotus.thornton.kennedy", case_id: "us.scotus.thornton", role: OpinionRole.Concurrence, publication: Publication.Published, issued_on: date(1995,5,22), anchors: [SourceAnchor { source_id: "us.scotus.thornton.text", locator: "514 U.S. 838-845, Kennedy concurrence" }] };
+const dissent = Opinion { id: "us.scotus.thornton.thomas", case_id: "us.scotus.thornton", role: OpinionRole.Dissent, publication: Publication.Published, issued_on: date(1995,5,22), anchors: [SourceAnchor { source_id: "us.scotus.thornton.text", locator: "514 U.S. 845 ff., Thomas dissent" }] };
+const judgment = Judgment { id: "us.scotus.thornton.judgment", case_id: "us.scotus.thornton", disposition: "Affirmed", parties: ["Parties to consolidated cases 93-1456 and 93-1828"], scope: Scope { parties: ["Case parties"], places: ["Arkansas"], questions: ["Arkansas Amendment 73"], description: "Disposition in the litigation, distinct from the proposition's precedential force" }, issued_on: date(1995,5,22), anchors: [SourceAnchor { source_id: "us.scotus.thornton.text", locator: "514 U.S. 838, disposition" }] };
+const qualifications_proposition = LegalProposition {
+    id: "us.scotus.thornton.additional_qualifications", opinion_id: "us.scotus.thornton.majority",
+    issue: "State addition of qualifications for congressional service",
+    proposition: "A state may not add qualifications for congressional service to those fixed in the Constitution",
+    material_facts: ["Arkansas Amendment 73 imposed ballot restrictions tied to prior congressional terms"],
+    procedural_posture: "Review of state supreme court judgment invalidating the challenged restriction",
+    holding_interpretation: "Narrow rule about additional state qualifications; classification of a new measure is a supplied interpretation",
+    anchors: [SourceAnchor { source_id: "us.scotus.thornton.text", locator: "514 U.S. 827-838, majority parts III-IV" }]
+};
+query additional_state_qualification_permitted(context: AuthorityContext, classified_as_additional_qualification: Bool) -> Bool {
+    scope = context.profile == CourtProfile.SupremeCourtInFederalLowerCourt
+        and context.role == OpinionRole.Majority and context.issued_on == date(1995,5,22);
+    applies = binding(context) and classified_as_additional_qualification;
+    meta = thornton_note;
+}
+rule controlling_proposition for additional_state_qualification_permitted(context, classified_as_additional_qualification) {
+    when = true; yield = false; meta = thornton_note;
+}

@@ -1,0 +1,23 @@
+module legal.time;
+use legal.model.Lifecycle;
+use std.types.Option;
+use std.date.{Date, add_days, add_months, OverflowPolicy, DateError};
+use std.types.Result;
+
+// Adoption and enactment are provenance; this function applies the supplied commencement and end conditions.
+fn in_force(lifecycle: Lifecycle, on: Date) -> Bool {
+    on >= lifecycle.commencement_on and match lifecycle.ends_on {
+        Option.None => true,
+        Option.Some(end) => on < end or (lifecycle.end_inclusive and on == end)
+    }
+}
+fn commencement_after_days(trigger: Date, count: Int) -> Date { add_days(trigger, count) }
+fn commencement_after_months(trigger: Date, count: Int, overflow: OverflowPolicy) -> Result<Date, DateError> { add_months(trigger, count, overflow) }
+// An explicit counting convention, not a default applicable to any jurisdiction.
+fn counted_calendar_deadline(trigger: Date, count: Int, include_trigger: Bool) -> Date {
+    if count < 1 { fail("deadline count must be positive") }
+    else { add_days(trigger, count - (if include_trigger { 1 } else { 0 })) }
+}
+fn authority_available(issued_on: Date, historical_cutoff: Option<Date>) -> Bool {
+    match historical_cutoff { Option.None => true, Option.Some(cutoff) => issued_on <= cutoff }
+}

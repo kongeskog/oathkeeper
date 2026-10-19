@@ -1,0 +1,31 @@
+module household.quiet_hours;
+use std.date.{Date, date};
+use legal.time.in_force;
+use household.policy.{policy_v1, policy_v2, policy_note, ordinary_note, emergency_note, revision_note};
+
+enum NoiseStatus { Permitted, Prohibited }
+type NoiseEvent = { on: Date, member: Bool, after_hours: Bool, emergency: Bool, approved_event: Bool };
+query noise_status(event: NoiseEvent) -> NoiseStatus {
+    scope = true;
+    applies = event.member and event.after_hours and event.on >= date(2029, 1, 1);
+    meta = policy_note;
+}
+rule ordinary_v1 for noise_status(event) { when = in_force(policy_v1.lifecycle, event.on); yield = NoiseStatus.Prohibited; meta = ordinary_note; }
+rule ordinary_v2 for noise_status(event) { when = in_force(policy_v2.lifecycle, event.on); yield = NoiseStatus.Prohibited; meta = revision_note; }
+rule emergency_v1 for noise_status(event) { when = in_force(policy_v1.lifecycle, event.on) and event.emergency; yield = NoiseStatus.Permitted; meta = emergency_note; }
+rule emergency_v2 for noise_status(event) { when = in_force(policy_v2.lifecycle, event.on) and event.emergency; yield = NoiseStatus.Permitted; meta = emergency_note; }
+rule approved_event_v2 for noise_status(event) { when = in_force(policy_v2.lifecycle, event.on) and event.approved_event; yield = NoiseStatus.Permitted; meta = revision_note; }
+priority emergency_v1_priority for noise_status(event) { higher = emergency_v1; lower = ordinary_v1; when = true; meta = emergency_note; }
+priority emergency_v2_priority for noise_status(event) { higher = emergency_v2; lower = ordinary_v2; when = true; meta = emergency_note; }
+priority event_v2_priority for noise_status(event) { higher = approved_event_v2; lower = ordinary_v2; when = true; meta = revision_note; }
+
+query violation(event: NoiseEvent) -> Bool { scope = true; applies = event.member and event.after_hours and event.on >= date(2029,1,1); meta = policy_note; }
+rule determine_violation for violation(event) { when = true; yield = noise_status(event) == NoiseStatus.Prohibited; meta = policy_note; }
+
+query fine_amount(event: NoiseEvent) -> Rational { scope = true; applies = event.member and event.on >= date(2029,1,1); meta = policy_note; }
+// Deliberately no fine rule. A violation cannot invent a remedy.
+
+// Fictional competing interpretations, separate from the authored policy above.
+query synthetic_conflict(first: Bool, second: Bool) -> NoiseStatus { scope = true; applies = true; meta = policy_note; }
+rule synthetic_permission for synthetic_conflict(first, second) { when = first; yield = NoiseStatus.Permitted; }
+rule synthetic_prohibition for synthetic_conflict(first, second) { when = second; yield = NoiseStatus.Prohibited; }

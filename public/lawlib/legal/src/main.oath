@@ -1,0 +1,4 @@
+module legal;
+use legal.model;
+use legal.time;
+use legal.examples;

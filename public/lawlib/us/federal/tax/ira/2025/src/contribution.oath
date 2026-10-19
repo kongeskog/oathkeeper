@@ -1,0 +1,27 @@
+module us.ira.y2025.contribution;
+use std.money.{Money, USD};
+use std.numeric.min;
+use us.ira.y2025.model.{Contribution, in_tax_year};
+use us.ira.y2025.sources.{contribution_note, nondeductible_note};
+
+fn annual_limit(age_at_year_end: Int) -> Rational { if age_at_year_end >= 50 { 8000.0 } else { 7000.0 } }
+fn supported_contribution(facts: Contribution) -> Bool {
+    facts.tax_year == 2025 and in_tax_year(facts.on) and facts.age_at_year_end >= 0
+    and facts.own_account and facts.ordinary_cash_contribution and facts.contribution_inventory_complete
+    and facts.amount.amount >= 0.0 and facts.other_personal_ira_contributions.amount >= 0.0
+    and facts.qualifying_compensation.amount >= 0.0
+}
+query contribution_requirements(facts: Contribution) -> Bool {
+    scope = supported_contribution(facts); applies = true; meta = contribution_note;
+}
+rule annual_compensation_limit for contribution_requirements(facts) {
+    when = true;
+    yield = facts.amount.amount + facts.other_personal_ira_contributions.amount <= min(annual_limit(facts.age_at_year_end), facts.qualifying_compensation.amount);
+    meta = contribution_note;
+}
+query nondeductible_contribution(facts: Contribution) -> Money<USD> {
+    scope = supported_contribution(facts) and not facts.deduction_claimed;
+    applies = contribution_requirements(facts) and facts.nondeductible_designated;
+    meta = nondeductible_note;
+}
+rule designated_basis for nondeductible_contribution(facts) { when = true; yield = facts.amount; meta = nondeductible_note; }

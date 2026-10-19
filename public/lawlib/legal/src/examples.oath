@@ -1,0 +1,8 @@
+module legal.examples;
+use legal.model.Lifecycle;
+use legal.time.{in_force, counted_calendar_deadline};
+use std.date.Date;
+query operative(lifecycle: Lifecycle, on: Date) -> Bool { scope = true; applies = true; }
+rule lifecycle_rule for operative(lifecycle, on) { when = true; yield = in_force(lifecycle, on); }
+query deadline(trigger: Date, count: Int, include_trigger: Bool) -> Date { scope = count > 0; applies = true; }
+rule counting for deadline(trigger, count, include_trigger) { when = true; yield = counted_calendar_deadline(trigger, count, include_trigger); }

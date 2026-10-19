@@ -1,0 +1,46 @@
+module us.ira.y2025.model;
+use std.date.{Date, date};
+use std.money.{Money, USD};
+use legal.model.Inventory;
+use std.collections.set;
+
+type Contribution = {
+    tax_year: Int, on: Date, age_at_year_end: Int, amount: Money<USD>,
+    other_personal_ira_contributions: Money<USD>, qualifying_compensation: Money<USD>,
+    contribution_inventory_complete: Bool, own_account: Bool, ordinary_cash_contribution: Bool,
+    nondeductible_designated: Bool, deduction_claimed: Bool
+};
+enum AccountKind { Traditional, SEP, SIMPLE }
+type Account = {
+    id: Text, kind: AccountKind, year_end_balance: Money<USD>, own_account: Bool,
+    inherited: Bool, simple_two_year_condition_satisfied: Bool
+};
+type Conversion = {
+    tax_year: Int, on: Date, contribution: Contribution, converted: Money<USD>,
+    prior_basis: Money<USD>, basis_history_complete: Bool, accounts: Inventory<Account>,
+    transaction_inventory_complete: Bool, trustee_to_trustee: Bool, qualifying_roth_destination: Bool,
+    has_rmd: Bool, has_corrections: Bool, has_outstanding_rollovers: Bool,
+    has_other_distributions: Bool, has_special_transactions: Bool
+};
+fn in_tax_year(on: Date) -> Bool { on >= date(2025,1,1) and on <= date(2025,12,31) }
+fn supported_account(account: Account) -> Bool {
+    account.own_account and not account.inherited and account.year_end_balance.amount >= 0.0
+    and (account.kind != AccountKind.SIMPLE or account.simple_two_year_condition_satisfied)
+}
+fn sum_balance(total: Rational, account: Account) -> Rational { total + account.year_end_balance.amount }
+fn account_id(account: Account) -> Text { account.id }
+fn nonnegative_basis(transaction: Conversion) -> Bool {
+    transaction.prior_basis.amount >= 0.0 and transaction.contribution.amount.amount >= 0.0
+}
+fn supported_conversion(transaction: Conversion) -> Bool {
+    transaction.tax_year == 2025 and in_tax_year(transaction.on)
+    and transaction.accounts.complete and transaction.accounts.as_of == date(2025,12,31)
+    and transaction.basis_history_complete and transaction.transaction_inventory_complete
+    and len(transaction.accounts.entries) > 0 and all(transaction.accounts.entries, supported_account)
+    and len(set(map(transaction.accounts.entries, account_id)).items) == len(transaction.accounts.entries)
+    and transaction.trustee_to_trustee and transaction.qualifying_roth_destination
+    and not transaction.has_rmd and not transaction.has_corrections
+    and not transaction.has_outstanding_rollovers and not transaction.has_other_distributions
+    and not transaction.has_special_transactions and transaction.converted.amount > 0.0
+    and nonnegative_basis(transaction)
+}

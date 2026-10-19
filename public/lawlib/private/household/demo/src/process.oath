@@ -1,0 +1,18 @@
+module household.process;
+use household.quiet_hours.{NoiseEvent, violation};
+use household.policy.notice_note;
+use std.date.Date;
+use std.types.Result;
+use legal.time.counted_calendar_deadline;
+
+query notice_deadline(event: NoiseEvent) -> Date { scope = true; applies = violation(event); meta = notice_note; }
+rule seven_days for notice_deadline(event) { when = true; yield = counted_calendar_deadline(event.on, 7, false); meta = notice_note; }
+enum NoticeState { Pending, Delivered }
+enum TransitionError { NoEstablishedDuty, LateDelivery, AlreadyDelivered }
+type NoticeEvent = { delivered_on: Date, due_on: Date, duty_established: Bool };
+fn deliver_notice(state: NoticeState, event: NoticeEvent) -> Result<NoticeState, TransitionError> {
+    if not event.duty_established { Result.Err(TransitionError.NoEstablishedDuty) }
+    else if state == NoticeState.Delivered { Result.Err(TransitionError.AlreadyDelivered) }
+    else if event.delivered_on > event.due_on { Result.Err(TransitionError.LateDelivery) }
+    else { Result.Ok(NoticeState.Delivered) }
+}

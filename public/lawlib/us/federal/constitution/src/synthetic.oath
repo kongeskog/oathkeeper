@@ -1,0 +1,17 @@
+module us.constitution.synthetic;
+use std.date.Date;
+use std.types.Option;
+use legal.time.authority_available;
+use legal.model.{Treatment, TreatmentKind, TreatmentTarget};
+use us.constitution.sources.synthetic_note;
+
+// These are synthetic teaching questions, not subsequent history of Thornton.
+query proposition_survives(target_id: Text, treatment: Treatment, accepted_within_scope: Bool) -> Bool { scope = true; applies = true; meta = synthetic_note; }
+rule proposition_specific for proposition_survives(target_id, treatment, accepted_within_scope) {
+    when = true;
+    yield = not (treatment.target_kind == TreatmentTarget.Proposition and treatment.target_id == target_id and accepted_within_scope and treatment.kind == TreatmentKind.Overruled);
+    meta = synthetic_note;
+}
+query competing_interpretations(first_accepted: Bool, second_accepted: Bool) -> Bool { scope = true; applies = true; meta = synthetic_note; }
+rule first for competing_interpretations(first_accepted, second_accepted) { when = first_accepted; yield = true; meta = synthetic_note; }
+rule second for competing_interpretations(first_accepted, second_accepted) { when = second_accepted; yield = false; meta = synthetic_note; }
