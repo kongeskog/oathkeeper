@@ -1,0 +1,64 @@
+{
+  "$defs": {
+    "Dependency": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "version"
+      ],
+      "type": "object"
+    },
+    "PackageInfo": {
+      "additionalProperties": false,
+      "properties": {
+        "entry": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "version",
+        "language",
+        "entry"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "urn:oathkeeper:0.1.0:manifest",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "dependencies": {
+      "additionalProperties": {
+        "$ref": "#/$defs/Dependency"
+      },
+      "default": {},
+      "type": "object"
+    },
+    "package": {
+      "$ref": "#/$defs/PackageInfo"
+    }
+  },
+  "required": [
+    "package"
+  ],
+  "title": "Manifest",
+  "type": "object"
+}

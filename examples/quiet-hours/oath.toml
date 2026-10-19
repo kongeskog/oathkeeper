@@ -1,0 +1,5 @@
+[package]
+name = "oathkeeper.example.quiet_hours"
+version = "0.1.0"
+language = "=0.1.0"
+entry = "src/main.oath"

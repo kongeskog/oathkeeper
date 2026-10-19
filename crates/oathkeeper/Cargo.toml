@@ -1,0 +1,16 @@
+[package]
+name = "oathkeeper"
+version.workspace = true
+edition.workspace = true
+[dependencies]
+oath-core = { path = "../oath-core" }
+oath-verify = { path = "../oath-verify" }
+serde.workspace = true
+serde_json.workspace = true
+toml.workspace = true
+sha2.workspace = true
+ureq.workspace = true
+schemars.workspace = true
+[dev-dependencies]
+proptest = "1"
+tempfile = "3"

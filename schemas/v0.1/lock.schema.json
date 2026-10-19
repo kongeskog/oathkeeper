@@ -1,0 +1,59 @@
+{
+  "$defs": {
+    "LockedPackage": {
+      "additionalProperties": false,
+      "properties": {
+        "dependencies": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "type": "object"
+        },
+        "digest": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "version",
+        "digest",
+        "dependencies"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "urn:oathkeeper:0.1.0:lock",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "packages": {
+      "items": {
+        "$ref": "#/$defs/LockedPackage"
+      },
+      "type": "array"
+    },
+    "root_digest": {
+      "type": "string"
+    },
+    "root_package": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "root_package",
+    "root_digest",
+    "packages"
+  ],
+  "title": "PackageLock",
+  "type": "object"
+}

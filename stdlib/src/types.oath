@@ -1,0 +1,9 @@
+module std.types;
+enum Option<T> { None, Some(T) }
+enum Result<T, E> { Ok(T), Err(E) }
+type Id<T> = { value: Text };
+type Interval<T> = { start: T, end: T, include_start: Bool, include_end: Bool };
+fn contains<T>(interval: Interval<T>, value: T) -> Bool {
+    (value > interval.start or (interval.include_start and value == interval.start))
+    and (value < interval.end or (interval.include_end and value == interval.end))
+}

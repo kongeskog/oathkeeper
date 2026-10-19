@@ -1,0 +1,6 @@
+[package]
+name = "oath-verify"
+version.workspace = true
+edition.workspace = true
+[dependencies]
+oath-core = { path = "../oath-core" }

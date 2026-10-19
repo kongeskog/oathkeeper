@@ -1,0 +1,53 @@
+{
+  "$id": "urn:oathkeeper:0.1.0:limits",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "call_depth": {
+      "format": "uint",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "collection_entries": {
+      "format": "uint",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "input_bytes": {
+      "format": "uint",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "integer_bits": {
+      "format": "uint64",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "nesting": {
+      "format": "uint",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "steps": {
+      "format": "uint64",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "trace_nodes": {
+      "format": "uint",
+      "minimum": 0,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "steps",
+    "trace_nodes",
+    "collection_entries",
+    "call_depth",
+    "integer_bits",
+    "input_bytes",
+    "nesting"
+  ],
+  "title": "ExecutionLimits",
+  "type": "object"
+}

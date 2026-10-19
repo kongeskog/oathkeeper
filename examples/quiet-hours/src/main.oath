@@ -1,0 +1,16 @@
+module demo;
+enum NoiseStatus { Permitted, Prohibited }
+const note = "Fictional language tutorial. See lawlib's household package for dated policy, sources, findings and consequences.";
+query noise_status(emergency: Bool) -> NoiseStatus {
+    scope = true;
+    applies = true;
+    meta = note;
+}
+rule ordinary for noise_status(emergency) { when = true; yield = NoiseStatus.Prohibited; meta = note; }
+rule emergency_exception for noise_status(emergency) { when = emergency; yield = NoiseStatus.Permitted; meta = note; }
+priority emergency_first for noise_status(emergency) {
+    higher = emergency_exception;
+    lower = ordinary;
+    when = true;
+    meta = note;
+}

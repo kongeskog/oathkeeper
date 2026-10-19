@@ -1,0 +1,14 @@
+name: Bounded fuzz campaigns
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fuzz:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@nightly
+      - run: cargo install cargo-fuzz --locked
+      - run: cargo +nightly fuzz run parser -- -max_len=65536 -max_total_time=60
+      - run: cargo +nightly fuzz run certificate_reader -- -max_len=262144 -max_total_time=60

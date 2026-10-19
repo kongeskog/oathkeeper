@@ -1,0 +1,38 @@
+module std.collections;
+use std.types.Option;
+
+// Normalized sets and maps traverse keys in the core's structural total order.
+type Set<T> = { items: List<T> };
+type Insert<T> = { item: T, inserted: Bool, output: List<T> };
+fn insert_step<T>(state: Insert<T>, current: T) -> Insert<T> {
+    if state.inserted { Insert { item: state.item, inserted: true, output: append(state.output, current) } }
+    else if state.item < current { Insert { item: state.item, inserted: true, output: append(append(state.output, state.item), current) } }
+    else if state.item == current { Insert { item: state.item, inserted: true, output: append(state.output, current) } }
+    else { Insert { item: state.item, inserted: false, output: append(state.output, current) } }
+}
+fn insert<T>(set: Set<T>, value: T) -> Set<T> {
+    let state = fold(set.items, Insert { item: value, inserted: false, output: [] }, insert_step);
+    Set { items: if state.inserted { state.output } else { append(state.output, value) } }
+}
+fn set<T>(items: List<T>) -> Set<T> { fold(items, Set::<T> { items: [] }, insert) }
+type Entry<K, V> = { key: K, value: V };
+type Map<K, V> = { entries: List<Entry<K, V>> };
+type Put<K, V> = { entry: Entry<K, V>, inserted: Bool, output: List<Entry<K, V>> };
+fn put_step<K, V>(state: Put<K, V>, current: Entry<K, V>) -> Put<K, V> {
+    if state.inserted { Put { entry: state.entry, inserted: true, output: append(state.output, current) } }
+    else if state.entry.key < current.key { Put { entry: state.entry, inserted: true, output: append(append(state.output, state.entry), current) } }
+    else if state.entry.key == current.key { Put { entry: state.entry, inserted: true, output: append(state.output, state.entry) } }
+    else { Put { entry: state.entry, inserted: false, output: append(state.output, current) } }
+}
+fn put<K, V>(map: Map<K, V>, entry: Entry<K, V>) -> Map<K, V> {
+    let state = fold(map.entries, Put { entry: entry, inserted: false, output: [] }, put_step);
+    Map { entries: if state.inserted { state.output } else { append(state.output, entry) } }
+}
+fn map_from_entries<K, V>(entries: List<Entry<K, V>>) -> Map<K, V> { fold(entries, Map::<K, V> { entries: [] }, put) }
+type Lookup<K, V> = { key: K, found: Option<V> };
+fn lookup_step<K, V>(state: Lookup<K, V>, entry: Entry<K, V>) -> Lookup<K, V> {
+    Lookup { key: state.key, found: if state.key == entry.key { Option.Some(entry.value) } else { state.found } }
+}
+fn get<K, V>(map: Map<K, V>, key: K) -> Option<V> {
+    fold(map.entries, Lookup::<K, V> { key: key, found: Option.None }, lookup_step).found
+}

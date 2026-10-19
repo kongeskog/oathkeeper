@@ -1,0 +1,85 @@
+module std.date;
+use std.types.Result;
+
+// Proleptic Gregorian calendar, astronomical year numbering, epoch 1970-01-01.
+// Calendar algorithms use 400-year eras; no host calendar or time zone is consulted.
+type Date = { day: Int };
+type CivilDate = { year: Int, month: Int, day: Int };
+type Duration = { seconds: Rational };
+enum DateError { InvalidDate, InvalidFormat }
+enum OverflowPolicy { Reject, Clamp }
+
+fn is_leap(year: Int) -> Bool { year % 4 == 0 and (year % 100 != 0 or year % 400 == 0) }
+fn days_in_month(year: Int, month: Int) -> Int {
+    if month == 2 { if is_leap(year) { 29 } else { 28 } }
+    else if month == 4 or month == 6 or month == 9 or month == 11 { 30 }
+    else if month >= 1 and month <= 12 { 31 }
+    else { fail("invalid Gregorian month") }
+}
+fn from_ymd(year: Int, month: Int, day: Int) -> Result<Date, DateError> {
+    if month < 1 or month > 12 { Result.Err(DateError.InvalidDate) }
+    else if day < 1 or day > days_in_month(year, month) { Result.Err(DateError.InvalidDate) }
+    else {
+        let y = year - (if month <= 2 { 1 } else { 0 });
+        let era = floor_div(y, 400);
+        let yoe = y - era * 400;
+        let mp = month + (if month > 2 { -3 } else { 9 });
+        let doy = floor_div(153 * mp + 2, 5) + day - 1;
+        let doe = yoe * 365 + floor_div(yoe, 4) - floor_div(yoe, 100) + doy;
+        Result.Ok(Date { day: era * 146097 + doe - 719468 })
+    }
+}
+fn date(year: Int, month: Int, day: Int) -> Date {
+    match from_ymd(year, month, day) {
+        Result.Ok(value) => value,
+        Result.Err(error) => fail("invalid Gregorian date")
+    }
+}
+fn to_ymd(value: Date) -> CivilDate {
+    let z = value.day + 719468;
+    let era = floor_div(z, 146097);
+    let doe = z - era * 146097;
+    let yoe = floor_div(doe - floor_div(doe, 1460) + floor_div(doe, 36524) - floor_div(doe, 146096), 365);
+    let y = yoe + era * 400;
+    let doy = doe - (365 * yoe + floor_div(yoe, 4) - floor_div(yoe, 100));
+    let mp = floor_div(5 * doy + 2, 153);
+    let d = doy - floor_div(153 * mp + 2, 5) + 1;
+    let m = mp + (if mp < 10 { 3 } else { -9 });
+    CivilDate { year: y + (if m <= 2 { 1 } else { 0 }), month: m, day: d }
+}
+fn add_days(value: Date, count: Int) -> Date { Date { day: value.day + count } }
+fn days_between(start: Date, end: Date) -> Int { end.day - start.day }
+fn add_months(value: Date, count: Int, policy: OverflowPolicy) -> Result<Date, DateError> {
+    let civil = to_ymd(value);
+    let total = civil.year * 12 + civil.month - 1 + count;
+    let year = floor_div(total, 12);
+    let month = total - year * 12 + 1;
+    let last = days_in_month(year, month);
+    if civil.day <= last { from_ymd(year, month, civil.day) }
+    else { match policy {
+        OverflowPolicy.Reject => Result.Err(DateError.InvalidDate),
+        OverflowPolicy.Clamp => from_ymd(year, month, last)
+    } }
+}
+type Digits = { text: Text, value: Int, valid: Bool };
+fn digit_step(state: Digits, index: Int) -> Digits {
+    let c = text_at(state.text, index);
+    if state.valid and c >= "0" and c <= "9" {
+        Digits { text: state.text, value: state.value * 10 + parse_int(c), valid: true }
+    } else { Digits { text: state.text, value: state.value, valid: false } }
+}
+fn component(text: Text, start: Int, end: Int) -> Digits {
+    fold(range(start, end), Digits { text: text, value: 0, valid: true }, digit_step)
+}
+// ISO input deliberately accepts exactly YYYY-MM-DD, including year 0000.
+fn parse_iso(text: Text) -> Result<Date, DateError> {
+    if text_len(text) != 10 { Result.Err(DateError.InvalidFormat) }
+    else if text_at(text, 4) != "-" or text_at(text, 7) != "-" { Result.Err(DateError.InvalidFormat) }
+    else {
+        let year = component(text, 0, 4);
+        let month = component(text, 5, 7);
+        let day = component(text, 8, 10);
+        if year.valid and month.valid and day.valid { from_ymd(year.value, month.value, day.value) }
+        else { Result.Err(DateError.InvalidFormat) }
+    }
+}

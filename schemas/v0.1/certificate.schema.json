@@ -1,0 +1,854 @@
+{
+  "$defs": {
+    "Claim": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence": {
+          "default": [],
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "value": {
+          "$ref": "#/$defs/Value"
+        }
+      },
+      "required": [
+        "value"
+      ],
+      "type": "object"
+    },
+    "Env": {
+      "additionalProperties": false,
+      "properties": {
+        "types": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Ty"
+          },
+          "type": "object"
+        },
+        "values": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Observation"
+          },
+          "type": "object"
+        }
+      },
+      "required": [
+        "values",
+        "types"
+      ],
+      "type": "object"
+    },
+    "ExecutionLimits": {
+      "additionalProperties": false,
+      "properties": {
+        "call_depth": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "collection_entries": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "input_bytes": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "integer_bits": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "nesting": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "steps": {
+          "format": "uint64",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "trace_nodes": {
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "steps",
+        "trace_nodes",
+        "collection_entries",
+        "call_depth",
+        "integer_bits",
+        "input_bytes",
+        "nesting"
+      ],
+      "type": "object"
+    },
+    "Issue": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "message"
+      ],
+      "type": "object"
+    },
+    "Observation": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "evidence": {
+              "default": [],
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "state": {
+              "const": "known",
+              "type": "string"
+            },
+            "value": {
+              "$ref": "#/$defs/Value"
+            }
+          },
+          "required": [
+            "state",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "issues": {
+              "items": {
+                "$ref": "#/$defs/Issue"
+              },
+              "type": "array"
+            },
+            "state": {
+              "const": "missing",
+              "type": "string"
+            }
+          },
+          "required": [
+            "state",
+            "issues"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "claims": {
+              "items": {
+                "$ref": "#/$defs/Claim"
+              },
+              "type": "array"
+            },
+            "issue": {
+              "type": "string"
+            },
+            "state": {
+              "const": "disputed",
+              "type": "string"
+            }
+          },
+          "required": [
+            "state",
+            "issue",
+            "claims"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "QueryOutcome": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "const": "resolved",
+              "type": "string"
+            },
+            "support": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "value": {
+              "$ref": "#/$defs/Value"
+            }
+          },
+          "required": [
+            "status",
+            "value",
+            "support"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "reasons": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "status": {
+              "const": "inapplicable",
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "reasons"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "reasons": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "status": {
+              "const": "outside_coverage",
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "reasons"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "issues": {
+              "items": {
+                "$ref": "#/$defs/Issue"
+              },
+              "type": "array"
+            },
+            "stage": {
+              "type": "string"
+            },
+            "status": {
+              "const": "undetermined",
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "stage",
+            "issues"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "alternatives": {
+              "items": {
+                "$ref": "#/$defs/Supported"
+              },
+              "type": "array"
+            },
+            "status": {
+              "const": "conflicted",
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "alternatives"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "QueryResult": {
+      "additionalProperties": false,
+      "properties": {
+        "coverage": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "metadata": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "outcome": {
+          "$ref": "#/$defs/QueryOutcome"
+        },
+        "query": {
+          "type": "string"
+        },
+        "used_premises": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "query",
+        "outcome",
+        "used_premises",
+        "metadata",
+        "coverage"
+      ],
+      "type": "object"
+    },
+    "QueryTrace": {
+      "additionalProperties": false,
+      "properties": {
+        "applies": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "args": {
+          "items": {
+            "$ref": "#/$defs/Observation"
+          },
+          "type": "array"
+        },
+        "guards": {
+          "additionalProperties": {
+            "format": "uint32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "object"
+        },
+        "outcome": {
+          "$ref": "#/$defs/QueryOutcome"
+        },
+        "priorities": {
+          "additionalProperties": {
+            "format": "uint32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "object"
+        },
+        "query": {
+          "type": "string"
+        },
+        "scope": {
+          "format": "uint32",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "yields": {
+          "additionalProperties": {
+            "format": "uint32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "type": "object"
+        }
+      },
+      "required": [
+        "query",
+        "args",
+        "scope",
+        "guards",
+        "priorities",
+        "yields",
+        "outcome"
+      ],
+      "type": "object"
+    },
+    "Supported": {
+      "additionalProperties": false,
+      "properties": {
+        "support": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "value": {
+          "$ref": "#/$defs/Value"
+        }
+      },
+      "required": [
+        "value",
+        "support"
+      ],
+      "type": "object"
+    },
+    "TraceNode": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "children": {
+              "items": {
+                "format": "uint32",
+                "minimum": 0,
+                "type": "integer"
+              },
+              "type": "array"
+            },
+            "env": {
+              "$ref": "#/$defs/Env"
+            },
+            "expr": {
+              "format": "uint32",
+              "minimum": 0,
+              "type": "integer"
+            },
+            "kind": {
+              "const": "expression",
+              "type": "string"
+            },
+            "value": {
+              "$ref": "#/$defs/Observation"
+            }
+          },
+          "required": [
+            "kind",
+            "expr",
+            "env",
+            "children",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "query",
+              "type": "string"
+            },
+            "trace": {
+              "$ref": "#/$defs/QueryTrace"
+            }
+          },
+          "required": [
+            "kind",
+            "trace"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "Ty": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "unit",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "bool",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "text",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "int",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "rational",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "data": {
+              "$ref": "#/$defs/Ty"
+            },
+            "kind": {
+              "const": "list",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "data"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "data": {
+              "additionalProperties": false,
+              "properties": {
+                "args": {
+                  "items": {
+                    "$ref": "#/$defs/Ty"
+                  },
+                  "type": "array"
+                },
+                "name": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "name",
+                "args"
+              ],
+              "type": "object"
+            },
+            "kind": {
+              "const": "named",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "data"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "data": {
+              "type": "string"
+            },
+            "kind": {
+              "const": "param",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "data"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "unknown",
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "type": "object"
+        }
+      ]
+    },
+    "Value": {
+      "oneOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "unit",
+              "type": "string"
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "bool",
+              "type": "string"
+            },
+            "value": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "text",
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "const": "int",
+              "type": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "denominator": {
+              "type": "string"
+            },
+            "numerator": {
+              "type": "string"
+            },
+            "type": {
+              "const": "rational",
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "numerator",
+            "denominator"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "items": {
+              "items": {
+                "$ref": "#/$defs/Observation"
+              },
+              "type": "array"
+            },
+            "type": {
+              "const": "list",
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "items"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "fields": {
+              "additionalProperties": {
+                "$ref": "#/$defs/Observation"
+              },
+              "type": "object"
+            },
+            "name": {
+              "type": "string"
+            },
+            "type": {
+              "const": "record",
+              "type": "string"
+            },
+            "type_args": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/Ty"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "type",
+            "name",
+            "fields"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "fields": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/Observation"
+              },
+              "type": "array"
+            },
+            "name": {
+              "type": "string"
+            },
+            "type": {
+              "const": "variant",
+              "type": "string"
+            },
+            "type_args": {
+              "default": [],
+              "items": {
+                "$ref": "#/$defs/Ty"
+              },
+              "type": "array"
+            },
+            "variant": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "name",
+            "variant"
+          ],
+          "type": "object"
+        }
+      ]
+    }
+  },
+  "$id": "urn:oathkeeper:0.1.0:certificate",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "limits": {
+      "$ref": "#/$defs/ExecutionLimits"
+    },
+    "nodes": {
+      "items": {
+        "$ref": "#/$defs/TraceNode"
+      },
+      "type": "array"
+    },
+    "package_digest": {
+      "type": "string"
+    },
+    "program_digest": {
+      "type": "string"
+    },
+    "request_digest": {
+      "type": "string"
+    },
+    "result": {
+      "$ref": "#/$defs/QueryResult"
+    },
+    "result_digest": {
+      "type": "string"
+    },
+    "root": {
+      "format": "uint32",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "semantics": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "version",
+    "semantics",
+    "program_digest",
+    "package_digest",
+    "request_digest",
+    "limits",
+    "result_digest",
+    "result",
+    "nodes",
+    "root"
+  ],
+  "title": "Certificate",
+  "type": "object"
+}

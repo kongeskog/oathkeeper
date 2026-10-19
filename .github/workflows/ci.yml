@@ -1,0 +1,47 @@
+name: Oathkeeper
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  deterministic:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: 1.98.1
+          components: rustfmt, clippy
+      - run: cargo fmt --all -- --check
+      - run: cargo clippy --workspace --all-targets --locked -- -D warnings
+      - run: cargo test --workspace --locked
+      - run: cargo run -p oath-cli --locked -- check stdlib
+      - run: cargo run -p oath-cli --locked -- test examples/quiet-hours
+      - run: cargo run -p oathkeeper --locked --example export_schemas
+      - run: git diff --exit-code -- schemas
+  pinned-lawlib:
+    if: ${{ vars.LAWLIB_REPOSITORY != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: oathkeeper
+      - id: pin
+        shell: pwsh
+        run: |
+          $pin = Get-Content -Raw oathkeeper/integration/lawlib.json | ConvertFrom-Json
+          "revision=$($pin.revision)" >> $env:GITHUB_OUTPUT
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ vars.LAWLIB_REPOSITORY }}
+          ref: ${{ steps.pin.outputs.revision }}
+          path: lawlib
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: 1.98.1
+      - working-directory: oathkeeper
+        run: cargo build --workspace --locked
+      - shell: pwsh
+        run: ./lawlib/scripts/test.ps1

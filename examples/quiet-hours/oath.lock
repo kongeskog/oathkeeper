@@ -1,0 +1,13 @@
+{
+  "version": "0.1.0",
+  "root_package": "oathkeeper.example.quiet_hours",
+  "root_digest": "5784166e639a7a3d4e9157c6afe3556bc9fe4234c58dae3731acfb2daf9ede56",
+  "packages": [
+    {
+      "name": "oathkeeper.example.quiet_hours",
+      "version": "0.1.0",
+      "digest": "5784166e639a7a3d4e9157c6afe3556bc9fe4234c58dae3731acfb2daf9ede56",
+      "dependencies": {}
+    }
+  ]
+}

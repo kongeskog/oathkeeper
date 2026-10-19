@@ -1,0 +1,13 @@
+{
+  "version": "0.1.0",
+  "root_package": "std",
+  "root_digest": "5fb36d5778e380f581e3ffbd3a6a5caed62a21168c07ed8e3e9e3b716653a054",
+  "packages": [
+    {
+      "name": "std",
+      "version": "0.1.0",
+      "digest": "5fb36d5778e380f581e3ffbd3a6a5caed62a21168c07ed8e3e9e3b716653a054",
+      "dependencies": {}
+    }
+  ]
+}

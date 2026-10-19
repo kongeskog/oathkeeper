@@ -1,0 +1,10 @@
+module std.money;
+use std.numeric.{RoundingMode, round};
+type USD = {};
+type EUR = {};
+type Money<C> = { amount: Rational };
+fn add<C>(a: Money<C>, b: Money<C>) -> Money<C> { Money { amount: a.amount + b.amount } }
+fn subtract<C>(a: Money<C>, b: Money<C>) -> Money<C> { Money { amount: a.amount - b.amount } }
+fn multiply<C>(value: Money<C>, factor: Rational) -> Money<C> { Money { amount: value.amount * factor } }
+fn convert<From, To>(value: Money<From>, supplied_rate: Rational) -> Money<To> { Money { amount: value.amount * supplied_rate } }
+fn rounded<C>(value: Money<C>, quantum: Rational, mode: RoundingMode) -> Money<C> { Money { amount: round(value.amount, quantum, mode) } }

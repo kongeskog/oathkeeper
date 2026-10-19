@@ -1,0 +1,15 @@
+module std.provenance;
+type SourceRef = {
+    stable_id: Text, citation: Text, edition_or_version: Text,
+    locations: List<Text>, expected_sha256: Text,
+    publication_metadata: Text, retrieval_metadata: Text
+};
+type SourceAnchor = { source_id: Text, locator: Text };
+type ExtractedText = { source_id: Text, expected_sha256: Text, extractor: Text, extraction_parameters: Text };
+type ReviewRecord = { reviewer: Text, on: Text, scope: Text, reviewed_digest: Text, conclusion: Text };
+enum ReviewStatus { Unreviewed, Reviewed(ReviewRecord) }
+type EncodingRecord = { id: Text, citations: List<SourceAnchor>, rationale: Text, assumptions: List<Text>, review: ReviewStatus };
+type CoverageRecord = {
+    id: Text, questions: List<Text>, investigated_sources: List<Text>, exclusions: List<Text>,
+    not_investigated: List<Text>, unresolved_interpretations: List<Text>, review: ReviewStatus
+};

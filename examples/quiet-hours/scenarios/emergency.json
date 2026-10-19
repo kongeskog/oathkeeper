@@ -1,0 +1,17 @@
+{
+  "version": "0.1.0",
+  "query": "demo.noise_status",
+  "arguments": {
+    "emergency": {
+      "state": "known",
+      "value": {
+        "type": "bool",
+        "value": true
+      },
+      "evidence": [
+        "finding:emergency.1"
+      ]
+    }
+  },
+  "metadata": {}
+}
