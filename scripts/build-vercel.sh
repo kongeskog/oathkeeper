@@ -22,7 +22,7 @@ if ! command -v wasm-bindgen >/dev/null 2>&1 || [[ "$(wasm-bindgen --version)" !
 fi
 
 python3 tools/lawlib_package.py sync
-python3 -m pip install .
+python3 -m pip install --break-system-packages .
 cargo run --locked -- verify examples/library-access.case.oath
 python3 tools/build_web.py --fetch-sources
 npm test --prefix web
