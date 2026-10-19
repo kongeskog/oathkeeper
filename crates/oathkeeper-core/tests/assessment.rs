@@ -3,7 +3,7 @@ use serde_json::{json, Value};
 use std::{collections::BTreeMap, path::PathBuf};
 
 fn base() -> PathBuf {
-    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../lawlib/us/wa/seattle")
+    PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../.deps/lawlib/us/wa/seattle")
 }
 fn historic() -> Bundle {
     compile_file(base().join("cases/long-excessive-fines.case.oath"))

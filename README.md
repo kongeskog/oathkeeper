@@ -13,9 +13,10 @@ The application source lives in [`web/`](web/README.md). With the native binding
 The bounded Seattle pilot contains 14 rules from SMC 11.72.440, *City of Seattle v. Long*, and *Timbs v. Indiana*. Five historical proof paths concern **one actual litigation matter**. Two additional contexts expose missing parking evidence and a pending subjective assessment. Independent legal and formalization reviews remain pending. This is not all Seattle law or a statement of current law.
 
 ```sh
-cargo run -- verify lawlib/us/wa/seattle/cases/long-excessive-fines.case.oath
-cargo run -- analyze lawlib/us/wa/seattle/cases/long-parking-evidence-review.case.oath
-cargo run -- compile lawlib/us/wa/seattle/parking.oath
+python3 tools/lawlib_package.py sync       # fetch and verify the exact dependency once
+cargo run -- verify .deps/lawlib/us/wa/seattle/cases/long-excessive-fines.case.oath
+cargo run -- analyze .deps/lawlib/us/wa/seattle/cases/long-parking-evidence-review.case.oath
+cargo run -- compile .deps/lawlib/us/wa/seattle/parking.oath
 cargo test --workspace --locked
 ```
 
@@ -47,9 +48,9 @@ python tools/benchmark.py --output /tmp/baseline.json
 import json
 import oathkeeper
 report = json.loads(oathkeeper.verify_file(
-    'lawlib/us/wa/seattle/cases/long-excessive-fines.case.oath'))
+    '.deps/lawlib/us/wa/seattle/cases/long-excessive-fines.case.oath'))
 analysis = json.loads(oathkeeper.analyze_file(
-    'lawlib/us/wa/seattle/cases/long-parking-evidence-review.case.oath'))
+    '.deps/lawlib/us/wa/seattle/cases/long-parking-evidence-review.case.oath'))
 assert report['status'] == 'derivation_verified'
 assert analysis['status'] == 'neither'  # Missing explicit exception evidence.
 ```
@@ -64,10 +65,12 @@ Code is Apache-2.0. Source artifacts retain their documented provenance and righ
 
 ### Bounded federal tax pilot
 
-The [2025 backdoor Roth module](lawlib/us/tax/README.md) contains canonical `.oath` rules, pinned final IRS guidance, exact checked integer arithmetic, and an official-source reconstruction of *Shank v. Commissioner*. Run `cargo run -- tax-backdoor-roth lawlib/us/tax/scenarios/synthetic-pro-rata.json`, or Python `oathkeeper.assess_backdoor_roth(input_json)`. Missing basis remains unknown. The output is a conditional allocation estimate with a replayable certificate, not a tax return or a tax-owed calculation. Independent tax and formalization reviews are pending. Kernel 0.5.0 exposes the same implementation to Python and WASM.
+The [2025 backdoor Roth module](https://github.com/kongeskog/oathkeeper-lawlib/blob/main/us/tax/README.md) contains canonical `.oath` rules, pinned final IRS guidance, exact checked integer arithmetic, and an official-source reconstruction of *Shank v. Commissioner*. Run `cargo run -- tax-backdoor-roth .deps/lawlib/tests/scenarios/us/tax/synthetic-pro-rata.json`, or Python `oathkeeper.assess_backdoor_roth(input_json)`. Missing basis remains unknown. The output is a conditional allocation estimate with a replayable certificate, not a tax return or a tax-owed calculation. Independent tax and formalization reviews are pending. Kernel 0.5.0 exposes the same implementation to Python and WASM.
 
 ## Community lawlib
 
-Canonical legal modules live in [kongeskog/oathkeeper-lawlib](https://github.com/kongeskog/oathkeeper-lawlib). This repository contains a revision-pinned authored snapshot under `lawlib/`. Compiled JSON, proofs and review packets are generated under `.build/lawlib/`; evidence documents are fetched by SHA-256 into a shared cache outside Git. Compilation remains offline; an evidence audit requires the pinned bytes. Run `python tools/lawlib_package.py verify` to check every authored file against the lock, `python tools/build_lawlib.py` to generate artifacts, and `python lawlib/tools/sources.py fetch --module seattle` to retrieve only the selected evidence. See [source and storage design](lawlib/docs/STORAGE.md).
+Canonical legal modules live only in [kongeskog/oathkeeper-lawlib](https://github.com/kongeskog/oathkeeper-lawlib). This repository keeps `lawlib.lock.json`, pinning an exact commit and SHA-256 file inventory. Run `python tools/lawlib_package.py sync` to fetch that dependency into ignored `.deps/lawlib/`. No corpus source is vendored in Git. Repeating `sync` on a verified dependency uses no network; `sync --from-checkout /path/to/oathkeeper-lawlib` supports offline setup from an existing Git checkout.
+
+Run `python tools/lawlib_package.py verify` to check installed inputs and `python tools/build_lawlib.py` to generate compiled JSON, proofs and review packets under `.build/lawlib/`. Source documents use a separate SHA-256 cache: `python .deps/lawlib/tools/sources.py fetch --module seattle`. Rust compilation checks the pinned tax module's hash before embedding it into native, Python and WASM builds; it never downloads legal input. After dependency preparation, compilation is offline. An evidence audit additionally requires the pinned document bytes. See [source and storage design](https://github.com/kongeskog/oathkeeper-lawlib/blob/main/docs/STORAGE.md).
 
 Version 0.5 adds explicit coverage and scope proofs, exception prerequisites, alternative interpretations, Ed25519 review/evidence receipts and frozen evaluation tasks. See [the specification](docs/SPEC-0.5.md). Community contributions and reviews are open to everyone; both legal pilots remain unreviewed until actual statements are submitted.

@@ -7,7 +7,7 @@ use std::path::Path;
 fn historical() -> Bundle {
     compile_file(
         Path::new(env!("CARGO_MANIFEST_DIR"))
-            .join("../../lawlib/us/wa/seattle/cases/long-ability-to-pay.case.oath"),
+            .join("../../.deps/lawlib/us/wa/seattle/cases/long-ability-to-pay.case.oath"),
     )
     .unwrap()
     .bundle()

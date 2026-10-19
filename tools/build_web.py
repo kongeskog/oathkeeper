@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 import subprocess
 import sys
-from _corpus import ROOT
+from _corpus import ROOT, CORPUS
 from lawlib_tools.build import build
 from lawlib_tools import sources
 from lawlib_package import verify
@@ -17,12 +17,15 @@ def main():
     verify()
     pin=args.web/'.openai/build-inputs.json'
     if pin.exists():
-        expected=json.loads(pin.read_text())['engine_revision']
+        recorded=json.loads(pin.read_text())
+        expected=recorded['engine_revision']
         actual=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip()
         if actual!=expected:raise ValueError('app source pins a different engine revision')
-    for source in sources.catalog(ROOT/'lawlib',['seattle','ira2025','shank']):
+        if recorded['lawlib_revision']!=json.loads((ROOT/'lawlib.lock.json').read_text())['revision']:
+            raise ValueError('app source pins a different lawlib revision')
+    for source in sources.catalog(CORPUS,['seattle','ira2025','shank']):
         (sources.fetch if args.fetch_sources else sources.require)(source)
-    build(ROOT/'lawlib',ROOT/'.build/lawlib')
+    build(CORPUS,ROOT/'.build/lawlib')
     subprocess.run([sys.executable,str(ROOT/'web/scripts/sync-lawlib.py'),str(ROOT),str(args.web)],check=True)
     subprocess.run(['cargo','build','-p','oathkeeper-wasm','--target','wasm32-unknown-unknown','--release','--locked'],cwd=ROOT,check=True)
     subprocess.run(['wasm-bindgen',str(ROOT/'target/wasm32-unknown-unknown/release/oathkeeper_wasm.wasm'),

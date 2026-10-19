@@ -2,7 +2,7 @@
 import argparse
 import json
 from pathlib import Path
-from _corpus import ROOT
+from _corpus import ROOT, CORPUS
 from lawlib_tools.build import build, archive
 
 def main():
@@ -11,7 +11,7 @@ def main():
     parser.add_argument('--check',action='store_true')
     parser.add_argument('--archive',type=Path)
     args=parser.parse_args()
-    result=build(ROOT/'lawlib',args.output,check=args.check)
+    result=build(CORPUS,args.output,check=args.check)
     if args.archive:archive(args.output,args.archive)
     print(json.dumps({'status':'reproduced' if args.check else 'built','output':str(args.output),'artifacts':len(result['files'])}))
 

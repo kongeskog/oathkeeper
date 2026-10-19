@@ -11,6 +11,7 @@ React, Vite, TypeScript and neutral shadcn/ui components. The app includes lawli
 Use Rust, Python 3.10+, and Node.js 22+. From the software repository root:
 
 ```sh
+python3 tools/lawlib_package.py sync
 python -m venv .venv
 . .venv/bin/activate
 pip install 'maturin>=1.7,<2'
@@ -22,7 +23,7 @@ npm ci --prefix web
 npm run dev --prefix web
 ```
 
-The preparation command validates the immutable corpus lock, builds legal artifacts, fetches and checks the selected pilot evidence, refreshes documentation and compiles WASM. Subsequent preparation can omit `--fetch-sources` to require a fully offline evidence cache. Rust dependencies and compiler tools must also already be installed for a fully offline build.
+The first command installs the external lawlib revision from `lawlib.lock.json` into ignored `.deps/lawlib/`. The software repository does not contain a second corpus copy. The app preparation command validates that immutable dependency, builds legal artifacts, fetches and checks the selected pilot evidence, refreshes documentation and compiles WASM. Subsequent preparation can omit `--fetch-sources` to require a fully offline evidence cache. Rust dependencies and compiler tools must also already be installed for a fully offline build.
 
 The current app deliberately packages the two selected pilots, not every future lawlib module. Original evidence is stored once per digest in the shared cache; the deployable app receives copies of only its selected sources so browser integrity checks remain usable. Source downloads preserve the same pinned bytes.
 

@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: python3 tools/lawlib_package.py sync
       - uses: dtolnay/rust-toolchain@stable
         with:
           components: rustfmt, clippy
@@ -21,6 +22,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
+      - run: python tools/lawlib_package.py sync
       - uses: dtolnay/rust-toolchain@stable
       - run: python -m pip install 'maturin>=1.7,<2'
       - run: maturin build --locked --out dist
@@ -28,9 +30,9 @@ jobs:
       - uses: actions/cache@v4
         with:
           path: ~/.cache/oathkeeper
-          key: evidence-${{ hashFiles('lawlib/**/sources.lock.json') }}
+          key: evidence-${{ hashFiles('lawlib.lock.json') }}
           restore-keys: evidence-
-      - run: python lawlib/tools/check.py --fetch --output .build/lawlib
+      - run: python .deps/lawlib/tools/check.py --fetch --output .build/lawlib
       - run: python -m unittest discover -s python/tests
       - run: python tools/build_lawlib.py --check
       - run: python tools/lawlib_package.py verify
@@ -49,6 +51,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - run: python ../tools/lawlib_package.py sync
       - uses: dtolnay/rust-toolchain@stable
         with:
           targets: wasm32-unknown-unknown
@@ -58,7 +61,7 @@ jobs:
           path: |
             ~/.cache/oathkeeper
             ~/.cargo/bin/wasm-bindgen
-          key: web-tools-0.2.105-${{ runner.os }}-${{ hashFiles('lawlib/**/sources.lock.json') }}
+          key: web-tools-0.2.105-${{ runner.os }}-${{ hashFiles('lawlib.lock.json') }}
           restore-keys: web-tools-0.2.105-${{ runner.os }}-
       - run: python -m pip install ..
       - run: cargo install wasm-bindgen-cli --version 0.2.105 --locked

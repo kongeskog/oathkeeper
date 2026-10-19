@@ -10,7 +10,7 @@ import sys
 import oathkeeper
 
 ROOT = Path(__file__).resolve().parents[2]
-BASE = ROOT / "lawlib" / "us" / "wa" / "seattle"
+BASE = ROOT / ".deps/lawlib" / "us" / "wa" / "seattle"
 sys.path.insert(0, str(ROOT / "tools"))
 SPEC = importlib.util.spec_from_file_location("audit_lawlib", ROOT / "tools" / "audit_lawlib.py")
 AUDIT = importlib.util.module_from_spec(SPEC)
@@ -47,7 +47,7 @@ class SeattleTests(unittest.TestCase):
                 path.parent.mkdir(parents=True)
                 path.write_bytes(b"changed bytes")
                 with self.assertRaisesRegex(ValueError, "source bytes changed"):
-                    AUDIT.audit_sources(base)
+                    AUDIT.audit_sources(base / 'sources.lock.json')
 
     def test_extraction_excludes_editorial_markup(self):
         html = b"<h1>Editorial summary</h1><noframes>Judicial &amp; text\n only.</noframes><footer>Ads</footer>"

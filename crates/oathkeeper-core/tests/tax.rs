@@ -4,7 +4,7 @@ use oathkeeper_core::{
 };
 fn input() -> BackdoorRothInput {
     serde_json::from_str(include_str!(
-        "../../../lawlib/us/tax/scenarios/synthetic-clean.json"
+        "../../../.deps/lawlib/tests/scenarios/us/tax/synthetic-clean.json"
     ))
     .unwrap()
 }
@@ -180,7 +180,7 @@ fn official_shank_record_reconstructs_basis_and_taxable_distribution() {
     ] {
         let c = compile_file(
             std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
-                .join("../../lawlib/us/tax")
+                .join("../../.deps/lawlib/us/tax")
                 .join(name),
         )
         .unwrap();

@@ -14,5 +14,9 @@ toml.workspace = true
 thiserror.workspace = true
 ed25519-dalek = { version = "2.2", default-features = false, features = ["std"] }
 
+[build-dependencies]
+serde_json.workspace = true
+sha2.workspace = true
+
 [dev-dependencies]
 proptest = "1.9"

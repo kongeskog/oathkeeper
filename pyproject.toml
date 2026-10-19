@@ -12,4 +12,7 @@ license = "Apache-2.0"
 [tool.maturin]
 manifest-path = "crates/oathkeeper-python/Cargo.toml"
 module-name = "oathkeeper"
-include = [{ path = "lawlib/us/tax/*.oath", format = "sdist" }]
+include = [
+  { path = "lawlib.lock.json", format = "sdist" },
+  { path = ".deps/lawlib/us/tax/backdoor-roth-2025.oath", format = "sdist" },
+]

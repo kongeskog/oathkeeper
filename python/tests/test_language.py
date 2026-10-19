@@ -4,7 +4,7 @@ import unittest
 
 import oathkeeper
 
-BASE = Path(__file__).resolve().parents[2] / "lawlib/us/wa/seattle"
+BASE = Path(__file__).resolve().parents[2] / ".deps/lawlib/us/wa/seattle"
 
 
 class LanguageTests(unittest.TestCase):

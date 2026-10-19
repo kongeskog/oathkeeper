@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+import shutil
 from unittest.mock import patch
 import subprocess
 import oathkeeper
@@ -15,7 +16,7 @@ def policy(operation,**fields):
 
 class PolicyTests(unittest.TestCase):
     def context(self):
-        c=json.loads(oathkeeper.compile_file(str(ROOT/'lawlib/us/wa/seattle/cases/long-ability-to-pay.case.oath')))
+        c=json.loads(oathkeeper.compile_file(str(ROOT/'.deps/lawlib/us/wa/seattle/cases/long-ability-to-pay.case.oath')))
         b={**c['module'],**c['case']};b['constants']=c['module'].get('constants',[])+c['case'].get('constants',[])
         return b
     def test_frozen_native_api_and_scope_certificates(self):
@@ -47,17 +48,34 @@ class PackageTests(unittest.TestCase):
             subprocess.run(['git','-C',str(source),'-c','user.name=Synthetic test','-c','user.email=test@example.invalid','commit','-qm','Synthetic fixture'],check=True)
             revision=subprocess.check_output(['git','-C',str(source),'rev-parse','HEAD'],text=True).strip()
             with patch.object(module,'DEST',base/'snapshot'),patch.object(module,'LOCK',base/'lock.json'):
-                self.assertEqual(module.vendor(source,revision)['status'],'verified')
-                with self.assertRaises(ValueError):module.vendor(source,'main')
+                self.assertEqual(module.pin(source,revision)['status'],'verified')
+                with self.assertRaises(ValueError):module.pin(source,'main')
+                locked=module.LOCK.read_bytes()
+                shutil.rmtree(module.DEST)
+                with self.assertRaisesRegex(ValueError,'dependency is missing'):
+                    module.verify()
+                self.assertEqual(module.sync(source)['revision'],revision)
+                self.assertEqual(module.LOCK.read_bytes(),locked)
+                with patch.object(module.subprocess,'run',side_effect=AssertionError('verified sync must be offline')),patch.object(module.subprocess,'check_output',side_effect=AssertionError('verified sync must be offline')):
+                    self.assertEqual(module.sync()['status'],'verified')
                 (module.DEST/'extra').write_text('unexpected')
                 with self.assertRaises(ValueError):module.verify()
                 (module.DEST/'extra').unlink()
                 (module.DEST/'example.oath').write_text('changed')
                 with self.assertRaises(ValueError):module.verify()
+                with self.assertRaises(ValueError):module.sync(source)
+                self.assertEqual((module.DEST/'example.oath').read_text(),'changed')
+                shutil.rmtree(module.DEST)
+                invalid=json.loads(locked)
+                invalid['files']['example.oath']='0'*64
+                module.LOCK.write_text(json.dumps(invalid))
+                with self.assertRaisesRegex(ValueError,'differs from its immutable lock'):
+                    module.sync(source)
+                self.assertFalse(module.DEST.exists())
     def test_split_grouping_rejects_cross_matter_leakage(self):
         import sys
         sys.dont_write_bytecode = True
-        sys.path.insert(0,str(ROOT/'lawlib/tools'))
+        sys.path.insert(0,str(ROOT/'.deps/lawlib/tools'))
         from check import check_splits
         entry={'matter':'synthetic','source_family':'synthetic.family','amendment_lineage':'synthetic.lineage'}
         with self.assertRaises(ValueError):check_splits({'train':[entry],'held_out':[entry]})

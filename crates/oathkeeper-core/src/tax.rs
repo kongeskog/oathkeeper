@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::collections::BTreeMap;
 
-pub const MODULE_SOURCE: &str = include_str!("../../../lawlib/us/tax/backdoor-roth-2025.oath");
+pub const MODULE_SOURCE: &str = include_str!(concat!(env!("OUT_DIR"), "/backdoor-roth-2025.oath"));
 pub const SOURCE_RECORDED_AT: &str = "2026-10-18T23:21:21Z";
 pub const ROUNDING: &str = "Exact capped pro-rata fraction; round the allocated amount once to cents, ties up. This is an allocation estimate, not a completed Form 8606. IRS decimal-ratio and filing rounding may differ.";
 pub const SCOPE: &str = "2025 U.S. federal calendar-year, own ordinary traditional IRA conversion; timely, valid, nondeductible regular contribution. Own taxable compensation only. Other regular IRA contributions are Roth contributions already independently determined eligible, not deductible traditional contributions. All own traditional, traditional SEP and traditional SIMPLE IRA year-end balances across custodians are aggregated; spouse IRAs and employer plans are excluded. No other IRA distributions, tax withholding from the conversion, RMD obligation, outstanding rollovers, rollovers into or out of traditional IRAs, special repayments, qualified charitable/HSA distributions, recharacterizations, excess corrections, inherited IRAs, SIMPLE conversions, annuity valuation adjustments, disaster relief, nonresident/treaty or community-property issues. Following-year contributions were designated for 2025 and made by April 15, 2026. Basis and account values are supplied assumptions, not authenticated records.";

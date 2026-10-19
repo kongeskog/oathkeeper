@@ -10,12 +10,16 @@ import oathkeeper
 
 ROOT = Path(sys.argv[2]).resolve() if len(sys.argv) > 2 else Path(__file__).resolve().parents[1]
 CORE = Path(sys.argv[1]).resolve() if len(sys.argv) > 1 else ROOT.parent
-BASE = CORE / "lawlib/us/wa/seattle"
 BUILD = CORE / ".build/lawlib"
 GENERATED = ROOT / ".generated"
 sys.dont_write_bytecode = True
-sys.path.insert(0, str(CORE / "lawlib/tools"))
+sys.path.insert(0, str(CORE / 'tools'))
+from _corpus import CORPUS
 from lawlib_tools.sources import require
+from lawlib_tools.runtime import module_paths
+SEATTLE_INPUTS = module_paths(CORPUS, 'seattle')
+TAX_INPUTS = module_paths(CORPUS, 'ira2025')
+BASE = SEATTLE_INPUTS['entrypoint'].parent
 if GENERATED.exists():
     shutil.rmtree(GENERATED)
 for part in ["data", "docs", "reference", "public/assets"]:
@@ -30,8 +34,15 @@ compilation = json.loads(oathkeeper.compile_file(str(BASE / "parking.oath")))
 module = compilation["module"]
 save(GENERATED / "data/module.json", module)
 save(ASSETS / "parking.module.json", module)
-for name in ["coverage.json", "sources.lock.json", "oath.lock.json", "review.json", "review-packet.json", "interpretations.json", "pilot.json", "baseline.json", "migration-0.4.json"]:
-    origin = BUILD / "us/wa/seattle" / name if name in {"oath.lock.json", "review-packet.json", "baseline.json"} else BASE / name
+seattle_exports = {
+    **{name: SEATTLE_INPUTS[field] for name, field in {
+        'coverage.json': 'coverage', 'sources.lock.json': 'sources',
+        'review.json': 'review', 'interpretations.json': 'interpretations',
+        'pilot.json': 'pilot', 'migration-0.4.json': 'migration',
+    }.items()},
+    **{name: BUILD / 'us/wa/seattle' / name for name in ['oath.lock.json', 'review-packet.json', 'baseline.json']},
+}
+for name, origin in seattle_exports.items():
     shutil.copyfile(origin, ASSETS / name)
     shutil.copyfile(origin, GENERATED / "data" / name)
 records = json.loads((ROOT / "src/catalog/cases.json").read_text())
@@ -57,7 +68,7 @@ for span in compilation["source_map"]:
     if span["kind"] != "rule":
         continue
     path = Path(span["file"])
-    rule_sources[span["id"]] = {"file": str(path.relative_to(CORE)), "line": span["line"], "code": "\n".join(path.read_text().splitlines()[span["line"]-1:span["end_line"]])}
+    rule_sources[span["id"]] = {"file": 'oathkeeper-lawlib/' + path.relative_to(CORPUS).as_posix(), "line": span["line"], "code": "\n".join(path.read_text().splitlines()[span["line"]-1:span["end_line"]])}
 save(GENERATED / "data/rule-sources.json", rule_sources)
 for name, path in {
     **{name+".rs":"crates/oathkeeper-core/src/"+name+".rs" for name in ["contracts","evaluation","receipts","policy"]},
@@ -71,8 +82,9 @@ for name, path in {
     "source-washington.oath":"lawlib/us/wa/long.oath", "source-federal.oath":"lawlib/us/timbs.oath",
     "vocabulary.oath":"lawlib/vocabulary.oath", "pending-oracle.oath":"lawlib/us/wa/seattle/cases/long-oracle-reassessment.case.oath",
 }.items():
-    shutil.copyfile(CORE / path, GENERATED / "reference" / name)
-    shutil.copyfile(CORE / path, ASSETS / name)
+    origin = CORPUS / path.removeprefix('lawlib/') if path.startswith('lawlib/') else CORE / path
+    shutil.copyfile(origin, GENERATED / "reference" / name)
+    shutil.copyfile(origin, ASSETS / name)
 for name, path in {
     "CLI.md":"docs/CLI.md", "PYTHON.md":"docs/PYTHON.md", "ORACLES.md":"docs/ORACLES.md", "SPEC.md":"docs/SPEC-0.1.md", "STORAGE.md":"lawlib/docs/STORAGE.md",
     "SPEC-0.5.md":"docs/SPEC-0.5.md", "SPEC-0.4.md":"docs/SPEC-0.4.md", "RESEARCH.md":"docs/RESEARCH.md", "SOUNDNESS.md":"docs/SOUNDNESS.md",
@@ -80,8 +92,9 @@ for name, path in {
     "ARCHITECTURE.md":"docs/ARCHITECTURE.md", "TRAINING.md":"docs/TRAINING.md", "SEATTLE.md":"lawlib/us/wa/seattle/README.md",
     "SEATTLE_PLAN.md":"docs/SEATTLE_PLAN.md", "ROADMAP.md":"docs/ROADMAP.md",
 }.items():
-    shutil.copyfile(CORE / path, GENERATED / "docs" / name)
-    shutil.copyfile(CORE / path, ASSETS / name)
+    origin = CORPUS / path.removeprefix('lawlib/') if path.startswith('lawlib/') else CORE / path
+    shutil.copyfile(origin, GENERATED / "docs" / name)
+    shutil.copyfile(origin, ASSETS / name)
 workbench = []
 for path in sorted((BASE / "cases").glob("*.case.oath")):
     compiled = json.loads(oathkeeper.compile_file(str(path)))
@@ -96,10 +109,10 @@ for path in sorted((BASE / "cases").glob("*.case.oath")):
     save(ASSETS / f"{slug}.context.json", bundle)
     shutil.copyfile(path, ASSETS / path.name)
 save(GENERATED / "data/workbench-cases.json", workbench)
-for source in json.loads((BASE / "sources.lock.json").read_text())["sources"]:
+for source in json.loads(SEATTLE_INPUTS['sources'].read_text())["sources"]:
     shutil.copyfile(require(source), ASSETS / Path(source["file"]).name)
 # The federal pilot is a separate versioned module, never merged into Seattle's scope.
-TAX = CORE / "lawlib/us/tax"
+TAX = TAX_INPUTS['entrypoint'].parent
 tax_assets = ASSETS / "tax"
 tax_assets.mkdir(exist_ok=True)
 for path in TAX.rglob("*"):
@@ -107,12 +120,17 @@ for path in TAX.rglob("*"):
         target = tax_assets / path.relative_to(TAX)
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(path, target)
+# Public download URLs remain stable; authored metadata and fixtures are now
+# resolved through the package manifest, separately from legal source.
+for name, field in {'sources.lock.json': 'sources', 'interpretations.json': 'interpretations'}.items():
+    shutil.copyfile(TAX_INPUTS[field], tax_assets / name)
+shutil.copytree(TAX_INPUTS['scenarios'], tax_assets / 'scenarios')
 for path in (BUILD / "us/tax").rglob("*"):
     if path.is_file():
         target = tax_assets / path.relative_to(BUILD / "us/tax")
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(path, target)
-for source in json.loads((TAX / "sources.lock.json").read_text())["sources"]:
+for source in json.loads(TAX_INPUTS['sources'].read_text())["sources"]:
     target = tax_assets / source["file"]
     target.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(require(source), target)
@@ -133,14 +151,15 @@ for name in ["shank-2018", "shank-unavailable-returns"]:
     tax_cases.append({"name": name, "bundle": b, "report": report})
 save(GENERATED / "data/tax.json", {
     "module": tax_compilation["module"], "rule_sources": tax_rules,
-    "sources": json.loads((TAX / "sources.lock.json").read_text())["sources"],
+    "sources": json.loads(TAX_INPUTS['sources'].read_text())["sources"],
     "review": json.loads((BUILD / "us/tax/review-packet.json").read_text()),
     "cases": tax_cases,
-    "fixtures": [{"name": n, "input": json.loads((TAX / "scenarios" / (n + ".json")).read_text()), "baseline": json.loads(oathkeeper.assess_backdoor_roth((TAX / "scenarios" / (n + ".json")).read_text()))} for n in ["synthetic-clean", "synthetic-pro-rata"]],
+    "fixtures": [{"name": n, "input": json.loads((TAX_INPUTS['scenarios'] / (n + ".json")).read_text()), "baseline": json.loads(oathkeeper.assess_backdoor_roth((TAX_INPUTS['scenarios'] / (n + ".json")).read_text()))} for n in ["synthetic-clean", "synthetic-pro-rata"]],
 })
 for name,path in {"tax.rs":"crates/oathkeeper-core/src/tax.rs", "arithmetic.rs":"crates/oathkeeper-core/src/arithmetic.rs", "source-tax.oath":"lawlib/us/tax/backdoor-roth-2025.oath", "source-shank.oath":"lawlib/us/tax/shank-basis.oath"}.items():
-    shutil.copyfile(CORE/path, GENERATED/"reference"/name)
-    shutil.copyfile(CORE/path, ASSETS/name)
+    origin = CORPUS / path.removeprefix('lawlib/') if path.startswith('lawlib/') else CORE / path
+    shutil.copyfile(origin, GENERATED/"reference"/name)
+    shutil.copyfile(origin, ASSETS/name)
 shutil.copyfile(TAX/"README.md", GENERATED/"docs/TAX.md")
 shutil.copyfile(TAX/"README.md", ASSETS/"TAX.md")
 package_lock = json.loads((CORE / "lawlib.lock.json").read_text())
@@ -155,6 +174,6 @@ with zipfile.ZipFile(ASSETS / "oathkeeper-0.5-source.zip", "w", zipfile.ZIP_DEFL
     for name in sorted(set(source_files) - {""}):
         relative = Path(name)
         path = CORE / relative
-        if path.is_file() and not path.is_symlink() and not path.name.startswith(".env") and not path.name.endswith(".key.pem") and not any(part in {".git", ".venv", "target", "__pycache__", "web", "corpus", "artifacts", "proptest-regressions"} for part in relative.parts):
+        if path.is_file() and not path.is_symlink() and not path.name.startswith(".env") and not path.name.endswith(".key.pem") and not any(part in {".git", ".venv", ".deps", ".build", "target", "__pycache__", "web", "corpus", "artifacts", "proptest-regressions"} for part in relative.parts):
             archive.write(path, Path("oathkeeper") / relative)
 print(f"Synced {len(module['rules'])} actual compiled rules and {len(records)} native-verified historical proofs.")

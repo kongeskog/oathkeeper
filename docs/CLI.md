@@ -5,7 +5,8 @@ Run these commands from the repository root with a Rust toolchain installed.
 ## Analyze a real record
 
 ```sh
-cargo run -- analyze lawlib/us/wa/seattle/cases/long-parking-evidence-review.case.oath
+python3 tools/lawlib_package.py sync
+cargo run -- analyze .deps/lawlib/us/wa/seattle/cases/long-parking-evidence-review.case.oath
 ```
 
 Searches supporting and opposing arguments, checks certificates, lists evidence gaps, and reruns selected inputs for sensitivity. Unresolved evidence is not a negative finding. This command also accepts a downloaded 0.4 context JSON file.
@@ -13,7 +14,7 @@ Searches supporting and opposing arguments, checks certificates, lists evidence 
 ## Verify a supplied proof
 
 ```sh
-cargo run -- verify lawlib/us/wa/seattle/cases/long-excessive-fines.case.oath
+cargo run -- verify .deps/lawlib/us/wa/seattle/cases/long-excessive-fines.case.oath
 ```
 
 Success means derivation_verified under the supplied assumptions. Rejection returns a nonzero exit status. No scalar verifiability score is returned.
@@ -21,8 +22,8 @@ Success means derivation_verified under the supplied assumptions. Rejection retu
 ## Compile and export
 
 ```sh
-cargo run -- compile lawlib/us/wa/seattle/parking.oath
-cargo run -- normalize lawlib/us/wa/seattle/cases/long-excessive-fines.case.oath
+cargo run -- compile .deps/lawlib/us/wa/seattle/parking.oath
+cargo run -- normalize .deps/lawlib/us/wa/seattle/cases/long-excessive-fines.case.oath
 ```
 
 Compile returns source metadata and typed IR. Normalize requires a valid supplied proof and exports its assembled bundle. For an unresolved case, use compile or the application's context export.
@@ -51,9 +52,9 @@ The audit verifies pinned bytes and corpus consistency. Review generation does n
 ## Bounded federal tax assessment
 
 ```sh
-cargo run -- tax-backdoor-roth lawlib/us/tax/scenarios/synthetic-pro-rata.json
-cargo run -- verify lawlib/us/tax/shank-2018.case.oath
+cargo run -- tax-backdoor-roth .deps/lawlib/tests/scenarios/us/tax/synthetic-pro-rata.json
+cargo run -- verify .deps/lawlib/us/tax/shank-2018.case.oath
 python tools/audit_tax.py
 ```
 
-The first command returns `calculated`, `needs_information`, or `outside_scope`. A calculated result contains a replayable proof certificate and an allocation estimate, not tax owed. See the [tax module guide](lawlib/us/tax/README.md).
+The first command returns `calculated`, `needs_information`, or `outside_scope`. A calculated result contains a replayable proof certificate and an allocation estimate, not tax owed. See the [tax module guide](https://github.com/kongeskog/oathkeeper-lawlib/blob/main/us/tax/README.md).

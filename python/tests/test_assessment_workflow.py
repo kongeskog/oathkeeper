@@ -12,8 +12,9 @@ sys.path.insert(0, str(ROOT / "tools"))
 from benchmark import bundle, cases, evaluate
 from compare_snapshots import compare
 from review_packet import packet, validate_reviews
+from lawlib_tools.runtime import module_paths
 
-BASE = ROOT / "lawlib/us/wa/seattle"
+BASE = ROOT / ".deps/lawlib/us/wa/seattle"
 
 
 class AssessmentWorkflowTests(unittest.TestCase):
@@ -39,7 +40,7 @@ class AssessmentWorkflowTests(unittest.TestCase):
 
     def test_review_records_require_snapshot_and_independent_identified_reviewer(self):
         current = packet(BASE)
-        review = json.loads((BASE / "review.json").read_text())
+        review = json.loads(module_paths(ROOT / '.deps/lawlib', 'seattle')['review'].read_text())
         self.assertEqual(validate_reviews(review, current)["legal"], "pending")
         entry = review["records"][0]
         entry.update(status="approved", reviewer="synthetic-test-reviewer", independence_declared=True, rationale="Synthetic metadata test; not a real corpus approval.", recorded_at="2026-10-18T23:00:00Z")

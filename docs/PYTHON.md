@@ -5,6 +5,7 @@ The native extension calls the Rust core. Functions return JSON strings, except 
 ## Install
 
 ```sh
+python3 tools/lawlib_package.py sync
 python -m venv .venv
 . .venv/bin/activate
 pip install 'maturin>=1.7,<2'
@@ -17,7 +18,7 @@ maturin develop --locked
 import json
 import oathkeeper
 report = json.loads(oathkeeper.verify_file(
-    'lawlib/us/wa/seattle/cases/long-excessive-fines.case.oath'))
+    '.deps/lawlib/us/wa/seattle/cases/long-excessive-fines.case.oath'))
 assert report['status'] == 'derivation_verified'
 print(report['assurance'])
 ```
@@ -28,7 +29,7 @@ Runs bounded supporting and opposing argument search on a 0.4 case. It discards 
 
 ```python
 analysis = json.loads(oathkeeper.analyze_file(
-    'lawlib/us/wa/seattle/cases/long-parking-evidence-review.case.oath'))
+    '.deps/lawlib/us/wa/seattle/cases/long-parking-evidence-review.case.oath'))
 print(analysis['status'], analysis['open_requirements'])
 ```
 
@@ -60,7 +61,7 @@ See the [binding implementation](../crates/oathkeeper-python/src/lib.rs) and [tr
 
 ## assess_backdoor_roth(input_json)
 
-Runs the bounded 2025 federal IRA model in Rust, returning a JSON assessment with an independently replayed certificate. Money uses integer USD cents. Null is unknown; unsupported scope has no calculated amount. See the [tax module guide](lawlib/us/tax/README.md) for the complete schema and exclusions.
+Runs the bounded 2025 federal IRA model in Rust, returning a JSON assessment with an independently replayed certificate. Money uses integer USD cents. Null is unknown; unsupported scope has no calculated amount. See the [tax module guide](https://github.com/kongeskog/oathkeeper-lawlib/blob/main/us/tax/README.md) for the complete schema and exclusions.
 
 ```python
 result = json.loads(oathkeeper.assess_backdoor_roth(scenario_json))

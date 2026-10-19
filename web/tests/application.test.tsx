@@ -136,6 +136,13 @@ describe('documentation and code reference',()=>{
     expect(window.location.hash).toBe('#/docs/language?section=kernel-enforced-types')
     expect(document.getElementById('doc-kernel-enforced-types')).toBeTruthy()
   })
+  test('relocated tax metadata links remain usable in the application',async()=>{
+    const user=userEvent.setup();open('/docs/tax')
+    expect(screen.getByRole('link',{name:'metadata/us/tax/'})).toHaveAttribute('href','#/tax/backdoor-roth?view=review')
+    expect(screen.getByRole('link',{name:'tests/scenarios/us/tax/'})).toHaveAttribute('href','#/tax/backdoor-roth')
+    await user.click(screen.getByRole('link',{name:'source lock'}))
+    expect(await screen.findByRole('tab',{name:'Sources (5)',selected:true})).toBeVisible()
+  })
   test('the source browser searches exact implementation lines and links symbols',async()=>{
     const user=userEvent.setup();open('/reference/core')
     const file=sourceFiles.find(file=>file.id==='core')!

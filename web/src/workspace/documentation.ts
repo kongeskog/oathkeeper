@@ -59,19 +59,19 @@ export const docs=[
 
 export interface SourceFile {id:string;title:string;path:string;summary:string;code:string;language?:string}
 export const sourceFiles:SourceFile[]=[
-  {id:'source-tax',title:'Federal IRA rules · 2025',path:'lawlib/us/tax/backdoor-roth-2025.oath',summary:'Source-backed contribution and pro-rata allocation rules with exact quantity witnesses.',code:taxRules,language:'Oathkeeper'},
-  {id:'source-shank',title:'Shank · actual basis findings',path:'lawlib/us/tax/shank-basis.oath',summary:'Three narrowly scoped rules from the official 2018 Tax Court opinion.',code:shankRules,language:'Oathkeeper'},
+  {id:'source-tax',title:'Federal IRA rules · 2025',path:'oathkeeper-lawlib/us/tax/backdoor-roth-2025.oath',summary:'Source-backed contribution and pro-rata allocation rules with exact quantity witnesses.',code:taxRules,language:'Oathkeeper'},
+  {id:'source-shank',title:'Shank · actual basis findings',path:'oathkeeper-lawlib/us/tax/shank-basis.oath',summary:'Three narrowly scoped rules from the official 2018 Tax Court opinion.',code:shankRules,language:'Oathkeeper'},
   {id:'tax',title:'Proof-producing tax calculator',path:'crates/oathkeeper-core/src/tax.rs',summary:'Bounded input validation, unresolved information and certificate construction followed by kernel replay.',code:taxCode},
   {id:'arithmetic',title:'Checked quantity arithmetic',path:'crates/oathkeeper-core/src/arithmetic.rs',summary:'Exact addition, subtraction and pro-rata allocation with explicit units and rounding.',code:arithmeticCode},
   {id:'analysis',title:'Bounded argument search',path:'crates/oathkeeper-core/src/analysis.rs',summary:'Supporting and opposing certificates, limits, and sensitivity.',code:analysisCode},
   {id:'oracles',title:'Oracle agreements',path:'crates/oathkeeper-core/src/oracles.rs',summary:'Unanimity, abstention, disputes, withdrawals, and explicit trust.',code:oraclesCode},
   {id:'wasm',title:'WebAssembly bindings',path:'crates/oathkeeper-wasm/src/lib.rs',summary:'The same Rust core used by the browser worker.',code:wasmCode},
-  {id:'parking-assessment',title:'Real-record parking assessment',path:'lawlib/us/wa/seattle/cases/long-parking-evidence-review.case.oath',summary:'Incomplete exception evidence, without an invented verdict.',code:pilotCode,language:'Oathkeeper'},
-  {id:'source-seattle',title:'Seattle parking law',path:'lawlib/us/wa/seattle/parking.oath',summary:'Actual SMC 11.72.440 rules, explicit exclusions, sources, and authority assessments.',code:seattleCode,language:'Oathkeeper'},
-  {id:'source-washington',title:'Washington precedent',path:'lawlib/us/wa/long.oath',summary:'Selected Long majority holdings with their precise scope and citations.',code:washingtonCode,language:'Oathkeeper'},
-  {id:'source-federal',title:'Federal precedent',path:'lawlib/us/timbs.oath',summary:'The Timbs incorporation holding and federal jurisdiction declaration.',code:federalCode,language:'Oathkeeper'},
-  {id:'vocabulary',title:'Lawlib vocabulary',path:'lawlib/vocabulary.oath',summary:'Matter and Vehicle domain types with exact predicate signatures.',code:vocabularyCode,language:'Oathkeeper'},
-  {id:'pending-oracle',title:'Pending oracle reassessment',path:'lawlib/us/wa/seattle/cases/long-oracle-reassessment.case.oath',summary:'An actual Long record application awaiting an agreed response; deliberately unverified.',code:pendingOracleCode,language:'Oathkeeper'},
+  {id:'parking-assessment',title:'Real-record parking assessment',path:'oathkeeper-lawlib/us/wa/seattle/cases/long-parking-evidence-review.case.oath',summary:'Incomplete exception evidence, without an invented verdict.',code:pilotCode,language:'Oathkeeper'},
+  {id:'source-seattle',title:'Seattle parking law',path:'oathkeeper-lawlib/us/wa/seattle/parking.oath',summary:'Actual SMC 11.72.440 rules, explicit exclusions, sources, and authority assessments.',code:seattleCode,language:'Oathkeeper'},
+  {id:'source-washington',title:'Washington precedent',path:'oathkeeper-lawlib/us/wa/long.oath',summary:'Selected Long majority holdings with their precise scope and citations.',code:washingtonCode,language:'Oathkeeper'},
+  {id:'source-federal',title:'Federal precedent',path:'oathkeeper-lawlib/us/timbs.oath',summary:'The Timbs incorporation holding and federal jurisdiction declaration.',code:federalCode,language:'Oathkeeper'},
+  {id:'vocabulary',title:'Lawlib vocabulary',path:'oathkeeper-lawlib/vocabulary.oath',summary:'Matter and Vehicle domain types with exact predicate signatures.',code:vocabularyCode,language:'Oathkeeper'},
+  {id:'pending-oracle',title:'Pending oracle reassessment',path:'oathkeeper-lawlib/us/wa/seattle/cases/long-oracle-reassessment.case.oath',summary:'An actual Long record application awaiting an agreed response; deliberately unverified.',code:pendingOracleCode,language:'Oathkeeper'},
   {id:'compiler',title:'Source compiler',path:'crates/oathkeeper-core/src/compiler/mod.rs',summary:'Transitive hash checks, declaration linking, explicit IR, and source maps.',code:compilerCode},
   {id:'syntax',title:'Language parser',path:'crates/oathkeeper-core/src/compiler/syntax.rs',summary:'The lexer and parser for the .oath authoring language.',code:syntaxCode},
   {id:'schema',title:'Kernel type checks',path:'crates/oathkeeper-core/src/schema.rs',summary:'Predicate arity, nominal domain types, and ground substitutions.',code:schemaCode},
@@ -90,6 +90,9 @@ export function codeSymbols(code:string) {
 }
 export function docLink(href:string) {
   if(href.startsWith('http'))return href
+  if(href.includes('metadata/us/tax/'))return href.endsWith('sources.lock.json')?'#/tax/backdoor-roth?view=sources':'#/tax/backdoor-roth?view=review'
+  if(href.includes('metadata/us/wa/seattle/'))return href.endsWith('sources.lock.json')?'#/sources':href.endsWith('coverage.json')?'#/lawlib':'#/review'
+  if(href.includes('tests/scenarios/us/tax/'))return '#/tax/backdoor-roth'
   if(href.includes('lawlib/us/tax/README'))return '#/docs/tax'
   if(href.includes('tax.rs'))return '#/reference/tax'
   if(href.includes('arithmetic.rs'))return '#/reference/arithmetic'

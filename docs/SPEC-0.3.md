@@ -24,7 +24,7 @@ lemma must carry a checked derivation; neither may create an unchecked rule.
 
 ## A real authoring source
 
-The canonical Seattle source is [parking.oath](../lawlib/us/wa/seattle/parking.oath).
+The canonical Seattle source is [parking.oath](https://github.com/kongeskog/oathkeeper-lawlib/blob/main/us/wa/seattle/parking.oath).
 Its subsection C rule has the following inference body (the linked source also
 contains the complete authority, date, and citation metadata):
 

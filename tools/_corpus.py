@@ -1,6 +1,6 @@
 """Load tooling from the revision-pinned source-only corpus."""
-from pathlib import Path
 import sys
 sys.dont_write_bytecode = True
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / 'lawlib/tools'))
+from lawlib_package import ROOT, DEST as CORPUS, verify
+verify()  # Check the lock before importing code from the external package.
+sys.path.insert(0, str(CORPUS / 'tools'))

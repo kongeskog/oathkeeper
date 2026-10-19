@@ -9,6 +9,7 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+      - run: python3 tools/lawlib_package.py sync
       - uses: dtolnay/rust-toolchain@nightly
       - run: cargo install cargo-fuzz --locked
       - run: mkdir -p fuzz/corpus/parse_verify
