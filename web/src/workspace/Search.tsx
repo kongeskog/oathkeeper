@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog'
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
 import { lawModule, records, rulePath, authorityPath, authorityName, casePath, ruleTitle, ruleSummary } from './catalog'
-import { taxData } from './tax'
+import { taxData } from './tax-model'
 import { docs, sourceFiles, codeSymbols } from './documentation'
 import { navigate } from './router'
 

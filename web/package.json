@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "tsc --noEmit && vite build",
+    "build:vercel": "npm run build && node scripts/package-vercel.mjs",
     "test": "vitest run",
     "predev": "node scripts/check-inputs.mjs",
     "pretest": "node scripts/check-inputs.mjs",

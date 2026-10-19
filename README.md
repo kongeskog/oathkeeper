@@ -4,6 +4,8 @@ Oathkeeper is an open language and Rust engine for **conditional, inspectable le
 
 The 0.5 research prototype includes readable `.oath` code, typed JSON interchange, a deterministic proof checker, bounded argument search, Python bindings, CLI, and the same Rust engine compiled to WebAssembly. The application provides lawlib exploration, a live evidence workbench, source inspection, review packets, and code documentation.
 
+**Live application:** <https://oathkeeper-sable.vercel.app/>
+
 The application source lives in [`web/`](web/README.md). With the native binding, Rust WASM target and wasm-bindgen CLI installed, run `python tools/build_web.py --fetch-sources`, then `npm ci --prefix web` and `npm run dev --prefix web` (Node.js 22+). See the web README for setup. Generated app data, source documents and WASM live in ignored `web/.generated/`. Core and application code are versioned together in this repository.
 
 ## Start with real law

@@ -28,6 +28,32 @@ The current app deliberately packages the two selected pilots, not every future 
 
 After preparation, use `npm test --prefix web`, `npm run build --prefix web`, and `node web/scripts/verify-kernel.mjs`. Native/WASM parity checks replay the certificates. Re-run preparation after engine, lawlib or copied documentation changes. Normal React UI edits only need the Vite build.
 
+## Vercel deployment
+
+Production: <https://oathkeeper-sable.vercel.app/>.
+Project: `rlindskog-projects/oathkeeper`.
+
+Prepare the generated inputs using the clean-checkout instructions above, then run:
+
+```sh
+npm ci --prefix web
+npm test --prefix web
+node web/scripts/verify-kernel.mjs
+npm run build:vercel --prefix web
+cd web
+vercel link --project oathkeeper --scope rlindskog-projects
+vercel deploy --prebuilt --prod
+```
+
+The package contains only the production static files, including the Rust WASM
+kernel and the selected pinned evidence. `.vercel/` is ignored by Git. Browser
+calculations need no backend service or API keys. The app uses hash routes such
+as `/#/workbench`, which work on static hosting without rewrites.
+
+This workflow builds locally and uploads the complete output. A plain Vite build
+from Git is insufficient until the Python/Rust preparation step has generated the
+ignored inputs; automatic Git deployments are not configured by these commands.
+
 ## Managed Sites checkout
 
 The existing app is <https://oathkeeper-field-guide.rainy-puppy-3202.chatgpt.site/>. Its managed source keeps `.openai/hosting.json` and a `.openai/build-inputs.json` recording the exact software commit. To reproduce it, check out that software revision, install the binding and tools above, then run:

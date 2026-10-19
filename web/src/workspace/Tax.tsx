@@ -13,7 +13,7 @@ import { AppLink, CodeBlock, CopyButton, DownloadButton, JsonView, Notice, PageH
 import { claimText, verifySnapshot } from './catalog'
 import { downloadJson } from './analysis'
 import { navigate } from './router'
-import { taxData, dollar, parseDollars, useTaxAssessment, type TaxInput, type TaxResult } from './tax'
+import { taxData, dollar, parseDollars, useTaxAssessment, type TaxInput, type TaxResult } from './tax-model'
 
 const fields=[
   {key:'taxable_compensation_cents',label:'2025 taxable compensation',help:'Your own eligible compensation. Spousal compensation rules are outside scope.'},

@@ -2,4 +2,6 @@ node_modules/
 dist/
 .generated/
 .openai/
+.vercel/
 *.tar.gz
+.env*

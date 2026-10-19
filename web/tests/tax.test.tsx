@@ -3,7 +3,7 @@ import { act, render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import App from '../src/App'
 import { navigate } from '../src/workspace/router'
-import { parseDollars, taxData, type TaxResult } from '../src/workspace/tax'
+import { parseDollars, taxData, type TaxResult } from '../src/workspace/tax-model'
 
 class WorkerMock {
   static instances:WorkerMock[]=[]

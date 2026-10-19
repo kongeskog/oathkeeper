@@ -4,7 +4,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 import { Badge } from '@/components/ui/badge'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { AppLink, PageHeading, DataCard, ReviewBadge, CodeBlock } from './shared'
-import { taxData } from './tax'
+import { taxData } from './tax-model'
 import { lawModule, records, snapshots, ruleTitle, rulePath, ruleAuthority, authorityName, casePath } from './catalog'
 
 export function Home(){
