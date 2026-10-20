@@ -69,13 +69,15 @@ pnpm provisions:sync /cache/provisions-119-118 /cache/provisions-119-121
 
 This checks all index and shard hashes and copies assets into ignored public/provisions. Vercel uses the explicit .vercelignore, which includes these prepared assets in the upload. Fresh CI unpacks the committed lawlib source archive, installs its locked extraction dependencies, explicitly downloads the pinned official archives, and caches the reproduced assets. No source retrieval runs inside the legal interpreter or verifier.
 
-A standalone checkout can unpack public/downloads/lawlib-v0.1.0-dev.4.zip outside this repository, install its tools/inventory dependencies, then run:
+A standalone checkout can unpack `public/downloads/lawlib-source-tools.zip` outside this repository, install its `tools/inventory` dependencies, then run:
 
 ```sh
 node scripts/fetch-provisions.mjs /path/to/lawlib/tools/inventory/extract-provisions.mjs /cache --fetch
 ```
 
 The pinned catalogs are part of this website snapshot. A hash mismatch aborts preparation. The browser reports unavailable or altered shards explicitly. The source workflow documentation explains the extraction and legal-coverage limits.
+
+The source-tools archive pins lawlib commit `56f2bd5c1eb3d1e9adffe52fca6213f9776b369f`. It fixes the gzip header convention so Windows and Linux reproduce the existing catalog hashes. It contains only `tools/inventory`; the historical complete source downloads remain unchanged. To refresh it from an explicitly reviewed lawlib commit, use `git archive --format=zip --prefix=lawlib/ -o ../oathkeeper/web/public/downloads/lawlib-source-tools.zip COMMIT tools/inventory` from the lawlib checkout.
 
 ## Checks
 

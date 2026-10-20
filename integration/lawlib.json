@@ -1,6 +1,6 @@
 {
   "note": "Run only this pinned revision in candidate integration; no moving default-branch dependency.",
   "version": "0.1.0",
-  "revision": "4a40cbe0433cbbae49cc60a6bf0a25f538c8f5ce",
+  "revision": "56f2bd5c1eb3d1e9adffe52fca6213f9776b369f",
   "package": "lawlib"
 }

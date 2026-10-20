@@ -26,10 +26,10 @@ jobs:
         id: provisions
         with:
           path: web/public/provisions
-          key: provisions-${{ hashFiles('web/src/content/provisions-*.json') }}
+          key: provisions-${{ hashFiles('web/src/content/provisions-*.json', 'web/public/downloads/lawlib-source-tools.zip') }}
       - if: steps.provisions.outputs.cache-hit != 'true'
         run: |
-          unzip -q public/downloads/lawlib-v0.1.0-dev.4.zip -d "$RUNNER_TEMP/source-snapshot"
+          unzip -q public/downloads/lawlib-source-tools.zip -d "$RUNNER_TEMP/source-snapshot"
           pnpm --dir "$RUNNER_TEMP/source-snapshot/lawlib/tools/inventory" install --frozen-lockfile
           node scripts/fetch-provisions.mjs "$RUNNER_TEMP/source-snapshot/lawlib/tools/inventory/extract-provisions.mjs" "$RUNNER_TEMP/provision-cache" --fetch
       - run: pnpm build
