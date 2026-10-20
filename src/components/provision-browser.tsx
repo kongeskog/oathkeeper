@@ -47,11 +47,21 @@ export function ProvisionBrowser() {
     [failure, setFailure] = useState<{ id: string; message: string } | null>(
       null,
     ),
-    [search, setSearch] = useState(""),
-    [page, setPage] = useState(0),
+    [filter, setFilter] = useState({ context: "", search: "", page: 0 }),
     [retry, setRetry] = useState(0);
   const indexId = release + "/" + file,
     detailId = indexId + "/" + selected;
+  const filterContext = indexId + "|" + (target ?? "");
+  const search = filter.context === filterContext ? filter.search : "";
+  const page = filter.context === filterContext ? filter.page : 0;
+  const setSearch = (value: string) =>
+    setFilter({ context: filterContext, search: value, page: 0 });
+  const setPage = (value: number) =>
+    setFilter((current) => ({
+      context: filterContext,
+      search: current.context === filterContext ? current.search : "",
+      page: value,
+    }));
   const index = loaded?.id === indexId ? loaded.index : null,
     unit = detail?.id === detailId ? detail.unit : null;
   const error =

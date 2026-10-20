@@ -73,6 +73,18 @@ test("search, references, historical changes and source integrity rejection", as
   await expect(
     page.getByRole("article", { name: "Selected provision" }),
   ).toBeVisible();
+  await page
+    .getByLabel("Find by number, heading, or locator")
+    .fill("Computing");
+  await page
+    .getByRole("article", { name: "Selected provision" })
+    .getByText(/^Cross-references \(/)
+    .click();
+  await page.locator('article a[href*="&ref="]').first().click();
+  await expect(
+    page.getByLabel("Find by number, heading, or locator"),
+  ).toHaveValue("");
+  await expect(page.getByRole("button", { name: /7246/ })).toBeVisible();
   await expect(page.getByLabel("Pinned release")).toHaveValue("119-118");
   await page.goto(
     "/explorer/provisions?file=usc28a.xml&ref=" +

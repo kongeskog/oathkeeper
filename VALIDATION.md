@@ -1,5 +1,38 @@
 # Web validation
 
+## Provision workflow — 2026-10-19
+
+- lawlib `136a7b6`, tagged `v0.1.0-dev.3`: eight packages, 26 modules,
+  139 fixtures, and 17 matched source-audit bindings. All 139 fixtures passed on
+  Windows with independent certificate verification. All 33 new court fixtures
+  also passed on Linux; the existing Rust core is unchanged.
+- The W.D. Washington Thanksgiving example returns November 30, 2026. Windows
+  and Linux produced byte-identical certificates (SHA-256
+  `4ac0ec1baeb634bbaa3efba1ee6ea6687e5103f5c292d30a94339340879b60bf`).
+- Both pinned source releases reproduced all compressed index and text hashes:
+  58 documents and 67,680 extracted source units each. A fresh preparation run
+  from cached original archives exercised the standalone build-asset workflow.
+- 14 source-tooling tests pass, including malformed XML, resource bounds, changed
+  notes and parent headings, ambiguous identities, explicit dependency impact,
+  altered shard hashes, and safe draft materialization.
+- A draft downloaded through the browser was materialized, locked, compiled,
+  tested, run, and independently verified. It correctly remained Undetermined
+  with NoSupportingRule. No legal logic was generated.
+- TypeScript, ESLint, Prettier, five content tests, and production build pass.
+  Browser checks cover all 12 documentation pages, eight package pages, source
+  text/notes, encoding links, draft download, historical passages, cross-reference
+  filtering, altered source rejection, mobile layout and accessibility.
+- Visually inspected the desktop provision/draft view. Mobile overflow and axe
+  checks passed for the new explorer. Source text is a flattened rendition; the
+  official archive remains the lossless source.
+- The real comparison flags one unimplemented historical draft for reassessment.
+  No source change is treated as an enactment, repeal, effective date, or legal
+  approval. Comprehensive precedent and whole-system legal coverage remain open.
+
+Production checks and deployment identity are recorded in DEPLOYMENT.md. Hosted
+GitHub Actions has not been run; its asset preparation uses explicit pinned-source
+downloads and cache keys derived from the committed catalogs.
+
 ## Inventory and deadline update — 2026-10-19
 
 - Source snapshot: lawlib `9f6687c`, six packages, 23 modules, 28 queries,
