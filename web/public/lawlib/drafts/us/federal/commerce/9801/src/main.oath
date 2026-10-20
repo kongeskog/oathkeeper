@@ -1,0 +1,30 @@
+module draft.us.commerce.section9801;
+use std.provenance.{SourceRef, SourceAnchor, EncodingRecord, CoverageRecord, ReviewStatus};
+
+const source = SourceRef {
+    stable_id: "us.olrc.usc.119-118.usc15.xml", citation: "§ 9801. Defined term",
+    edition_or_version: "OLRC release 119-118",
+    locations: ["cache:19df1eb1db69bb378bd243336849bc61508119aaf8e734d427d3696eea175d01"],
+    expected_sha256: "19df1eb1db69bb378bd243336849bc61508119aaf8e734d427d3696eea175d01",
+    publication_metadata: "Office of the Law Revision Counsel; original XML bytes",
+    retrieval_metadata: "XML member usc15.xml in https://uscode.house.gov/download/releasepoints/us/pl/119/118/xml_uscAll@119-118.zip; archive SHA-256 f360086bb53a62ab80f03d1ed85fe920124e1538736756c367e00a90470610a8. Extract and audit original bytes separately."
+};
+const note = EncodingRecord {
+    id: "draft.us.commerce.section9801.draft",
+    citations: [SourceAnchor { source_id: "us.olrc.usc.119-118.usc15.xml", locator: "/us/usc/t15/s9801" }],
+    rationale: "Unimplemented question: Which definitions govern the selected chapter, and how do their scopes and revisions affect a future encoded question?", assumptions: [], review: ReviewStatus.Unreviewed
+};
+const coverage = CoverageRecord {
+    id: "draft.us.commerce.section9801.coverage", questions: ["Which definitions govern the selected chapter, and how do their scopes and revisions affect a future encoded question?"],
+    investigated_sources: ["us.olrc.usc.119-118.usc15.xml"], exclusions: [],
+    not_investigated: ["Applicability, definitions, exceptions, other authorities, temporal reach and remedies"],
+    unresolved_interpretations: ["No legal interpretation has been encoded"], review: ReviewStatus.Unreviewed
+};
+
+// TODO: design typed facts and answer, scope/applicability, and cited rules.
+// No supporting rule is generated: this draft cannot produce a legal answer.
+query assessment() -> Bool {
+    scope = true;
+    applies = true;
+    meta = note;
+}

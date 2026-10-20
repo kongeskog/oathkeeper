@@ -1,0 +1,89 @@
+module us.wawd.answer;
+use std.date.{Date, date, add_days};
+use us.frcp.r6.deadline_date;
+use us.frcp.r6.model.{DeadlineFacts, Calendar, DayFinding};
+use us.wawd.answer.sources.answer_note;
+
+type AnswerFacts = {
+    court_id: Text,
+    served_on: Date,
+    selected_authorities_apply: Bool,
+    valid_personal_rule4_service: Bool,
+    ordinary_original_complaint: Bool,
+    private_domestic_defendant: Bool,
+    service_waived: Bool,
+    removed_from_state_court: Bool,
+    rule12_motion_served: Bool,
+    amended_pleading: Bool,
+    different_statutory_period: Bool,
+    modifying_order: Bool,
+    stay_or_tolling: Bool,
+    special_proceeding: Bool,
+    procedural_inventory_complete: Bool,
+    additional_holidays_complete: Bool,
+    additional_federal_holidays: List<Date>,
+    additional_state_holidays: List<Date>
+};
+fn supported(facts: AnswerFacts) -> Bool {
+    facts.court_id == "us.court.wawd"
+    and facts.served_on >= date(2026, 1, 13) and facts.served_on <= date(2026, 12, 4)
+    and facts.selected_authorities_apply and facts.ordinary_original_complaint
+    and facts.private_domestic_defendant and facts.procedural_inventory_complete
+    and not facts.service_waived and not facts.removed_from_state_court
+    and not facts.rule12_motion_served and not facts.amended_pleading
+    and not facts.different_statutory_period and not facts.modifying_order
+    and not facts.stay_or_tolling and not facts.special_proceeding
+    and facts.additional_holidays_complete and len(facts.additional_federal_holidays) <= 366
+    and len(facts.additional_state_holidays) <= 366
+}
+// Authored 2026 dates, not a universal holiday or observation convention.
+// Rule 6(a)(6)(A),(C), RCW 1.16.050(1),(5). Sundays are handled by Rule 6.
+fn named_holiday(on: Date) -> Bool {
+    on == date(2026,1,1) or on == date(2026,1,19) or on == date(2026,2,16)
+    or on == date(2026,5,25) or on == date(2026,6,19)
+    or on == date(2026,7,3) or on == date(2026,7,4)
+    or on == date(2026,9,7) or on == date(2026,10,12)
+    or on == date(2026,11,11) or on == date(2026,11,26)
+    or on == date(2026,11,27) or on == date(2026,12,25)
+}
+type ContainsDate = { on: Date, found: Bool };
+fn contains_step(state: ContainsDate, on: Date) -> ContainsDate {
+    ContainsDate { on: state.on, found: state.found or state.on == on }
+}
+type CalendarBuild = { start: Date, federal: List<Date>, state: List<Date>, days: List<DayFinding> };
+fn calendar_step(state: CalendarBuild, offset: Int) -> CalendarBuild {
+    let on = add_days(state.start, offset);
+    let federal = fold(state.federal, ContainsDate { on: on, found: false }, contains_step).found;
+    let local = fold(state.state, ContainsDate { on: on, found: false }, contains_step).found;
+    CalendarBuild { start: state.start, federal: state.federal, state: state.state, days: append(state.days, DayFinding {
+        on: on, statutory_observance: named_holiday(on),
+        presidential_or_congressional_holiday: federal, state_declared_holiday: local,
+        // Not a filing question: this placeholder is irrelevant to the dependency.
+        clerk_accessible: true
+    }) }
+}
+fn deadline_facts(facts: AnswerFacts) -> DeadlineFacts {
+    let days = fold(range(0,7), CalendarBuild {
+        start: add_days(facts.served_on,21), federal: facts.additional_federal_holidays,
+        state: facts.additional_state_holidays, days: []
+    }, calendar_step).days;
+    DeadlineFacts {
+        court_id: facts.court_id, state_id: "us.wa", trigger: facts.served_on,
+        period_days: 21, measured_after_event: true, rule6_applies: true,
+        selected_text_applies: true, requires_filing: false,
+        // Derived only after the root scope checks the concrete exclusions.
+        no_other_adjustments: true,
+        calendar: Calendar { court_id: facts.court_id, state_id: "us.wa",
+            holiday_findings_complete: facts.additional_holidays_complete, days: days }
+    }
+}
+query answer_service_date(facts: AnswerFacts) -> Date {
+    scope = supported(facts);
+    applies = facts.valid_personal_rule4_service;
+    meta = answer_note;
+}
+rule ordinary_answer for answer_service_date(facts) {
+    when = true;
+    yield = deadline_date(deadline_facts(facts));
+    meta = answer_note;
+}

@@ -1,0 +1,18 @@
+module legal.inventory;
+use std.provenance.{SourceAnchor, ReviewStatus};
+use legal.model.AuthorityLink;
+
+// Inventory status concerns an encoding, never the validity of the provision.
+enum AnalysisStatus { Represented, InterpretationRequired, ExecutableSubset }
+enum ProvisionUnit { Preamble, Clause, Article, Amendment, Section, Paragraph }
+type ProvisionEntry = {
+    id: Text, group_id: Text, label: Text, title: Text, unit: ProvisionUnit,
+    anchor: SourceAnchor, text: Text, analysis: AnalysisStatus,
+    executable_queries: List<Text>, unresolved: List<Text>, editorial_notes: List<Text>,
+    review: ReviewStatus
+};
+// AuthorityLink is descriptive data; only explicitly authored queries execute.
+type AuthorityRecord = {
+    id: Text, link: AuthorityLink, assessment_queries: List<Text>,
+    limitations: List<Text>, review: ReviewStatus
+};

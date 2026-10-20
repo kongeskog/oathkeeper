@@ -1,0 +1,60 @@
+module us.ira.y2025.conversion;
+use std.money.{Money, USD};
+use std.numeric.{min, round, RoundingMode};
+use us.ira.y2025.model.{Conversion, supported_conversion, sum_balance};
+use us.ira.y2025.contribution.{contribution_requirements, nondeductible_contribution};
+use us.ira.y2025.sources.{conversion_note, allocation_note, reporting_note, rounding_note};
+
+enum ConversionTreatment { OrdinaryRothConversionWithBasisAllocation }
+fn total_basis(transaction: Conversion) -> Rational { transaction.prior_basis.amount + transaction.contribution.amount.amount }
+fn denominator(transaction: Conversion) -> Rational { fold(transaction.accounts.entries, transaction.converted.amount, sum_balance) }
+fn exact_exclusion_fraction(transaction: Conversion) -> Rational { min(1.0, total_basis(transaction) / denominator(transaction)) }
+fn supported_basis_election(transaction: Conversion) -> Bool {
+    transaction.contribution.nondeductible_designated and not transaction.contribution.deduction_claimed
+    and transaction.contribution.other_personal_ira_contributions.amount == 0.0
+}
+
+query conversion_treatment(transaction: Conversion) -> ConversionTreatment {
+    scope = supported_conversion(transaction) and supported_basis_election(transaction);
+    applies = contribution_requirements(transaction.contribution); meta = conversion_note;
+}
+rule qualified_profile for conversion_treatment(transaction) { when = true; yield = ConversionTreatment.OrdinaryRothConversionWithBasisAllocation; meta = conversion_note; }
+query taxable_conversion(transaction: Conversion) -> Money<USD> {
+    scope = supported_conversion(transaction) and supported_basis_election(transaction);
+    applies = contribution_requirements(transaction.contribution); meta = allocation_note;
+}
+rule aggregate_basis for taxable_conversion(transaction) {
+    when = true;
+    yield = Money::<USD> { amount: transaction.converted.amount * (1.0 - exact_exclusion_fraction(transaction)) };
+    meta = allocation_note;
+}
+query remaining_basis(transaction: Conversion) -> Money<USD> {
+    scope = supported_conversion(transaction) and supported_basis_election(transaction);
+    applies = contribution_requirements(transaction.contribution); meta = allocation_note;
+}
+rule unused_basis for remaining_basis(transaction) { when = true; yield = Money::<USD> { amount: total_basis(transaction) - transaction.converted.amount * exact_exclusion_fraction(transaction) }; meta = allocation_note; }
+
+type ReportingRequirement = { form: Text, parts: List<Text>, description: Text };
+query supported_reporting(transaction: Conversion) -> ReportingRequirement {
+    scope = supported_conversion(transaction) and supported_basis_election(transaction);
+    applies = contribution_requirements(transaction.contribution); meta = reporting_note;
+}
+rule form_8606 for supported_reporting(transaction) {
+    when = true;
+    yield = ReportingRequirement { form: "2025 Form 8606", parts: if total_basis(transaction) > 0.0 { ["I", "II"] } else { ["II"] }, description: "Nondeductible traditional IRA contribution and Roth conversion within the supported profile; other returns and schedules are not assessed" };
+    meta = reporting_note;
+}
+type FormProjection = { line10_fraction: Rational, line18_taxable: Money<USD>, output_quantum: Rational, rounding: RoundingMode };
+// A named projection policy, separate from the exact statutory allocation.
+query form_projection(transaction: Conversion, output_quantum: Rational) -> FormProjection {
+    scope = supported_conversion(transaction) and supported_basis_election(transaction) and output_quantum > 0.0;
+    applies = contribution_requirements(transaction.contribution); meta = rounding_note;
+}
+rule six_decimal_projection for form_projection(transaction, output_quantum) {
+    when = true;
+    yield = {
+        let ratio = min(1.0, round(exact_exclusion_fraction(transaction), 0.000001, RoundingMode.HalfAwayFromZero));
+        FormProjection { line10_fraction: ratio, line18_taxable: Money::<USD> { amount: round(transaction.converted.amount * (1.0 - ratio), output_quantum, RoundingMode.HalfAwayFromZero) }, output_quantum: output_quantum, rounding: RoundingMode.HalfAwayFromZero }
+    };
+    meta = rounding_note;
+}

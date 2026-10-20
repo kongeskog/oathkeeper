@@ -1,0 +1,41 @@
+module us.wawd.answer.sources;
+use std.provenance.{SourceRef, SourceAnchor, EncodingRecord, CoverageRecord, ReviewStatus};
+use us.frcp.r6.sources.civil_rules_2025;
+
+const local_rules = SourceRef {
+    stable_id: "us.court.wawd.lcr.2026.01.13",
+    citation: "W.D. Wash. Local Civil Rules, LCR 1, 6(a), 12(a), 15",
+    edition_or_version: "January 13, 2026; court download with January 28 correction",
+    locations: ["https://www.wawd.uscourts.gov/sites/wawd/files/WAWD%20Local%20Civil%20Rules%20(2026)%20-%20Clean.pdf"],
+    expected_sha256: "d9befea781ff1b8d449e6b0bf598097fbf570e64f7234a56fb3de1c9ef704562",
+    publication_metadata: "United States District Court, Western District of Washington",
+    retrieval_metadata: "Original PDF downloaded 2026-10-19; proposals published for comment are not this edition"
+};
+const washington_holidays = SourceRef {
+    stable_id: "us.wa.rcw.1.16.050.2026.10.19",
+    citation: "RCW 1.16.050(1), (5), (7)", edition_or_version: "Official webpage retrieved October 19, 2026",
+    locations: ["https://app.leg.wa.gov/RCW/default.aspx?cite=1.16.050"],
+    expected_sha256: "2fb73b8b8071f3f49f2884d10f5993c7afa691756fd9872027a8e4c2d1b0e101",
+    publication_metadata: "Washington State Legislature",
+    retrieval_metadata: "Original HTML bytes in optional external cache; no automatic historical applicability"
+};
+const answer_note = EncodingRecord {
+    id: "wawd.answer.2026.ordinary",
+    citations: [
+        SourceAnchor { source_id: "us.uscourts.frcp.2025", locator: "Rules 4, 5(d)(1), 6(a)(1),(3),(6), 6(b),(d), 12(a)(1)-(4), 15(a)(3), 81(c); printed pp. 5-13, 19-20, 22, 101" },
+        SourceAnchor { source_id: "us.court.wawd.lcr.2026.01.13", locator: "LCR 1, LCR 6(a) p.15, LCR 12(a) p.32, LCR 15 p.34" },
+        SourceAnchor { source_id: "us.wa.rcw.1.16.050.2026.10.19", locator: "(1), (5), (7)" }
+    ],
+    rationale: "Ordinary Rule 12(a)(1)(A)(i) answer SERVICE period is 21 days; apply Rule 6(a) forward day computation. Rule 6(d) does not add days to personal Rule 4 service. Washington statutory holidays enter under Rule 6(a)(6)(C), including November 27 and July 3 in 2026. Filing and e-filing outages are separate. Local motion/amended-pleading timing and orders are concrete exclusions, not silently overridden.",
+    assumptions: ["Supplied findings establish valid personal service and the selected authorities' applicability", "Procedural inventory covers this defendant and question; later events require a new run", "Additional holiday list includes any relevant presidential, congressional or state declaration; completeness is supplied", "2026 calendar only; seven-day endpoint window; service dates January 13 through December 4 are coverage bounds, not enactment dates"],
+    review: ReviewStatus.Unreviewed
+};
+const coverage = CoverageRecord {
+    id: "wawd.answer.2026.coverage",
+    questions: ["Conditional calendar date to serve an ordinary original-complaint answer under Rule 12(a)(1)(A)(i) in W.D. Washington"],
+    investigated_sources: ["us.uscourts.frcp.2025", "us.court.wawd.lcr.2026.01.13", "us.wa.rcw.1.16.050.2026.10.19"],
+    exclusions: ["Filing deadline and time of day", "Service waiver or other methods", "US, agency, officer, employee or foreign-sovereign defendants", "Removed cases, amended pleadings, Rule 12 motions, special proceedings", "Different statutory periods, modifying orders, stays or tolling", "Dates outside the bounded 2026 profile", "Sanctions, default, liability and remedy"],
+    not_investigated: ["Comprehensive precedent, judge-specific practices and individual case dockets", "Future legal changes or retroactive effect", "Whether a supplied inventory is actually complete"],
+    unresolved_interpretations: ["Valid service, procedural events, applicable authorities and additional holiday declarations require findings; no finding is authenticated by its label"],
+    review: ReviewStatus.Unreviewed
+};

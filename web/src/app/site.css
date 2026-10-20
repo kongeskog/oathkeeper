@@ -1,0 +1,136 @@
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+::selection {
+  background: var(--foreground);
+  color: var(--background);
+}
+.page-shell {
+  width: min(100% - 3rem, 1200px);
+  margin-inline: auto;
+}
+.eyebrow {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+.code-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.code-line {
+  display: block;
+  min-height: 1.65em;
+}
+.code-line[data-highlight="true"] {
+  background: var(--accent);
+  box-shadow: inset 2px 0 var(--foreground);
+}
+.code-keyword {
+  font-weight: 600;
+  color: var(--foreground);
+}
+.code-string,
+.code-comment {
+  color: var(--muted-foreground);
+}
+.code-comment {
+  font-style: italic;
+}
+.prose-doc {
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  color: var(--muted-foreground);
+}
+.prose-doc > * + * {
+  margin-top: 1.4rem;
+}
+.prose-doc h2,
+.prose-doc h3 {
+  color: var(--foreground);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.35;
+  scroll-margin-top: 6rem;
+}
+.prose-doc h2 {
+  font-size: 1.45rem;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.prose-doc h3 {
+  font-size: 1.1rem;
+  margin-top: 2rem;
+}
+.prose-doc a {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.prose-doc strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+.prose-doc ul,
+.prose-doc ol {
+  padding-left: 1.4rem;
+}
+.prose-doc ul {
+  list-style: disc;
+}
+.prose-doc ol {
+  list-style: decimal;
+}
+.prose-doc li {
+  margin-top: 0.4rem;
+  padding-left: 0.2rem;
+}
+.prose-doc :not(pre) > code {
+  color: var(--foreground);
+  background: var(--muted);
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.25rem;
+  font-size: 0.83em;
+  overflow-wrap: anywhere;
+}
+.prose-doc table {
+  width: 100%;
+  text-align: left;
+  font-size: 0.85rem;
+  border-collapse: collapse;
+}
+.prose-doc th {
+  color: var(--foreground);
+  font-weight: 500;
+  background: var(--muted);
+}
+.prose-doc td,
+.prose-doc th {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.prose-doc blockquote {
+  padding: 0.25rem 1.25rem;
+  border-left: 2px solid var(--foreground);
+}
+@media (max-width: 640px) {
+  .page-shell {
+    width: calc(100% - 2rem);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

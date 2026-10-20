@@ -1,0 +1,1320 @@
+{
+  "format": "lawlib-impact/1",
+  "before": {
+    "release": "119-118",
+    "archive_sha256": "f360086bb53a62ab80f03d1ed85fe920124e1538736756c367e00a90470610a8",
+    "catalog_sha256": "96fec3770cbcadb2b4e6dc34723ba1d4fb02a2bed08bd5bbc51d9b5eabe88357"
+  },
+  "after": {
+    "release": "119-121",
+    "archive_sha256": "c6122974e951003437ece5a998aa7c0b2cdc0f5703dfc78d6135e1fc9e729142",
+    "catalog_sha256": "03d05676037ef17fc7b2acaa600136c5500d5a8201fa20153f38022d87f56109"
+  },
+  "registry_sha256": "dda48af7070f3e104ae137e6cd540ba82168b1a325f312e8a4867bc773bc44a5",
+  "changes": [
+    {
+      "file": "usc01.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "c94610e4d3ba89efeaffb830",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "c94610e4d3ba89efeaffb830",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc02.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "8b75a7c914ef29b6248c805c",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "8b75a7c914ef29b6248c805c",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc03.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "91549fcc37af63bf5d846a42",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "91549fcc37af63bf5d846a42",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc04.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "283ea1423534511b1aacd45a",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "283ea1423534511b1aacd45a",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc05.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "7a66304ac69dcbc4a75e7cc8",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "7a66304ac69dcbc4a75e7cc8",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc05A.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "bb528defce86c6350b695928",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "bb528defce86c6350b695928",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc06.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "36fb2fd93e818cc9ec1c3b7a",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "36fb2fd93e818cc9ec1c3b7a",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc07.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "91368a553fd50bed0809f368",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "91368a553fd50bed0809f368",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc08.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "ba72796519bb8c1d5c079065",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "ba72796519bb8c1d5c079065",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc09.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "e64a2ac1eb306a24d2d4e414",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "e64a2ac1eb306a24d2d4e414",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc10.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "3cbcf497a8cb54968f8d41a3",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "3cbcf497a8cb54968f8d41a3",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc11.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "040947cf07f7bdc303e96dd5",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "040947cf07f7bdc303e96dd5",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc11a.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "5979ba7d3a6b331c7c1e9771",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "5979ba7d3a6b331c7c1e9771",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc12.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "7188ac219a8005676ddb745c",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "7188ac219a8005676ddb745c",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc13.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "9675a350e19327d7ac78bba5",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "9675a350e19327d7ac78bba5",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc14.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "be6f16a8658ea4746248eaea",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "be6f16a8658ea4746248eaea",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc15.xml",
+      "locator": "/us/usc/t15/s78u–6",
+      "kind": "ChangedText",
+      "before": [
+        {
+          "key": "a60f104ae03b62b133ef27c1",
+          "number": "§ 78u–6.",
+          "heading": "Securities whistleblower incentives and protection"
+        }
+      ],
+      "after": [
+        {
+          "key": "e916425a0f7d2b99e135c110",
+          "number": "§ 78u–6.",
+          "heading": "Securities whistleblower incentives and protection"
+        }
+      ],
+      "changed_parts": [
+        "notes"
+      ]
+    },
+    {
+      "file": "usc15.xml",
+      "locator": "/us/usc/t15/s9801",
+      "kind": "ChangedText",
+      "before": [
+        {
+          "key": "90deb5e01fab52afd6aebdeb",
+          "number": "§ 9801.",
+          "heading": "Defined term"
+        }
+      ],
+      "after": [
+        {
+          "key": "0d30ceb6fe0c729d7330f7c5",
+          "number": "§ 9801.",
+          "heading": "Defined term"
+        }
+      ],
+      "changed_parts": [
+        "text",
+        "notes",
+        "credits",
+        "references"
+      ]
+    },
+    {
+      "file": "usc15.xml",
+      "locator": "/us/usc/t15/s9803",
+      "kind": "ChangedText",
+      "before": [
+        {
+          "key": "a44d7ae3c885207acafa58a3",
+          "number": "§ 9803.",
+          "heading": "Responsibilities of the Assistant Secretary of Commerce for Travel and Tourism"
+        }
+      ],
+      "after": [
+        {
+          "key": "4cf336de41cb539a5f84759e",
+          "number": "§ 9803.",
+          "heading": "Responsibilities of the Assistant Secretary of Commerce for Travel and Tourism"
+        }
+      ],
+      "changed_parts": [
+        "text",
+        "notes",
+        "credits",
+        "references"
+      ]
+    },
+    {
+      "file": "usc15.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "789426e80382b88fe80a2c92",
+          "number": "",
+          "heading": ""
+        },
+        {
+          "key": "1576cbff14bfe1d0b492a142",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "789426e80382b88fe80a2c92",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc16.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "e7eedd0b1b73d181c186c89d",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "e7eedd0b1b73d181c186c89d",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc17.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "c0155ea2c7eac6354f0bed61",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "c0155ea2c7eac6354f0bed61",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc18.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "bedf3550b3aea8865c6f795f",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "bedf3550b3aea8865c6f795f",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc18a.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "e38db90896c78d874f7764cc",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "e38db90896c78d874f7764cc",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc19.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "d63aad493d13bdccf2065b48",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "d63aad493d13bdccf2065b48",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc20.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "d9f4a8a79f960fb0df2c98d3",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "d9f4a8a79f960fb0df2c98d3",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc21.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "dbb57ab40e71c0e79d32fe42",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "dbb57ab40e71c0e79d32fe42",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc22.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "3254b89cdba7061d9840a8f9",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "3254b89cdba7061d9840a8f9",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc23.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "7ad7f55186dbf5111d83810b",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "7ad7f55186dbf5111d83810b",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc24.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "ab5ddc7feea05f1b6c41006a",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "ab5ddc7feea05f1b6c41006a",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc25.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "2a9aa34dec806a26d1f357ca",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "2a9aa34dec806a26d1f357ca",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc26.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "0887534fbd3dfb0e19b0b338",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "0887534fbd3dfb0e19b0b338",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc27.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "df73b1da29f7575970312984",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "df73b1da29f7575970312984",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc28.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "b6e28cb24b25b5dbfa09049a",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "b6e28cb24b25b5dbfa09049a",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc28a.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "74781dd3779d52bc42e6f749",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "74781dd3779d52bc42e6f749",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc29.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "19bb92609be7a7d2b53fa292",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "19bb92609be7a7d2b53fa292",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc30.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "5a0d735c65f0a0050498edcd",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "5a0d735c65f0a0050498edcd",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc31.xml",
+      "locator": "/us/usc/t31/s501",
+      "kind": "ChangedText",
+      "before": [
+        {
+          "key": "6a15092a436bbb7f08fa766f",
+          "number": "§ 501.",
+          "heading": "Office of Management and Budget"
+        }
+      ],
+      "after": [
+        {
+          "key": "6a15092a436bbb7f08fa766f",
+          "number": "§ 501.",
+          "heading": "Office of Management and Budget"
+        }
+      ],
+      "changed_parts": [
+        "notes",
+        "references"
+      ]
+    },
+    {
+      "file": "usc31.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "f630912e29b37d3abd1c5a92",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "f630912e29b37d3abd1c5a92",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc32.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "d510ef3195935d1c23f028c2",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "d510ef3195935d1c23f028c2",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc33.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "aafc479b9b854685c8b4b451",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "aafc479b9b854685c8b4b451",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc34.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "8eeffd991379839b9040d7e3",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "8eeffd991379839b9040d7e3",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc35.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "e95b76c74b6ebd8ccf42c46f",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "e95b76c74b6ebd8ccf42c46f",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc36.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "0317df5ef2a35eb4f57b9542",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "0317df5ef2a35eb4f57b9542",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc37.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "999d816865b0bec1e9403487",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "999d816865b0bec1e9403487",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc38.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "3ca539d29879abc57d6f2ce2",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "3ca539d29879abc57d6f2ce2",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc39.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "380301f9f4858538ea356b5e",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "380301f9f4858538ea356b5e",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc40.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "01e32dfd7f70424a5098b6c1",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "01e32dfd7f70424a5098b6c1",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc41.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "1efd3614ca37d9e99de882b6",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "1efd3614ca37d9e99de882b6",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc42.xml",
+      "locator": "/us/usc/t42/s1305",
+      "kind": "ChangedText",
+      "before": [
+        {
+          "key": "8fdaf3856bd01b635b53aae3",
+          "number": "§ 1305.",
+          "heading": "Short title of chapter"
+        }
+      ],
+      "after": [
+        {
+          "key": "7ee596e21e4f1cb6ebce5ce4",
+          "number": "§ 1305.",
+          "heading": "Short title of chapter"
+        }
+      ],
+      "changed_parts": [
+        "notes",
+        "references"
+      ]
+    },
+    {
+      "file": "usc42.xml",
+      "locator": "/us/usc/t42/s915",
+      "kind": "AddedText",
+      "before": [],
+      "after": [
+        {
+          "key": "bf173be0b73fbd2b65621db7",
+          "number": "§ 915.",
+          "heading": "Single point of contact for identity theft victims"
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc42.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "6760fc0be6d29cdf43a4b995",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "6760fc0be6d29cdf43a4b995",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc43.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "43fc92623881a05edc26af4f",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "43fc92623881a05edc26af4f",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc44.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "7efa09ec5e6bd186d89977f8",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "7efa09ec5e6bd186d89977f8",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc45.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "d7eb51a8004720f4f5c3e99d",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "d7eb51a8004720f4f5c3e99d",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc46.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "dfca3acd5de1406540aa02c8",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "dfca3acd5de1406540aa02c8",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc47.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "6578f4ff0ab48c52a29aba81",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "6578f4ff0ab48c52a29aba81",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc48.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "7535e3955f1a8b6f2548dc53",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "7535e3955f1a8b6f2548dc53",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc49.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "a90ef956bb591046be6373e5",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "a90ef956bb591046be6373e5",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc50.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "1bbed17f7ca719a264e6a813",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "1bbed17f7ca719a264e6a813",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc51.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "cb4318424111a6daa3fbda4a",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "cb4318424111a6daa3fbda4a",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc52.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "d1c000b741262164958d8770",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "d1c000b741262164958d8770",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc54.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "8d0fd766df82b60e73e6aa79",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "after": [
+        {
+          "key": "8d0fd766df82b60e73e6aa79",
+          "number": "",
+          "heading": ""
+        }
+      ],
+      "changed_parts": []
+    }
+  ],
+  "affected": [
+    {
+      "id": "draft.us.commerce.section9801",
+      "package": "drafts/us/federal/commerce/9801",
+      "query": "draft.us.commerce.section9801.assessment",
+      "tests": [
+        "tests/unimplemented.json"
+      ],
+      "reasons": [
+        {
+          "file": "usc15.xml",
+          "locator": "/us/usc/t15/s9801",
+          "change": "ChangedText",
+          "binding_snapshot": "Before",
+          "binding_digest_matches": true
+        }
+      ],
+      "through": [],
+      "action": "Reassess; no legal effect or review approval inferred"
+    }
+  ],
+  "limitations": [
+    "Matches unique locators within documents; renumbering and relocation require explicit identity review",
+    "Text additions/removals are not automatic enactments or repeals",
+    "Only registered source and encoding-dependency links contribute to impact; omitted dependencies remain undiscovered",
+    "An unchanged encoded source does not establish that no other law changed"
+  ]
+}

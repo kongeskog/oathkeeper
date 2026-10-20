@@ -1,0 +1,37 @@
+name: Web app
+on: [push, pull_request]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.25.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm test:content
+      - uses: actions/cache@v4
+        id: provisions
+        with:
+          path: public/provisions
+          key: provisions-${{ hashFiles('src/content/provisions-*.json') }}
+      - if: steps.provisions.outputs.cache-hit != 'true'
+        run: |
+          unzip -q public/downloads/lawlib-v0.1.0-dev.4.zip -d "$RUNNER_TEMP/source-snapshot"
+          pnpm --dir "$RUNNER_TEMP/source-snapshot/lawlib/tools/inventory" install --frozen-lockfile
+          node scripts/fetch-provisions.mjs "$RUNNER_TEMP/source-snapshot/lawlib/tools/inventory/extract-provisions.mjs" "$RUNNER_TEMP/provision-cache" --fetch
+      - run: pnpm build
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-test-results
+          path: |
+            playwright-report/
+            test-results/

@@ -1,0 +1,15 @@
+module us.frcp.r6;
+use std.date.Date;
+use us.frcp.r6.model.{DeadlineFacts, supported, first_eligible, has_date, require_date};
+use us.frcp.r6.sources.deadline_note;
+
+query deadline_date(facts: DeadlineFacts) -> Date {
+    scope = supported(facts);
+    applies = facts.rule6_applies;
+    meta = deadline_note;
+}
+rule computed_date for deadline_date(facts) {
+    when = has_date(first_eligible(facts));
+    yield = require_date(first_eligible(facts));
+    meta = deadline_note;
+}

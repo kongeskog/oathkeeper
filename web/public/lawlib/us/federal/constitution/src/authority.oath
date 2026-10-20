@@ -1,0 +1,75 @@
+module us.constitution.authority;
+use std.date.{Date, date};
+use us.constitution.text.{Vote, amendment_ratification_numeric_threshold};
+use us.constitution.sources.{signature_note, proposal_note, ratification_note};
+
+// Each boolean is an accepted finding, not an automatic inference from a document.
+// This query checks one path's requirements; false does not rule out another path.
+type SignedBillFacts = {
+    ordinary_bill: Bool, procedural_inventory_complete: Bool,
+    article_i_section_seven_applies: Bool,
+    valid_house_passage: Bool, valid_senate_passage: Bool, identical_text: Bool,
+    presented_to_president: Bool, signed_by_president: Bool, signature_timing_valid: Bool,
+    revenue_bill: Bool, originated_in_house: Bool
+};
+query signed_bill_path_requirements(facts: SignedBillFacts) -> Bool {
+    scope = facts.ordinary_bill and facts.procedural_inventory_complete;
+    applies = facts.article_i_section_seven_applies;
+    meta = signature_note;
+}
+rule bicameral_presentment_signature for signed_bill_path_requirements(facts) {
+    when = true;
+    yield = facts.valid_house_passage and facts.valid_senate_passage
+        and facts.identical_text and facts.presented_to_president and facts.signed_by_president and facts.signature_timing_valid
+        and (not facts.revenue_bill or facts.originated_in_house);
+    meta = signature_note;
+}
+
+fn valid_tally(vote: Vote) -> Bool {
+    vote.inventory_complete and vote.denominator > 0
+        and vote.affirmative >= 0 and vote.affirmative <= vote.denominator
+}
+// Denominators are supplied findings. This arithmetic query does not choose
+// between membership, presence, or voting counts, establish quorum, or propose text.
+query congressional_proposal_numeric_threshold(house: Vote, senate: Vote) -> Bool {
+    scope = valid_tally(house) and valid_tally(senate);
+    applies = true;
+    meta = proposal_note;
+}
+rule both_houses for congressional_proposal_numeric_threshold(house, senate) {
+    when = true;
+    yield = house.affirmative * 3 >= house.denominator * 2
+        and senate.affirmative * 3 >= senate.denominator * 2;
+    meta = proposal_note;
+}
+
+enum RatificationMode { Legislatures, Conventions }
+type RatificationFacts = {
+    assessment_on: Date, article_v_governs: Bool,
+    state_inventory_complete: Bool, number_of_states: Int, ratifying_states: Int,
+    valid_proposal: Bool, congress_selected_mode: RatificationMode, counted_mode: RatificationMode,
+    counted_ratifications_valid: Bool, applicable_timing_requirements_satisfied: Bool,
+    deprives_state_equal_senate_suffrage: Bool, affected_state_consent_established: Bool
+};
+// The historical pre-1808 proviso is excluded, not erased. The complete state
+// inventory and valid ratifications (including any rescission issues) are premises.
+query modern_ratification_requirements(facts: RatificationFacts) -> Bool {
+    scope = facts.assessment_on >= date(1808, 1, 1)
+        and facts.state_inventory_complete and facts.number_of_states > 0
+        and facts.ratifying_states >= 0 and facts.ratifying_states <= facts.number_of_states;
+    applies = facts.article_v_governs;
+    meta = ratification_note;
+}
+rule selected_mode_tally_and_conditions for modern_ratification_requirements(facts) {
+    when = true;
+    yield = facts.valid_proposal
+        and facts.congress_selected_mode == facts.counted_mode
+        and facts.counted_ratifications_valid
+        and amendment_ratification_numeric_threshold(Vote {
+            affirmative: facts.ratifying_states, denominator: facts.number_of_states,
+            inventory_complete: facts.state_inventory_complete
+        })
+        and facts.applicable_timing_requirements_satisfied
+        and (not facts.deprives_state_equal_senate_suffrage or facts.affected_state_consent_established);
+    meta = ratification_note;
+}

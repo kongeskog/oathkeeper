@@ -1,0 +1,717 @@
+{
+  "format": "lawlib-provisions/1",
+  "extractor": "lawlib-uslm-provisions/1",
+  "source": {
+    "format": "lawlib-source-pin/1",
+    "id": "us.olrc.usc.release.119-121",
+    "publisher": "Office of the Law Revision Counsel, U.S. House of Representatives",
+    "release": "119-121",
+    "current_through": "Public Law 119-121 (2026-10-09)",
+    "retrieved_on": "2026-10-19",
+    "url": "https://uscode.house.gov/download/releasepoints/us/pl/119/121/xml_uscAll@119-121.zip",
+    "sha256": "c6122974e951003437ece5a998aa7c0b2cdc0f5703dfc78d6135e1fc9e729142",
+    "bytes": 108675587,
+    "expected_xml_documents": 58,
+    "legal_review": "Unreviewed",
+    "scope": "Publisher's all-titles U.S. Code XML release, including supplied appendices. This is a source inventory, not executable formalization, a complete historical archive, or all U.S. law."
+  },
+  "count": 67680,
+  "documents": [
+    {
+      "file": "usc01.xml",
+      "sha256": "04cf58e59962966af34569acb9c50ec566edaa6d8aeb059233c4e9b73170a6be",
+      "bytes": 284795,
+      "title": "Title 1",
+      "count": 54,
+      "index": {
+        "path": "usc01.xml.index.json.gz",
+        "sha256": "bc341112a1bb461105212d0d9ca814c1d037f7b55aae126bd1257b13c6a4bf96",
+        "bytes": 10606
+      }
+    },
+    {
+      "file": "usc02.xml",
+      "sha256": "45723b57c4626fcb7c0d9d425eac43f5813df1398b045438d27473ff9f9c5a8e",
+      "bytes": 8758710,
+      "title": "Title 2",
+      "count": 1623,
+      "index": {
+        "path": "usc02.xml.index.json.gz",
+        "sha256": "1b3e202fde1bf4090b22c413793d3e6b9c4b5f1211e240b815f43007047fa185",
+        "bytes": 363804
+      }
+    },
+    {
+      "file": "usc03.xml",
+      "sha256": "392aa4f6c80993011d5dd9e8558aea74040670778d7801eb2c952130fff4d2dc",
+      "bytes": 859812,
+      "title": "Title 3",
+      "count": 119,
+      "index": {
+        "path": "usc03.xml.index.json.gz",
+        "sha256": "e6a565746bbc850b4d75f835485f90d431d73a936cc21ca5847728939662de4d",
+        "bytes": 25073
+      }
+    },
+    {
+      "file": "usc04.xml",
+      "sha256": "f28906e8d7f13f2db761ab6b33f8a6dc55bc2193eb308603939b1f75e3b687b6",
+      "bytes": 291119,
+      "title": "Title 4",
+      "count": 67,
+      "index": {
+        "path": "usc04.xml.index.json.gz",
+        "sha256": "b9b86c878ab3aeaf9134b658edf2b44643478fcca88e5e57ca0792dd32474982",
+        "bytes": 13544
+      }
+    },
+    {
+      "file": "usc05.xml",
+      "sha256": "129c286336d2c620baac83d8ea71df8018efe26498fbdd5e282d9d11def6d5bd",
+      "bytes": 18954299,
+      "title": "Title 5",
+      "count": 1387,
+      "index": {
+        "path": "usc05.xml.index.json.gz",
+        "sha256": "a52dc19f1d8e53ee89cc5b7f050ba8dd60f4b04e46b5dbe095bb45f635fd9cb8",
+        "bytes": 302226
+      }
+    },
+    {
+      "file": "usc05A.xml",
+      "sha256": "eb60e771ed1ee002eaf4e289da07e8d0901c7176ca1510bc6112a86f892281b0",
+      "bytes": 1610407,
+      "title": "Title 5 Appendix",
+      "count": 112,
+      "index": {
+        "path": "usc05A.xml.index.json.gz",
+        "sha256": "3377b8c195f53cd60077ec63ae7b0848fc8db12d42a4b6f8ee790af34aabb65a",
+        "bytes": 16442
+      }
+    },
+    {
+      "file": "usc06.xml",
+      "sha256": "e7dc46885675fd993b1ecbfaa981d682fa2dc1b29f951e1a6a8194301f53ce65",
+      "bytes": 6340022,
+      "title": "Title 6",
+      "count": 605,
+      "index": {
+        "path": "usc06.xml.index.json.gz",
+        "sha256": "c1374389ac6a8eefe07e4a2ebb8975e7e5b04bc716c209960c186383ff9603ea",
+        "bytes": 139076
+      }
+    },
+    {
+      "file": "usc07.xml",
+      "sha256": "d8018291e0f0eaaaed42e376fd42d3dcce4c736b11928bf7d79dbb748c16b4f8",
+      "bytes": 28769311,
+      "title": "Title 7",
+      "count": 2974,
+      "index": {
+        "path": "usc07.xml.index.json.gz",
+        "sha256": "49b60c3425c267b6f3b46c1d37f2f73fbee69a2b3e139b81dd0cf2ed6239e8a2",
+        "bytes": 685963
+      }
+    },
+    {
+      "file": "usc08.xml",
+      "sha256": "dacd49660b6bae3039c1083ffd54c84f4f39ba9ef8da8457104e63283bcada5f",
+      "bytes": 7384424,
+      "title": "Title 8",
+      "count": 379,
+      "index": {
+        "path": "usc08.xml.index.json.gz",
+        "sha256": "173e9241e6f21fea88e4bec293408326ec4acfb256f9dad843528592c42417b6",
+        "bytes": 90905
+      }
+    },
+    {
+      "file": "usc09.xml",
+      "sha256": "63b3cc3ac9255ae4f8334db0f71773b7e4e7ebcdd75ec01922a730249cf39929",
+      "bytes": 109532,
+      "title": "Title 9",
+      "count": 47,
+      "index": {
+        "path": "usc09.xml.index.json.gz",
+        "sha256": "a7ae2731b88cc2f95d1de5b80ad5db5338452aae122446e539d5fe4d54735aa2",
+        "bytes": 9694
+      }
+    },
+    {
+      "file": "usc10.xml",
+      "sha256": "f6b1a4f0897cd19431abb8af52cf3aafb02cf6e1870f0f6b5d1992c37fe128b6",
+      "bytes": 55658864,
+      "title": "Title 10",
+      "count": 5606,
+      "index": {
+        "path": "usc10.xml.index.json.gz",
+        "sha256": "74d6b86c14c29468f07a3725894c11fe24558fa6443b0d7e9b64c4ade5d6ba5b",
+        "bytes": 1180014
+      }
+    },
+    {
+      "file": "usc11.xml",
+      "sha256": "97ceaf5be1c19c8c5d656b2e83e50370139402eb0ff6865ce51796f3adf91061",
+      "bytes": 4372385,
+      "title": "Title 11",
+      "count": 315,
+      "index": {
+        "path": "usc11.xml.index.json.gz",
+        "sha256": "826025877f292b12ead59969e915ef89264e57d82d8dd47c4f1774f70cd81c51",
+        "bytes": 69257
+      }
+    },
+    {
+      "file": "usc11a.xml",
+      "sha256": "64bc1d3b954cf713ac6c12f06dbe3c69425ce6d36175c3d250ab19405b0c7f77",
+      "bytes": 2109907,
+      "title": "Title 11 Appendix",
+      "count": 238,
+      "index": {
+        "path": "usc11a.xml.index.json.gz",
+        "sha256": "dbb149d01ad233fca065ba7e8b4f7a0457b7927cff8854aa0a1796fc7452dba3",
+        "bytes": 47104
+      }
+    },
+    {
+      "file": "usc12.xml",
+      "sha256": "321862f4be1150e416f0bda04ec6087dc93c72594535ca67063547bca4f8db20",
+      "bytes": 24201242,
+      "title": "Title 12",
+      "count": 2050,
+      "index": {
+        "path": "usc12.xml.index.json.gz",
+        "sha256": "033661d2a604290377e136acb2d0801b2dac53bbedbb45d7cfa24776df6c8366",
+        "bytes": 477049
+      }
+    },
+    {
+      "file": "usc13.xml",
+      "sha256": "9a69f622eebc0fc69b5be94396fcc6e48f9fae90371aaca3bf0febf0f399980a",
+      "bytes": 482433,
+      "title": "Title 13",
+      "count": 107,
+      "index": {
+        "path": "usc13.xml.index.json.gz",
+        "sha256": "0e46a2606c55cd5354fad0fba088cc370ab0a475459ac9d13ceeaf6939daf78e",
+        "bytes": 22416
+      }
+    },
+    {
+      "file": "usc14.xml",
+      "sha256": "dff95d972de5d8c9d476b32ecfcc91da95ee2b830ed13214667e36ea84012e4d",
+      "bytes": 3881640,
+      "title": "Title 14",
+      "count": 614,
+      "index": {
+        "path": "usc14.xml.index.json.gz",
+        "sha256": "e92ba525102f2c0896411eb67d9be1410bbd5f3210f39b7cc0dc1deaa708fb0f",
+        "bytes": 131870
+      }
+    },
+    {
+      "file": "usc15.xml",
+      "sha256": "d32cd2eecd2c7a23c2bcbb56254e1b397be6cc4650c56c3f65bf1e667d558db7",
+      "bytes": 30782543,
+      "title": "Title 15",
+      "count": 2753,
+      "index": {
+        "path": "usc15.xml.index.json.gz",
+        "sha256": "cbf96505ffa3f3a0d42fd5bd5a096bd4e2ea930ef751013710bf6c4de280c330",
+        "bytes": 637518
+      }
+    },
+    {
+      "file": "usc16.xml",
+      "sha256": "5bc31dd5ce3a45feb7f7b0900566734945fbb964046e2e5297975f26f8b3e36e",
+      "bytes": 33253522,
+      "title": "Title 16",
+      "count": 5158,
+      "index": {
+        "path": "usc16.xml.index.json.gz",
+        "sha256": "cee150e29bb14e11471315c9f8d029047f43abb47919efc40329fc74900a280b",
+        "bytes": 1171292
+      }
+    },
+    {
+      "file": "usc17.xml",
+      "sha256": "167b00a31c2d83fb3e74963c453ee2fddbeb880393a58aca14f7c883e7f1fd3c",
+      "bytes": 2719872,
+      "title": "Title 17",
+      "count": 184,
+      "index": {
+        "path": "usc17.xml.index.json.gz",
+        "sha256": "a729ec5dd8d52c15f95bed1842fb8ed5db31bf7dc1b4f54b521a2b65ec727cd4",
+        "bytes": 38499
+      }
+    },
+    {
+      "file": "usc18.xml",
+      "sha256": "6e533149e4e0383acdc834fe4c8823c43bee6daf1f4f5d0c85ee4bad8ba13705",
+      "bytes": 12138748,
+      "title": "Title 18",
+      "count": 1753,
+      "index": {
+        "path": "usc18.xml.index.json.gz",
+        "sha256": "4729eb27b4c97327bc23a2589419c16409248854d054d74b13837760f7017312",
+        "bytes": 374099
+      }
+    },
+    {
+      "file": "usc18a.xml",
+      "sha256": "12639bcc6e152dbed1ba5d605c91c2a91fe7395deb37606e83fad83262620209",
+      "bytes": 2034700,
+      "title": "Title 18 Appendix",
+      "count": 83,
+      "index": {
+        "path": "usc18a.xml.index.json.gz",
+        "sha256": "03a64d6a5f47505bd9718981b06cb01c81ad81d4ab1d112d0253d3e5f59777e1",
+        "bytes": 19129
+      }
+    },
+    {
+      "file": "usc19.xml",
+      "sha256": "d6eb3c646da36faead24dd504016f7b0c3574243f7c9e9b90c332208deab50f2",
+      "bytes": 14503765,
+      "title": "Title 19",
+      "count": 1158,
+      "index": {
+        "path": "usc19.xml.index.json.gz",
+        "sha256": "0e0d996d76759bd49c8a8f79c002c9bf6ce095ff9881c20e023c357110b20414",
+        "bytes": 267194
+      }
+    },
+    {
+      "file": "usc20.xml",
+      "sha256": "f65c9596d494fffbae4f6f72931c67c56714d0a62b93072d387c07bd2c767838",
+      "bytes": 22540244,
+      "title": "Title 20",
+      "count": 2259,
+      "index": {
+        "path": "usc20.xml.index.json.gz",
+        "sha256": "fc24a18f3a4719d3e786f4817c63ab3e8bd99987bc70e3b3f6b30e3521f88023",
+        "bytes": 505851
+      }
+    },
+    {
+      "file": "usc21.xml",
+      "sha256": "72caa89c4616a06abda0d111274b1305f3e4056770b49a604f8f6e26ad551c13",
+      "bytes": 12409586,
+      "title": "Title 21",
+      "count": 783,
+      "index": {
+        "path": "usc21.xml.index.json.gz",
+        "sha256": "7b0d38ce78688e0b4b245e1eb7dc7a6518056bdb735967930d2b168097b2130c",
+        "bytes": 184786
+      }
+    },
+    {
+      "file": "usc22.xml",
+      "sha256": "349b496b46eee69bc535a4c8bd32a6d5dbbcb7b99e1f83964d81fe7804f4e923",
+      "bytes": 29243165,
+      "title": "Title 22",
+      "count": 3559,
+      "index": {
+        "path": "usc22.xml.index.json.gz",
+        "sha256": "b1ad55a4162f6a53760f2e14ad280f520a4c035938fd78b27461cd79d7a6d54e",
+        "bytes": 828977
+      }
+    },
+    {
+      "file": "usc23.xml",
+      "sha256": "43bace6169ed5dfece5d9be6ae7d0f025de6c726347194e04df5f4429fccec9f",
+      "bytes": 6404842,
+      "title": "Title 23",
+      "count": 198,
+      "index": {
+        "path": "usc23.xml.index.json.gz",
+        "sha256": "c01d7e6ae0b5c7062d69666153db9569b009e01a470beaeadee11fd39ecf79b0",
+        "bytes": 44997
+      }
+    },
+    {
+      "file": "usc24.xml",
+      "sha256": "ce4cf18ea49e98d8bd901c0871f106a1cfca0c4db8a0fddbe48e13daacaa17bc",
+      "bytes": 662264,
+      "title": "Title 24",
+      "count": 174,
+      "index": {
+        "path": "usc24.xml.index.json.gz",
+        "sha256": "c4ea2abd303da0579037d2c5cc3dd37719ac3f7d524ac95285288ca70116126d",
+        "bytes": 37923
+      }
+    },
+    {
+      "file": "usc25.xml",
+      "sha256": "768378aadc7d58062cc547c2e39a6de3ff9fe4939485cb61fe153fc7e9c8bf3d",
+      "bytes": 10501729,
+      "title": "Title 25",
+      "count": 2437,
+      "index": {
+        "path": "usc25.xml.index.json.gz",
+        "sha256": "40101431d438a7e25c9d5554c3319b49708f5126487593e787d50bb08ec12a2f",
+        "bytes": 508537
+      }
+    },
+    {
+      "file": "usc26.xml",
+      "sha256": "936d014e8ef39e3871fc653f6c4cd177baba347963dc03ed7615c351033add85",
+      "bytes": 55889102,
+      "title": "Title 26",
+      "count": 3035,
+      "index": {
+        "path": "usc26.xml.index.json.gz",
+        "sha256": "b569a91090fe327e244383310510181bb2505a97a3956f090827b3b2bbf0010f",
+        "bytes": 624408
+      }
+    },
+    {
+      "file": "usc27.xml",
+      "sha256": "a7df88aabe4f256c29bbd872f2cac2bc2afd4c7e24ea9e382086c1e9eece66f3",
+      "bytes": 235323,
+      "title": "Title 27",
+      "count": 50,
+      "index": {
+        "path": "usc27.xml.index.json.gz",
+        "sha256": "4dcc286ca6d54cb2d5b00f2e223623280305e5bf4001d16581d9cdce9f3fe90a",
+        "bytes": 11293
+      }
+    },
+    {
+      "file": "usc28.xml",
+      "sha256": "ff6ab8a3aa69070cc5d8f795b6131a661c595049389fbaab2577bd020f74e91d",
+      "bytes": 8648799,
+      "title": "Title 28",
+      "count": 1010,
+      "index": {
+        "path": "usc28.xml.index.json.gz",
+        "sha256": "8df406b40c613f44e36dbc604b99618b296f17d936c14a46d21982923d448cba",
+        "bytes": 212776
+      }
+    },
+    {
+      "file": "usc28a.xml",
+      "sha256": "3fb17408ca05f57debde477dc63def1a8b67e8401d457ffa213dd7c7bef69252",
+      "bytes": 4667098,
+      "title": "Title 28 Appendix",
+      "count": 275,
+      "index": {
+        "path": "usc28a.xml.index.json.gz",
+        "sha256": "7fabe18b0798e5cbbd38bf6bd79299f2f65d874815812c9b5f4fad7b92ac258b",
+        "bytes": 57345
+      }
+    },
+    {
+      "file": "usc29.xml",
+      "sha256": "6d96ab79a925909c23e198f5df57f5f325e4cfa8d3defec6bfccafd897d81d43",
+      "bytes": 11666245,
+      "title": "Title 29",
+      "count": 877,
+      "index": {
+        "path": "usc29.xml.index.json.gz",
+        "sha256": "463305e584463c3b1afb2da947db0f09a7e80a731506835dadd2e41d880f4eae",
+        "bytes": 202983
+      }
+    },
+    {
+      "file": "usc30.xml",
+      "sha256": "8e00ffcc00345eeb7b103db433971657ebf35d3c3837cf0c4b92431e87ef8902",
+      "bytes": 4334572,
+      "title": "Title 30",
+      "count": 633,
+      "index": {
+        "path": "usc30.xml.index.json.gz",
+        "sha256": "50ff71f5b5d7ce6092f478b1b563ef015c7037fa7851b08f6d2c70bc9e5c9e20",
+        "bytes": 149245
+      }
+    },
+    {
+      "file": "usc31.xml",
+      "sha256": "3a018b5c3b9862d8b69aeafe5ecdf4c65868e0283461d1f78cdbfd589520943d",
+      "bytes": 8789830,
+      "title": "Title 31",
+      "count": 596,
+      "index": {
+        "path": "usc31.xml.index.json.gz",
+        "sha256": "f919de23d748decd2c69be178687db0d92244388de15405f90b222b27b7a0c73",
+        "bytes": 131653
+      }
+    },
+    {
+      "file": "usc32.xml",
+      "sha256": "e3489a5b3493b2c25bf1276b89f7d1349a83253e374438cdc169a5f30c754db1",
+      "bytes": 901984,
+      "title": "Title 32",
+      "count": 99,
+      "index": {
+        "path": "usc32.xml.index.json.gz",
+        "sha256": "ba4ae9dfe7f204c010468ba89e390bb7548b43aed6cba0dda56a18f607abf308",
+        "bytes": 22209
+      }
+    },
+    {
+      "file": "usc33.xml",
+      "sha256": "3c4aba3d9d7aa6413ca82154c36bf38dcf35e623f6475117a57c434d7a56d5ef",
+      "bytes": 12712662,
+      "title": "Title 33",
+      "count": 1601,
+      "index": {
+        "path": "usc33.xml.index.json.gz",
+        "sha256": "f137158662c17c488d9e548633046d834a75af8716e29b921d9251a50fccd216",
+        "bytes": 370611
+      }
+    },
+    {
+      "file": "usc34.xml",
+      "sha256": "1174c9fb0d5fc2a503fbf6fa13f91476f827eb66bf7f286faa4b4c280ae81abf",
+      "bytes": 8874893,
+      "title": "Title 34",
+      "count": 875,
+      "index": {
+        "path": "usc34.xml.index.json.gz",
+        "sha256": "88375b9441f5ca2a27046d3ec035a315ae6644dea0e8afef8811300412d86011",
+        "bytes": 206034
+      }
+    },
+    {
+      "file": "usc35.xml",
+      "sha256": "0d6019370437a05206cd59e4cd982798f0418fd79289af0f59058782980cf4a4",
+      "bytes": 1855348,
+      "title": "Title 35",
+      "count": 238,
+      "index": {
+        "path": "usc35.xml.index.json.gz",
+        "sha256": "75fc9b91c6fb4c516f0b1c0046eed4a39610cc4eceb49098b42bcd7edcf199f1",
+        "bytes": 48968
+      }
+    },
+    {
+      "file": "usc36.xml",
+      "sha256": "c1bc69b35032b0f9bc5d83aff152216055aa18402755d3fba1ad724ba5c95f72",
+      "bytes": 7403332,
+      "title": "Title 36",
+      "count": 1313,
+      "index": {
+        "path": "usc36.xml.index.json.gz",
+        "sha256": "511db4ec436da893069d90825fdb446efdbb3b18d97b534bb9255f6fed233f7a",
+        "bytes": 230328
+      }
+    },
+    {
+      "file": "usc37.xml",
+      "sha256": "0b60863db6bbb37315a324926c1dfa91940836beb0ae74c981f1c677e28d36a0",
+      "bytes": 3977393,
+      "title": "Title 37",
+      "count": 275,
+      "index": {
+        "path": "usc37.xml.index.json.gz",
+        "sha256": "f997c7f1b42338a74bb0c27aa904f8ef01e383e542012b94c86f20a94709d981",
+        "bytes": 59049
+      }
+    },
+    {
+      "file": "usc38.xml",
+      "sha256": "812bcb4dab911d8d4b503a86de786adf53c7e6815b2667fcfe1dad79b63658b6",
+      "bytes": 18568290,
+      "title": "Title 38",
+      "count": 1433,
+      "index": {
+        "path": "usc38.xml.index.json.gz",
+        "sha256": "73c9e2f75c017db300f8293d50630ad724e84dc32e57c1536b68d57ed07a13b0",
+        "bytes": 320589
+      }
+    },
+    {
+      "file": "usc39.xml",
+      "sha256": "a3d228ca887419644af4696c3d026c89844191f8b2c9cf1519907a84b1ff6c73",
+      "bytes": 2065740,
+      "title": "Title 39",
+      "count": 232,
+      "index": {
+        "path": "usc39.xml.index.json.gz",
+        "sha256": "ee52539bb76e38eb43ca411df2027e5a16779eee792a57622799a46e4330deae",
+        "bytes": 47273
+      }
+    },
+    {
+      "file": "usc40.xml",
+      "sha256": "6c99767e60c5e0c7de9c7a56618dc1a5fb8fa66ba5b988d653dd3f904ec65697",
+      "bytes": 4971883,
+      "title": "Title 40",
+      "count": 523,
+      "index": {
+        "path": "usc40.xml.index.json.gz",
+        "sha256": "f3c95fa094db1e293a22254a6e2bd641e13ea83162c6f24d2faef553132d2ecd",
+        "bytes": 113898
+      }
+    },
+    {
+      "file": "usc41.xml",
+      "sha256": "324763211648e4bcf82a0b973c82eaa5ad13435d14817449a4c87bf95ed17cbe",
+      "bytes": 3317745,
+      "title": "Title 41",
+      "count": 294,
+      "index": {
+        "path": "usc41.xml.index.json.gz",
+        "sha256": "9736cf9f37b30250a4f7b216fa69fc41e337dbac0663cc80ad6a8998f799b3b5",
+        "bytes": 64520
+      }
+    },
+    {
+      "file": "usc42.xml",
+      "sha256": "9a2ce8ea01dfa97423fcd8749e7534a64c0ec75df9bf56584b210c0725a66692",
+      "bytes": 113744033,
+      "title": "Title 42",
+      "count": 8949,
+      "index": {
+        "path": "usc42.xml.index.json.gz",
+        "sha256": "fdc1506b55315782836dc6dac65e5e77a048edfc2d0f17495bb26b1aa7db857d",
+        "bytes": 2024557
+      }
+    },
+    {
+      "file": "usc43.xml",
+      "sha256": "d5d336ae3213bcaff4435792da500c41969203f71f5107db98abce2256bd9722",
+      "bytes": 8054067,
+      "title": "Title 43",
+      "count": 1477,
+      "index": {
+        "path": "usc43.xml.index.json.gz",
+        "sha256": "ad8249b42ebf23a323b722557aa3cb23246d14ab584f15ed49c5396a98102e52",
+        "bytes": 343323
+      }
+    },
+    {
+      "file": "usc44.xml",
+      "sha256": "91042c65366bb74df5307593b857d4bcb7607e214aee0f9328f9dfafd0d12603",
+      "bytes": 2884414,
+      "title": "Title 44",
+      "count": 453,
+      "index": {
+        "path": "usc44.xml.index.json.gz",
+        "sha256": "f3bd222577e40ba5a956f7c062f07173338b798aba73763eeca0a1086ec8ece5",
+        "bytes": 96780
+      }
+    },
+    {
+      "file": "usc45.xml",
+      "sha256": "732f0c4ab1adf75bb9e54d8c7d2d97ec3d7bdcddd6e1b4a637eb2639a9394da2",
+      "bytes": 3077042,
+      "title": "Title 45",
+      "count": 301,
+      "index": {
+        "path": "usc45.xml.index.json.gz",
+        "sha256": "925134d3b099ec2bcfb13b21114eabd80990d2547238f44ac652d094c8f5aa4c",
+        "bytes": 68943
+      }
+    },
+    {
+      "file": "usc46.xml",
+      "sha256": "ac3b21bf2569c25ed85151a53d728619a1053219689527924c90da7289ce14e9",
+      "bytes": 9810460,
+      "title": "Title 46",
+      "count": 1247,
+      "index": {
+        "path": "usc46.xml.index.json.gz",
+        "sha256": "067c479aa37133c1a563b201c746c52c2567e30e9fdb37ba6024677462c12d37",
+        "bytes": 258591
+      }
+    },
+    {
+      "file": "usc47.xml",
+      "sha256": "50e4054dff61ace772ccfc77afaf4db2a2b16940746fa7c30b45eebabde6525d",
+      "bytes": 6034271,
+      "title": "Title 47",
+      "count": 435,
+      "index": {
+        "path": "usc47.xml.index.json.gz",
+        "sha256": "c7e6fa9755caf8e465ced9bd911021aeb0a394ae8b745867ced3a8d9eaea128b",
+        "bytes": 103410
+      }
+    },
+    {
+      "file": "usc48.xml",
+      "sha256": "cc3cea4278d976b122583e2de6fb36385bcb1a793f3192dfd71548b3cd52f759",
+      "bytes": 4650636,
+      "title": "Title 48",
+      "count": 708,
+      "index": {
+        "path": "usc48.xml.index.json.gz",
+        "sha256": "cf216c2a3505d2538aaf098e61495cf29c9696b88d1e46de483a75df2ba30500",
+        "bytes": 156813
+      }
+    },
+    {
+      "file": "usc49.xml",
+      "sha256": "6b0e6a73cf2cd30d45e47296b8ed604feaf953f3d3f265d491aad261e18b0990",
+      "bytes": 26907950,
+      "title": "Title 49",
+      "count": 1627,
+      "index": {
+        "path": "usc49.xml.index.json.gz",
+        "sha256": "1c6d9c211d0259188c73006c91da2107a87dd75b2adab1dc159f7dd4ab9cda45",
+        "bytes": 357328
+      }
+    },
+    {
+      "file": "usc50.xml",
+      "sha256": "1f9d347c756cefa7b33d570016d6614babd72470c4b8113aad1f0a64431e93ff",
+      "bytes": 14521706,
+      "title": "Title 50",
+      "count": 1440,
+      "index": {
+        "path": "usc50.xml.index.json.gz",
+        "sha256": "d4b746d28fb48a5fd0813d935235b035812292256a2e2844df4d3d30f73686ee",
+        "bytes": 329352
+      }
+    },
+    {
+      "file": "usc50A.xml",
+      "sha256": "26e9665a6248d1876b1dd5565f1f25227ccb159ff4512c4b87ed6e2050af6ae3",
+      "bytes": 1627,
+      "title": "Title 50 Appendix",
+      "count": 2,
+      "index": {
+        "path": "usc50A.xml.index.json.gz",
+        "sha256": "e27c9b7a132e894dbef0fee02516d378f3424847a1913030d5249ec889cd45e7",
+        "bytes": 627
+      }
+    },
+    {
+      "file": "usc51.xml",
+      "sha256": "38870c44627202cfa3f3360cb2cf27013661405f242f4f332f6baf8a3062b18f",
+      "bytes": 2858124,
+      "title": "Title 51",
+      "count": 303,
+      "index": {
+        "path": "usc51.xml.index.json.gz",
+        "sha256": "ae20628879cc5639de50e1fe034fa94014e58e1c5182310e5a5309277c9942df",
+        "bytes": 66245
+      }
+    },
+    {
+      "file": "usc52.xml",
+      "sha256": "73ec3dbef30b5c40f65612cc94899c162835d871c65da90e2630e039c29d7730",
+      "bytes": 1790311,
+      "title": "Title 52",
+      "count": 179,
+      "index": {
+        "path": "usc52.xml.index.json.gz",
+        "sha256": "b2b1c006e8c23cc52e89a14eace8461d2004247b20654f593f8d56897d29fe8d",
+        "bytes": 44201
+      }
+    },
+    {
+      "file": "usc54.xml",
+      "sha256": "9b3df23fe21a745d5cee8562d1beec3703835445960edbb7cbc360fe5dd93393",
+      "bytes": 3239735,
+      "title": "Title 54",
+      "count": 404,
+      "index": {
+        "path": "usc54.xml.index.json.gz",
+        "sha256": "24c9454b40034d11f74f17071d0b709a5b7649f396c40f15f0cf05a0676b3e95",
+        "bytes": 86192
+      }
+    }
+  ]
+}

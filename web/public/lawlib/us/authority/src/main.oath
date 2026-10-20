@@ -1,0 +1,38 @@
+module us.authority;
+use std.date.Date;
+use std.types.Option;
+use legal.model.{OpinionRole, Publication, Institution};
+use legal.time.authority_available;
+use us.authority.sources.{vertical_note, ninth_note, coverage};
+
+const supreme_court = Institution { id: "us.scotus", description: "Supreme Court of the United States", jurisdiction: "United States; competence is question-specific" };
+const ninth_circuit = Institution { id: "us.ca9", description: "United States Court of Appeals for the Ninth Circuit", jurisdiction: "Federal appellate jurisdiction; not a geographic parent of households" };
+enum CourtProfile { SupremeCourtInFederalLowerCourt, NinthCircuitInCircuitFederalCourt, Other }
+type AuthorityContext = {
+    profile: CourtProfile, role: OpinionRole, publication: Publication, issued_on: Date,
+    historical_cutoff: Option<Date>, accepted_holding: Bool, materially_applicable: Bool,
+    treatment_leaves_proposition_controlling: Bool, citation_permitted_under_applicable_rules: Bool,
+    accepted_persuasive_relevance: Bool
+};
+fn supported_profile(context: AuthorityContext) -> Bool { context.profile != CourtProfile.Other }
+query binding(context: AuthorityContext) -> Bool {
+    scope = supported_profile(context)
+        and (context.role == OpinionRole.Majority or context.role == OpinionRole.Concurrence or context.role == OpinionRole.Dissent)
+        and (context.profile != CourtProfile.NinthCircuitInCircuitFederalCourt or context.publication != Publication.Unknown);
+    applies = authority_available(context.issued_on, context.historical_cutoff);
+    meta = vertical_note;
+}
+rule supreme_court_holding for binding(context) {
+    when = context.profile == CourtProfile.SupremeCourtInFederalLowerCourt;
+    yield = context.role == OpinionRole.Majority and context.accepted_holding and context.materially_applicable and context.treatment_leaves_proposition_controlling;
+    meta = vertical_note;
+}
+rule ninth_published_holding for binding(context) {
+    when = context.profile == CourtProfile.NinthCircuitInCircuitFederalCourt;
+    yield = context.publication == Publication.Published and context.role == OpinionRole.Majority and context.accepted_holding and context.materially_applicable and context.treatment_leaves_proposition_controlling;
+    meta = ninth_note;
+}
+query citation_permission(context: AuthorityContext) -> Bool { scope = supported_profile(context); applies = authority_available(context.issued_on, context.historical_cutoff); meta = ninth_note; }
+rule supplied_citation_analysis for citation_permission(context) { when = true; yield = context.citation_permitted_under_applicable_rules; meta = ninth_note; }
+query persuasive_relevance(context: AuthorityContext) -> Bool { scope = supported_profile(context); applies = authority_available(context.issued_on, context.historical_cutoff); meta = vertical_note; }
+rule supplied_relevance_analysis for persuasive_relevance(context) { when = true; yield = context.accepted_persuasive_relevance; meta = vertical_note; }

@@ -1,0 +1,11 @@
+node_modules
+.next
+pnpm-lock.yaml
+public
+src/content/snapshot.json
+src/content/constitution.json
+src/content/encodings.json
+src/content/impact.json
+src/lib/draft.mjs
+playwright-report
+test-results
