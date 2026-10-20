@@ -91,6 +91,13 @@ export const slugify = (s: string) =>
     .replace(/^-|-$/g, "");
 export const docPages = [
   {
+    slug: "constitutional-authority",
+    title: "Constitutional authority",
+    group: "Lawlib",
+    description:
+      "Provision inventory, institutional powers, lawmaking requirements and explicit interpretive gaps.",
+  },
+  {
     slug: "source-workflow",
     title: "Source to verified program",
     group: "Lawlib",

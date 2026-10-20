@@ -8,6 +8,47 @@ const snapshot = JSON.parse(
     "utf8",
   ),
 );
+
+test("constitutional inventory, downloaded data, sources and query links agree", async () => {
+  const raw = await readFile(
+    new URL("../src/content/constitution.json", import.meta.url),
+    "utf8",
+  );
+  assert.equal(
+    raw,
+    await readFile(
+      new URL("../public/inventory/constitution.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  const inventory = JSON.parse(raw);
+  assert.equal(inventory.provisions.length, 137);
+  assert.equal(inventory.relationships.length, 37);
+  const pkg = snapshot.packages.find(
+    (p) => p.path === "us/federal/constitution",
+  );
+  assert.equal(pkg.fixtures.length, 69);
+  for (const pin of inventory.source_pins)
+    assert.ok(
+      pkg.sources.some((s) => s.id === pin.id && s.sha256 === pin.sha256),
+    );
+  for (const p of inventory.provisions) {
+    assert.equal(
+      createHash("sha256").update(p.text).digest("hex"),
+      p.text_sha256,
+    );
+    for (const query of p.executable_queries) {
+      assert.ok(
+        pkg.modules.some((m) =>
+          m.declarations.some(
+            (d) => d.kind === "query" && `${m.name}.${d.name}` === query,
+          ),
+        ),
+      );
+      assert.ok(pkg.fixtures.some((f) => f.request.query === query));
+    }
+  }
+});
 test("inventory download matches the pinned manifest and preserves distinct coverage states", async () => {
   const content = await readFile(
     new URL("../src/content/inventory.json", import.meta.url),
@@ -50,11 +91,11 @@ test("snapshot preserves the complete package and fixture inventory", () => {
   assert.equal(snapshot.packages.length, 8);
   assert.equal(
     snapshot.packages.reduce((n, p) => n + p.fixtures.length, 0),
-    139,
+    191,
   );
   assert.equal(
     snapshot.packages.reduce((n, p) => n + p.modules.length, 0),
-    26,
+    30,
   );
   assert.equal(
     snapshot.packages.find((p) => p.path === "us/federal/constitution").mappings

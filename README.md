@@ -21,11 +21,13 @@ Open http://localhost:3000. For a production preview, run `pnpm build` followed 
 - `/docs/getting-started`: downloadable source snapshots and a complete run/verify walkthrough.
 - `/docs/language`: the implemented language reference, with companion guides for authoring, verification, time, legal examples and coverage.
 - `/explorer`: package search and category filters.
+- `/explorer/constitution`: 137 constitutional provision units, source text and hashes, scope/coverage filters, and 37 authority/history relationships with links into executable queries and scenarios.
+- `/docs/constitutional-authority`: the model, accepted premises, exclusions and pending legal review.
 - `/explorer/[package path]`: coverage records, executable query inventory, `.oath` source with declaration navigation, cited documents and byte hashes, and authored scenario fixtures.
 
 Explorer tabs, selected files, declaration lines, scenarios, and package filters have shareable URLs. Scenario panels show repository-authored expected results; they do not run a second JavaScript implementation of the legal engine.
 
-The content snapshot contains eight packages, 26 modules, 139 fixtures, 17 source references, and a source map for seven constitutional Articles and 27 Amendments. Source mapping does not imply executable coverage. All initial legal models remain **Unreviewed**. The recorded source-byte audit is dated 2026-10-19. One package is deliberately unimplemented. The browser checks derived shard hashes; it does not audit original documents at runtime.
+The content snapshot contains eight packages, 30 modules, 191 fixtures, 17 source references, and a source map for seven constitutional Articles and 27 Amendments. Source mapping does not imply executable coverage. All initial legal models remain **Unreviewed**. The recorded source-byte audit is dated 2026-10-19. One package is deliberately unimplemented. The browser checks derived shard hashes; it does not audit original documents at runtime.
 
 ## Refresh from the source repositories
 
@@ -64,7 +66,7 @@ pnpm provisions:sync /cache/provisions-119-118 /cache/provisions-119-121
 
 This checks all index and shard hashes and copies assets into ignored public/provisions. Vercel uses the explicit .vercelignore, which includes these prepared assets in the upload. Fresh CI unpacks the committed lawlib source archive, installs its locked extraction dependencies, explicitly downloads the pinned official archives, and caches the reproduced assets. No source retrieval runs inside the legal interpreter or verifier.
 
-A standalone checkout can unpack public/downloads/lawlib-v0.1.0-dev.3.zip outside this repository, install its tools/inventory dependencies, then run:
+A standalone checkout can unpack public/downloads/lawlib-v0.1.0-dev.4.zip outside this repository, install its tools/inventory dependencies, then run:
 
 ```sh
 node scripts/fetch-provisions.mjs /path/to/lawlib/tools/inventory/extract-provisions.mjs /cache --fetch

@@ -12,7 +12,7 @@ type RevisionLink = { from_id: Text, to_id: Text, kind: RevisionKind, anchors: L
 type ProvisionRevision = { provision_id: Text, revision_id: Text, instrument_id: Text, anchors: List<SourceAnchor>, lifecycle: Lifecycle, applicability_description: Text, transitions: List<Text>, links: List<RevisionLink> };
 type Inventory<T> = { entries: List<T>, complete: Bool, scope: Text, as_of: Date, evidence_ids: List<Text> };
 
-enum RelationshipKind { LocatedIn, MemberOf, JurisdictionOver, DelegatedBy, CompetentFor, Amends, Interprets, Preempts }
+enum RelationshipKind { LocatedIn, MemberOf, JurisdictionOver, DelegatedBy, CompetentFor, Amends, Interprets, Preempts, Establishes, Vests, Authorizes, Constrains, Prescribes, Reserves, Repeals }
 type Institution = { id: Text, description: Text, jurisdiction: Text };
 type AuthorityLink = { from_id: Text, to_id: Text, kind: RelationshipKind, scope: Scope, anchors: List<SourceAnchor> };
 enum DecisionRole { FactFinder, Judge, Jury, Agency, PrivateDecisionMaker, ScenarioAssumption }

@@ -1,4 +1,5 @@
 module legal;
 use legal.model;
+use legal.inventory;
 use legal.time;
 use legal.examples;

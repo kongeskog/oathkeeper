@@ -36,6 +36,19 @@ export default function Explorer() {
           </div>
         ))}
       </div>
+      <Link
+        href="/explorer/constitution"
+        className="mt-6 block rounded-xl border p-5 transition-colors hover:bg-muted/40"
+      >
+        <h2 className="text-sm font-medium">Start with the Constitution</h2>
+        <p className="mt-2 text-sm leading-6 text-muted-foreground">
+          Explore provision text, institutions, powers, limitations and selected
+          amendment relationships.
+        </p>
+        <span className="mt-3 inline-block text-xs underline underline-offset-4">
+          Open the constitutional foundation
+        </span>
+      </Link>
       <Suspense
         fallback={
           <div className="my-8 h-40 animate-pulse rounded-lg bg-muted" />

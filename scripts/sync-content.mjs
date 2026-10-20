@@ -86,7 +86,7 @@ const labels = {
   "us/federal/constitution": [
     "US Constitution",
     "United States",
-    "All seven Articles and 27 Amendments source-mapped, with selected executable questions and precedent.",
+    "137 constitutional provision units, scoped institutional authority, conditional lawmaking requirements and selected precedent.",
   ],
   "us/federal/tax/ira/2025": [
     "IRA · tax year 2025",
@@ -207,6 +207,9 @@ for (const [id, path] of Object.entries({
 }))
   documents[id] = await read(join(core, path));
 documents.coverage = await read(join(lawlib, "docs/COVERAGE.md"));
+documents["constitutional-authority"] = await read(
+  join(lawlib, "us/federal/constitution/README.md"),
+);
 documents.encoding = await read(join(lawlib, "docs/ENCODING.md"));
 documents["source-workflow"] = await read(
   join(lawlib, "docs/SOURCE-WORKFLOW.md"),
@@ -225,6 +228,11 @@ const inventory = await read(
 );
 await writeFile(join(app, "src/content/inventory.json"), inventory);
 await mkdir(join(app, "public/inventory"), { recursive: true });
+const constitution = await read(
+  join(lawlib, "inventory/constitution/provisions.json"),
+);
+await writeFile(join(app, "src/content/constitution.json"), constitution);
+await writeFile(join(app, "public/inventory/constitution.json"), constitution);
 await writeFile(join(app, "public/inventory/usc-119-121.json"), inventory);
 await writeFile(
   join(app, "public/inventory/README.md"),
@@ -244,7 +252,7 @@ for (const [repo, path] of [
       join(
         app,
         "public/downloads",
-        `${repo}-${repo === "lawlib" ? "v0.1.0-dev.3" : "v0.1.0-dev.1"}.zip`,
+        `${repo}-${repo === "lawlib" ? "v0.1.0-dev.4" : "v0.1.0-dev.1"}.zip`,
       ),
       "HEAD",
     ],
@@ -252,7 +260,7 @@ for (const [repo, path] of [
   );
 }
 const snapshot = {
-  version: "0.1.0-dev.3",
+  version: "0.1.0-dev.4",
   coreRevision: git(core, "rev-parse", "HEAD"),
   lawlibRevision: git(lawlib, "rev-parse", "HEAD"),
   audit,

@@ -72,8 +72,9 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       </a>
       <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur-md">
         <div className="page-shell flex h-16 items-center justify-between gap-5">
-          <Link href="/" aria-label="Oathkeeper home">
+          <Link href="/">
             <Logo />
+            <span className="sr-only"> home</span>
           </Link>
           <nav
             aria-label="Main navigation"
@@ -142,8 +143,9 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <footer className="border-t">
         <div className="page-shell flex flex-col gap-8 py-10 sm:flex-row sm:items-center sm:justify-between">
           <div>
-            <Link href="/" aria-label="Oathkeeper home">
+            <Link href="/">
               <Logo />
+              <span className="sr-only"> home</span>
             </Link>
             <p className="mt-3 text-xs text-muted-foreground">
               A language for explicit rules and verifiable reasoning.

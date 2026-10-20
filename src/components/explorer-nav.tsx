@@ -34,6 +34,7 @@ export function ExplorerNav() {
           Source inventory
         </Link>
         {[
+          ["/explorer/constitution", "Constitution and authority"],
           ["/explorer/provisions", "Provision explorer"],
           ["/explorer/changes", "Source changes"],
         ].map(([href, label]) => (
