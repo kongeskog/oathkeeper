@@ -7,6 +7,7 @@ The Oathkeeper landing page, getting-started guide, language documentation, and 
 ## Develop
 
 Use Node 24 and pnpm 11.25.0.
+Run these commands from `oathkeeper/web`.
 
 ```sh
 pnpm install --frozen-lockfile
@@ -33,13 +34,13 @@ The content snapshot contains eight packages, 30 modules, 191 fixtures, 17 sourc
 
 The website is independently buildable. Its generated snapshot, raw `.oath` downloads, and ZIP source archives are committed so Vercel does not need the sibling Rust or lawlib checkouts.
 
-For a content refresh, place committed checkouts alongside this repository:
+For a content refresh, use this checkout layout:
 
 ```text
 workspace/
   oathkeeper/
+    web/
   lawlib/
-  oathkeeper-web/
 ```
 
 Then run:
@@ -52,7 +53,9 @@ pnpm build
 
 `scripts/sync-content.mjs` reads the registered package manifests and their actual modules and fixtures, copies the reference documents, and records both Git revisions. It uses `git archive` for source downloads. It refuses tracked uncommitted changes so archive bytes and indexed content refer to the same revisions. Its declaration/source record index is for browsing, not a replacement compiler. If the source grammar or legal metadata schemas change, update the importer and its assertions together.
 
-The getting-started narrative is in `src/content/getting-started.md`; its code and request are inserted from the runnable tutorial snapshot. Primary reference text comes from the Rust and lawlib repositories. No public repository URL or hosted CI result is invented.
+`OATHKEEPER_PATH` and `LAWLIB_PATH` can override the source locations. Legacy standalone website checkouts with sibling `oathkeeper` and `lawlib` directories also work. Runtime source ZIPs exclude `web/` through `.gitattributes`, preventing nested website/download archives.
+
+The getting-started narrative is in `src/content/getting-started.md`; its code and request are inserted from the runnable tutorial snapshot. Primary reference text comes from the Rust and lawlib repositories.
 
 ## Provision assets
 
@@ -87,11 +90,11 @@ pnpm test:e2e
 
 The content tests check file hashes, declarations, fixture query references, source-audit bindings, and the coverage inventory. Browser tests exercise navigation, search, filters, empty states, deep links, source downloads, clipboard behavior, theme persistence, the IRA fixtures, mobile layouts, and axe accessibility scans in both themes. Screenshots and reports are generated under ignored `test-results/` and `playwright-report/` directories. Use `TEST_BASE_URL` to run browser tests against an existing deployment.
 
-GitHub Actions is configured for these checks; hosted runs require connecting a remote repository. shadcn is an authoring/build dependency, not a runtime CLI. Its tooling currently inherits a `braces` denial-of-service advisory with no patched version reported; the static app does not process user-supplied glob patterns. The production dependency audit reports no known advisories at initial validation.
+GitHub Actions runs these checks from `.github/workflows/web.yml` in the repository root. shadcn is an authoring/build dependency, not a runtime CLI. Its tooling currently inherits a `braces` denial-of-service advisory with no patched version reported; the static app does not process user-supplied glob patterns. The production dependency audit reports no known advisories at initial validation.
 
 ## Vercel
 
-`vercel.json` selects Next.js and frozen-lockfile installs. No application secrets, database, or external storage are required. This app takes over the existing `rlindskog-projects/oathkeeper` project:
+`vercel.json` selects Next.js and frozen-lockfile installs. Set the Vercel project's Root Directory to `web`. Its build script reproduces the pinned provision assets in a build cache before building Next.js. No application secrets, database, or external storage are required. This app uses the existing `rlindskog-projects/oathkeeper` project. Run CLI deployments from the Oathkeeper repository root so Vercel can resolve `web/`:
 
 ```sh
 pnpm --config.node-linker=hoisted dlx vercel@64.5.0 link --yes --project oathkeeper --scope rlindskog-projects

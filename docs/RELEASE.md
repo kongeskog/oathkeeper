@@ -5,20 +5,21 @@ compiler/interpreter, independent checker, standard library, local packages and
 locks, CLI/API, schemas, conformance/adversarial/property tests, fuzz targets and
 separate lawlib integration.
 
-No remote repositories have been created or published. The supplied Git
-repositories are local and independent. Hosted workflows are configured but
-must run in the user's eventual hosting environment.
+The publishing targets are `kongeskog/oathkeeper` and
+`kongeskog/oathkeeper-lawlib`. The website lives in Oathkeeper's `web/` directory.
+Local validation and hosted workflow results are recorded separately.
 
 ## Pinning and CI
 
-Oathkeeper builds and tests without lawlib. Its optional integration job uses
-`integration/lawlib.json`, an exact lawlib commit. Set the repository variable
-`LAWLIB_REPOSITORY` to the eventual owner/repository to enable that job.
+Oathkeeper builds and tests without lawlib. Its integration job uses
+`integration/lawlib.json`, an exact commit from `kongeskog/oathkeeper-lawlib`.
+The repository variable `LAWLIB_REPOSITORY` can override that location for forks.
 
 Lawlib's `compatibility.json` pins an exact Oathkeeper candidate commit. A
 subsequent Oathkeeper integration-pin commit changes no runtime code, avoiding a
-circular moving-branch dependency. Lawlib CI requires its
-`OATHKEEPER_REPOSITORY` variable. Existing content locks pin the std snapshot.
+circular moving-branch dependency. Lawlib CI defaults to `kongeskog/oathkeeper`,
+with an optional `OATHKEEPER_REPOSITORY` override. Existing content locks pin the
+std snapshot.
 
 Each repository has an independent version/release history. Release snapshots
 should remain immutable. For an amendment or encoding correction, update source

@@ -22,7 +22,6 @@ jobs:
       - run: cargo run -p oathkeeper --locked --example export_schemas
       - run: git diff --exit-code -- schemas
   pinned-lawlib:
-    if: ${{ vars.LAWLIB_REPOSITORY != '' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,7 +34,7 @@ jobs:
           "revision=$($pin.revision)" >> $env:GITHUB_OUTPUT
       - uses: actions/checkout@v4
         with:
-          repository: ${{ vars.LAWLIB_REPOSITORY }}
+          repository: ${{ vars.LAWLIB_REPOSITORY || 'kongeskog/oathkeeper-lawlib' }}
           ref: ${{ steps.pin.outputs.revision }}
           path: lawlib
       - uses: dtolnay/rust-toolchain@master

@@ -1,8 +1,8 @@
 import { readFile, writeFile, mkdir, copyFile } from "node:fs/promises";
-import { resolve, join } from "node:path";
+import { join } from "node:path";
 import { createHash } from "node:crypto";
 import { gunzipSync } from "node:zlib";
-const app = resolve(import.meta.dirname, "..");
+import { app, lawlib } from "./source-roots.mjs";
 const roots = process.argv.slice(2).filter((arg) => arg !== "--assets-only");
 if (roots.length !== 2)
   throw Error(
@@ -45,7 +45,6 @@ for (const [i, release] of ["119-118", "119-121"].entries()) {
   );
 }
 // Small, versioned authoring inputs are tracked; large derived text stays external.
-const lawlib = join(app, "../lawlib");
 if (process.argv.includes("--assets-only")) process.exit(0);
 await copyFile(
   join(lawlib, "tools/inventory/draft.mjs"),

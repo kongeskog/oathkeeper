@@ -2,10 +2,7 @@ import { readFile, writeFile, readdir, mkdir } from "node:fs/promises";
 import { resolve, relative, join } from "node:path";
 import { execFileSync } from "node:child_process";
 import { createHash } from "node:crypto";
-
-const app = resolve(import.meta.dirname, "..");
-const lawlib = resolve(app, "../lawlib");
-const core = resolve(app, "../oathkeeper");
+import { app, core, lawlib } from "./source-roots.mjs";
 const read = async (p) => (await readFile(p, "utf8")).replace(/\r\n/g, "\n");
 const json = async (p) => JSON.parse(await read(p));
 const sha = (text) => createHash("sha256").update(text).digest("hex");

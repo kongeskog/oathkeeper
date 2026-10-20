@@ -2,7 +2,7 @@
 
 Oathkeeper is a statically typed functional language for executable rules with
 explicit uncertainty, provenance, and independently checked derivations. Its Rust
-core is separate from [lawlib](../lawlib/README.md), the repository of legal models
+core is separate from [lawlib](https://github.com/kongeskog/oathkeeper-lawlib), the repository of legal models
 and examples. This is the initial **0.1.0 developer implementation**.
 
 An answer follows from a particular program and its supplied premises. A valid
@@ -31,7 +31,14 @@ installations can set `OATH_DLLTOOL`. Normal MSVC installations use the pinned
 toolchain directly. Pass an argument separator to the PowerShell wrapper as
 `'--'`.
 
-With the two repositories checked out as siblings:
+Clone the repositories as siblings, using `lawlib` as the local directory name:
+
+```sh
+git clone https://github.com/kongeskog/oathkeeper.git
+git clone https://github.com/kongeskog/oathkeeper-lawlib.git lawlib
+```
+
+From the `oathkeeper` directory:
 
 ```sh
 cargo run -p oath-cli -- run ../lawlib/us/federal/tax/ira/2025 --request ../lawlib/us/federal/tax/ira/2025/scenarios/pro-rata-conversion.json --format json --certificate ira.cert.json
@@ -61,6 +68,10 @@ prohibitions, uncertainty and conflicts, exit successfully; operational failures
 exit 1 and invalid CLI usage exits 2.
 
 ## Developer map
+
+The landing page, documentation, and explorer live in [web/](web/README.md).
+Run its pnpm commands from that directory. The Rust workspace builds independently
+of the website, and lawlib remains a separate repository.
 
 | Location | Responsibility |
 |---|---|
