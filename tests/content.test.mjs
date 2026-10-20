@@ -47,14 +47,14 @@ test("inventory download matches the pinned manifest and preserves distinct cove
   );
 });
 test("snapshot preserves the complete package and fixture inventory", () => {
-  assert.equal(snapshot.packages.length, 6);
+  assert.equal(snapshot.packages.length, 8);
   assert.equal(
     snapshot.packages.reduce((n, p) => n + p.fixtures.length, 0),
-    105,
+    139,
   );
   assert.equal(
     snapshot.packages.reduce((n, p) => n + p.modules.length, 0),
-    23,
+    26,
   );
   assert.equal(
     snapshot.packages.find((p) => p.path === "us/federal/constitution").mappings
@@ -81,7 +81,7 @@ test("all indexed source files match downloadable bytes and declaration location
 });
 test("source integrity is matched by source identity AND exact digest", () => {
   const sources = snapshot.packages.flatMap((p) => p.sources);
-  assert.equal(new Set(sources.map((s) => s.id)).size, 14);
+  assert.equal(new Set(sources.map((s) => s.id)).size, 17);
   for (const s of sources) {
     assert.ok(
       snapshot.audit.sources.some(

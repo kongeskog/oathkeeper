@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
+import { provisionHref } from "@/lib/provisions";
 import inventory from "@/content/inventory.json";
 import { Input } from "@/components/ui/input";
 
@@ -58,6 +60,12 @@ export function InventoryTable() {
               <tr key={d.file} className="border-b last:border-0">
                 <th scope="row" className="max-w-80 px-4 py-4 font-normal">
                   <p className="font-medium">{d.document_title}</p>
+                  <Link
+                    className="mt-2 inline-block underline underline-offset-4"
+                    href={provisionHref("119-121", d.file)}
+                  >
+                    Browse provisions
+                  </Link>
                   <p className="mt-1 leading-5 text-muted-foreground">
                     {d.heading}
                   </p>

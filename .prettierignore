@@ -3,5 +3,8 @@ node_modules
 pnpm-lock.yaml
 public
 src/content/snapshot.json
+src/content/encodings.json
+src/content/impact.json
+src/lib/draft.mjs
 playwright-report
 test-results

@@ -33,6 +33,23 @@ export function ExplorerNav() {
           <Library className="size-4" />
           Source inventory
         </Link>
+        {[
+          ["/explorer/provisions", "Provision explorer"],
+          ["/explorer/changes", "Source changes"],
+        ].map(([href, label]) => (
+          <Link
+            key={href}
+            href={href}
+            aria-current={pathname === href ? "page" : undefined}
+            className={cn(
+              "mt-2 flex items-center gap-2 rounded-md px-3 py-2 text-sm",
+              pathname === href && "bg-muted",
+            )}
+          >
+            <FileCode2 className="size-4" />
+            {label}
+          </Link>
+        ))}
         <details open className="mt-5 hidden lg:block">
           <summary className="flex cursor-pointer list-none items-center gap-2 px-3 text-xs text-muted-foreground">
             <ChevronRight className="size-3 rotate-90" />

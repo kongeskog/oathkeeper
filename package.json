@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "content:sync": "node scripts/sync-content.mjs",
+    "provisions:sync": "node scripts/sync-provisions.mjs",
     "typecheck": "tsc --noEmit",
     "test:content": "node --test tests/content.test.mjs",
     "test:e2e": "playwright test",

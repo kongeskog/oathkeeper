@@ -19,13 +19,13 @@ Open http://localhost:3000. For a production preview, run `pnpm build` followed 
 
 - `/`: an introduction to questions, rules, uncertainty, and verification.
 - `/docs/getting-started`: downloadable source snapshots and a complete run/verify walkthrough.
-- `/docs/language`: the implemented language reference, with seven companion documentation pages.
+- `/docs/language`: the implemented language reference, with companion guides for authoring, verification, time, legal examples and coverage.
 - `/explorer`: package search and category filters.
 - `/explorer/[package path]`: coverage records, executable query inventory, `.oath` source with declaration navigation, cited documents and byte hashes, and authored scenario fixtures.
 
 Explorer tabs, selected files, declaration lines, scenarios, and package filters have shareable URLs. Scenario panels show repository-authored expected results; they do not run a second JavaScript implementation of the legal engine.
 
-The content snapshot contains five packages, 20 modules, 27 queries, 65 fixtures, 13 source references, and a source map for seven constitutional Articles and 27 Amendments. Source mapping does not imply executable coverage. All initial legal models remain **Unreviewed**. The recorded source-byte audit is dated 2026-10-18; the website does not fetch or audit original documents at runtime.
+The content snapshot contains eight packages, 26 modules, 139 fixtures, 17 source references, and a source map for seven constitutional Articles and 27 Amendments. Source mapping does not imply executable coverage. All initial legal models remain **Unreviewed**. The recorded source-byte audit is dated 2026-10-19. One package is deliberately unimplemented. The browser checks derived shard hashes; it does not audit original documents at runtime.
 
 ## Refresh from the source repositories
 
@@ -48,9 +48,29 @@ pnpm test:content
 pnpm build
 ```
 
-`scripts/sync-content.mjs` reads the five package manifests and their actual modules and fixtures, copies the reference documents, and records both Git revisions. It uses `git archive` for source downloads. It refuses tracked uncommitted changes so archive bytes and indexed content refer to the same revisions. Its declaration/source record index is for browsing, not a replacement compiler. If the source grammar or legal metadata schemas change, update the importer and its assertions together.
+`scripts/sync-content.mjs` reads the registered package manifests and their actual modules and fixtures, copies the reference documents, and records both Git revisions. It uses `git archive` for source downloads. It refuses tracked uncommitted changes so archive bytes and indexed content refer to the same revisions. Its declaration/source record index is for browsing, not a replacement compiler. If the source grammar or legal metadata schemas change, update the importer and its assertions together.
 
 The getting-started narrative is in `src/content/getting-started.md`; its code and request are inserted from the runnable tutorial snapshot. Primary reference text comes from the Rust and lawlib repositories. No public repository URL or hosted CI result is invented.
+
+## Provision assets
+
+The provision explorer reads 67,680 extracted source units per pinned release, with text, notes, source credits and cross-references. The change report links affected registered encodings; the draft form generates no legal rules.
+
+Large derived text stays outside Git. Before browser tests or Vercel deployment, prepare both releases from lawlib's pinned extraction outputs:
+
+```sh
+pnpm provisions:sync /cache/provisions-119-118 /cache/provisions-119-121
+```
+
+This checks all index and shard hashes and copies assets into ignored public/provisions. Vercel uses the explicit .vercelignore, which includes these prepared assets in the upload. Fresh CI unpacks the committed lawlib source archive, installs its locked extraction dependencies, explicitly downloads the pinned official archives, and caches the reproduced assets. No source retrieval runs inside the legal interpreter or verifier.
+
+A standalone checkout can unpack public/downloads/lawlib-v0.1.0-dev.3.zip outside this repository, install its tools/inventory dependencies, then run:
+
+```sh
+node scripts/fetch-provisions.mjs /path/to/lawlib/tools/inventory/extract-provisions.mjs /cache --fetch
+```
+
+The pinned catalogs are part of this website snapshot. A hash mismatch aborts preparation. The browser reports unavailable or altered shards explicitly. The source workflow documentation explains the extraction and legal-coverage limits.
 
 ## Checks
 

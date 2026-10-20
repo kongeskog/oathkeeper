@@ -58,6 +58,16 @@ const listField = (text, name) => {
   return m ? JSON.parse(m[1]) : [];
 };
 const labels = {
+  "us/federal/courts/wawd/answer/2026": [
+    "W.D. Washington · answer service",
+    "United States",
+    "A bounded 2026 Rule 12 answer-service date with Washington holidays and explicit procedural findings.",
+  ],
+  "drafts/us/federal/commerce/9801": [
+    "Draft · commerce definitions",
+    "Draft",
+    "An unimplemented source-linked question from an earlier release, flagged for reassessment by the source comparison.",
+  ],
   legal: [
     "Shared legal models",
     "Shared",
@@ -198,6 +208,12 @@ for (const [id, path] of Object.entries({
   documents[id] = await read(join(core, path));
 documents.coverage = await read(join(lawlib, "docs/COVERAGE.md"));
 documents.encoding = await read(join(lawlib, "docs/ENCODING.md"));
+documents["source-workflow"] = await read(
+  join(lawlib, "docs/SOURCE-WORKFLOW.md"),
+);
+documents["wawd-answer"] = await read(
+  join(lawlib, "us/federal/courts/wawd/answer/2026/README.md"),
+);
 documents.deadlines = await read(
   join(lawlib, "us/federal/procedure/frcp/6/README.md"),
 );
@@ -228,7 +244,7 @@ for (const [repo, path] of [
       join(
         app,
         "public/downloads",
-        `${repo}-${repo === "lawlib" ? "v0.1.0-dev.2" : "v0.1.0-dev.1"}.zip`,
+        `${repo}-${repo === "lawlib" ? "v0.1.0-dev.3" : "v0.1.0-dev.1"}.zip`,
       ),
       "HEAD",
     ],
@@ -236,7 +252,7 @@ for (const [repo, path] of [
   );
 }
 const snapshot = {
-  version: "0.1.0-dev.2",
+  version: "0.1.0-dev.3",
   coreRevision: git(core, "rev-parse", "HEAD"),
   lawlibRevision: git(lawlib, "rev-parse", "HEAD"),
   audit,

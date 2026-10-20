@@ -1,5 +1,10 @@
 # Federal source inventory
 
+Developer release 3 also includes a [provision text and authoring workflow](../docs/SOURCE-WORKFLOW.md)
+for releases 119-118 and 119-121. Its separate `provisions.json` catalogs pin
+compressed text, notes, credits and references. The older structural JSONL index
+described below is preserved, with different element counts and purposes.
+
 This inventory pins the OLRC all-titles U.S. Code XML release through Public
 Law 119-121 (October 9, 2026), retrieved October 19, 2026: 58 XML documents,
 53 numbered titles and five appendices. Title 53 is reserved. The original ZIP

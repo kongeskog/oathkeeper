@@ -91,6 +91,20 @@ export const slugify = (s: string) =>
     .replace(/^-|-$/g, "");
 export const docPages = [
   {
+    slug: "source-workflow",
+    title: "Source to verified program",
+    group: "Lawlib",
+    description:
+      "Pinned passages, encoding drafts, explicit source dependencies, and release impact.",
+  },
+  {
+    slug: "wawd-answer",
+    title: "W.D. Washington answer example",
+    group: "Lawlib",
+    description:
+      "A concrete, bounded 2026 answer-service calculation and its review questions.",
+  },
+  {
     slug: "getting-started",
     title: "Getting started",
     group: "Introduction",

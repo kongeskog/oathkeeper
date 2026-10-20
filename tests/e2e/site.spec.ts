@@ -40,6 +40,8 @@ test("all reference pages and guide links render", async ({ page }) => {
     "coverage",
     "deadlines",
     "deadline-review",
+    "source-workflow",
+    "wawd-answer",
   ]) {
     const response = await page.goto(`/docs/${slug}`);
     expect(response?.status()).toBe(200);
@@ -206,6 +208,9 @@ test("source downloads and missing routes have correct responses", async ({
     expect((await r.body()).subarray(0, 2).toString()).toBe("PK");
   }
   expect((await request.get("/downloads/lawlib-v0.1.0-dev.2.zip")).ok()).toBe(
+    true,
+  );
+  expect((await request.get("/downloads/lawlib-v0.1.0-dev.3.zip")).ok()).toBe(
     true,
   );
   const source = await request.get(

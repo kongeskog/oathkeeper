@@ -1,0 +1,2958 @@
+{
+  "format": "lawlib-impact/1",
+  "before": {
+    "release": "119-118",
+    "archive_sha256": "f360086bb53a62ab80f03d1ed85fe920124e1538736756c367e00a90470610a8",
+    "catalog_sha256": "96fec3770cbcadb2b4e6dc34723ba1d4fb02a2bed08bd5bbc51d9b5eabe88357"
+  },
+  "after": {
+    "release": "119-121",
+    "archive_sha256": "c6122974e951003437ece5a998aa7c0b2cdc0f5703dfc78d6135e1fc9e729142",
+    "catalog_sha256": "03d05676037ef17fc7b2acaa600136c5500d5a8201fa20153f38022d87f56109"
+  },
+  "registry_sha256": "dda48af7070f3e104ae137e6cd540ba82168b1a325f312e8a4867bc773bc44a5",
+  "changes": [
+    {
+      "file": "usc01.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "c94610e4d3ba89efeaffb830",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "611d39b11e36938dd8a53a766bed0eed198c8d9d325b48607a4c229a5ced3e75",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "3066dacbeae5526193a46978d36f478b1729c06dd05f3b98f7e3ef59a84a048b"
+          },
+          "chunk": "usc01.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "c94610e4d3ba89efeaffb830",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "d9e4362afa50f09a72719839334c486ee8c4614da713368808cab92e306dd377",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "3066dacbeae5526193a46978d36f478b1729c06dd05f3b98f7e3ef59a84a048b"
+          },
+          "chunk": "usc01.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc02.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "8b75a7c914ef29b6248c805c",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "83c87598e3a312f0fed5629243235c31b405c5f3782f312782c095199c755e6f",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "86acbabf59a946f753e9910aca22dcbdb3acc372a67c2b4acd21497d943a32eb"
+          },
+          "chunk": "usc02.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "8b75a7c914ef29b6248c805c",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "3dbedfe08d6b7e6fbf26065be72fd16ec05b3718f1f9b429c8aab1e43857641f",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "86acbabf59a946f753e9910aca22dcbdb3acc372a67c2b4acd21497d943a32eb"
+          },
+          "chunk": "usc02.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc03.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "91549fcc37af63bf5d846a42",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "b3c744c23e2f50c59fda4d0685d14da6243f620430246981d054d1a2cc488b59",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "5ae658e15fbf9d85c53302eb32ceaf0d55aa6415e2761941186ebefa80a33d92"
+          },
+          "chunk": "usc03.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "91549fcc37af63bf5d846a42",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "b0a2fbf8b8a4323310a4263bb5e18cac277b6e6c657058dbda45b72a40639ce4",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "5ae658e15fbf9d85c53302eb32ceaf0d55aa6415e2761941186ebefa80a33d92"
+          },
+          "chunk": "usc03.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc04.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "283ea1423534511b1aacd45a",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "85c3ac5edee10afd0187e2d2daa171b18ac7256700eac4cec82b070fe8741c89",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "9dcec83040cb885e20757c76e42d9ca4c078b44dddc5482210823f6347d682a5"
+          },
+          "chunk": "usc04.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "283ea1423534511b1aacd45a",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "087dabc2b438269cd2b11b7eb68d1a4c38bc41670d76346214be8f76b5b224b9",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "9dcec83040cb885e20757c76e42d9ca4c078b44dddc5482210823f6347d682a5"
+          },
+          "chunk": "usc04.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc05.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "7a66304ac69dcbc4a75e7cc8",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "baa3848f4ef867759a3f24f9dd034131cdd50d089d0ab684d33cf10f733f0ab8",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "6db839ec20d05a9fbe897de24772339e30a171f7ced10eb2f25719fa7936873a"
+          },
+          "chunk": "usc05.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "7a66304ac69dcbc4a75e7cc8",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "4c25abedbaffb19d435986361d6db50544cda315ff3da7c3bcbf415cab950813",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "6db839ec20d05a9fbe897de24772339e30a171f7ced10eb2f25719fa7936873a"
+          },
+          "chunk": "usc05.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc05A.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "bb528defce86c6350b695928",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "8936ea5e7691e959829946efb4eaf049b7c670bfd0e2b7640f4212d77776d0c0",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "35c13e76e661282542596b4cb5692e7a9a0aad76450ebb36b2c477b0ea6b7099"
+          },
+          "chunk": "usc05A.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "bb528defce86c6350b695928",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "de71af6ac79c6552d11d12b6e5e2014704b5cbb0b611a25ac2c1de89af19dd44",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "35c13e76e661282542596b4cb5692e7a9a0aad76450ebb36b2c477b0ea6b7099"
+          },
+          "chunk": "usc05A.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc06.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "36fb2fd93e818cc9ec1c3b7a",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "e8f0955ab9a5e3d8346e380f52dfd12bf392b54601bcddac0531f7485a06ed72",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "c0a3c81f1b1975dd8a1f3bb69b9a3be6f97aaa1c63dd1198c95cedde4bfe1e6f"
+          },
+          "chunk": "usc06.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "36fb2fd93e818cc9ec1c3b7a",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "876a481be697963505f2ceb788cf841842619f4c91eacfd7d6529242bcf6ec75",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "c0a3c81f1b1975dd8a1f3bb69b9a3be6f97aaa1c63dd1198c95cedde4bfe1e6f"
+          },
+          "chunk": "usc06.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc07.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "91368a553fd50bed0809f368",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "7d5f0d56a29abab98b97c8a0166a4d877c6189075c66f1ea8515d34248a1666e",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "e3d50a707fd605f3ef0df4a90281e28e2a2d75064dbcb9f1732f350305c93809"
+          },
+          "chunk": "usc07.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "91368a553fd50bed0809f368",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "f88bee735c84761e8e0bed91015c15a03b92bab7b0113c582d189d0580c034a2",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "e3d50a707fd605f3ef0df4a90281e28e2a2d75064dbcb9f1732f350305c93809"
+          },
+          "chunk": "usc07.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc08.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "ba72796519bb8c1d5c079065",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "a89417246daa50296e12c358af6d6d2d4b0bf20ae8ecd6663547f4265003fac2",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "5a9cfb3b0d5c24813523db69903c20e28620fd9bdfb9934a10c1e103aa2804a6"
+          },
+          "chunk": "usc08.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "ba72796519bb8c1d5c079065",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "08aab7b1144a9d5fdcba6563eccf9e09a6846f815a3f0b03fa4003f4c69b79e4",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "5a9cfb3b0d5c24813523db69903c20e28620fd9bdfb9934a10c1e103aa2804a6"
+          },
+          "chunk": "usc08.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc09.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "e64a2ac1eb306a24d2d4e414",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "78f7495e15b4ef335168b8025a652d5d41c95b7b48df9ccea4dd559330578edc",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "1cb303783a76ef90da447c5462572379fb1d1efc05805fe3d9e1f7974ffa21ff"
+          },
+          "chunk": "usc09.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "e64a2ac1eb306a24d2d4e414",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "f232c396773502b736825e9f9a79677623be51c96221babf40845a006972ae43",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "1cb303783a76ef90da447c5462572379fb1d1efc05805fe3d9e1f7974ffa21ff"
+          },
+          "chunk": "usc09.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc10.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "3cbcf497a8cb54968f8d41a3",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "4ed80b711c7fd8ba37c717b02f22a7a617e9062370dda5f6c62b750b1bfa0e24",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "b40e7e82dd42a307134ad722dd3ac0acc0cee974d3889a912438f8e273a17035"
+          },
+          "chunk": "usc10.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "3cbcf497a8cb54968f8d41a3",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "da01e1ea3a5c2286e7102ab91cdde85d863807c7ed03666a8438503b280a7e28",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "b40e7e82dd42a307134ad722dd3ac0acc0cee974d3889a912438f8e273a17035"
+          },
+          "chunk": "usc10.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc11.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "040947cf07f7bdc303e96dd5",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "6a9d3ce8dd2058640125e5a13c9cca617645de0353aa6057e9afcda23eab1a77",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "8ddd26007c5fb2b2dbf220859c3a1aa977ca31d00a1690cf04f3c502eaa991be"
+          },
+          "chunk": "usc11.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "040947cf07f7bdc303e96dd5",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "ffecb9fcf2983d10ee83498bc78fa7fb43225c93f74cf7b713829a445c9acbec",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "8ddd26007c5fb2b2dbf220859c3a1aa977ca31d00a1690cf04f3c502eaa991be"
+          },
+          "chunk": "usc11.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc11a.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "5979ba7d3a6b331c7c1e9771",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "fa002af5cfacdc3862714a356820c331287e307b87baefbf0ef9a5da78610be4",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "dc1dae30b2831fcb3ea9f6d4c7d064d00abf99fecd14505d8137bfd849869645"
+          },
+          "chunk": "usc11a.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "5979ba7d3a6b331c7c1e9771",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "54509495cb443f250c7033a954b421adb71c6ee91bc186e56b52b19ed3e3a282",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "dc1dae30b2831fcb3ea9f6d4c7d064d00abf99fecd14505d8137bfd849869645"
+          },
+          "chunk": "usc11a.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc12.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "7188ac219a8005676ddb745c",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "33651ce6ae79cf754ca9d9b80697f68bba94f7d52e0c191f2753762e215f7869",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "398f7602ed45994cb009ce121350d064de10d84666e78289ebd555dca6d7b8d3"
+          },
+          "chunk": "usc12.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "7188ac219a8005676ddb745c",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "693e0e44d883ec5d737fb0058e68a1f0712d92cc2328174385557cf1258aa640",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "398f7602ed45994cb009ce121350d064de10d84666e78289ebd555dca6d7b8d3"
+          },
+          "chunk": "usc12.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc13.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "9675a350e19327d7ac78bba5",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "c139d5b0b9797aaf5db9b62f53d02e51fd462f7cb01a640ef1c0ad7128c73512",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "e8a9ce196fad4dec8b3ab8eed5b381bd8ddb747c5291f3e8768f8cad25f9b638"
+          },
+          "chunk": "usc13.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "9675a350e19327d7ac78bba5",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "c6396ca22e45e0f3983a9dad8f053186e80add5720421921ba46fe315e60864f",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "e8a9ce196fad4dec8b3ab8eed5b381bd8ddb747c5291f3e8768f8cad25f9b638"
+          },
+          "chunk": "usc13.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc14.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "be6f16a8658ea4746248eaea",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "dde6cb0bbb7915c714e4597ca35a744f4c7e27113ed037b73f90220b48cd783a",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "d0b07918eac9410d9cfc0d8f7d727150f364c5e8d2830784ed28cef43ec293cd"
+          },
+          "chunk": "usc14.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "be6f16a8658ea4746248eaea",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "93cb8ecaebd6094add6e2136b682c5c9ca9d2f75883b66a690dd4a2e34ef4684",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "d0b07918eac9410d9cfc0d8f7d727150f364c5e8d2830784ed28cef43ec293cd"
+          },
+          "chunk": "usc14.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc15.xml",
+      "locator": "/us/usc/t15/s78u–6",
+      "kind": "ChangedText",
+      "before": [
+        {
+          "key": "a60f104ae03b62b133ef27c1",
+          "locator": "/us/usc/t15/s78u–6",
+          "kind": "section",
+          "number": "§ 78u–6.",
+          "heading": "Securities whistleblower incentives and protection",
+          "content_sha256": "4da1161621a185a8e0db4a26e34409b56ec6b9a165112bc00daa581cfc94a4f8",
+          "part_hashes": {
+            "text": "a694a2bbfe7d4ad6d64a68aa1d351abf3b3c84f3762c131ff5fd143b1cb8f1f6",
+            "notes": "310c05beacd3e8f442c8a5ef6966d24d2321652ac599a8cc43ba7e222039e0dc",
+            "credits": "53862a6a442daa0daaf9b374b08b2129fbe2727feeba025bc74e7cfea990d84a",
+            "references": "96b1a5fce99a2c568643aed23de46cbb248205d89dc2732ea6b2518a19f48e2d",
+            "context": "35b31d8f05559fe326e1df238706f7d536a3eb938ec6be13a29183010146155f"
+          },
+          "chunk": "usc15.xml.9.json.gz",
+          "note_count": 6,
+          "reference_count": 26
+        }
+      ],
+      "after": [
+        {
+          "key": "e916425a0f7d2b99e135c110",
+          "locator": "/us/usc/t15/s78u–6",
+          "kind": "section",
+          "number": "§ 78u–6.",
+          "heading": "Securities whistleblower incentives and protection",
+          "content_sha256": "c5b3bc02cfdffc7effdc3fd798c86da8fe8c7965c89fcf57232ec2262b14d8b5",
+          "part_hashes": {
+            "text": "a694a2bbfe7d4ad6d64a68aa1d351abf3b3c84f3762c131ff5fd143b1cb8f1f6",
+            "notes": "588c14dc01a0f541852509b05368c8b869f1a4c44d2df3ea2177354584b7ca86",
+            "credits": "53862a6a442daa0daaf9b374b08b2129fbe2727feeba025bc74e7cfea990d84a",
+            "references": "96b1a5fce99a2c568643aed23de46cbb248205d89dc2732ea6b2518a19f48e2d",
+            "context": "35b31d8f05559fe326e1df238706f7d536a3eb938ec6be13a29183010146155f"
+          },
+          "chunk": "usc15.xml.9.json.gz",
+          "note_count": 6,
+          "reference_count": 26
+        }
+      ],
+      "changed_parts": [
+        "notes"
+      ]
+    },
+    {
+      "file": "usc15.xml",
+      "locator": "/us/usc/t15/s9801",
+      "kind": "ChangedText",
+      "before": [
+        {
+          "key": "90deb5e01fab52afd6aebdeb",
+          "locator": "/us/usc/t15/s9801",
+          "kind": "section",
+          "number": "§ 9801.",
+          "heading": "Defined term",
+          "content_sha256": "020c61c83d923073adc1931b22e61cc246c76d17547f7466e7125315e34d33bf",
+          "part_hashes": {
+            "text": "4d1bc78652ef215ab5bf0bdfefe9f4a566c4fdeb6e2fea9f52ae22b017c61578",
+            "notes": "9658bc53d456c9be2426b843d3a9783d93e32b7817f8accd847a01f6de9109e1",
+            "credits": "acbcb8aa6fa5e5dbe22f23af2b1796f4a85c60d009c2d129c4c187a0dc9a7d42",
+            "references": "2cbff9df3215644d2211d736906988933b1030d8292613b094ddc903ec4f0801",
+            "context": "3cc01a34b4134b3cb789c3f7e9a2b6029da7096876c63f375761e2fbf8bb91a8"
+          },
+          "chunk": "usc15.xml.86.json.gz",
+          "note_count": 6,
+          "reference_count": 18
+        }
+      ],
+      "after": [
+        {
+          "key": "0d30ceb6fe0c729d7330f7c5",
+          "locator": "/us/usc/t15/s9801",
+          "kind": "section",
+          "number": "§ 9801.",
+          "heading": "Defined term",
+          "content_sha256": "79f04aee40c5d32bbbe8687a2e091871ec668900e796a8b4a446da1117bf27b9",
+          "part_hashes": {
+            "text": "ea6f1adf91d64630ff2bf622aaa62939c38298e3528dfc1d750d51d8480611bd",
+            "notes": "32e5804d37a9e0535a12e0abe0e8786863104ab9e4396083922f2fcb4381fc94",
+            "credits": "7593950a5cf44b0ae177a09504993bebdcfebda67f3df4e1ec0ae730bf2d0dd8",
+            "references": "6aeb87abaee93829671e67e00ab4fd671a8a19e2c2dddb202fff060156b8d487",
+            "context": "3cc01a34b4134b3cb789c3f7e9a2b6029da7096876c63f375761e2fbf8bb91a8"
+          },
+          "chunk": "usc15.xml.86.json.gz",
+          "note_count": 8,
+          "reference_count": 24
+        }
+      ],
+      "changed_parts": [
+        "text",
+        "notes",
+        "credits",
+        "references"
+      ]
+    },
+    {
+      "file": "usc15.xml",
+      "locator": "/us/usc/t15/s9803",
+      "kind": "ChangedText",
+      "before": [
+        {
+          "key": "a44d7ae3c885207acafa58a3",
+          "locator": "/us/usc/t15/s9803",
+          "kind": "section",
+          "number": "§ 9803.",
+          "heading": "Responsibilities of the Assistant Secretary of Commerce for Travel and Tourism",
+          "content_sha256": "f78cae2b54309ef3de7318d1ca6962ffc6934a46d9e9cd4ae29522cd902c121e",
+          "part_hashes": {
+            "text": "5edb5cd231692bc581799990b698af6f39b557054929311b25afc90481283d5e",
+            "notes": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "credits": "0a96013f99c4828c020dd8bc0554c12405e19a443f57c97fc229a704da547e5f",
+            "references": "bda050df4fd7c94cd0f169f5ec6105f956ce8cd1b9e37388afeb0b66afd82929",
+            "context": "3cc01a34b4134b3cb789c3f7e9a2b6029da7096876c63f375761e2fbf8bb91a8"
+          },
+          "chunk": "usc15.xml.86.json.gz",
+          "note_count": 0,
+          "reference_count": 3
+        }
+      ],
+      "after": [
+        {
+          "key": "4cf336de41cb539a5f84759e",
+          "locator": "/us/usc/t15/s9803",
+          "kind": "section",
+          "number": "§ 9803.",
+          "heading": "Responsibilities of the Assistant Secretary of Commerce for Travel and Tourism",
+          "content_sha256": "8573c5363098e687c0f496d0238f5a85c3c8911eb6154eb10c804eb2fb5c92c0",
+          "part_hashes": {
+            "text": "c092bb8c7a12383002bdb5bcee6cd7886bc60e540b0c02e87ed4324c1dbe3cb0",
+            "notes": "eb1bc069c7f836e8feb0a85ae1e987df5a4cb534ea4036bb20b566fd7226b7bd",
+            "credits": "4a0d34028c725e3ce343e9244cc58bf8dbd152f1951014e552cd1537d82fc94a",
+            "references": "2243af6239f89d3953164a44d2e00c94cdb27da35ac20644168baa3e2dca7d44",
+            "context": "3cc01a34b4134b3cb789c3f7e9a2b6029da7096876c63f375761e2fbf8bb91a8"
+          },
+          "chunk": "usc15.xml.86.json.gz",
+          "note_count": 2,
+          "reference_count": 8
+        }
+      ],
+      "changed_parts": [
+        "text",
+        "notes",
+        "credits",
+        "references"
+      ]
+    },
+    {
+      "file": "usc15.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "789426e80382b88fe80a2c92",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "6241ff6a1104e14223a7f9f6818913ebc285da046033d7517caa975f43ac3ee9",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "aa6ee3439ce0aa6d119601d8caf1cc423b3c3e53b1ef72417e23066008459790",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "f3dff4e07efb525c1463d8ab129377ef3dba959ea7e9c37dc6be8acdaca00514"
+          },
+          "chunk": "usc15.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        },
+        {
+          "key": "1576cbff14bfe1d0b492a142",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "508d57fe8c9b032e2b115752f24f52682612a5c746ace3627b25b8848d46dd69",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "f3dff4e07efb525c1463d8ab129377ef3dba959ea7e9c37dc6be8acdaca00514"
+          },
+          "chunk": "usc15.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "789426e80382b88fe80a2c92",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "1d1b309f9b2de3386a17c446c0adf2059274f1bdcebb50baebf0c529401dc413",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "f3dff4e07efb525c1463d8ab129377ef3dba959ea7e9c37dc6be8acdaca00514"
+          },
+          "chunk": "usc15.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc16.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "e7eedd0b1b73d181c186c89d",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "dbbd5fe4d55ac7e566cd12a7fa01dbbf115e631452c9e93e41d70c577b01145a",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "811fd77812b1f600b56248906c752367dd994c1903a7776ed3ecf3572acdab73"
+          },
+          "chunk": "usc16.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "e7eedd0b1b73d181c186c89d",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "066b71cc23ef142a013789de1e6f469b51696b69f2ef03dc4cdb59a2794b6d05",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "811fd77812b1f600b56248906c752367dd994c1903a7776ed3ecf3572acdab73"
+          },
+          "chunk": "usc16.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc17.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "c0155ea2c7eac6354f0bed61",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "68efe2752f0ccbf16275dda72c2b33ce8c77aa46a5b3ee74f31eb7854f97a399",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "f34458f69b19dfe4ccbd10e717c28295f6f70f60aa63a22def598545b96b19a4"
+          },
+          "chunk": "usc17.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "c0155ea2c7eac6354f0bed61",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "fd4a5b26894d9945e6f91ca25a6108c8fae05ba578216c2ccc6a2d80bd2b8465",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "f34458f69b19dfe4ccbd10e717c28295f6f70f60aa63a22def598545b96b19a4"
+          },
+          "chunk": "usc17.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc18.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "bedf3550b3aea8865c6f795f",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "4a376f4175b73f448a10bd098945f29eba06716adba9e56b882a9ff8a29c7f41",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "9a5b9c877a8a4fdd0896fadaefa339c3ed4404d6cc5e2345ff9535d003f5031e"
+          },
+          "chunk": "usc18.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "bedf3550b3aea8865c6f795f",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "046718e454a344eebf56dd7cb588d14c73d17faa6bfe051de5883b5c858a812c",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "9a5b9c877a8a4fdd0896fadaefa339c3ed4404d6cc5e2345ff9535d003f5031e"
+          },
+          "chunk": "usc18.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc18a.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "e38db90896c78d874f7764cc",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "af2d275b3bead5b3330be62ac1535229ef62bfb795852447b98e6e3400230960",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "bcc2617cad0306b27bb88db61ef35ed67d3e55de28e681d64ce44976e8e8a448"
+          },
+          "chunk": "usc18a.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "e38db90896c78d874f7764cc",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "88592a421cb6f3c2fe28cfedf411c641070c998ed893665e1df551b938bdc47a",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "bcc2617cad0306b27bb88db61ef35ed67d3e55de28e681d64ce44976e8e8a448"
+          },
+          "chunk": "usc18a.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc19.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "d63aad493d13bdccf2065b48",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "45f1390d42dd9c1ff2802305334c3cc8ed146f9a460e206a2cd5db562d8fb645",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "16c1029ca35889c7cbf94b871519348bbabca29b12b6a8204e10d57cb290d6af"
+          },
+          "chunk": "usc19.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "d63aad493d13bdccf2065b48",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "4eb7a294bcdd19c812eaedb97ba4d28aca50e877ddf5d8561f21b3bbafe320a5",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "16c1029ca35889c7cbf94b871519348bbabca29b12b6a8204e10d57cb290d6af"
+          },
+          "chunk": "usc19.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc20.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "d9f4a8a79f960fb0df2c98d3",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "cef78dfa056ef8c57b534f35a9051ff343e0d83cc6b6b796f0aacdc7268fb894",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "3ddd47af8b914ab01814049b07fa4dd26f5d9ffded3e59e38d573580721c5d1f"
+          },
+          "chunk": "usc20.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "d9f4a8a79f960fb0df2c98d3",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "8d806f2f0527d644f160002e0c1043741d5ad99124667f19f52addac934535e5",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "3ddd47af8b914ab01814049b07fa4dd26f5d9ffded3e59e38d573580721c5d1f"
+          },
+          "chunk": "usc20.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc21.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "dbb57ab40e71c0e79d32fe42",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "6aa65cfc88b46045720ee6bcf3595070dd83e57996740a3a95fba4d7168aa801",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "aa14e2124d568aec6e93a84543564786b9d2729827484aff8ddb18188ae5d9d2"
+          },
+          "chunk": "usc21.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "dbb57ab40e71c0e79d32fe42",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "a69353c450fcab032bc167e3e1ab621472c1277ef46a5bb7e3d94b6533613b73",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "aa14e2124d568aec6e93a84543564786b9d2729827484aff8ddb18188ae5d9d2"
+          },
+          "chunk": "usc21.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc22.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "3254b89cdba7061d9840a8f9",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "92d1ae18e41e2307af3e92c58e707bae3da6dd5859bd05cd6e2b92d39bd05c0e",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "1bb1e18a5d74a35b9536e7ba4f87d5f75126452cc9b56f4034b9b8cdde5458b9"
+          },
+          "chunk": "usc22.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "3254b89cdba7061d9840a8f9",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "dd02892c45056d8ed1c9a11495bbe4beadc94b3d9fa8570371436a30efc60a24",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "1bb1e18a5d74a35b9536e7ba4f87d5f75126452cc9b56f4034b9b8cdde5458b9"
+          },
+          "chunk": "usc22.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc23.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "7ad7f55186dbf5111d83810b",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "362dddd5a4dab421cd48fb1e4412fa460a435fc411c5510b41b8ce57ab44fd1f",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "a7da4a19ba174445642dab2ccc7eece83db1e3ec7403cf699194fb741a5824c1"
+          },
+          "chunk": "usc23.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "7ad7f55186dbf5111d83810b",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "1b8acebb13e4968c9850abad3eee9afe137d577c4a414b835dae0d388d81e6ad",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "a7da4a19ba174445642dab2ccc7eece83db1e3ec7403cf699194fb741a5824c1"
+          },
+          "chunk": "usc23.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc24.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "ab5ddc7feea05f1b6c41006a",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "9051c2e94cd5607d7c063aa259c61d373c37c39f0fe45bf92d380a7bb0376f60",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "4df83d26e0afd0eebd8a1039f7ac21691029f8ab189a591911829a12bc120c5a"
+          },
+          "chunk": "usc24.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "ab5ddc7feea05f1b6c41006a",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "68455b9fae5505ff74eef09928fee7d3e086876fa88f063d8ddd1a87a90b9679",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "4df83d26e0afd0eebd8a1039f7ac21691029f8ab189a591911829a12bc120c5a"
+          },
+          "chunk": "usc24.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc25.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "2a9aa34dec806a26d1f357ca",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "a7b4445b7e915aec45caa52694a07801cf3f7b58e8e9defaf7660241f2f096b1",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "2892a1a79d4a84e0445bbecde822734f58c02abe1f481cb238ea57b6654605ad"
+          },
+          "chunk": "usc25.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "2a9aa34dec806a26d1f357ca",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "7c7ca9e2d5b98092ef68a0323943fb4b59142f1b519689ef8f4044fba83eb2d5",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "2892a1a79d4a84e0445bbecde822734f58c02abe1f481cb238ea57b6654605ad"
+          },
+          "chunk": "usc25.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc26.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "0887534fbd3dfb0e19b0b338",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "519711b8aecf7a3798a0fbe1a5dca2a3f6e2b1d3174294cc86f734e9d3df5b25",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "09a39b36165888579ba9a752087dc75a713d5f2c0ca300fddf0bfddcf1ff23c5"
+          },
+          "chunk": "usc26.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "0887534fbd3dfb0e19b0b338",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "cbc760ad23488bfef806cdd9ed390d17f5be0e8ecd43a6cc6a0a8cf61e0d5a3f",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "09a39b36165888579ba9a752087dc75a713d5f2c0ca300fddf0bfddcf1ff23c5"
+          },
+          "chunk": "usc26.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc27.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "df73b1da29f7575970312984",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "7e1c811ba4f80ac31e3b6d3168eb4c7776195492f8ae949641f5b6d09709c4ff",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "c59f56634083736f038908d642a24006763e3d835b25f44de68e30c4c9a934c0"
+          },
+          "chunk": "usc27.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "df73b1da29f7575970312984",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "adfafe965fe45d962e03c8f0d24685b54793a5290b807295f2b10077ee8e0cac",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "c59f56634083736f038908d642a24006763e3d835b25f44de68e30c4c9a934c0"
+          },
+          "chunk": "usc27.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc28.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "b6e28cb24b25b5dbfa09049a",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "77f114c84e22351b0d02bae6ac5b35b09d629198c1050a207d89c08a75ca1bac",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "e4018e2619d72725607af1c8efd9792c31525517f5287db6d82c56f6a7d6e6a7"
+          },
+          "chunk": "usc28.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "b6e28cb24b25b5dbfa09049a",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "bb177c2c188fdffc5fc3c4c8af39982a38118ddf4420eac49b97b4b72722fc80",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "e4018e2619d72725607af1c8efd9792c31525517f5287db6d82c56f6a7d6e6a7"
+          },
+          "chunk": "usc28.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc28a.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "74781dd3779d52bc42e6f749",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "114cf411a983c69f8664b92fdc7fd7aaad374291529ce7ca2d6b66f0ca077f95",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "b396a69254bdac79e5b7dcb5a79b8c96cbae11dc63998e5e0093f7fceb82d6e1"
+          },
+          "chunk": "usc28a.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "74781dd3779d52bc42e6f749",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "defb963cfeb3a8b9ab46cb46ef4c1b03acdb0329a948d8725ce7da707979e574",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "b396a69254bdac79e5b7dcb5a79b8c96cbae11dc63998e5e0093f7fceb82d6e1"
+          },
+          "chunk": "usc28a.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc29.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "19bb92609be7a7d2b53fa292",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "ca7ddba67ffc71b12f3c606e2b924136f3151b2618eb4de8cb5c500c6d439ad7",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "3da18df6cbea03bb30124b2f7b6c41008b1a647365d966cda8b407e01a4e0e22"
+          },
+          "chunk": "usc29.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "19bb92609be7a7d2b53fa292",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "1e8b5e3a78203767ed4100df40190421568310539d59db783b90c18e2f8f4d0a",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "3da18df6cbea03bb30124b2f7b6c41008b1a647365d966cda8b407e01a4e0e22"
+          },
+          "chunk": "usc29.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc30.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "5a0d735c65f0a0050498edcd",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "c7cc5098948894b626b091a752fac067f3c0ac0eb52f39d560cbe74e747b6ad9",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "c0d27de26c0bf38d45e412252bebaea16e46ace5385a84fd325dc310e68bd20c"
+          },
+          "chunk": "usc30.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "5a0d735c65f0a0050498edcd",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "0aedca393e19360c4d2238fd3583c474b0bc51c142ee0e54bf078d6142d1d709",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "c0d27de26c0bf38d45e412252bebaea16e46ace5385a84fd325dc310e68bd20c"
+          },
+          "chunk": "usc30.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc31.xml",
+      "locator": "/us/usc/t31/s501",
+      "kind": "ChangedText",
+      "before": [
+        {
+          "key": "6a15092a436bbb7f08fa766f",
+          "locator": "/us/usc/t31/s501",
+          "kind": "section",
+          "number": "§ 501.",
+          "heading": "Office of Management and Budget",
+          "content_sha256": "75d78447969c8d4582afd8755d475e848e82f7e1eaac30da95d3fcfd9b899de7",
+          "part_hashes": {
+            "text": "eae33e9397cf7bec0ec4367e40d2d805f4c96827d3049c5a17b3946ea8a0769e",
+            "notes": "2e1c343bec7ebd06e20691ccadc47eac49279a9a7a510ff91dca16bae8e531ea",
+            "credits": "d86647dbca832311e053f404c32d1e35015e4891f505d4b39d25a93ceb5fdf3a",
+            "references": "80c7dbd8bbfa50a9ea9058728023e4a8f23e3bd9559b9e2abb6910a36b0a3c5a",
+            "context": "8d512b44360bdbe93593f9e4060e6d29eff4562a43f208f9a6c0140ae4ce6427"
+          },
+          "chunk": "usc31.xml.1.json.gz",
+          "note_count": 74,
+          "reference_count": 316
+        }
+      ],
+      "after": [
+        {
+          "key": "6a15092a436bbb7f08fa766f",
+          "locator": "/us/usc/t31/s501",
+          "kind": "section",
+          "number": "§ 501.",
+          "heading": "Office of Management and Budget",
+          "content_sha256": "4f1564e01547461ee8ae54ba625ee69a9e95973854f44eec94c1a13d3edce7cc",
+          "part_hashes": {
+            "text": "eae33e9397cf7bec0ec4367e40d2d805f4c96827d3049c5a17b3946ea8a0769e",
+            "notes": "e22ea01deec51f3f27f2e8c8c41622ee1d6e9c8244682d03fe65d6d94518e8d9",
+            "credits": "d86647dbca832311e053f404c32d1e35015e4891f505d4b39d25a93ceb5fdf3a",
+            "references": "638af83f93a200d74d4aa661381df2c22ab9509ce818810091a438b84d083d3e",
+            "context": "8d512b44360bdbe93593f9e4060e6d29eff4562a43f208f9a6c0140ae4ce6427"
+          },
+          "chunk": "usc31.xml.1.json.gz",
+          "note_count": 75,
+          "reference_count": 322
+        }
+      ],
+      "changed_parts": [
+        "notes",
+        "references"
+      ]
+    },
+    {
+      "file": "usc31.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "f630912e29b37d3abd1c5a92",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "20c719f1fddf41cc112754e7bedcd152c9e480703ea2f4df16b7b79f4caba6e3",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "7ab7ae817a723fd1e42a8191f22820a9b54fb6acef6c25f1d14c3356940a2b3d"
+          },
+          "chunk": "usc31.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "f630912e29b37d3abd1c5a92",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "e99f59e67e25cbf917d40f8d0551210cbbf330b8a7951784ecafc105da2ec1f4",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "7ab7ae817a723fd1e42a8191f22820a9b54fb6acef6c25f1d14c3356940a2b3d"
+          },
+          "chunk": "usc31.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc32.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "d510ef3195935d1c23f028c2",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "cad007aaaf4c9b11f6cc39fd889b94f92a8cfdadb77335f48242f517270a8387",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "d19133cfa52ef3b92c32eee11d58529bb51bca01d5b2fa14508e3a3a6e33558a"
+          },
+          "chunk": "usc32.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "d510ef3195935d1c23f028c2",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "1e46ac411fb0ab32ec6a27832d1d320d207eee5b5b44c09606822268c3e37770",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "d19133cfa52ef3b92c32eee11d58529bb51bca01d5b2fa14508e3a3a6e33558a"
+          },
+          "chunk": "usc32.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc33.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "aafc479b9b854685c8b4b451",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "b60adaaa5003fb1838bbcb219927dc0ed874781ed0ff7a70b41504e175607258",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "ca13b115bae2a3bcc9285b49097a6512144e8827a74918fa4d8f18591e2dc2a7"
+          },
+          "chunk": "usc33.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "aafc479b9b854685c8b4b451",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "878ac4ca594240a75ed5dc5b6da8eff6b477954c70c844c2e7a53e1fed417031",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "ca13b115bae2a3bcc9285b49097a6512144e8827a74918fa4d8f18591e2dc2a7"
+          },
+          "chunk": "usc33.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc34.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "8eeffd991379839b9040d7e3",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "2c0ded74d7183ec6d276383d2f32fa51bddd60ddfbff74c9b2b9925019c115f2",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "5939a1f815f754fb9325fd893ab86961a68012600a44326580796d18320c4569"
+          },
+          "chunk": "usc34.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "8eeffd991379839b9040d7e3",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "7fbf62c2044cdd1832594ea2c0400f64b74fd97d6c7083c21f6870a02ed85804",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "5939a1f815f754fb9325fd893ab86961a68012600a44326580796d18320c4569"
+          },
+          "chunk": "usc34.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc35.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "e95b76c74b6ebd8ccf42c46f",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "e9bc1500d6cb0e450a6c1ea73aaeb23b8d1bd5efea9adf85b95beeb02c389c4f",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "745ef73a4aeeec1a32a8e5ba5c0f540c78cf08e404b604e02a952ff7aa4c733e"
+          },
+          "chunk": "usc35.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "e95b76c74b6ebd8ccf42c46f",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "8b249c20a89e6e5d601e8eba148d4b03bbd298cd600bc3c2853445e0ab402914",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "745ef73a4aeeec1a32a8e5ba5c0f540c78cf08e404b604e02a952ff7aa4c733e"
+          },
+          "chunk": "usc35.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc36.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "0317df5ef2a35eb4f57b9542",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "d58bcbb03bf42db2aef0b0264a348b211eda6df1ec088908d92180400734cc5b",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "48bae9d28749e555409e162a78c87dc4521ef88798a3e662f81da477e7958144"
+          },
+          "chunk": "usc36.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "0317df5ef2a35eb4f57b9542",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "20dd166114afa446ca838e800db89c21e24362f317b8012a10f603ef631e1e6b",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "48bae9d28749e555409e162a78c87dc4521ef88798a3e662f81da477e7958144"
+          },
+          "chunk": "usc36.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc37.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "999d816865b0bec1e9403487",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "eb359c28c9ee083e106d41ba7f26058c8635b079b77305855ab5edf209c77f30",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "5da09bcb1a4a29609df2aa59d3ea1a2fd987dce3b6ae8a1002b596b5dde4d548"
+          },
+          "chunk": "usc37.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "999d816865b0bec1e9403487",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "2144a4929b85c7efbdbfd0397f7e53fe41c2df87cd3b7f47af950f9f28520cb7",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "5da09bcb1a4a29609df2aa59d3ea1a2fd987dce3b6ae8a1002b596b5dde4d548"
+          },
+          "chunk": "usc37.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc38.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "3ca539d29879abc57d6f2ce2",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "112301e4da1bf414723d51d0b62a990beaab78be9fd2a7fd9f599357b1d7be44",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "df05dac07ef5d72b3f5ee4b371c722730abc01bc38315c466d50019d92e6b026"
+          },
+          "chunk": "usc38.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "3ca539d29879abc57d6f2ce2",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "6e4617e2eb821e07831f04df1cbee5f5ceb5b6e33a3226cdcdb31a8a69b175ab",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "df05dac07ef5d72b3f5ee4b371c722730abc01bc38315c466d50019d92e6b026"
+          },
+          "chunk": "usc38.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc39.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "380301f9f4858538ea356b5e",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "28686ae820bfa525aeba10c337f1df5cc633395c133ea54cd5b5b34668a49b4f",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "940adeca26d7ea70599dce2c7f08956c55a2f670bdcbecbeddd77776e6b52900"
+          },
+          "chunk": "usc39.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "380301f9f4858538ea356b5e",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "eb64cef4b4aa60f9689175ef416f414ce0e5a83bf2ed3cb7ffe7997d37e63767",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "940adeca26d7ea70599dce2c7f08956c55a2f670bdcbecbeddd77776e6b52900"
+          },
+          "chunk": "usc39.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc40.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "01e32dfd7f70424a5098b6c1",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "6be7a95cac005c83bb836655ced6b02bd9af59088555ebf5a46788bd04d9b82f",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "8815ce1fe959e78c3225079cc4cc06b92899ba6780200849a38e103a643bce3d"
+          },
+          "chunk": "usc40.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "01e32dfd7f70424a5098b6c1",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "9856c2d2644a4f3cb7b5b7bb902aefe342ea4f977125b8be9b1c46cf76b6d9f1",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "8815ce1fe959e78c3225079cc4cc06b92899ba6780200849a38e103a643bce3d"
+          },
+          "chunk": "usc40.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc41.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "1efd3614ca37d9e99de882b6",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "99c02d3f2e4f9e96aeb3f2947a7fdd6e32a80f0a1a82ef46c2b97d9f4e0af4cb",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "afabbabfec468f0bebe46b0f6f0adf40ed9c73bf22efad38a5a831f1446328f5"
+          },
+          "chunk": "usc41.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "1efd3614ca37d9e99de882b6",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "a6aa0c15542d66cf813b0c221e9584ac909359e2ae1c2a56d04e47c5a053cd2f",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "afabbabfec468f0bebe46b0f6f0adf40ed9c73bf22efad38a5a831f1446328f5"
+          },
+          "chunk": "usc41.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc42.xml",
+      "locator": "/us/usc/t42/s1305",
+      "kind": "ChangedText",
+      "before": [
+        {
+          "key": "8fdaf3856bd01b635b53aae3",
+          "locator": "/us/usc/t42/s1305",
+          "kind": "section",
+          "number": "§ 1305.",
+          "heading": "Short title of chapter",
+          "content_sha256": "50e13368b1b1bf0f29effba3ab54419c6886bcdd0eb6f52badbec295d9857f7f",
+          "part_hashes": {
+            "text": "ea2f019d45b620d7b9d9077b81f8cab0a186da4c3e544b9b4651232dfa745307",
+            "notes": "dfaa6ca93da5d14a9fd375ce204bbae45b6a1005072d54b57baa8b145b10cb49",
+            "credits": "0285320f25126db4079303b7294b05b2d2c7964d6b2abbe379b83d2c5f386f32",
+            "references": "d29909a09e99f5bb3716c49846774530582247996e6fc289f362c85d8e3f5747",
+            "context": "779d96ed3af80a6a7bc8898d1e0576fa92aeb7ecb6b93907641af7e922d0acc6"
+          },
+          "chunk": "usc42.xml.64.json.gz",
+          "note_count": 59,
+          "reference_count": 574
+        }
+      ],
+      "after": [
+        {
+          "key": "7ee596e21e4f1cb6ebce5ce4",
+          "locator": "/us/usc/t42/s1305",
+          "kind": "section",
+          "number": "§ 1305.",
+          "heading": "Short title of chapter",
+          "content_sha256": "f31676406d6e15753bbeb9645cb68f241ff5a7e4ac6ed63a66d8d1c8b412227c",
+          "part_hashes": {
+            "text": "ea2f019d45b620d7b9d9077b81f8cab0a186da4c3e544b9b4651232dfa745307",
+            "notes": "976db86c777cac09b1a957af20a7da2c205751dc73892653d521d2916c559eeb",
+            "credits": "0285320f25126db4079303b7294b05b2d2c7964d6b2abbe379b83d2c5f386f32",
+            "references": "ab6c7212a8ae6e2a539b1ebea44bca859758a59cf84443e524e7b49461c3e84d",
+            "context": "779d96ed3af80a6a7bc8898d1e0576fa92aeb7ecb6b93907641af7e922d0acc6"
+          },
+          "chunk": "usc42.xml.65.json.gz",
+          "note_count": 59,
+          "reference_count": 577
+        }
+      ],
+      "changed_parts": [
+        "notes",
+        "references"
+      ]
+    },
+    {
+      "file": "usc42.xml",
+      "locator": "/us/usc/t42/s915",
+      "kind": "AddedText",
+      "before": [],
+      "after": [
+        {
+          "key": "bf173be0b73fbd2b65621db7",
+          "locator": "/us/usc/t42/s915",
+          "kind": "section",
+          "number": "§ 915.",
+          "heading": "Single point of contact for identity theft victims",
+          "content_sha256": "91dddd46b2f52d9a84106bfa1d858e943d0602e166a3d0cbe26682f9e05f5eb6",
+          "part_hashes": {
+            "text": "5bde44dc6412c29d5e984435a62ee8641739b302b547ee8bdc467b5a3a365a13",
+            "notes": "b507c3003d9af3c78a2cc2a65efeaac1127b9ba42e5acd9a2fed61a907790ba2",
+            "credits": "a6173e00a5ae8771111a900e2e87170e61a0f3e9e0024cd85aba058cb578e04f",
+            "references": "10dce43195e26f09388fc75afa38c35271264e62f0fa2bb7a202bdd0747c73b3",
+            "context": "15bbd1335a94c5944c13284df382c5a2f7aef1b87bbb2c26a0c83f1f33bb850c"
+          },
+          "chunk": "usc42.xml.63.json.gz",
+          "note_count": 2,
+          "reference_count": 5
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc42.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "6760fc0be6d29cdf43a4b995",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "fadb6c796de87e0336585bb67f435ae76cefb7711c958b72d369b11068fec6b8",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "afbb99c7eaed38176b07700ac66e07c45b208ddd24748a8c4dbd235edc9606b9"
+          },
+          "chunk": "usc42.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "6760fc0be6d29cdf43a4b995",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "e63903d79e7a31d9c02b30db89fc98e0b86ee128b914392b4c1ef1650e9a59f9",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "afbb99c7eaed38176b07700ac66e07c45b208ddd24748a8c4dbd235edc9606b9"
+          },
+          "chunk": "usc42.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc43.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "43fc92623881a05edc26af4f",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "ad7c5aee446c98dc7a1f5f781a2295cbe599dfa8415ada5272439b9d3f46bf8a",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "61f0a3a6b66fc165d64496b86c1fcc91386cc28877c99095a4cd0e1ac3bcdc0b"
+          },
+          "chunk": "usc43.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "43fc92623881a05edc26af4f",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "5e9c53a40b5c4e400563697a913fa37b03a00a9941b8460905975d3d8e3c44f9",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "61f0a3a6b66fc165d64496b86c1fcc91386cc28877c99095a4cd0e1ac3bcdc0b"
+          },
+          "chunk": "usc43.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc44.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "7efa09ec5e6bd186d89977f8",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "cff2c284c82a97b15528ff894bf80d70bf68cbcc229b8bf23aa1022f32464a5f",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "896599a64b28b1722c2c1cca99b68551d3d71e0b605606629880bc68b3b37ed7"
+          },
+          "chunk": "usc44.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "7efa09ec5e6bd186d89977f8",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "c4e3c661ecf17d06e798ead3f54bcf055f9fe083c67fd6d304b07fb80693ee9f",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "896599a64b28b1722c2c1cca99b68551d3d71e0b605606629880bc68b3b37ed7"
+          },
+          "chunk": "usc44.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc45.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "d7eb51a8004720f4f5c3e99d",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "004a00f863f7fd98465c879e3aa9ecd182e31c26bd445d54b3f41bcc4149c192",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "abb0864c6f0cbb050216c771e00d790dfe96734d56cfc8990ced42405b09f2a2"
+          },
+          "chunk": "usc45.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "d7eb51a8004720f4f5c3e99d",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "04839287896a1eaf33e7c449316271b1485d6e86fd17a8382ca889f38ec70907",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "abb0864c6f0cbb050216c771e00d790dfe96734d56cfc8990ced42405b09f2a2"
+          },
+          "chunk": "usc45.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc46.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "dfca3acd5de1406540aa02c8",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "6157b05e936fa4f3b07c8b07c315dd60bfd01069391aec6975a0a727f2257767",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "2e6e135cf7ecbff6a2da8a85584d424a5b8e8c03e213a7520cd7cc7dd0756d1c"
+          },
+          "chunk": "usc46.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "dfca3acd5de1406540aa02c8",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "5c060a80abddfa7572398f912d34517f1b68fbb61bc7b1879392378753833293",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "2e6e135cf7ecbff6a2da8a85584d424a5b8e8c03e213a7520cd7cc7dd0756d1c"
+          },
+          "chunk": "usc46.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc47.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "6578f4ff0ab48c52a29aba81",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "0f94266ea6118bac39c8c0c8eb5f7fc1660f5ad322a9cc8fa307d8814863f2d6",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "d1c0fb0157bb443d4b7eaf6aa65fee7bbb95d0cdc8e27dfd22366309f11fd37b"
+          },
+          "chunk": "usc47.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "6578f4ff0ab48c52a29aba81",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "5966dfa9bd73756e1be0c16927296e3aba09cd4a86178d47b1a130a729d64859",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "d1c0fb0157bb443d4b7eaf6aa65fee7bbb95d0cdc8e27dfd22366309f11fd37b"
+          },
+          "chunk": "usc47.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc48.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "7535e3955f1a8b6f2548dc53",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "e8cb6ae5475e935d5a8a262bbae55f1360c4faffbaef8e2053a401925b303b52",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "537a1939e90d4cddbe1831c9d92e425103ad0f69141632285de49f8d36391da6"
+          },
+          "chunk": "usc48.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "7535e3955f1a8b6f2548dc53",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "27ad07962bd2820e39ff7a34a57a8fe8fde0ae9c66bd53976baada157f7cc043",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "537a1939e90d4cddbe1831c9d92e425103ad0f69141632285de49f8d36391da6"
+          },
+          "chunk": "usc48.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc49.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "a90ef956bb591046be6373e5",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "69c0d0b55a8e22fdb4120ce622f94daf795ad2bb567786a7d2388109550944d4",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "87ef830e82053111100cac51ec63f03d3cb60d61cc528a60205c56802e60c99f"
+          },
+          "chunk": "usc49.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "a90ef956bb591046be6373e5",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "535cdfe8383f83fb21c6bd4dab993ff271b023bdbb2a7e02e0b278a532716b98",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "87ef830e82053111100cac51ec63f03d3cb60d61cc528a60205c56802e60c99f"
+          },
+          "chunk": "usc49.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc50.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "1bbed17f7ca719a264e6a813",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "23544fb17a96f0dacc6b11af73b9fc221eba69227f076e032f17bc4d961ad273",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "dab0639b1c1075cc1e0ed2ff510c96cb15d2095daab2a3aece87bf79273f19bf"
+          },
+          "chunk": "usc50.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "1bbed17f7ca719a264e6a813",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "0e2eadff0c3cb6399d95fa50f03aa1bd4a77a89235488a84ccd08743dff39c54",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "dab0639b1c1075cc1e0ed2ff510c96cb15d2095daab2a3aece87bf79273f19bf"
+          },
+          "chunk": "usc50.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc51.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "cb4318424111a6daa3fbda4a",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "d3bb41c3a206318ef41cbda82434d90db7dc150c884f3a32cf5ae229e7c80f61",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "8862cb983be1e5e308bbbf5ca93c118d80ab9ace3949c80fa39896a2962315ee"
+          },
+          "chunk": "usc51.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "cb4318424111a6daa3fbda4a",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "bb03232078061599e08ded21d5ec90a4ab23427ee7ac15c0b9a69082bf9eb02f",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "8862cb983be1e5e308bbbf5ca93c118d80ab9ace3949c80fa39896a2962315ee"
+          },
+          "chunk": "usc51.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc52.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "d1c000b741262164958d8770",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "8fd6b0431e3077cbb74f20eff4b7cdd48217e5135d68dd0fb38d572ce3dd0376",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "bc52b145ad217d6856089c7073eadec45747833ff6c57a94acd1c4ec0f7e385c"
+          },
+          "chunk": "usc52.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "d1c000b741262164958d8770",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "d3e329297ba25e5854cb55403eeefb9a24e0d17214e42c63105500935d4b1288",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "bc52b145ad217d6856089c7073eadec45747833ff6c57a94acd1c4ec0f7e385c"
+          },
+          "chunk": "usc52.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    },
+    {
+      "file": "usc54.xml",
+      "locator": null,
+      "kind": "IdentityReviewRequired",
+      "before": [
+        {
+          "key": "8d0fd766df82b60e73e6aa79",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "f26d9ef1283e41c7910a2e9b6651100ad65752cb235ffbc003f0042d4501869d",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "2496720e3c7e6a5bb77daf728d55f838d5f769046a289a8a2987e346b11225cb",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "8f8df99b576cbf21838bfde0b72b611f30412f5baee4f41711aab53834d3ed2a"
+          },
+          "chunk": "usc54.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "after": [
+        {
+          "key": "8d0fd766df82b60e73e6aa79",
+          "locator": null,
+          "kind": "note",
+          "number": "",
+          "heading": "",
+          "content_sha256": "125d27a1c87c9951d3dc7dc059eb36da24e57adbae031e8ecdece1c62cd0c29e",
+          "part_hashes": {
+            "text": "51007c1b43edf067dbd64153f09ea0cb6f63c5a120e035026f3f936d94d179f3",
+            "notes": "d9a31cc0f2ae8273099eed34d8c65a3920f146d664e0152a2706d9e92a6f72da",
+            "credits": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "references": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "context": "8f8df99b576cbf21838bfde0b72b611f30412f5baee4f41711aab53834d3ed2a"
+          },
+          "chunk": "usc54.xml.0.json.gz",
+          "note_count": 1,
+          "reference_count": 0
+        }
+      ],
+      "changed_parts": []
+    }
+  ],
+  "affected": [
+    {
+      "id": "draft.us.commerce.section9801",
+      "package": "drafts/us/federal/commerce/9801",
+      "query": "draft.us.commerce.section9801.assessment",
+      "tests": [
+        "tests/unimplemented.json"
+      ],
+      "reasons": [
+        {
+          "file": "usc15.xml",
+          "locator": "/us/usc/t15/s9801",
+          "change": "ChangedText",
+          "binding_snapshot": "Before",
+          "binding_digest_matches": true
+        }
+      ],
+      "through": [],
+      "action": "Reassess; no legal effect or review approval inferred"
+    }
+  ],
+  "limitations": [
+    "Matches unique locators within documents; renumbering and relocation require explicit identity review",
+    "Text additions/removals are not automatic enactments or repeals",
+    "Only registered source and encoding-dependency links contribute to impact; omitted dependencies remain undiscovered",
+    "An unchanged encoded source does not establish that no other law changed"
+  ]
+}

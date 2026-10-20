@@ -1,0 +1,166 @@
+{
+  "format": "lawlib-encodings/1",
+  "encodings": [
+    {
+      "id": "frcp.6a.forward_days",
+      "package": "us/federal/procedure/frcp/6",
+      "query": "us.frcp.r6.deadline_date",
+      "sources": [
+        {
+          "collection": "usc",
+          "release": "119-121",
+          "file": "usc28a.xml",
+          "locator": "/us/usc/t28a/courtRules/Civil/rule6",
+          "key": "1515f8cf1e5b19e1b5e644cf",
+          "content_sha256": "9e3d5956fae0a82786ae56b4a6537d2499579e41789be99c3723593cd2b976c2",
+          "role": "parallel-source-map; executable source remains the cited court PDF"
+        }
+      ],
+      "depends_on": [],
+      "tests": [
+        "tests/before_event_excluded.json",
+        "tests/calendar_duplicate.json",
+        "tests/calendar_empty.json",
+        "tests/calendar_excessive.json",
+        "tests/calendar_gap.json",
+        "tests/closure_and_holiday.json",
+        "tests/different_revision.json",
+        "tests/disputed_holiday.json",
+        "tests/excessive_period.json",
+        "tests/inaccessible_endpoint.json",
+        "tests/incomplete_holidays.json",
+        "tests/intermediate_weekend_counts.json",
+        "tests/irrelevant_later_unknown.json",
+        "tests/leap_day_counts.json",
+        "tests/long_month_boundary.json",
+        "tests/maximum_period.json",
+        "tests/maximum_window.json",
+        "tests/maximum_window_exhausted.json",
+        "tests/missing_accessibility.json",
+        "tests/missing_adjustments_review.json",
+        "tests/missing_applicability.json",
+        "tests/missing_holiday.json",
+        "tests/missing_trigger.json",
+        "tests/negative_period.json",
+        "tests/nonfiling_ignores_clerk.json",
+        "tests/not_applicable.json",
+        "tests/ordinary.json",
+        "tests/presidential_holiday.json",
+        "tests/saturday_endpoint.json",
+        "tests/state_holiday.json",
+        "tests/statutory_holiday.json",
+        "tests/sunday_endpoint.json",
+        "tests/unknown_holiday_completeness.json",
+        "tests/unsupported_adjustment.json",
+        "tests/weekend_unknown_holiday.json",
+        "tests/window_exhausted.json",
+        "tests/wrong_court_calendar.json",
+        "tests/wrong_state_calendar.json",
+        "tests/year_boundary.json",
+        "tests/zero_period.json"
+      ],
+      "status": {
+        "implementation": "ExecutableSubset",
+        "legal_review": "Unreviewed"
+      },
+      "unresolved": [
+        "Court-specific findings and applicability are inputs; coverage is limited."
+      ]
+    },
+    {
+      "id": "wawd.answer.2026",
+      "package": "us/federal/courts/wawd/answer/2026",
+      "query": "us.wawd.answer.answer_service_date",
+      "sources": [
+        {
+          "collection": "usc",
+          "release": "119-121",
+          "file": "usc28a.xml",
+          "locator": "/us/usc/t28a/courtRules/Civil/rule12",
+          "key": "3e48dfc5c59361925b48db12",
+          "content_sha256": "2653685e97870a97da2ab62aa597049946997de0117630373c1a02b07b291936",
+          "role": "parallel-source-map; executable source remains the cited court PDF"
+        }
+      ],
+      "depends_on": [
+        "frcp.6a.forward_days"
+      ],
+      "tests": [
+        "tests/additional_declared_holiday.json",
+        "tests/additional_holidays_complete.json",
+        "tests/amended_pleading.json",
+        "tests/columbus_day.json",
+        "tests/cross_year_excluded.json",
+        "tests/different_statutory_period.json",
+        "tests/disputed_order.json",
+        "tests/earlier_revision_not_assumed.json",
+        "tests/first_supported_date.json",
+        "tests/invalid_service.json",
+        "tests/july_observance.json",
+        "tests/juneteenth.json",
+        "tests/last_supported_date.json",
+        "tests/modifying_order.json",
+        "tests/no_automatic_three_days.json",
+        "tests/ordinary.json",
+        "tests/ordinary_original_complaint.json",
+        "tests/private_domestic_defendant.json",
+        "tests/procedural_inventory_complete.json",
+        "tests/recognized_day_not_holiday.json",
+        "tests/removed_from_state_court.json",
+        "tests/rule12_motion_served.json",
+        "tests/saturday_endpoint.json",
+        "tests/selected_authorities_apply.json",
+        "tests/service_waived.json",
+        "tests/special_proceeding.json",
+        "tests/stay_or_tolling.json",
+        "tests/thanksgiving.json",
+        "tests/unknown_holiday_inventory.json",
+        "tests/unknown_motion.json",
+        "tests/unknown_service.json",
+        "tests/washington_friday_holiday.json",
+        "tests/wrong_court.json"
+      ],
+      "status": {
+        "implementation": "ExecutableSubset",
+        "legal_review": "Unreviewed"
+      },
+      "unresolved": [
+        "Local rules and RCW are pinned in .oath; this USC comparison does not compare those documents.",
+        "Precedent and individual dockets have not been comprehensively investigated."
+      ]
+    },
+    {
+      "format": "lawlib-encoding/1",
+      "id": "draft.us.commerce.section9801",
+      "package": "drafts/us/federal/commerce/9801",
+      "query": "draft.us.commerce.section9801.assessment",
+      "sources": [
+        {
+          "collection": "usc",
+          "release": "119-118",
+          "file": "usc15.xml",
+          "locator": "/us/usc/t15/s9801",
+          "key": "90deb5e01fab52afd6aebdeb",
+          "content_sha256": "020c61c83d923073adc1931b22e61cc246c76d17547f7466e7125315e34d33bf",
+          "role": "support"
+        }
+      ],
+      "depends_on": [],
+      "tests": [
+        "tests/unimplemented.json"
+      ],
+      "questions": [
+        "Which definitions govern the selected chapter, and how do their scopes and revisions affect a future encoded question?"
+      ],
+      "unresolved": [
+        "Applicability, definitions, exceptions, other authorities and interpretation have not been investigated"
+      ],
+      "status": {
+        "implementation": "Unimplemented",
+        "source_integrity": "Pinned",
+        "semantic_tests": "UnreviewedExpectations",
+        "legal_review": "Unreviewed"
+      }
+    }
+  ]
+}
