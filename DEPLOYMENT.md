@@ -1,5 +1,26 @@
 # Production deployment
 
+## Constitutional foundation — 2026-10-19
+
+- Production: https://oathkeeper-sable.vercel.app
+- Explorer: https://oathkeeper-sable.vercel.app/explorer/constitution
+- Guide: https://oathkeeper-sable.vercel.app/docs/constitutional-authority
+- Team/project: rlindskog-projects/oathkeeper
+- Project ID: prj_UNSVsmxkhVWCUlKsBFnZWXpB9z6Y
+- Deployment ID: dpl_9gY9QxndzF5BmTcQKZfxURje1hdy
+- Immutable deployment: https://oathkeeper-dy7ctxj9c-rlindskog-projects.vercel.app
+- Deployed application source: 66fa7ef; lawlib: a346c31 (v0.1.0-dev.4).
+- Status: READY; target: production.
+
+Vercel built the standalone upload and aliased the existing production hostname.
+All 15 Playwright tests passed against that public hostname without authentication
+or bypass headers. The deployed snapshot contains eight packages, 30 modules,
+191 fixtures, 137 constitutional provision units and 37 authority/history links.
+All legal review remains Unreviewed. Documentation-only commits following the
+application commit record validation and deployment; they do not change the app.
+
+## Previous deployment: provision workflow
+
 Updated 2026-10-19 in the existing Oathkeeper project.
 
 - Production: https://oathkeeper-sable.vercel.app

@@ -1,5 +1,37 @@
 # Web validation
 
+## Constitutional foundation — 2026-10-19
+
+- lawlib `a346c31`, tagged `v0.1.0-dev.4`: 137 constitutional provision units,
+  37 authority/history relationships, 10 institutional actors or classes, and
+  three new executable authority queries. The inventory reproduces exactly from
+  the three pinned National Archives byte snapshots. The six source references
+  in the constitutional import closure matched the external cache.
+- All 191 library fixtures passed on Windows with independent certificate checks.
+  All 69 constitutional fixtures also passed on Linux. The constitutional package
+  adds 48 authority fixtures and four direct Amendment XX power fixtures.
+- Five new inventory tests and 14 existing source-tooling tests passed. Checks
+  reject changed text digests, altered source pins and dangling relationships,
+  preserve historical text, and require every executable inventory link to have
+  a real query and authored fixture.
+- Six website content tests, TypeScript/build checks, formatting and ESLint checks
+  passed. The website pins the committed lawlib revision and includes its new
+  source archive. Original source documents remain external to the repositories.
+- All 15 Playwright tests passed on the public production hostname, with no
+  authentication or bypass headers. The new tests cover historical links,
+  authority filters, URL restoration, query/scenario navigation, unknown IDs,
+  mobile overflow and accessibility. All 13 documentation pages render.
+- Desktop and mobile constitutional views were visually inspected. A selected-row
+  contrast issue and a logo accessible-name mismatch were fixed without changing
+  the shadcn theme. Synchronous native history updates prevent rapid filter
+  interactions from restoring stale URL parameters.
+- Constitutional records remain legally Unreviewed. Source representation is
+  separate from executable coverage. Authority relationships do not create
+  priorities or prove validity, and accepted procedural/interpretive findings
+  remain explicit inputs. No complete constitutional doctrine is claimed.
+
+Deployed application commit: `66fa7ef`. Production identity is in DEPLOYMENT.md.
+
 ## Provision workflow — 2026-10-19
 
 - lawlib `136a7b6`, tagged `v0.1.0-dev.3`: eight packages, 26 modules,
