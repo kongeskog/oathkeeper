@@ -73,6 +73,7 @@ export function ProvisionBrowser() {
     const abort = new AbortController();
     checkedContent<ProvisionIndex>(release, document.index, abort.signal)
       .then((index) => {
+        if (abort.signal.aborted) return;
         if (index.source.sha256 !== document.sha256)
           throw Error("Index/source identity mismatch");
         setLoaded({ id: indexId, index });
@@ -91,6 +92,7 @@ export function ProvisionBrowser() {
     const abort = new AbortController();
     checkedContent<Provision[]>(release, ref, abort.signal)
       .then((units) => {
+        if (abort.signal.aborted) return;
         const unit = units.find((u) => u.key === selected);
         if (!unit || unit.content_sha256 !== row.content_sha256)
           throw Error("Provision/index mismatch");
